@@ -1,0 +1,17 @@
+# == Schema Information
+#
+# Table name: stories
+#
+#  id         :integer          not null, primary key
+#  author_id  :integer          not null
+#  pub_id     :integer          not null
+#  title      :string           not null
+#  subtitle   :string
+#  body       :text
+#  story_id   :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+class Story < ActiveRecord::Base
+end
