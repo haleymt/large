@@ -10,13 +10,13 @@ Large.Views.NewStory = Backbone.View.extend({
   },
 
   render: function () {
-    this.$el.html(this.template({story: this.model}));
+    this.$el.html(this.template({ story: this.model }));
     return this;
   },
 
   submitForm: function (event) {
     event.preventDefault();
-    var formData = this.$el.serializeJSON();
+    var formData = this.$('form').serializeJSON();
 
     this.model.save(formData, {
       success: function () {
