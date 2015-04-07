@@ -13,7 +13,7 @@ Large.Views.HomeShow = Backbone.View.extend({
     var newStory = new Large.Models.Story();
     var newStoryView = new Large.Views.NewStory({ collection: this.stories, model: newStory });
 
-    this.$el.append(newStoryView.render().$el);
+    this.$('.new').append(newStoryView.render().$el);
 
     return this;
   }

@@ -1,5 +1,4 @@
 Large.Views.NewStory = Backbone.View.extend({
-  tagName: 'form',
   template: JST['stories/new_story'],
 
   events: {

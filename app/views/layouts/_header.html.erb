@@ -19,6 +19,8 @@
           data-toggle='dropdown'><span class='glyphicon glyphicon-plus'></span>
         </button>
       </li>
+      <li><%= button_to "Write a Story", "#/stories/new", method: :get, class: "btn btn-primary navbar-btn" %></li>
+      <li><%= button_to "New Publication", "#/publications/new", method: :get, class: "btn btn-primary navbar-btn" %></li>
       <li><%= button_to "Sign out", session_url, method: :delete, class: "btn btn-primary navbar-btn" %></li>
     <% else %>
       <li><%= link_to "Log in", new_session_url %></li>
