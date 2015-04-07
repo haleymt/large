@@ -11,4 +11,12 @@
 #
 
 class Publication < ActiveRecord::Base
+  validates :owner_id, :title, presence: true
+
+  has_many(
+    :stories,
+    class_name: :Story,
+    foreign_key: :pub_id,
+    primary_key: :id
+  )
 end
