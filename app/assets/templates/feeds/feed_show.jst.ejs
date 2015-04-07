@@ -1,0 +1,8 @@
+<h1>Your feed</h1>
+
+<ul><% stories.forEach( function (story) { %>
+  <li><%= story.escape('title') %><br>
+      <%= story.escape('subtitle') %>
+  </li>
+  <% }) %>
+</ul>
