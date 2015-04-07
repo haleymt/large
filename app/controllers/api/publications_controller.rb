@@ -1,7 +1,7 @@
 module Api
   class PublicationsController < ApplicationController
     def create
-      @pub = Publication.new(pub_params)
+      @pub = current_user.publications.new(pub_params)
 
       if @pub.save
         render json: @pub
@@ -38,7 +38,7 @@ module Api
 
     private
       def pub_params
-        params.require(:board).permit(:title, :owner_id, :description)
+        params.require(:publication).permit(:title, :owner_id, :description)
       end
     end
 

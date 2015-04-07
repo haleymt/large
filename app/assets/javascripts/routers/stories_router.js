@@ -41,7 +41,7 @@ Large.Routers.StoriesRouter = Backbone.Router.extend({
   storyEdit: function(id) {
     var story = this.collection.getOrFetch(id);
     var editStory = new Large.Views.StoryEdit({ model: story });
-    this._swapView(editStory)
+    this._swapView(editStory);
   },
 
   _swapView: function (view) {

@@ -1,0 +1,11 @@
+<h1><%= pub.escape('title') %></h1>
+<h3><%= pub.escape('description') %></h3>
+
+<ul><% stories.forEach( function (story) { %>
+  <a href="#/stories/<%= story.id %>">
+    <li><%= story.escape('title') %><br>
+      <%= story.escape('subtitle') %>
+    </li>
+  </a>
+  <% }) %>
+</ul>

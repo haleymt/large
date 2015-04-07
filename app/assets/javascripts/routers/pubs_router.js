@@ -12,15 +12,21 @@ Large.Routers.PubsRouter = Backbone.Router.extend({
   },
 
   newPub: function () {
-
+    var publication = new Large.Models.Publication();
+    var pubNew = new Large.Views.NewPub({ collection: this.collection, model: publication });
+    this._swapView(pubNew);
   },
 
   showPub: function (id) {
-
+    var pub = this.collection.getOrFetch(id);
+    var showPub = new Large.Views.PubShow({ pub: pub });
+    this._swapView(showPub);
   },
 
   editPub: function (id) {
-
+    var pub = this.collection.getOrFetch(id);
+    var editPub = new Large.Views.PubEdit({ pub: pub });
+    this._swapView(editStory)
   },
 
   _swapView: function (view) {
