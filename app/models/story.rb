@@ -14,7 +14,7 @@
 #
 
 class Story < ActiveRecord::Base
-  validates :author_id, :pub_id, :title, presence: true
+  validates :author_id, :title, presence: true
 
   belongs_to(
     :author,

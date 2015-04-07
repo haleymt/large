@@ -9,7 +9,12 @@ Large.Views.StoryShow = Backbone.View.extend({
   render: function () {
     var content = this.template({ story: this.story });
     this.$el.html(content);
-    // add NewCard view
+    
+    var newStory = new Large.Models.Story();
+    var newStoryView = new Large.Views.NewStory({ collection: this.stories, model: newStory });
+
+    this.$el.append(newStoryView.render().$el);
+
     return this;
   },
 

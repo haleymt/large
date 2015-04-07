@@ -6,6 +6,10 @@ Large.Views.NewStory = Backbone.View.extend({
     "submit": "submitForm"
   },
 
+  initialize: function (options) {
+    this.collection = options.collection;
+  },
+
   render: function () {
     this.$el.html(this.template({story: this.model}));
     return this;
@@ -19,7 +23,7 @@ Large.Views.NewStory = Backbone.View.extend({
       success: function () {
         this.collection.add(this.model, { merge: true });
         Backbone.history.navigate("stories/" + this.model.id, { trigger: true })
-      }
+      }.bind(this)
     })
   }
 });

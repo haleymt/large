@@ -3,7 +3,7 @@ Large.Collections.Stories = Backbone.Collection.extend({
   model: Large.Models.Story,
 
   comparator: function (story) {
-    return card.get('created_at');
+    return story.get('created_at');
   },
 
   getOrFetch: function (id) {
