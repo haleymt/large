@@ -3,7 +3,7 @@ Large.Views.StoryPreview = Backbone.View.extend({
   // tagName: 'li',
 
   initialize: function () {
-    this.listenTo(this.model, 'sync add', this.render);
+    this.listenTo(this.model, 'sync', this.render);
   },
 
   render: function () {
@@ -11,6 +11,7 @@ Large.Views.StoryPreview = Backbone.View.extend({
     var author = Large.Collections.users.getOrFetch(authorId);
     var content = this.template({ story: this.model, author: author });
     this.$el.html(content);
+    $("abbr.timeago").timeago();
     return this;
   }
 });

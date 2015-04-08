@@ -3,8 +3,8 @@ Large.Routers.StoriesRouter = Backbone.Router.extend({
     "": "homeShow",
     "stories/new": "newStory",
     "stories/:id": "storyShow",
-    "stories/:id/edit": "storyEdit",
-    "users/:id": "userShow"
+    "users/:id": "userShow",
+    "stories/:id/edit": "storyEdit"
   },
 
   initialize: function (options) {

@@ -15,6 +15,7 @@
 //= require underscore
 //= require backbone
 //= require serializeJSON
+//= require jquery.timeago
 //= require bootstrap
 //= require large
 //= require_tree ../templates

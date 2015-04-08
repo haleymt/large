@@ -1,4 +1,7 @@
 <a href="#/users/<%= author.id %>"><%= author.escape('email') %></a><br>
+<a href="#/stories/<%= story.id %>">
+  <abbr class="timeago" title="<%= story.get('created_at') %>"><%= story.get('created_at') %></abbr>
+</a>
 <h2><%= story.escape('title') %><h2>
 <h3><%= story.escape('subtitle') %></h3><br>
 <a href="#/stories/<%= story.id %>">Continue reading</a>
