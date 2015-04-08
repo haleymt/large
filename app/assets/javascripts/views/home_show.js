@@ -3,14 +3,18 @@ Large.Views.HomeShow = Backbone.View.extend({
 
   initialize: function (options) {
     this.stories = options.stories;
-    this.listenTo(this.stories, 'sync add', this.render)
+    this.listenTo(this.stories, 'sync add', this.render);
   },
 
   render: function () {
+    // debugger
     this.$el.html(this.template());
 
     var newStory = new Large.Models.Story();
-    var newStoryView = new Large.Views.NewStory({ collection: this.stories, model: newStory });
+    Large.Collections.publications.fetch({
+      data: { current_user: true }
+    });
+    var newStoryView = new Large.Views.NewStory({ collection: this.stories, model: newStory, publications: Large.Collections.publications });
     this.$('.new').append(newStoryView.render().$el);
 
     this.stories.models.forEach( function(story) {

@@ -16,7 +16,11 @@ module Api
     end
 
     def index
-      @pubs = Publication.all
+      if params[:current_user]
+        @pubs = current_user.publications
+      else
+        @pubs = Publication.all
+      end
       render json: @pubs
     end
 

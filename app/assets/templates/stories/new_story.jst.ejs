@@ -1,4 +1,10 @@
 <form class="story-form">
+  <select name="story[pub_id]">
+     <option value="">Submit to a Publication</option>
+     <% publications.forEach( function(pub) { %>
+     <option value="<%= pub.id %>"><%= pub.escape('title') %></option>
+     <% }) %>
+   </select><br>
   <input type="text" name="story[title]" placeholder="Title"><br>
   <input type="text" name="story[subtitle]" placeholder="Tell your story..."><br>
   <input type="textarea" name="story[body]"><br>

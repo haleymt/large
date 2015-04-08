@@ -10,8 +10,13 @@ Large.Views.PubShow = Backbone.View.extend({
   },
 
   render: function () {
-    var content = this.template({ pub: this.pub, stories: this.stories });
+    var content = this.template({ pub: this.pub });
     this.$el.html(content);
+
+    this.stories.models.forEach( function(story) {
+      var storyPreview = new Large.Views.StoryPreview({ model: story });
+      this.$('ul.pub-stories').append(storyPreview.render().$el);
+    }.bind(this));
 
     return this;
   }

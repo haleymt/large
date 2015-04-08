@@ -20,9 +20,10 @@ Large.Routers.StoriesRouter = Backbone.Router.extend({
 
   newStory: function () {
     var story = new Large.Models.Story();
-    // var author = Large.Collections.users.getOrFetch(user_id);
-    // var pubs = author.pubs();
-    var storyNew = new Large.Views.NewStory({ collection: this.collection, model: story });
+    Large.Collections.publications.fetch({
+      data: { current_user: true }
+    });
+    var storyNew = new Large.Views.NewStory({ collection: this.collection, model: story, publications: Large.Collections.publications });
     this._swapView(storyNew);
   },
 

@@ -4,7 +4,7 @@ Large.Views.UserShow = Backbone.View.extend({
   initialize: function (options) {
     this.user = options.user;
     this.stories = this.user.stories();
-    // this.listenTo(this.user, 'sync', this.render);
+
     this.listenTo(this.stories, 'sync add', this.render);
   },
 

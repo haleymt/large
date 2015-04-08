@@ -9,11 +9,12 @@ Large.Views.NewStory = Backbone.View.extend({
     this.collection = options.collection;
     // this.pubs = options.pubs;
     // this.pubs = this.user.pubs();
+    this.publications = options.publications;
+    this.listenTo(this.publications, 'sync', this.render);
   },
 
   render: function () {
-    // debugger
-    this.$el.html(this.template({ story: this.model }));
+    this.$el.html(this.template({ story: this.model, publications: this.publications }));
     return this;
   },
 
