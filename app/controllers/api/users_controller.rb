@@ -1,7 +1,7 @@
 module Api
   class UsersController < ApplicationController
     def show
-      @user = User.includes(:stories).find(params[:id])
+      @user = User.includes(:stories, :publications).find(params[:id])
       # render json: @user
       render :show
     end

@@ -1,11 +1,5 @@
 <h1>Your feed</h1>
 <div class="new">
 </div>
-<ul><% stories.forEach( function (story) { %>
-  <a href="#/stories/<%= story.id %>">
-    <li><%= story.escape('title') %><br>
-      <%= story.escape('subtitle') %>
-    </li>
-  </a>
-  <% }) %>
+<ul>
 </ul>

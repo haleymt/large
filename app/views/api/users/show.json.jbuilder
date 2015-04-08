@@ -5,3 +5,9 @@ json.stories do
     json.partial! 'api/stories/story', story: story
   end
 end
+
+json.publications do
+  json.array!(@user.publications) do |pub|
+    json.partial! 'api/publications/pub', pub: pub
+  end
+end

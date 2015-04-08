@@ -7,9 +7,12 @@ Large.Views.NewStory = Backbone.View.extend({
 
   initialize: function (options) {
     this.collection = options.collection;
+    // this.pubs = options.pubs;
+    // this.pubs = this.user.pubs();
   },
 
   render: function () {
+    // debugger
     this.$el.html(this.template({ story: this.model }));
     return this;
   },

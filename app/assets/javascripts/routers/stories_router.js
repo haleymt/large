@@ -3,8 +3,8 @@ Large.Routers.StoriesRouter = Backbone.Router.extend({
     "": "homeShow",
     "stories/new": "newStory",
     "stories/:id": "storyShow",
-    "users/:id": "userShow",
-    "stories/:id/edit": "storyEdit"
+    "stories/:id/edit": "storyEdit",
+    "users/:id": "userShow"
   },
 
   initialize: function (options) {
@@ -20,6 +20,8 @@ Large.Routers.StoriesRouter = Backbone.Router.extend({
 
   newStory: function () {
     var story = new Large.Models.Story();
+    // var author = Large.Collections.users.getOrFetch(user_id);
+    // var pubs = author.pubs();
     var storyNew = new Large.Views.NewStory({ collection: this.collection, model: story });
     this._swapView(storyNew);
   },
