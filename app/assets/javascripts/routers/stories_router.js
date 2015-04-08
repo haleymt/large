@@ -37,8 +37,11 @@ Large.Routers.StoriesRouter = Backbone.Router.extend({
   },
 
   userShow: function (id) {
+    Large.Collections.publications.fetch({
+      data: { current_user: false }
+    });
     var user = Large.Collections.users.getOrFetch(id);
-    var showUser = new Large.Views.UserShow({ user: user });
+    var showUser = new Large.Views.UserShow({ user: user, publications: Large.Collections.publications });
     this._swapView(showUser);
 
     //move to a user's router??

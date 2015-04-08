@@ -19,7 +19,7 @@ Large.Routers.PubsRouter = Backbone.Router.extend({
 
   showPub: function (id) {
     var pub = this.collection.getOrFetch(id);
-    var showPub = new Large.Views.PubShow({ pub: pub });
+    var showPub = new Large.Views.PubShow({ pub: pub, publications: this.collection });
     this._swapView(showPub);
   },
 
