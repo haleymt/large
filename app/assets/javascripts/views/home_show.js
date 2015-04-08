@@ -17,7 +17,7 @@ Large.Views.HomeShow = Backbone.View.extend({
       var storyPreview = new Large.Views.StoryPreview({ model: story });
       this.$('ul').append(storyPreview.render().$el);
     }.bind(this));
-
+    this.$("abbr.timeago").timeago();
     return this;
   }
 });

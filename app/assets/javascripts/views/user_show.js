@@ -4,8 +4,8 @@ Large.Views.UserShow = Backbone.View.extend({
   initialize: function (options) {
     this.user = options.user;
     this.stories = this.user.stories();
-    this.listenTo(this.user, 'sync', this.render);
-    this.listenTo(this.stories, 'add', this.render);
+    // this.listenTo(this.user, 'sync', this.render);
+    this.listenTo(this.stories, 'sync add', this.render);
   },
 
   render: function () {
@@ -14,9 +14,8 @@ Large.Views.UserShow = Backbone.View.extend({
 
     this.stories.models.forEach( function(story) {
       var storyPreview = new Large.Views.StoryPreview({ model: story });
-      this.$('ul').append(storyPreview.render().$el);
+      this.$('ul.user-stories').append(storyPreview.render().$el);
     }.bind(this));
-
     return this;
   }
 });

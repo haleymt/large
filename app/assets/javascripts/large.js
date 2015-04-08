@@ -8,6 +8,7 @@ window.Large = {
     new Large.Routers.StoriesRouter({content: $('#content')});
     new Large.Routers.PubsRouter({content: $('#content')})
     Large.Collections.users = new Large.Collections.Users();
+    Large.Collections.users.fetch()
     Backbone.history.start();
   }
 };
