@@ -2,7 +2,7 @@ Large.Views.NewStory = Backbone.View.extend({
   template: JST['stories/new_story'],
 
   events: {
-    "submit": "submitForm",
+    "click #submit-confirm": "submitForm",
     "click #confirm": "autoSave"
   },
 
@@ -11,7 +11,7 @@ Large.Views.NewStory = Backbone.View.extend({
 
     this.publications = options.publications;
     this.listenTo(this.publications, 'sync', this.render);
-    this.listenTo(this.model, 'change', this.autoSave)
+    // this.listenTo(this.model, 'change', this.autoSave)
   },
 
   render: function () {
@@ -19,8 +19,8 @@ Large.Views.NewStory = Backbone.View.extend({
     return this;
   },
 
-  autoSave: function (model, event) {
-    // event.preventDefault();
+  autoSave: function (event) {
+    event.preventDefault();
     var formData = this.$('.story-form').serializeJSON();
     this.model.save(formData, {
       success: function () {
@@ -34,8 +34,7 @@ Large.Views.NewStory = Backbone.View.extend({
 
   submitForm: function (event) {
     event.preventDefault();
-    var formData = this.$('form').serializeJSON();
-
+    var formData = this.$('.confirm-form').serializeJSON();
     this.model.save(formData, {
       success: function () {
         Backbone.history.navigate("stories/" + this.model.id, { trigger: true })
