@@ -5,8 +5,34 @@
      <option value="<%= pub.id %>"><%= pub.escape('title') %></option>
      <% }) %>
    </select><br>
-  <input type="text" name="story[title]" placeholder="Title"><br>
-  <input type="text" name="story[subtitle]" placeholder="Tell your story..."><br>
+  <input id="title" type="text" name="story[title]" placeholder="Title"><br>
+  <input id="subtitle" type="text" name="story[subtitle]" placeholder="Tell your story..."><br>
   <input type="textarea" name="story[body]"><br>
-  <input type="submit" value="Publish">
+  <button id="confirm" type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmPublish">Publish</button>
 </form>
+
+<div class="modal fade" id="confirmPublish" tabindex="-1" role="dialog" aria-labelledby="confirmPublishLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="confirmPublishLabel">Ready to publish?</h3>
+        <p>Change your story's title and subtitle as needed</p>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <input id="modal-title" type="text" name="story[title]"><br>
+          </div>
+          <div class="form-group">
+            <input id="modal-subtitle" type="text" name="story[subtitle]"><br>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button id="#submit" type="submit" class="btn btn-primary">Publish</button>
+        <!-- <input type="submit" class="btn btn-primary" value="Publish"> -->
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

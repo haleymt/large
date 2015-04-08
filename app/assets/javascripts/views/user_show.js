@@ -1,6 +1,10 @@
 Large.Views.UserShow = Backbone.View.extend({
   template: JST['users/user_show'],
 
+  events: {
+    "click .follow": "toggleFollow"
+  },
+
   initialize: function (options) {
     this.user = options.user;
     this.stories = this.user.stories();
@@ -19,5 +23,9 @@ Large.Views.UserShow = Backbone.View.extend({
       this.$('ul.user-stories').append(storyPreview.render().$el);
     }.bind(this));
     return this;
+  },
+
+  toggleFollow: function () {
+    console.log("method goes here");
   }
 });

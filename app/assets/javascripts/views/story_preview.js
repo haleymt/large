@@ -1,11 +1,11 @@
 Large.Views.StoryPreview = Backbone.View.extend({
   template: JST['stories/story_preview'],
-  // tagName: 'li',
+  // tagName: 'li .preview',
 
   initialize: function (options) {
     this.listenTo(this.model, 'sync add', this.render);
     this.publications = options.publications;
-    
+
     this.listenTo(Large.Collections.users, 'sync', this.render);
     this.listenTo(this.publications, 'sync', this.render);
   },

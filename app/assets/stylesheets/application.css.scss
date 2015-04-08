@@ -17,3 +17,23 @@
 
  @import "bootstrap";
  @import "font-awesome";
+
+.new {
+  padding: 30px;
+  margin-left: 10px;
+}
+
+.story-form input {
+  border: none;
+  margin-top: 5px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.preview {
+  border-top: 2px solid gray;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}

@@ -1,6 +1,10 @@
 Large.Views.PubShow = Backbone.View.extend({
   template: JST['publications/pub_show'],
 
+  events: {
+    "click .follow": "toggleFollow"
+  },
+
   initialize: function (options) {
     this.pub = options.pub;
     this.stories = this.pub.stories();
@@ -20,5 +24,9 @@ Large.Views.PubShow = Backbone.View.extend({
     }.bind(this));
 
     return this;
+  },
+
+  toggleFollow: function () {
+    console.log("method goes here");
   }
 });
