@@ -3,6 +3,7 @@ Large.Views.HomeShow = Backbone.View.extend({
 
   initialize: function (options) {
     this.stories = options.stories;
+    this.publications = options.publications;
     this.listenTo(this.stories, 'sync add', this.render);
   },
 
@@ -18,7 +19,7 @@ Large.Views.HomeShow = Backbone.View.extend({
     this.$('.new').append(newStoryView.render().$el);
 
     this.stories.models.forEach( function(story) {
-      var storyPreview = new Large.Views.StoryPreview({ model: story });
+      var storyPreview = new Large.Views.StoryPreview({ model: story, publications: this.publications });
       this.$('ul').append(storyPreview.render().$el);
     }.bind(this));
     this.$("abbr.timeago").timeago();

@@ -7,8 +7,7 @@ Large.Views.NewStory = Backbone.View.extend({
 
   initialize: function (options) {
     this.collection = options.collection;
-    // this.pubs = options.pubs;
-    // this.pubs = this.user.pubs();
+  
     this.publications = options.publications;
     this.listenTo(this.publications, 'sync', this.render);
   },

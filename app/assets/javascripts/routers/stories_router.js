@@ -14,7 +14,10 @@ Large.Routers.StoriesRouter = Backbone.Router.extend({
   },
 
   homeShow: function () {
-    var home = new Large.Views.HomeShow({stories: this.collection})
+    Large.Collections.publications.fetch({
+      data: { current_user: false }
+    });
+    var home = new Large.Views.HomeShow({stories: this.collection, publications: Large.Collections.publications })
     this._swapView(home);
   },
 
