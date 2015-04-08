@@ -13,6 +13,21 @@ class UsersController < ApplicationController
     end
   end
 
+  # def toggle_follow
+  #   @user = User.find(params[:id])
+  #   @follow = Follow.find_by(
+  #     followable_id: @user.id, followable_type: "User", follower_id: current_user.id
+  #   )
+  #
+  #   if !!@follow
+  #     @follow.destroy
+  #   else
+  #     @follow = Follow.create!(
+  #       followable_id: @user.id, followable_type: "User", follower_id: current_user.id
+  #     )
+  #   end
+  # end
+
   private
 
   def user_params

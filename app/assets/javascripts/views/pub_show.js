@@ -7,7 +7,7 @@ Large.Views.PubShow = Backbone.View.extend({
     this.publications = options.publications
     this.listenTo(this.pub, 'sync', this.render);
     this.listenTo(this.stories, 'add', this.render);
-    // this.listenTo(this.publications, 'sync', this.render);
+    this.listenTo(this.publications, 'sync', this.render);
   },
 
   render: function () {

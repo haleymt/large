@@ -7,7 +7,6 @@ Large.Routers.PubsRouter = Backbone.Router.extend({
 
   initialize: function (options) {
     this.collection = new Large.Collections.Publications();
-    this.collection.fetch();
     this.$rootEl = options.content
   },
 

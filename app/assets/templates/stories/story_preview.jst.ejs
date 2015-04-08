@@ -1,5 +1,5 @@
 <% if (pub !== undefined) { %>
-  <a href="#/users/<%= pub.id %>"><strong><%= pub.escape('title') %></strong></a><br>
+  <a href="#/publications/<%= pub.id %>"><strong><%= pub.escape('title') %></strong></a><br>
   <a href="#/users/<%= author.id %>"><%= author.escape('email') %></a> -
   <a href="#/stories/<%= story.id %>">
     <abbr class="timeago" title="<%= story.get('created_at') %>"><%= story.get('created_at') %></abbr>

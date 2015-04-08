@@ -12,7 +12,7 @@ module Api
 
     def show
       @pub = Publication.includes(:stories).find(params[:id])
-      render :show
+      render :show, include: :toggle_follow
     end
 
     def index
@@ -37,6 +37,21 @@ module Api
         render json: @pub
       else
         render json: @pub.errors.full_messages, status: :unprocessable_entity
+      end
+    end
+
+    def toggle_follow
+      @pub = Publication.find(params[:id])
+      @pub = Follow.find_by(
+        followable_id: @pub.id, followable_type: "Publication", follower_id: current_user.id
+      )
+
+      if !!@follow
+        @follow.destroy
+      else
+        @follow = Follow.create!(
+          followable_id: @pub.id, followable_type: "Publication", follower_id: current_user.id
+        )
       end
     end
 

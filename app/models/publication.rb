@@ -11,6 +11,8 @@
 #
 
 class Publication < ActiveRecord::Base
+  include Followable
+  
   validates :owner_id, :title, presence: true
 
   has_many(
