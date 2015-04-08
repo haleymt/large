@@ -1,5 +1,5 @@
 Large.Collections.Users = Backbone.Collection.extend({
-  url: '/users',
+  url: 'api/users',
   model: Large.Models.User,
 
   getOrFetch: function (id) {

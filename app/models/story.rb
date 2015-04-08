@@ -4,7 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  author_id  :integer          not null
-#  pub_id     :integer          not null
+#  pub_id     :string
 #  title      :string           not null
 #  subtitle   :string
 #  body       :text

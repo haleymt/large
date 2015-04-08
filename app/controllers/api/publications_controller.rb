@@ -11,8 +11,8 @@ module Api
     end
 
     def show
-      @pub = Publication.find(params[:id])
-      render json: @pub
+      @pub = Publication.includes(:stories).find(params[:id])
+      render :show
     end
 
     def index
