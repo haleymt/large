@@ -2,15 +2,16 @@
 #
 # Table name: stories
 #
-#  id         :integer          not null, primary key
-#  author_id  :integer          not null
-#  pub_id     :string
-#  title      :string           not null
-#  subtitle   :string
-#  body       :text
-#  story_id   :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id           :integer          not null, primary key
+#  author_id    :integer          not null
+#  pub_id       :string
+#  title        :string           not null
+#  subtitle     :string
+#  body         :text
+#  story_id     :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  header_image :text
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

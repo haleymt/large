@@ -2,6 +2,7 @@ Large.Views.NewStory = Backbone.View.extend({
   template: JST['stories/new_story'],
 
   events: {
+    "click #header-image": "addImage",
     "click #submit-confirm": "submitForm",
     "click #confirm": "autoSave"
   },
@@ -19,10 +20,26 @@ Large.Views.NewStory = Backbone.View.extend({
     return this;
   },
 
+  addImage: function () {
+    filepicker.setKey("AFA8IlPkxSNC1BPrgoHtsz");
+
+    filepicker.pick(
+      {
+        mimetypes:'image/*',
+        services:'COMPUTER'
+      },
+      function (Blob) {
+        var image = Blob.url;
+        console.log(image);
+        this.model.set("header_image", image);
+      }.bind(this)
+    )
+  },
+
   autoSave: function (event) {
     event.preventDefault();
     var formData = this.$('.story-form').serializeJSON();
-    this.model.save(formData, {
+    this.model.save(formData.story, {
       success: function () {
         this.collection.add(this.model, { merge: true });
         this.$('#modal-title').val(this.$('#title').val());
@@ -35,7 +52,7 @@ Large.Views.NewStory = Backbone.View.extend({
   submitForm: function (event) {
     event.preventDefault();
     var formData = this.$('.confirm-form').serializeJSON();
-    this.model.save(formData, {
+    this.model.save(formData.story, {
       success: function () {
         Backbone.history.navigate("stories/" + this.model.id, { trigger: true })
       }.bind(this)

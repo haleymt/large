@@ -38,7 +38,7 @@ module Api
 
     private
       def story_params
-        params.require(:story).permit(:title, :author_id, :pub_id, :story_id, :subtitle, :body)
+        params.require(:story).permit(:title, :author_id, :pub_id, :story_id, :subtitle, :body, :header_image)
       end
   end
 end
