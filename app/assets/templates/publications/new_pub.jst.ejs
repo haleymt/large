@@ -1,5 +1,14 @@
 <form class="new-pub">
-  <input type="text" name="publication[title]" placeholder="Optional heading"><br>
-  <input type="text" name="publication[description]" placeholder="Optional description"><br>
-  <input type="submit" value="Create">
+
+  <div class="pub-header-setter">
+    <button id="align-left"><i class="fa fa-align-left"></i></button>
+    <button id="align-right"><i class="fa fa-align-center"></i></button>
+    <button id="pub-header-image"><i class="fa fa-image"></i></button>
+  </div>
+  <br>
+  <button id="pub-icon"><i class="fa fa-camera fa-2x"></i></button>
+  <h1><input type="text" name="publication[title]" placeholder="Optional heading"></h1>
+  <h3><input type="text" name="publication[description]" placeholder="Optional description"></h3>
+  <button type="submit" class="btn btn-primary">Create</button>
+
 </form>
