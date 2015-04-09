@@ -1,13 +1,13 @@
-<form class="story-form">
+<form class="story-form" id="form">
   <select name="story[pub_id]">
      <option value="">Submit to a Publication</option>
      <% publications.forEach( function(pub) { %>
      <option value="<%= pub.id %>"><%= pub.escape('title') %></option>
      <% }) %>
    </select><br>
-  <input id="title" type="text" name="story[title]" placeholder="Title"><br>
-  <input id="subtitle" type="text" name="story[subtitle]" placeholder="Tell your story..."><br>
-  <input type="textarea" name="story[body]"><br>
+  <h1><input id="title" type="text" name="story[title]" placeholder="Title"></h1>
+  <h3><input id="subtitle" type="text" name="story[subtitle]" placeholder="Tell your story..."></h3>
+  <textarea name="story[body]" rows="4" cols="50" form="form"></textarea><br>
   <button id="confirm" type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmPublish">Publish</button>
 </form>
 

@@ -26,10 +26,19 @@
 .story-form input {
   border: none;
   margin-top: 5px;
+  width: 400px;
+}
+
+.story-form textarea {
+  border: none;
 }
 
 ul {
   list-style-type: none;
+}
+
+*:focus {
+  outline: none;
 }
 
 .preview {
