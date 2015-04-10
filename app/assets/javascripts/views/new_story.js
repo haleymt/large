@@ -15,9 +15,11 @@ Large.Views.NewStory = Backbone.View.extend({
   },
 
   render: function () {
-    // var elements = document.querySelectorAll('.editable');
-    // var editor = new MediumEditor(elements);
     this.$el.html(this.template({ story: this.model, publications: this.publications }));
+    var editor = new MediumEditor('.editable', {
+      buttons: ['bold', 'italic', 'header1', 'header2', 'header3', 'justifyCenter', 'quote', 'anchor'],
+      placeholder: "Title",
+    });
     return this;
   },
 

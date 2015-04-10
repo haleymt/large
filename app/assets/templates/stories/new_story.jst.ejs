@@ -4,21 +4,16 @@
 </div>
 
 <div class="new-story">
+  <div class="editable">
+    <h1><p class="title">Title</p></h1>
+    <h3><p class="subtitle">Tell your story...</p></h3>
+    <div class="body">
+      <p><br></p>
+    <div>
+  </div>
 
-<form class="story-form" id="form" enctype="multipart/form-data">
-  <select name="story[pub_id]">
-     <option value="">Submit to a Publication</option>
-     <% publications.forEach( function(pub) { %>
-     <option value="<%= pub.id %>"><%= pub.escape('title') %></option>
-     <% }) %>
-   </select><br>
-  <h1><input id="title" class="editable" type="text" name="story[title]" placeholder="Title"></h1>
-  <h3><input id="subtitle" type="text" name="story[subtitle]" placeholder="Tell your story..."></h3>
-  <textarea id="body" name="story[body]" rows="10" cols="70" form="form">
-  </textarea><br>
-  <button id="image" class="btn btn-primary">Add Image</button>
-  <button id="confirm" type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmPublish">Publish</button>
-</form>
+<button id="confirm" type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmPublish">Publish</button>
+
 
 <div class="modal fade" id="confirmPublish" tabindex="-1" role="dialog" aria-labelledby="confirmPublishLabel" aria-hidden="true">
   <div class="modal-dialog">
