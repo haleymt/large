@@ -17,8 +17,7 @@ Large.Views.NewStory = Backbone.View.extend({
   render: function () {
     this.$el.html(this.template({ story: this.model, publications: this.publications }));
     var editor = new MediumEditor('.editable', {
-      buttons: ['bold', 'italic', 'header1', 'header2', 'header3', 'justifyCenter', 'quote', 'anchor'],
-      placeholder: "Title",
+      buttons: ['bold', 'italic', 'header1', 'header2', 'header3', 'justifyCenter', 'quote', 'anchor']
     });
     return this;
   },
@@ -41,12 +40,16 @@ Large.Views.NewStory = Backbone.View.extend({
 
   autoSave: function (event) {
     event.preventDefault();
-    var formData = this.$('.story-form').serializeJSON();
-    this.model.save(formData.story, {
+    // var formData = this.$('.story-form').serializeJSON();
+    this.model.set("title", this.$('#title').text());
+    this.model.set("subtitle", this.$('#subtitle').text());
+    this.model.set("body", this.$('#story-body').text());
+
+    this.model.save(this.model.attributes, {
       success: function () {
         this.collection.add(this.model, { merge: true });
-        this.$('#modal-title').val(this.$('#title').val());
-        this.$('#modal-subtitle').val(this.$('#subtitle').val());
+        this.$('#modal-title').val(this.$('#title').text());
+        this.$('#modal-subtitle').val(this.$('#subtitle').text());
       }.bind(this)
     });
 
