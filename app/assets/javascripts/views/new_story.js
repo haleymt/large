@@ -40,7 +40,7 @@ Large.Views.NewStory = Backbone.View.extend({
 
   autoSave: function (event) {
     event.preventDefault();
-    // var formData = this.$('.story-form').serializeJSON();
+
     this.model.set("title", this.$('#title').text());
     this.model.set("subtitle", this.$('#subtitle').text());
     this.model.set("body", this.$('#story-body').text());

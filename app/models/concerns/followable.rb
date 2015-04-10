@@ -7,8 +7,8 @@ module Followable
       dependent: :destroy
   end
 
-  def followers
-    self.follows.sum(:value)
+  def num_followers
+    self.follows.length
   end
 
 end

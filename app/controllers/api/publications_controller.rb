@@ -42,7 +42,7 @@ module Api
 
     def toggle_follow
       @pub = Publication.find(params[:id])
-      @pub = Follow.find_by(
+      @follow = Follow.find_by(
         followable_id: @pub.id, followable_type: "Publication", follower_id: current_user.id
       )
 

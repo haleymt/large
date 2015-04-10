@@ -9,7 +9,7 @@ Large.Collections.Stories = Backbone.Collection.extend({
   getOrFetch: function (id) {
     var model = this.get(id);
     if (model === undefined) {
-      model = new Large.Models.Story({id: id});
+      model = new Large.Models.Story({ id: id });
       model.fetch({
         success: function () {
           this.add(model);

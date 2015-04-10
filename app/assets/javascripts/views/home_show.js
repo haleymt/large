@@ -8,7 +8,7 @@ Large.Views.HomeShow = Backbone.View.extend({
   },
 
   render: function () {
-    // debugger
+
     this.$el.html(this.template());
 
     this.stories.models.forEach( function(story) {

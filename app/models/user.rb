@@ -32,7 +32,12 @@ class User < ActiveRecord::Base
     primary_key: :id
   )
 
-  has_many :follows, inverse_of: :user
+  has_many(
+    :followings,
+    class_name: :Follow,
+    foreign_key: :follower_id
+  )
+  
 
   attr_reader :password
   after_initialize :ensure_session_token

@@ -7,7 +7,7 @@ Large.Routers.PubsRouter = Backbone.Router.extend({
 
   initialize: function (options) {
     this.collection = new Large.Collections.Publications();
-    this.$rootEl = options.content
+    this.$rootEl = options.content;
   },
 
   newPub: function () {
@@ -25,7 +25,7 @@ Large.Routers.PubsRouter = Backbone.Router.extend({
   editPub: function (id) {
     var pub = this.collection.getOrFetch(id);
     var editPub = new Large.Views.PubEdit({ pub: pub });
-    this._swapView(editStory)
+    this._swapView(editStory);
   },
 
   _swapView: function (view) {
