@@ -12,6 +12,8 @@
  *
  *= require_self
  *= require jquery.ui.all
+ *= require medium-editor
+ *= require themes/default
  *= require_tree .
  */
 
@@ -31,6 +33,7 @@
 }
 
 .new-pub {
+  text-align: center;
   margin-left: auto;
   margin-right: auto;
   width: 70%;
@@ -40,6 +43,7 @@
   border: none;
   margin-top: 5px;
   width: 400px;
+  text-align: center;
 }
 
 .header-setter {
@@ -82,4 +86,15 @@ ul {
   border-top: 2px solid gray;
   padding-top: 20px;
   padding-bottom: 20px;
+}
+
+.pub-sections {
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  text-align: center;
+}
+
+#add-section:hover:after {
+  content: " Add Section";
 }

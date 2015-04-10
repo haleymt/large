@@ -9,13 +9,14 @@ Large.Views.NewStory = Backbone.View.extend({
 
   initialize: function (options) {
     this.collection = options.collection;
-
     this.publications = options.publications;
     this.listenTo(this.publications, 'sync', this.render);
     // this.listenTo(this.model, 'change', this.autoSave)
   },
 
   render: function () {
+    // var elements = document.querySelectorAll('.editable');
+    // var editor = new MediumEditor(elements);
     this.$el.html(this.template({ story: this.model, publications: this.publications }));
     return this;
   },

@@ -16,6 +16,7 @@
 //= require backbone
 //= require serializeJSON
 //= require jquery.timeago
+//= require medium-editor
 //= require bootstrap
 //= require large
 //= require_tree ../templates
