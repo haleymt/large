@@ -5,13 +5,13 @@ Large.Views.StoryPreview = Backbone.View.extend({
   initialize: function (options) {
     this.listenTo(this.model, 'sync add', this.render);
     this.publications = options.publications;
-
-    this.listenTo(Large.Collections.users, 'sync', this.render);
+    this.listenTo(Large.Collections.users, 'sync', this.render)
     this.listenTo(this.publications, 'sync', this.render);
   },
 
   render: function () {
     var authorId = this.model.get('author_id');
+
     var author = Large.Collections.users.get(authorId);
     if (!author) {
       return this;

@@ -53,24 +53,10 @@ Large.Models.User = Backbone.Model.extend({
     }
 
     if (payload.followings) {
-      this.followings().set(payload.follows, { parse: true });
+      this.followings().set(payload.followings, { parse: true });
       delete payload.followings;
     }
     return payload;
   }
-
-  // if (payload.followers) {
-  //   this.followers().set(payload.followers, { parse: true });
-  //   delete payload.followers
-  // }
-  //
-  // if (payload.follow) {
-  //   if (payload.follow.isNew()) {
-  //     var follow = new Backbone.Model.Follow( { followable_id: this.id, followable_type: "User" });
-  //     pub.follows.add(follow)
-  //   } else {
-  //     payload.follow.destroy!
-  //   }
-  // }
 
 });

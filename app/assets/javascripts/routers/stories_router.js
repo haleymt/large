@@ -3,7 +3,6 @@ Large.Routers.StoriesRouter = Backbone.Router.extend({
     "": "homeShow",
     "stories/new": "newStory",
     "stories/:id": "storyShow",
-    "users/:id": "userShow",
     "stories/:id/edit": "storyEdit"
   },
 
@@ -17,7 +16,8 @@ Large.Routers.StoriesRouter = Backbone.Router.extend({
     Large.Collections.publications.fetch({
       data: { current_user: false }
     });
-    var home = new Large.Views.HomeShow({stories: this.collection, publications: Large.Collections.publications })
+    var home = new Large.Views.HomeShow({stories: this.collection,
+      publications: Large.Collections.publications })
     this._swapView(home);
   },
 
@@ -34,17 +34,6 @@ Large.Routers.StoriesRouter = Backbone.Router.extend({
     var story = this.collection.getOrFetch(id);
     var showStory = new Large.Views.StoryShow({ story: story });
     this._swapView(showStory);
-  },
-
-  userShow: function (id) {
-    Large.Collections.publications.fetch({
-      data: { current_user: false }
-    });
-    var user = Large.Collections.users.getOrFetch(id);
-    var showUser = new Large.Views.UserShow({ user: user, publications: Large.Collections.publications });
-    this._swapView(showUser);
-
-    //move to a user's router??
   },
 
   storyEdit: function(id) {

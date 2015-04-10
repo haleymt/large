@@ -10,6 +10,15 @@ module Api
       end
     end
 
+    def index
+      if params[:current_user]
+        @follows = current_user.followings
+      else
+        @follows = Follow.all
+      end
+      render json: @follows
+    end
+
     def destroy
       @follow = Follow.find(params[:id])
       @follow.destroy

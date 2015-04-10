@@ -9,13 +9,14 @@ Large.Views.PubShow = Backbone.View.extend({
     this.pub = options.pub;
     this.stories = this.pub.stories();
     this.publications = options.publications
+    this.numFollows = this.pub.follows().length;
     this.listenTo(this.pub, 'sync', this.render);
     this.listenTo(this.stories, 'add', this.render);
     this.listenTo(this.publications, 'sync', this.render);
   },
 
   render: function () {
-    var content = this.template({ pub: this.pub });
+    var content = this.template({ pub: this.pub, followers: this.numFollows });
     this.$el.html(content);
 
     this.stories.models.forEach( function(story) {

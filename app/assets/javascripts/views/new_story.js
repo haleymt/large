@@ -11,7 +11,6 @@ Large.Views.NewStory = Backbone.View.extend({
     this.collection = options.collection;
     this.publications = options.publications;
     this.listenTo(this.publications, 'sync', this.render);
-    // this.listenTo(this.model, 'change', this.autoSave)
   },
 
   render: function () {

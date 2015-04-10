@@ -8,6 +8,6 @@ Rails.application.routes.draw do
     resources :publications
     resources :stories
     resources :users, only: [:show, :index]
-    resources :follows, only: [:create, :destroy]
+    resources :follows, only: [:create, :destroy, :index]
   end
 end
