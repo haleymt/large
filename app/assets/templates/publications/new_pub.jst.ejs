@@ -9,8 +9,22 @@
   <button id="pub-icon"><i class="fa fa-camera fa-2x"></i></button>
   <h1><input type="text" name="publication[title]" placeholder="Optional heading"></h1>
   <h3><input type="text" name="publication[description]" placeholder="Optional description"></h3>
-  <button type="submit" class="btn btn-primary">Create</button>
 
+  <select id="editors">
+      <option value="">Add an Editor</option>
+      <% users.forEach( function(user) { %>
+      <option value="<%= user.id %>"><%= user.escape('email') %></option>
+      <% }) %>
+  </select>
+  <select id="writers">
+      <option value="">Add a Writer</option>
+      <% users.forEach( function(user) { %>
+      <option value="<%= user.id %>"><%= user.escape('email') %></option>
+      <% }) %>
+  </select>
+
+  <br>
+  <button type="submit" class="btn btn-primary">Create</button>
 </form>
 <br>
 

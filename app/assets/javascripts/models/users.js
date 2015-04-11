@@ -50,7 +50,6 @@ Large.Models.User = Backbone.Model.extend({
   },
 
   parse: function (payload) {
-
     if (payload.stories) {
       this.stories().set(payload.stories, { parse: true });
       delete payload.stories;

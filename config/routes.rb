@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   resource :session
 
   namespace :api, defaults: { format: :json } do
-    resources :publications
+    resources :publications do
+      member do
+        get :about
+      end
+    end
     resources :stories
     resources :users, only: [:show, :index]
     resources :follows, only: [:create, :destroy, :index]

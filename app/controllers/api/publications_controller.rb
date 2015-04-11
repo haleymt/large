@@ -15,6 +15,11 @@ module Api
       render :show, include: :toggle_follow
     end
 
+    def about
+      @pub = Publication.includes(:writers, :editors).find(params[:id])
+      render :about
+    end
+
     def index
       if params[:current_user]
         @pubs = current_user.publications

@@ -11,10 +11,12 @@ Large.Views.NewPub = Backbone.View.extend({
 
   initialize: function (options) {
     this.collection = options.collection;
+    this.users = options.users;
   },
 
   render: function () {
-    this.$el.html(this.template({ publication: this.model }));
+    // debugger
+    this.$el.html(this.template({ publication: this.model, users: this.users }));
     return this;
   },
 
@@ -52,6 +54,16 @@ Large.Views.NewPub = Backbone.View.extend({
     this.model.save(formData.publication, {
       success: function () {
         this.collection.add(this.model, { merge: true });
+        if ( $('#writers').val() > 0 ) {
+          var writerId = $('#writers').val();
+          var writer = this.users.get(writerId);
+          this.model.writers().add(writer, { merge: true });
+        }
+        if ( $('#editors').val > 0 ) {
+          var editorId = $('#editors').val();
+          var editor = this.users.get(editorId);
+          this.model.editors().add(editor, { merge: true });
+        }
         Backbone.history.navigate("publications/" + this.model.id, { trigger: true })
       }.bind(this)
     })
