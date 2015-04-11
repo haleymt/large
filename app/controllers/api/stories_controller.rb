@@ -16,7 +16,26 @@ module Api
     end
 
     def index
-      @stories = Story.all
+      #refactor this into the user model
+      if params[:current_user]
+        objects = []
+        current_user.followings.each do |following|
+          if following.followable_type == "User"
+            objects << User.find(following.followable_id)
+          else
+            objects << Publication.find(following.followable_id)
+          end
+        end
+        @stories = []
+        objects.each do |object|
+          object.stories.each do |story|
+            @stories << story unless @stories.include?(story)
+          end
+        end
+      else
+        @stories = Story.all
+      end
+
       render json: @stories
     end
 

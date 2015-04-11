@@ -8,7 +8,6 @@ Large.Routers.StoriesRouter = Backbone.Router.extend({
 
   initialize: function (options) {
     this.collection = new Large.Collections.Stories();
-    this.collection.fetch();
     this.$rootEl = options.content;
   },
 
@@ -16,6 +15,9 @@ Large.Routers.StoriesRouter = Backbone.Router.extend({
     Large.Collections.publications.fetch({
       data: { current_user: false }
     });
+    this.collection.fetch({
+      data: { current_user: true }
+    })
     var home = new Large.Views.HomeShow({stories: this.collection,
       publications: Large.Collections.publications })
     this._swapView(home);
@@ -26,6 +28,10 @@ Large.Routers.StoriesRouter = Backbone.Router.extend({
     Large.Collections.publications.fetch({
       data: { current_user: true }
     });
+    this.collection.fetch({
+      data: { current_user: false}
+    });
+
     var storyNew = new Large.Views.NewStory({ collection: this.collection, model: story, publications: Large.Collections.publications });
     this._swapView(storyNew);
   },
