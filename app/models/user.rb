@@ -37,7 +37,23 @@ class User < ActiveRecord::Base
     class_name: :Follow,
     foreign_key: :follower_id
   )
-  
+
+  has_many(
+    :pub_edits,
+    class_name: :PublicationEdit,
+    foreign_key: :editor_id,
+    primary_key: :id
+  )
+
+  has_many(
+    :pub_writes,
+    class_name: :PublicationWrite,
+    foreign_key: :writer_id,
+    primary_key: :id
+  )
+
+  has_many :contributed_pubs, through: :pub_writes, source: :publication
+  has_many :edited_pubs, through: :pub_edits, source: :publication
 
   attr_reader :password
   after_initialize :ensure_session_token

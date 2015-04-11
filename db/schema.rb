@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150409224359) do
+ActiveRecord::Schema.define(version: 20150411075008) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,26 @@ ActiveRecord::Schema.define(version: 20150409224359) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
+
+  create_table "publication_edits", force: :cascade do |t|
+    t.integer  "editor_id",  null: false
+    t.integer  "pub_id",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "publication_edits", ["editor_id"], name: "index_publication_edits_on_editor_id", using: :btree
+  add_index "publication_edits", ["pub_id"], name: "index_publication_edits_on_pub_id", using: :btree
+
+  create_table "publication_writes", force: :cascade do |t|
+    t.integer  "writer_id",  null: false
+    t.integer  "pub_id",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "publication_writes", ["pub_id"], name: "index_publication_writes_on_pub_id", using: :btree
+  add_index "publication_writes", ["writer_id"], name: "index_publication_writes_on_writer_id", using: :btree
 
   create_table "publications", force: :cascade do |t|
     t.integer  "owner_id",     null: false

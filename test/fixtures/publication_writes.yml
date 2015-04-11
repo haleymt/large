@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: publication_writes
+#
+#  id         :integer          not null, primary key
+#  writer_id  :integer          not null
+#  pub_id     :integer          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  writer_id: 1
+  pub_id: 1
+
+two:
+  writer_id: 1
+  pub_id: 1

@@ -29,3 +29,15 @@ json.followings do
     json.partial! 'api/follows/follow', follow: following
   end
 end
+
+json.edited_pubs do
+  json.array!(@user.edited_pubs) do |pub|
+    json.partial! 'api/publications/pub', pub: pub
+  end
+end
+
+json.contributed_pubs do
+  json.array!(@user.contributed_pubs) do |pub|
+    json.partial! 'api/publications/pub', pub: pub
+  end
+end

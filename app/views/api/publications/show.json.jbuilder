@@ -12,14 +12,14 @@ json.follows do
   end
 end
 
-# json.editors do
-#   json.array!(@pub.editors) do |editor|
-#     json.partial! 'api/users/user', user: user
-#   end
-# end
-#
-# json.writers do
-#   json.array!(@pub.writers) do |writer|
-#     json.partial! 'api/users/user', user: user
-#   end
-# end
+json.editors do
+  json.array!(@pub.editors) do |editor|
+    json.partial! 'api/users/user', user: editor
+  end
+end
+
+json.writers do
+  json.array!(@pub.writers) do |writer|
+    json.partial! 'api/users/user', user: writer
+  end
+end
