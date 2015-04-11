@@ -35,6 +35,20 @@ Large.Models.User = Backbone.Model.extend({
     return this._pubs;
   },
 
+  contributedPubs: function () {
+    if (this._contributedPubs === undefined) {
+      this._contributedPubs = new Large.Collections.Publications([]);
+    }
+    return this._contributedPubs;
+  },
+
+  editedPubs: function () {
+    if (this._editedPubs === undefined) {
+      this._editedPubs = new Large.Collections.Publications([]);
+    }
+    return this._editedPubs;
+  },
+
   parse: function (payload) {
 
     if (payload.stories) {
@@ -56,6 +70,17 @@ Large.Models.User = Backbone.Model.extend({
       this.followings().set(payload.followings, { parse: true });
       delete payload.followings;
     }
+
+    if (payload.contributed_pubs) {
+      this.contributedPubs().set(payload.contributed_pubs, { parse: true });
+      delete payload.contributed_pubs;
+    }
+
+    if (payload.edited_pubs) {
+      this.editedPubs().set(payload.edited_pubs, { parse: true });
+      delete payload.edited_pubs;
+    }
+
     return payload;
   }
 

@@ -18,8 +18,22 @@ Large.Models.Publication = Backbone.Model.extend({
     return this._stories;
   },
 
+  writers: function () {
+    if (this._writers === undefined) {
+      this._writers = new Large.Collections.Users([])
+    }
+    return this._writers
+  },
+
+  editors: function () {
+    if (this._editors === undefined) {
+      this._editors = new Large.Collections.Users([])
+    }
+    return this._editors
+  },
+
   parse: function (payload) {
-    
+
     if (payload.stories) {
       this.stories().set(payload.stories, { parse: true });
       delete payload.stories
@@ -30,21 +44,17 @@ Large.Models.Publication = Backbone.Model.extend({
       delete payload.follows
     }
 
+    if (payload.editors) {
+      this.editors().set(payload.editors, { parse: true });
+      delete payload.editors
+    }
+
+    if (payload.writers) {
+      this.writers().set(payload.writers, { parse: true });
+      delete payload.writers
+    }
+
     return payload;
   }
-
-  // if (payload.followers) {
-  //   this.followers().set(payload.followers, { parse: true });
-  //   delete payload.followers
-  // }
-  //
-  // if (payload.follow) {
-  //   if (payload.follow.isNew()) {
-  //     var follow = new Backbone.Model.Follow( { followable_id: this.id, followable_type: "Publication" });
-  //     pub.follows.add(follow)
-  //   } else {
-  //     payload.follow.destroy!
-  //   }
-  // }
 
 });
