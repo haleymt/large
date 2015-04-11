@@ -10,6 +10,7 @@ Large.Views.UserShow = Backbone.View.extend({
     this.stories = this.user.stories();
     this.publications = options.publications;
     this.currentUserFollows = options.follows;
+
     this.follows = this.user.follows();
     this.followings = this.user.followings();
 
@@ -32,9 +33,8 @@ Large.Views.UserShow = Backbone.View.extend({
 
   toggleFollow: function () {
     var follow = this.currentUserFollows.findWhere({
-      followable_id: this.user.id,
-      followable_type: "User",
-    });
+                      followable_id: this.user.id,
+                      followable_type: "User" });
 
     if (follow === undefined) {
       follow = new Large.Models.Follow( { followable_id: this.user.id, followable_type: "User" });
