@@ -2,7 +2,7 @@ module Api
 
   class FollowsController < ApplicationController
     def create
-      @follow = current_user.follows.new(follow_params)
+      @follow = current_user.followings.new(follow_params)
       if @follow.save
         render json: @follow
       else

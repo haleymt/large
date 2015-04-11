@@ -13,10 +13,15 @@ Large.Routers.UsersRouter = Backbone.Router.extend({
     Large.Collections.publications.fetch({
       data: { current_user: false }
     });
+    Large.Collections.follows.fetch({
+      data: { current_user: true }
+    });
+
     var user = Large.Collections.users.getOrFetch(id);
     var showUser = new Large.Views.UserShow({
       user: user,
-      publications: Large.Collections.publications
+      publications: Large.Collections.publications,
+      follows: Large.Collections.follows
     });
     this._swapView(showUser);
   },
