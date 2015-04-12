@@ -15,6 +15,7 @@
 #
 
 class Story < ActiveRecord::Base
+  include Taggable
   validates :author_id, :title, presence: true
 
   belongs_to(
