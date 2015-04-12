@@ -33,7 +33,7 @@ Large.Models.Publication = Backbone.Model.extend({
   },
 
   parse: function (payload) {
-
+    // debugger
     if (payload.stories) {
       this.stories().set(payload.stories, { parse: true });
       delete payload.stories
