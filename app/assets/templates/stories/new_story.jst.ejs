@@ -3,14 +3,13 @@
   <button id="header-image"><i class="fa fa-image"></i></button>
 </div>
 
-<!-- <select name="story[pub_id]">
-    <option value="">Submit to a Publication</option>
-    <% publications.forEach( function(pub) { %>
-    <option value="<%= pub.id %>"><%= pub.escape('title') %></option>
-    <% }) %>
-</select><br> -->
-
 <div class="new-story">
+  <select name="story[pub_id]" form="confirm-form">
+      <option value="">Submit to a Publication</option>
+      <% publications.forEach( function(pub) { %>
+      <option value="<%= pub.id %>"><%= pub.escape('title') %></option>
+      <% }) %>
+  </select><br>
   <div class="editable">
     <h1><p id="title">Title</p></h1>
     <h3><p id="subtitle">Tell your story...</p></h3>
@@ -30,7 +29,7 @@
         <p>Change your story's title and subtitle as needed</p>
       </div>
       <div class="modal-body">
-        <form class="confirm-form">
+        <form id="confirm-form" class="confirm-form">
           <div class="form-group">
             <input id="modal-title" type="text" name="story[title]"><br>
           </div>
@@ -41,7 +40,6 @@
       </div>
       <div class="modal-footer">
         <button id="submit-confirm" type="submit" class="btn btn-primary">Publish</button>
-        <!-- <input type="submit" class="btn btn-primary" value="Publish"> -->
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
