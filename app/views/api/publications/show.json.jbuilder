@@ -23,3 +23,15 @@ json.writers do
     json.partial! 'api/users/user', user: writer
   end
 end
+
+json.pub_edits do
+  json.array!(@pub.pub_edits) do |pub_edit|
+    json.partial! 'api/pub_edits/pubedit', pubedit: pub_edit
+  end
+end
+
+json.pub_writes do
+  json.array!(@pub.pub_writes) do |pub_write|
+    json.partial! 'api/pub_writes/pubwrite', pubwrite: pub_write
+  end
+end

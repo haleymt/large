@@ -14,7 +14,7 @@ Large.Views.PubAbout = Backbone.View.extend({
       writers: this.writers,
       editors: this.editors
     });
-    
+
     this.$el.html(content);
     return this;
   }

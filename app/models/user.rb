@@ -52,6 +52,9 @@ class User < ActiveRecord::Base
     primary_key: :id
   )
 
+  # has_and_belongs_to_many :edited_pubs, join_table: :publication_edits
+  # has_and_belongs_to_many :contributed_pubs, join_table: :publication_writes
+
   has_many :contributed_pubs, through: :pub_writes, source: :publication
   has_many :edited_pubs, through: :pub_edits, source: :publication
 

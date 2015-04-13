@@ -16,7 +16,7 @@ module Api
     end
 
     def about
-      @pub = Publication.includes(:writers, :editors).find(params[:id])
+      @pub = Publication.includes(:pub_writes, :pub_edits, :editors, :writers).find(params[:id])
       render :about
     end
 

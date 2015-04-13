@@ -15,7 +15,6 @@ Large.Views.NewPub = Backbone.View.extend({
   },
 
   render: function () {
-    // debugger
     this.$el.html(this.template({ publication: this.model, users: this.users }));
     return this;
   },
@@ -54,15 +53,15 @@ Large.Views.NewPub = Backbone.View.extend({
     this.model.save(formData.publication, {
       success: function () {
         this.collection.add(this.model, { merge: true });
+        if ( $('#editors').val() > 0 ) {
+          var editorId = $('#editors').val();
+          var pubEdit = new Large.Models.PubEdit({ pub_id: this.model.id, editor_id: editorId });
+          pubEdit.save(pubEdit.attributes);
+        }
         if ( $('#writers').val() > 0 ) {
           var writerId = $('#writers').val();
-          var writer = this.users.get(writerId);
-          this.model.writers().add(writer, { merge: true });
-        }
-        if ( $('#editors').val > 0 ) {
-          var editorId = $('#editors').val();
-          var editor = this.users.get(editorId);
-          this.model.editors().add(editor, { merge: true });
+          var pubWrite = new Large.Models.PubWrite({ pub_id: this.model.id, writer_id: writerId });
+          pubWrite.save(pubWrite.attributes);
         }
         Backbone.history.navigate("publications/" + this.model.id, { trigger: true })
       }.bind(this)

@@ -18,6 +18,24 @@ Large.Models.Publication = Backbone.Model.extend({
     return this._stories;
   },
 
+  pubWrites: function () {
+    if (this._pubWrites === undefined) {
+      this._pubWrites = new Large.Collections.PubWrites([], {
+        pub_id: this.id
+      })
+    }
+    return this._pubWrites
+  },
+
+  pubEdits: function () {
+    if (this._pubEdits === undefined) {
+      this._pubEdits = new Large.Collections.PubEdits([], {
+        pub_id: this.id
+      })
+    }
+    return this._pubEdits
+  },
+
   writers: function () {
     if (this._writers === undefined) {
       this._writers = new Large.Collections.Users([])
@@ -44,14 +62,24 @@ Large.Models.Publication = Backbone.Model.extend({
       delete payload.follows
     }
 
-    if (payload.editors) {
-      this.editors().set(payload.editors, { parse: true });
-      delete payload.editors
+    if (payload.pub_edits) {
+      this.pubEdits().set(payload.pub_edits, { parse: true });
+      delete payload.pub_edits
+    }
+
+    if (payload.pub_writes) {
+      this.pubWrites().set(payload.pub_writes, { parse: true });
+      delete payload.pub_writes
     }
 
     if (payload.writers) {
       this.writers().set(payload.writers, { parse: true });
       delete payload.writers
+    }
+
+    if (payload.editors) {
+      this.editors().set(payload.editors, { parse: true });
+      delete payload.editors
     }
 
     return payload;

@@ -18,6 +18,7 @@ Large.Views.PubShow = Backbone.View.extend({
   },
 
   render: function () {
+    
     var content = this.template({ pub: this.pub, followers: this.numFollows.length });
     this.$el.html(content);
 

@@ -1,0 +1,2 @@
+module PublicationEditsHelper
+end
