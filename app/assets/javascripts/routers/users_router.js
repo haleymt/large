@@ -1,7 +1,8 @@
 Large.Routers.UsersRouter = Backbone.Router.extend({
   routes: {
     "users/:id": "userShow",
-    "users/:id/edit": "userEdit"
+    "users/:id/edit": "userEdit",
+    "search": "searchShow"
   },
 
   initialize: function (options) {
@@ -24,6 +25,11 @@ Large.Routers.UsersRouter = Backbone.Router.extend({
       follows: Large.Collections.follows
     });
     this._swapView(showUser);
+  },
+
+  searchShow: function () {
+    var search = new Large.Views.SearchShow();
+    this._swapView(search);
   },
 
   _swapView: function (view) {

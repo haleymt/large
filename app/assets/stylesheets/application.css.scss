@@ -21,6 +21,15 @@
  @import "font-awesome-sprockets";
  @import "font-awesome";
 
+#search input {
+  font-size: 50px;
+  border: none;
+}
+
+#search {
+  padding: 20px;
+}
+
 .new {
   padding: 30px;
   margin-left: 10px;

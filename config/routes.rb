@@ -10,6 +10,7 @@ Rails.application.routes.draw do
         get :about
       end
     end
+    resource :search, only: [:show]
     resources :stories
     resources :users, only: [:show, :index]
     resources :follows, only: [:create, :destroy, :index]
