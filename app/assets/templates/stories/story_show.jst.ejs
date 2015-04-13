@@ -1,13 +1,16 @@
 <% if (response !== undefined) { %>
-<p>Written in reponse to:</p>
-<h4><%= response.escape('title') %></h4>
+  <div class="response-header">
+    <p>Written in reponse to:</p>
+    <h4><%= response.escape('title') %></h4>
+  </div>
 <% } %>
 <div class="story-show-header">
+  <% if (story.get('header_image') !== null) { %>
   <img src="<%= story.escape('header_image') %>">
+  <% } %>
+  <h1><%= story.escape('title') %></h1>
+  <h2><%= story.escape('subtitle') %></h2>
 </div>
-
-<h1><%= story.escape('title') %></h1>
-<h2><%= story.escape('subtitle') %></h2>
 
 <div class="story-body"><%= story.escape('body') %></div>
 <br>

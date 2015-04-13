@@ -1269,7 +1269,7 @@ var DefaultButton,
                 value: 'center'
             },
             useQueryState: true,
-            contentDefault: '<b>C</b>',
+            contentDefault: '<b><i class="fa fa-align-center"></i></b>',
             contentFA: '<i class="fa fa-align-center"></i>'
         },
         'justifyFull': {
@@ -1737,7 +1737,7 @@ var AnchorExtension;
             action: 'createLink',
             aria: 'link',
             tagNames: ['a'],
-            contentDefault: '<b>#</b>',
+            contentDefault: '<b><i class="fa fa-link"></i></b>',
             contentFA: '<i class="fa fa-link"></i>'
         };
         this.name = 'anchor';
