@@ -35,6 +35,19 @@
   margin-left: 10px;
 }
 
+.new .pre-click {
+  font-size: 20px;
+  display: block;
+}
+
+.pre-click:hover {
+  cursor: text;
+}
+
+.new .post-click {
+  display: none;
+}
+
 .new-story {
   margin-left: auto;
   margin-right: auto;

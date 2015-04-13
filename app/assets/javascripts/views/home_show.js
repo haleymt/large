@@ -1,6 +1,11 @@
 Large.Views.HomeShow = Backbone.View.extend({
   template: JST['feeds/feed_show'],
 
+  events: {
+    "click .pre-click": "showNewStory",
+    "click #close-new": "hideNewStory"
+  },
+
   initialize: function (options) {
     this.stories = options.stories;
     this.publications = options.publications;
@@ -8,7 +13,6 @@ Large.Views.HomeShow = Backbone.View.extend({
   },
 
   render: function () {
-
     this.$el.html(this.template());
 
     this.stories.models.forEach( function(story) {
@@ -22,8 +26,18 @@ Large.Views.HomeShow = Backbone.View.extend({
       data: { current_user: true }
     });
     var newStoryView = new Large.Views.NewStory({ collection: this.stories, model: newStory, publications: Large.Collections.publications });
-    this.$('.new').append(newStoryView.render().$el);
+    this.$('.post-click').prepend(newStoryView.render().$el);
 
     return this;
+  },
+
+  showNewStory: function () {
+    this.$('.post-click').css('display', 'block');
+    this.$('.pre-click').css('display', 'none');
+  },
+
+  hideNewStory: function () {
+    this.$('.post-click').css('display', 'none');
+    this.$('.pre-click').css('display', 'block');
   }
 });
