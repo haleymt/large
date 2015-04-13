@@ -3,7 +3,8 @@ Large.Routers.StoriesRouter = Backbone.Router.extend({
     "": "homeShow",
     "stories/new": "newStory",
     "stories/:id": "storyShow",
-    "stories/:id/edit": "storyEdit"
+    "stories/:id/edit": "storyEdit",
+    "search": "searchShow"
   },
 
   initialize: function (options) {
@@ -47,6 +48,29 @@ Large.Routers.StoriesRouter = Backbone.Router.extend({
     var story = this.collection.getOrFetch(id);
     var editStory = new Large.Views.StoryEdit({ model: story });
     this._swapView(editStory);
+  },
+
+  searchShow: function (params) {
+    if (params.replace(/\s/g,"") == "") {
+      var search = new Large.Views.SearchShow();
+    } else {
+      Large.Collections.publications.fetch({
+        data: { query: params }
+      });
+      Large.Collections.users.fetch({
+        data: { query: params }
+      });
+      this.collection.fetch({
+        data: { query: params }
+      });
+      var search = new Large.Views.SearchShow({
+        params: params,
+        publications: Large.Collections.publications,
+        users: Large.Collections.users,
+        stories: this.collection
+      });
+    }
+    this._swapView(search);
   },
 
   _swapView: function (view) {

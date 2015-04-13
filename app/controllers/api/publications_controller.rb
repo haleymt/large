@@ -23,6 +23,8 @@ module Api
     def index
       if params[:current_user]
         @pubs = current_user.publications
+      elsif params[:query]
+        # @pubs = Publication.where('title LIKE %?%', params[:query])
       else
         @pubs = Publication.all
       end
