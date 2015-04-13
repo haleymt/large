@@ -15,6 +15,11 @@ module Api
       render json: {}
     end
 
+    def index
+      @taggings = Tagging.all
+      render json: @taggings
+    end
+
     private
       def tagging_params
         params.require(:tagging).permit(:tag_id, :taggable_id, :taggable_type)

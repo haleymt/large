@@ -1,3 +1,7 @@
+<% if (response !== undefined) { %>
+<p>Written in reponse to:</p>
+<h4><%= response.escape('title') %></h4>
+<% } %>
 <div class="story-show-header">
   <img src="<%= story.escape('header_image') %>">
 </div>

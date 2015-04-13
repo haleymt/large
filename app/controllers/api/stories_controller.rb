@@ -11,7 +11,7 @@ module Api
     end
 
     def show
-      @story = Story.find(params[:id])
+      @story = Story.includes(:tags, :taggings).find(params[:id])
       render json: @story
     end
 

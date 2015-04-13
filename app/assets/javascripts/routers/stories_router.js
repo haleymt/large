@@ -8,6 +8,7 @@ Large.Routers.StoriesRouter = Backbone.Router.extend({
 
   initialize: function (options) {
     this.collection = new Large.Collections.Stories();
+    this.collection.fetch();
     this.$rootEl = options.content;
   },
 
@@ -38,7 +39,7 @@ Large.Routers.StoriesRouter = Backbone.Router.extend({
 
   storyShow: function (id) {
     var story = this.collection.getOrFetch(id);
-    var showStory = new Large.Views.StoryShow({ story: story });
+    showStory = new Large.Views.StoryShow({ story: story, stories: this.collection });
     this._swapView(showStory);
   },
 
