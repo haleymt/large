@@ -10,9 +10,11 @@ Large.Views.SearchShow = Backbone.View.extend({
     this.publications = options.publications;
     this.users = options.users;
     this.stories = options.stories;
-    this.listenTo(this.publications, 'sync', this.render);
-    this.listenTo(this.users, 'sync', this.render);
-    this.listenTo(this.stories, 'sync', this.render);
+    if (this.params !== null) {
+      this.listenTo(this.publications, 'sync', this.render);
+      this.listenTo(this.users, 'sync', this.render);
+      this.listenTo(this.stories, 'sync', this.render);
+    }
   },
 
   render: function () {

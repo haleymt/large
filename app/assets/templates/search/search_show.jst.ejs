@@ -3,41 +3,61 @@
   <input type="submit">
 </form>
 <br>
+<ul class="nav nav-tabs nav-stacked">
+    <li class="active">All</li>
+    <li>People</li>
+    <li>Publications</li>
+  </ul>
+</nav>
 <% if (params !== null) { %>
-  <h4>Publications</h4>
-  <% if (publications !== undefined) { %>
-  <ul>
-  <% publications.forEach( function (pub) { %>
-    <li><%= pub.escape('title') %></li>
-  <% }) %>
-  </ul>
-  <% } else { %>
+  <div class="pubs-results">
+    <h4>Publications</h4>
+    <% if (publications !== undefined) { %>
     <ul>
-      <li>Nothing to show</li>
+    <% publications.forEach( function (pub) { %>
+      <li><strong><%= pub.escape('title') %></strong><br>
+          <%= pub.escape('description') %>
+          <button id="<%= pub.id %>">Follow</button>
+      </li>
+    <% }) %>
     </ul>
-  <% } %>
-  <h4>Stories</h4>
-  <% if (stories !== undefined) { %>
-  <ul>
-  <% stories.forEach( function (story) { %>
-    <li><%= story.escape('title') %></li>
-  <% }) %>
-  </ul>
-  <% } else { %>
+    <% } else { %>
+      <ul>
+        <li>Nothing to show</li>
+      </ul>
+    <% } %>
+  </div>
+
+  <div class="stories-results">
+    <h4>Stories</h4>
+    <% if (stories !== undefined) { %>
     <ul>
-      <li>Nothing to show</li>
+    <% stories.forEach( function (story) { %>
+      <li><%= story.escape('title') %></li>
+    <% }) %>
     </ul>
-  <% } %>
+    <% } else { %>
+      <ul>
+        <li>Nothing to show</li>
+      </ul>
+    <% } %>
+  </div>
+
+  <div class="users-results">
   <h4>Users</h4>
-  <% if (users !== undefined) { %>
-  <ul>
-  <% users.forEach( function (user) { %>
-    <li><%= user.escape('email') %></li>
-  <% }) %>
-  </ul>
-  <% } else { %>
+    <% if (users !== undefined) { %>
+    <ul>
+    <% users.forEach( function (user) { %>
+      <li><strong><%= user.escape('email') %></strong><br>
+          <%= user.escape('description') %>
+          <button id="<%= user.id %>">Follow</button>
+      </li>
+    <% }) %>
+    </ul>
+    <% } else { %>
     <ul>
       <li>Nothing to show</li>
     </ul>
-  <% } %>
+    <% } %>
+  </div>
 <% } %>
