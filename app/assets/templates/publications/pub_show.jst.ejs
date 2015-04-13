@@ -1,12 +1,15 @@
 <a href="#/publications/<%= pub.id %>/about">About <%= pub.escape('title') %></a>
 <br>
-<img src="<%= pub.escape('header_image') %>">
-
-<h1><%= pub.escape('title') %></h1>
-<h3><%= pub.escape('description') %></h3>
-<strong>Followers: <%= followers %></strong>
-<br>
-<button class="follow">Follow</button>
+<div class="pub-show-header">
+  <div class="header-img">
+    <img src="<%= pub.escape('header_image') %>">
+  </div>
+  <h1><%= pub.escape('title') %></h1>
+  <h3><%= pub.escape('description') %></h3>
+  <strong>Followers: <%= followers %></strong>
+  <br>
+  <button class="follow">Follow</button>
+</div>
 <br>
 <ul class="pub-stories">
 </ul>
