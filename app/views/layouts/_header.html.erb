@@ -15,13 +15,16 @@
     <% if signed_in? %>
       <li><button class="navbar-btn btn btn-primary"><i class="fa fa-search"></i></button></li>
       <li><%= button_to "Write a Story", "#/stories/new", method: :get, class: "btn btn-primary navbar-btn" %></li>
-      <li><%= button_to "New Publication", "#/publications/new", method: :get, class: "btn btn-primary navbar-btn" %></li>
-      <li><%= button_to "Sign out", session_url, method: :delete, class: "btn btn-primary navbar-btn" %></li>
       <li id='add-dropdown' class='dropdown'>
         <button
           class='dropdown-toggle navbar-btn btn btn-primary'
           data-toggle='dropdown'><span><i class="fa fa-user"></i></span>
         </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><%= link_to "New Story", "#/stories/new", method: :get %></li>
+          <li><%= link_to "New Publication", "#/publications/new", method: :get %></li>
+          <li><%= link_to "Sign out", session_url, method: :delete %></li>
+        </ul>
       </li>
     <% else %>
       <li><%= link_to "Log in", new_session_url %></li>
