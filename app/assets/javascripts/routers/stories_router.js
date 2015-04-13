@@ -51,8 +51,8 @@ Large.Routers.StoriesRouter = Backbone.Router.extend({
   },
 
   searchShow: function (params) {
-    if (params.replace(/\s/g,"") == "") {
-      var search = new Large.Views.SearchShow();
+    if (params === null || params.replace(/\s/g,"") == "") {
+      var search = new Large.Views.SearchShow({ params: null });
     } else {
       Large.Collections.publications.fetch({
         data: { query: params }

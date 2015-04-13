@@ -3,8 +3,41 @@
   <input type="submit">
 </form>
 <br>
-<ul>
-<% publications.forEach( function (pub) { %>
-  <li><%= pub.escape('title') %></li>
-<% }) %>
-</ul>
+<% if (params !== null) { %>
+  <h4>Publications</h4>
+  <% if (publications !== undefined) { %>
+  <ul>
+  <% publications.forEach( function (pub) { %>
+    <li><%= pub.escape('title') %></li>
+  <% }) %>
+  </ul>
+  <% } else { %>
+    <ul>
+      <li>Nothing to show</li>
+    </ul>
+  <% } %>
+  <h4>Stories</h4>
+  <% if (stories !== undefined) { %>
+  <ul>
+  <% stories.forEach( function (story) { %>
+    <li><%= story.escape('title') %></li>
+  <% }) %>
+  </ul>
+  <% } else { %>
+    <ul>
+      <li>Nothing to show</li>
+    </ul>
+  <% } %>
+  <h4>Users</h4>
+  <% if (users !== undefined) { %>
+  <ul>
+  <% users.forEach( function (user) { %>
+    <li><%= user.escape('email') %></li>
+  <% }) %>
+  </ul>
+  <% } else { %>
+    <ul>
+      <li>Nothing to show</li>
+    </ul>
+  <% } %>
+<% } %>

@@ -24,7 +24,8 @@ module Api
       if params[:current_user]
         @pubs = current_user.publications
       elsif params[:query]
-        # @pubs = Publication.where('title LIKE %?%', params[:query])
+        search_params = "%#{params[:query][2..-1]}%"
+        @pubs = Publication.all.where("title ILIKE :search OR description ILIKE :search", search: search_params)
       else
         @pubs = Publication.all
       end

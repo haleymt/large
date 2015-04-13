@@ -14,10 +14,6 @@
 class Publication < ActiveRecord::Base
   include Followable
 
-  def self.search(query)
-    self.class.where()
-  end
-
   validates :owner_id, :title, presence: true
 
   has_many(

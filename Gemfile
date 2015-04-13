@@ -13,6 +13,9 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'pg'
 gem 'uglifier', '>= 1.3.0'
 gem 'newrelic_rpm'
+# gem 'elasticsearch-model'
+# gem 'elasticsearch-rails'
+# gem 'bonsai-elasticsearch-rails'
 
 group :development, :test do
   gem 'byebug'

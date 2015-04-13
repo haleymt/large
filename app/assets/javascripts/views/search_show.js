@@ -10,11 +10,14 @@ Large.Views.SearchShow = Backbone.View.extend({
     this.publications = options.publications;
     this.users = options.users;
     this.stories = options.stories;
+    this.listenTo(this.publications, 'sync', this.render);
+    this.listenTo(this.users, 'sync', this.render);
+    this.listenTo(this.stories, 'sync', this.render);
   },
 
   render: function () {
-    debugger
-    this.$el.html(this.template({ publications: this.publications }));
+    // debugger
+    this.$el.html(this.template({ params: this.params, publications: this.publications, stories: this.stories, users: this.users }));
     this.$('input[type=submit]').hide();
     return this;
   },
