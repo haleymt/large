@@ -17,7 +17,7 @@
     <% publications.forEach( function (pub) { %>
       <li><strong><%= pub.escape('title') %></strong><br>
           <%= pub.escape('description') %>
-          <button id="<%= pub.id %>">Follow</button>
+          <button class="follow" id="<%= pub.id %>" value="Publication">Follow</button>
       </li>
     <% }) %>
     </ul>
@@ -50,7 +50,7 @@
     <% users.forEach( function (user) { %>
       <li><strong><%= user.escape('email') %></strong><br>
           <%= user.escape('description') %>
-          <button id="<%= user.id %>">Follow</button>
+          <button class="follow" id="<%= user.id %>" value="User">Follow</button>
       </li>
     <% }) %>
     </ul>

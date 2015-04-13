@@ -1,6 +1,6 @@
 <p>About:</p>
 <h2><%= pub.escape('title') %></h2>
-<button id="<%= pub.id %>">Follow</button>
+<button class="follow" id="<%= pub.id %>" value="Publication">Follow</button>
 <br>
 <p>A note from the editor:</p>
 <h4><%= pub.escape('description') %></h4>
@@ -9,7 +9,7 @@
 <ul><% editors.forEach( function (editor) { %>
   <li><%= editor.escape('email') %><br>
       <%= editor.escape('description') %>
-      <button id="<%= editor.id %>">Follow</button>
+      <button class="follow" id="<%= editor.id %>" value="User">Follow</button>
   </li>
 <% }) %>
 </ul>
@@ -18,7 +18,7 @@
 <ul><% writers.forEach( function (writer) { %>
   <li><%= writer.escape('email') %><br>
       <%= writer.escape('description') %>
-      <button id="<%= writer.id %>">Follow</button>
+      <button class="follow" id="<%= writer.id %>" value="User">Follow</button>
   </li>
 <% }) %>
 </ul>

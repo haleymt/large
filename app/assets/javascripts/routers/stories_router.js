@@ -51,8 +51,15 @@ Large.Routers.StoriesRouter = Backbone.Router.extend({
   },
 
   searchShow: function (params) {
+    Large.Collections.follows.fetch({
+      data: { current_user: true }
+    });
+
     if (params === null || params.replace(/\s/g,"") == "") {
-      var search = new Large.Views.SearchShow({ params: null });
+      var search = new Large.Views.SearchShow({
+        params: null,
+        follows: Large.Collections.follows
+      });
     } else {
       Large.Collections.publications.fetch({
         data: { query: params }
@@ -67,7 +74,8 @@ Large.Routers.StoriesRouter = Backbone.Router.extend({
         params: params,
         publications: Large.Collections.publications,
         users: Large.Collections.users,
-        stories: this.collection
+        stories: this.collection,
+        follows: Large.Collections.follows
       });
     }
     this._swapView(search);
