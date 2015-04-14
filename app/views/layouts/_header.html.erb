@@ -27,8 +27,8 @@
         </ul>
       </li>
     <% else %>
-      <li><%= link_to "Log in", new_session_url %></li>
-      <li><%= link_to "Sign up", new_user_url %></li>
+      <li><%= button_to "Log in", new_session_url, class: "btn btn-primary navbar-btn" %></li>
+      <li><%= button_to "Sign up", new_user_url, class: "btn btn-primary navbar-btn" %></li>
     <% end %>
     </ul>
   </div>

@@ -1,17 +1,23 @@
 <li class="preview">
   <% if (pub !== undefined) { %>
     <a href="#/publications/<%= pub.id %>"><strong><%= pub.escape('title') %></strong></a><br>
-    <a href="#/users/<%= author.id %>"><%= author.escape('email') %></a> -
-    <a href="#/stories/<%= story.id %>">
+    <a style="color:rgba(128, 128, 128, 0.5)" href="#/users/<%= author.id %>"><%= author.escape('email') %></a> -
+    <a style="color:rgba(128, 128, 128, 0.5)" href="#/stories/<%= story.id %>">
       <abbr class="timeago" title="<%= story.get('created_at') %>"><%= story.get('created_at') %></abbr>
     </a>
   <% } else { %>
   <a href="#/users/<%= author.id %>"><%= author.escape('email') %></a><br>
-  <a href="#/stories/<%= story.id %>">
+  <a style="color:rgba(128, 128, 128, 0.5)" href="#/stories/<%= story.id %>">
     <abbr class="timeago" title="<%= story.get('created_at') %>"><%= story.get('created_at') %></abbr>
   </a>
   <% } %>
-  <h2><%= story.escape('title') %><h2>
-  <h3><%= story.escape('subtitle') %></h3><br>
-  <a href="#/stories/<%= story.id %>">Continue reading</a>
+  <% if (story.get('header_image') !== null) { %>
+    <br>
+    <img style="position:absolute; clip:rect(0, 500px, 200px, 0);" src="<%= story.get('header_image') %>">
+  <% } %>
+  <div class="sub-preview">
+    <h2><%= story.escape('title') %><h2>
+    <h3><%= story.escape('subtitle') %></h3><br>
+    <a href="#/stories/<%= story.id %>">Continue reading</a>
+  <div>
 </li>

@@ -21,6 +21,10 @@
  @import "font-awesome-sprockets";
  @import "font-awesome";
 
+a {
+  color: #57ad68;
+}
+
 .navbar-default {
   background: white;
   border-radius: 0px;
@@ -62,6 +66,16 @@
   background: white;
   color: rgba(128, 128, 128, 1);
   border: 1px solid rgba(128, 128, 128, 1);
+}
+
+.follow {
+  color: rgba(87, 173, 104, 0.7);
+  border: 1px solid rgba(87, 173, 104, 0.7);
+}
+
+.follow:hover {
+  color: rgba(87, 173, 104, 1);
+  border: 1px solid rgba(87, 173, 104, 1);
 }
 
 .navbar-brand {
@@ -131,6 +145,20 @@
   padding: 10px;
 }
 
+.style {
+  background: white;
+  border: none;
+  color: rgba(128, 128, 128, 0.4);
+}
+
+.style:hover {
+  color: rgba(128, 128, 128, 0.8);
+}
+
+.style:focus {
+  color: rgba(87, 173, 104, 0.7);
+}
+
 #header-image {
   display: none;
   margin-top: 5px;
@@ -168,6 +196,11 @@ ul {
   padding-bottom: 20px;
 }
 
+.sub-preview {
+  position: relative;
+  z-index: 1000;
+}
+
 .pub-sections {
   margin-left: auto;
   margin-right: auto;
@@ -185,6 +218,12 @@ ul {
 
 .user-show-header {
   text-align: center;
+}
+
+.user-stories {
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
 }
 
 .response-header {

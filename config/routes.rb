@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: "static_pages#root"
 
   resources :users, except: [:show, :index]
-  resource :session
+  resource :session, only: [:new, :create, :destroy]
 
   namespace :api, defaults: { format: :json } do
     resources :publications do
