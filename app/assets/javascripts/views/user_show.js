@@ -24,6 +24,21 @@ Large.Views.UserShow = Backbone.View.extend({
     var content = this.template({ user: this.user, followers: this.follows.length, followings: this.followings.length });
     this.$el.html(content);
 
+    var follow = this.currentUserFollows.findWhere({
+                      followable_id: this.user.id,
+                      followable_type: "User" });
+    if (follow === undefined) {
+      $('.follow').data('follow-state', 'unfollowed');
+    } else {
+      $('.follow').data('follow-state', 'followed');
+    }
+
+    if ($('.follow').data('follow-state') == "followed") {
+      $('.follow').html("Unfollow!");
+    } else {
+      $('.follow').html("Follow!");
+    }
+
     this.stories.models.forEach( function(story) {
       var storyPreview = new Large.Views.StoryPreview({ model: story, publications: this.publications });
       this.$('ul.user-stories').prepend(storyPreview.render().$el);
@@ -40,13 +55,17 @@ Large.Views.UserShow = Backbone.View.extend({
       follow = new Large.Models.Follow( { followable_id: this.user.id, followable_type: "User" });
       follow.save(follow.attributes, {
         success: function () {
-          console.log("success")
+          console.log("success");
+          $(event.currentTarget).data('follow-state', 'followed');
+          $(event.currentTarget).html("Unfollow!");
         }
       });
     } else {
       follow.destroy({
         success: function (model, response) {
           console.log("successful destroy")
+          $(event.currentTarget).data('follow-state', 'unfollowed');
+          $(event.currentTarget).html("Follow!");
         }
       });
     }
