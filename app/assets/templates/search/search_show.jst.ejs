@@ -3,13 +3,14 @@
   <input type="submit">
 </form>
 <br>
-<ul class="nav nav-tabs nav-stacked">
-    <li class="active">All</li>
-    <li>People</li>
-    <li>Publications</li>
-  </ul>
-</nav>
+
 <% if (params !== null) { %>
+  <ul class="nav nav-tabs nav-stacked">
+      <li class="active">All</li>
+      <li>People</li>
+      <li>Publications</li>
+    </ul>
+  </nav>
   <div class="pubs-results">
     <h4>Publications</h4>
     <% if (publications !== undefined) { %>

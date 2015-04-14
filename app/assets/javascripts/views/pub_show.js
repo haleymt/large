@@ -12,6 +12,7 @@ Large.Views.PubShow = Backbone.View.extend({
     this.currentUserFollows = options.follows;
 
     this.numFollows = this.pub.follows();
+    this.listenTo(this.currentUserFollows, 'sync', this.render);
     this.listenTo(this.pub, 'sync', this.render);
     this.listenTo(this.stories, 'add', this.render);
     this.listenTo(this.publications, 'sync', this.render);
@@ -24,10 +25,10 @@ Large.Views.PubShow = Backbone.View.extend({
     var follow = this.currentUserFollows.findWhere({
                       followable_id: this.pub.id,
                       followable_type: "Publication" });
-    if (follow === undefined) {
-      $('.follow').data('follow-state', 'unfollowed');
-    } else {
+    if (!!follow) {
       $('.follow').data('follow-state', 'followed');
+    } else {
+      $('.follow').data('follow-state', 'unfollowed');
     }
 
     if ($('.follow').data('follow-state') == "followed") {
@@ -53,7 +54,6 @@ Large.Views.PubShow = Backbone.View.extend({
       follow = new Large.Models.Follow( { followable_id: this.pub.id, followable_type: "Publication" });
       follow.save(follow.attributes, {
         success: function () {
-          console.log("success");
           $(event.currentTarget).data('follow-state', 'followed');
           $(event.currentTarget).html("Unfollow!");
         }
@@ -61,7 +61,6 @@ Large.Views.PubShow = Backbone.View.extend({
     } else {
       follow.destroy({
         success: function (model, response) {
-          console.log("successful destroy")
           $(event.currentTarget).data('follow-state', 'unfollowed');
           $(event.currentTarget).html("Follow!");
         }
