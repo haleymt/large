@@ -2,7 +2,7 @@ Large.Views.NewPub = Backbone.View.extend({
   template: JST['publications/new_pub'],
 
   events: {
-    "submit": "submitForm",
+    "click #submit-new-pub": "submitForm",
     "click #align-left": "alignLeft",
     "click #align-center": "alignCenter",
     "click #pub-header-image": "addHeaderImage",
@@ -20,11 +20,13 @@ Large.Views.NewPub = Backbone.View.extend({
   },
 
   alignLeft: function () {
-
+    $('.pub-header-setter').css('text-align', 'left');
+    $('input').css('text-align', 'left');
   },
 
   alignCenter: function () {
-
+    $('.pub-header-setter').css('text-align', 'center');
+    $('input').css('text-align', 'center');
   },
 
   addHeaderImage: function () {

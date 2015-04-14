@@ -1,14 +1,14 @@
 <form class="new-pub">
 
-  <div class="pub-header-setter">
-    <button id="align-left" class="style"><i class="fa fa-align-left"></i></button>
-    <button id="align-right" class="style"><i class="fa fa-align-center"></i></button>
-    <button id="pub-header-image" class="style"><i class="fa fa-image"></i></button>
-  </div>
+  <button id="align-left" class="style"><i class="fa fa-align-left"></i></button>
+  <button id="align-center" class="style"><i class="fa fa-align-center"></i></button>
+  <button id="pub-header-image" class="style"><i class="fa fa-image"></i></button>
   <br>
-  <button id="pub-icon" class="style"><i class="fa fa-camera fa-3x"></i></button>
-  <h1><input type="text" name="publication[title]" placeholder="Optional heading"></h1>
-  <h3><input type="text" name="publication[description]" placeholder="Optional description"></h3>
+  <div class="pub-header-setter">
+    <button id="pub-icon" class="style"><i class="fa fa-camera fa-3x"></i></button>
+    <h1><input type="text" name="publication[title]" placeholder="Optional heading"></h1>
+    <h3><input type="text" name="publication[description]" placeholder="Optional description"></h3>
+  </div>
 
   <select id="editors">
       <option value="">Add an Editor</option>
@@ -24,7 +24,7 @@
   </select>
 
   <br>
-  <button type="submit" class="btn btn-primary">Create</button>
+  <button type="submit" id="submit-new-pub" class="btn btn-primary">Create</button>
 </form>
 <br>
 
