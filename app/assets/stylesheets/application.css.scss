@@ -343,3 +343,24 @@ ul {
   padding-top: 15px;
   border-top: 1px solid rgba(128, 128, 128, 0.4);
 }
+
+// search show
+
+.nav-tabs {
+  border: none;
+  width: 200px;
+  margin-left: 20px;
+}
+
+.nav-tabs li {
+  border-top: 1px solid rgba(128, 128, 128, 0.4);
+}
+
+.nav-tabs li a {
+  color: rgba(128, 128, 128, 0.7);
+}
+
+.nav-tabs .active {
+  font-weight: bold;
+  border-top: 2px solid black;
+}
