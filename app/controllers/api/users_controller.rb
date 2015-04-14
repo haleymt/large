@@ -8,7 +8,7 @@ module Api
 
     def index
       if params[:query]
-        search_params = "%#{params[:query][2..-1]}%"
+        search_params = "%#{params[:query]}%"
         @users = User.all.where("email ILIKE :search OR description ILIKE :search", search: search_params)
       else
         @users = User.all

@@ -1,4 +1,4 @@
-Large.Views.SearchShow = Backbone.View.extend({
+Large.Views.SearchShow = Backbone.CompositeView.extend({
   template: JST['search/search_show'],
 
   events: {
@@ -18,7 +18,29 @@ Large.Views.SearchShow = Backbone.View.extend({
       this.listenTo(this.publications, 'sync', this.render);
       this.listenTo(this.users, 'sync', this.render);
       this.listenTo(this.stories, 'sync', this.render);
+
+      this.stories.each(this.addStoryView.bind(this));
+      this.listenTo(this.stories, 'add', this.addStoryView);
+      this.listenTo(this.stories, 'remove', this.removeStoryView);
     }
+  },
+
+  addStoryView: function (story) {
+    var storyPreview = new Large.Views.StoryPreviewSearch({
+      model: story, publications: this.publications
+    });
+    this.addSubview('.results-previews', storyPreview);
+  },
+
+  removeStoryView: function (story) {
+    var subviews = this.subviews('.results-previews');
+    var i = _(subviews).findIndex(function (el) {
+      return el.model === story;
+    });
+    if (i === -1) { return };
+
+    subviews[i].remove();
+    subviews.splice(i, 1);
   },
 
   render: function () {
@@ -29,6 +51,9 @@ Large.Views.SearchShow = Backbone.View.extend({
       users: this.users
     });
     this.$el.html(content);
+
+    this.attachSubviews();
+
     this.$('input[type=submit]').hide();
     $('.follow').each(function (i, obj) {
       var $id = parseInt($(obj).attr('id'));
@@ -54,8 +79,9 @@ Large.Views.SearchShow = Backbone.View.extend({
   },
 
   handleInput: function () {
+
     var params = this.$('#box').val();
-    Backbone.history.navigate("/search?q=" + params, { trigger: true });
+    Backbone.history.navigate("/search?" + params, { trigger: true });
   },
 
   toggleFollow: function (event) {

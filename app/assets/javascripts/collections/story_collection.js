@@ -19,5 +19,9 @@ Large.Collections.Stories = Backbone.Collection.extend({
       model.fetch();
     }
     return model;
+  },
+
+  parse: function (payload) {
+    return payload;
   }
 });

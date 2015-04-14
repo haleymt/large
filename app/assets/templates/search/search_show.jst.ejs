@@ -15,24 +15,13 @@
   <!-- section all -->
   <div id="sectionA" class="tab-pane fade in active">
     <div class="stories-results">
-      <h4>Stories</h4>
-      <% if (stories !== null) { %>
-      <ul>
-      <% stories.forEach( function (story) { %>
-        <li><a href="#/stories/<%= story.id %>">
-          <strong><%= story.escape('title') %></strong></a>
-        </li>
-      <% }) %>
+      <p class="section-label">STORIES</p>
+      <ul class="results-previews">
       </ul>
-      <% } else { %>
-        <ul>
-          <li>Nothing to show</li>
-        </ul>
-      <% } %>
     </div>
 
     <div class="pubs-results">
-      <h4>Publications</h4>
+      <p class="section-label">PUBLICATIONS</p>
       <% if (publications !== null) { %>
       <ul>
       <% publications.forEach( function (pub) { %>
@@ -45,15 +34,19 @@
       </ul>
       <% } else { %>
         <ul>
-          <li>Nothing to show</li>
+          <li>Nothing to show.</li>
         </ul>
       <% } %>
     </div>
 
     <div class="users-results">
-    <h4>Users</h4>
-      <% if (users !== null) { %>
-      <ul>
+    <p class="section-label">USERS</p>
+      <% if (users === null) { %>
+        <ul>
+          <li>Nothing to show.</li>
+        </ul>
+      <% } else { %>
+        <ul>
         <% users.forEach( function (user) { %>
           <li><div class="user-info"><a href="#/users/<%= user.id %>">
             <strong><%= user.escape('email') %></strong></a><br>
@@ -62,10 +55,6 @@
           </li>
         <% }) %>
         </ul>
-      <% } else { %>
-      <ul>
-        <li>Nothing to show</li>
-      </ul>
       <% } %>
     </div>
   </div>
@@ -73,9 +62,12 @@
   <!-- begin section people -->
   <div id="sectionB" class="tab-pane fade">
     <div class="users-results">
-    <h4>Users</h4>
-      <% if (users !== null) { %>
-      <ul>
+      <% if (users === null) { %>
+        <ul>
+          <li>Nothing to show.</li>
+        </ul>
+      <% } else { %>
+        <ul>
         <% users.forEach( function (user) { %>
           <li><div class="user-info"><a href="#/users/<%= user.id %>">
             <strong><%= user.escape('email') %></strong></a><br>
@@ -84,10 +76,6 @@
           </li>
         <% }) %>
         </ul>
-      <% } else { %>
-      <ul>
-        <li>Nothing to show</li>
-      </ul>
       <% } %>
     </div>
   </div>
@@ -95,11 +83,10 @@
   <!-- begin section pubs -->
   <div id="sectionC" class="tab-pane fade">
     <div class="pubs-results">
-      <h4>Publications</h4>
       <% if (publications !== null) { %>
       <ul>
       <% publications.forEach( function (pub) { %>
-        <li><a href="#/publications/<%= pub.id %>">
+        <li class="pr"><a href="#/publications/<%= pub.id %>">
           <strong><%= pub.escape('title') %></strong></a><br>
             <%= pub.escape('description') %>
             <button class="follow btn btn-primary btn-sm" id="<%= pub.id %>" value="Publication">Follow</button>
@@ -108,7 +95,7 @@
       </ul>
       <% } else { %>
         <ul>
-          <li>Nothing to show</li>
+          <li>Nothing to show.</li>
         </ul>
       <% } %>
     </div>
