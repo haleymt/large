@@ -7,17 +7,17 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#">Large</a>
+    <a class="navbar-brand" href="#"><img style="height:40px;" src="<%= asset_path( 'large_logo.png' ) %>"></a>
   </div>
 
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav navbar-right">
     <% if signed_in? %>
-      <li><button class="navbar-btn btn btn-primary" onclick="window.location.href='#/search'"><i class="fa fa-search"></i></button></li>
+      <li><button class="navbar-btn btn btn-circle" onclick="window.location.href='#/search'"><i class="fa fa-search"></i></button></li>
       <li><%= button_to "Write a Story", "#/stories/new", method: :get, class: "btn btn-primary navbar-btn" %></li>
       <li id='add-dropdown' class='dropdown'>
         <button
-          class='dropdown-toggle navbar-btn btn btn-primary'
+          class='dropdown-toggle navbar-btn btn btn-circle'
           data-toggle='dropdown'><span><i class="fa fa-user"></i></span>
         </button>
         <ul class="dropdown-menu" role="menu">

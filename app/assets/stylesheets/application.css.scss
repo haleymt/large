@@ -21,6 +21,57 @@
  @import "font-awesome-sprockets";
  @import "font-awesome";
 
+.navbar-default {
+  background: white;
+  border-radius: 0px;
+  border-left: none;
+  border-top: none;
+  border-right: none;
+  height: 70px;
+}
+
+.btn-circle {
+  text-align: center;
+  background: white;
+  border: 1px solid rgba(128, 128, 128, 0.5);
+  width: 40px;
+  height: 40px;
+  padding: 10px 10px;
+  font-size: 18px;
+  line-height: 1;
+  border-radius: 25px;
+  margin-top: 10px;
+}
+
+.btn-circle:focus {
+  outline: none !important;
+}
+
+.btn-primary {
+  height: 40px;
+  border-radius: 24px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  background: white;
+  color: rgba(128, 128, 128, 0.7);
+  border: 1px solid rgba(128, 128, 128, 0.5);
+}
+
+.btn-primary:hover {
+  background: white;
+  color: rgba(128, 128, 128, 1);
+  border: 1px solid rgba(128, 128, 128, 1);
+}
+
+.navbar-brand {
+  margin-left: 20px;
+}
+
+.btn-circle:hover {
+  border: 1px solid rgba(128, 128, 128, 1);
+}
+
 #search input {
   font-size: 50px;
   border: none;
@@ -36,8 +87,15 @@
 }
 
 .new .pre-click {
+  font-family: "Times New Roman", Times, serif;
   font-size: 20px;
   display: block;
+  color: rgba(128, 128, 128, 0.5);
+}
+
+.pre-click i {
+  margin-right: 10px;
+  color: black;
 }
 
 .pre-click:hover {
@@ -105,7 +163,7 @@ ul {
 }
 
 .preview {
-  border-top: 2px solid gray;
+  border-top: 2px solid rgba(128, 128, 128, 0.2);
   padding-top: 20px;
   padding-bottom: 20px;
 }
