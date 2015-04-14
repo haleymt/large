@@ -1,8 +1,8 @@
 <div class="user-show-header">
   <h1><%= user.escape('email') %></h1>
   <h3><%= user.escape('description') %></h3>
-  <strong>Followers: <%= followers %><br>
-  Following: <%= followings %></strong>
+  <button class="info">FOLLOWING<br><p class=num><%= followings %></p></button>
+  <button class="info">FOLLOWERS<br><p class=num><%= followers %></p></button>
   <br>
   <button class="follow btn btn-primary">Follow</button>
 </div>

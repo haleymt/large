@@ -102,6 +102,15 @@ a:hover {
   border: 1px solid rgba(128, 128, 128, 1);
 }
 
+.btn-sm {
+  height: 35px;
+}
+
+// [data-follow-state="followed"] {
+//   color: white;
+//   background: rgba(87, 173, 104, 0.7);
+// }
+
 #search input {
   font-size: 50px;
   border: none;
@@ -347,20 +356,62 @@ ul {
 // search show
 
 .nav-tabs {
-  border: none;
+  border: none !important;
   width: 200px;
   margin-left: 20px;
+  float: left;
 }
 
 .nav-tabs li {
   border-top: 1px solid rgba(128, 128, 128, 0.4);
 }
 
-.nav-tabs li a {
-  color: rgba(128, 128, 128, 0.7);
+.nav-tabs > li > a {
+  border: 0;
+  color: black;
+}
+
+.nav-tabs > li > a:hover {
+  background: white;
+  border: 0;
 }
 
 .nav-tabs .active {
   font-weight: bold;
   border-top: 2px solid black;
+}
+
+.nav-tabs > li.active > a {
+  border: 0;
+}
+
+.nav-tabs > li.active > a:focus {
+  border: 0;
+}
+
+.nav-tabs > li.active > a:hover {
+  border: 0;
+}
+
+.tab-content {
+  float: right;
+  margin-right: 400px;
+}
+
+.tab-content .follow {
+  position: relative;
+  margin: 0;
+}
+
+// user show
+
+button.info {
+  outline: none;
+  border: none;
+  background: white;
+}
+
+p.num {
+  font-size: 25px;
+  font-weight: bold;
 }
