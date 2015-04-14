@@ -1,26 +1,34 @@
 <div class="about">
-  <p>About:</p>
-  <h2><a href="#/publications/<%= pub.id %>"><%= pub.escape('title') %></a></h2>
-  <button class="follow btn btn-primary btn-sm" id="<%= pub.id %>" value="Publication">Follow</button>
-  <br>
-  <p>A note from the editor:</p>
-  <h4><%= pub.escape('description') %></h4>
-  <br>
-  <p>Editors:</p>
-  <ul><% editors.forEach( function (editor) { %>
-    <li><a href="#/users/<%= editor.id %>"><%= editor.escape('email') %><a><br>
-        <%= editor.escape('description') %>
-        <button class="follow btn btn-primary btn-sm" id="<%= editor.id %>" value="User">Follow</button>
-    </li>
-  <% }) %>
-  </ul>
-  <br>
-  <p>Writers:</p>
-  <ul><% writers.forEach( function (writer) { %>
-    <li><a href="#/users/<%= writer.id %>"><%= writer.escape('email') %></a><br>
-        <%= writer.escape('description') %>
-        <button class="follow btn btn-primary btn-sm" id="<%= writer.id %>" value="User">Follow</button>
-    </li>
-  <% }) %>
-  </ul>
+  <div class="about-pub">
+    <p class="pub-title">ABOUT</p>
+    <h3><a href="#/publications/<%= pub.id %>"><%= pub.escape('title') %></a></h3>
+    <button class="follow btn btn-primary btn-sm" id="<%= pub.id %>" value="Publication">Follow</button>
+    <br>
+  </div>
+  <div class="about-section">
+    <p>NOTE FROM THE EDITOR</p>
+    <h4><%= pub.escape('description') %></h4>
+    <br>
+  </div>
+  <div class="about-section">
+    <p>EDITORS</p>
+    <ul><% editors.forEach( function (editor) { %>
+      <li><div class="user-info"><a href="#/users/<%= editor.id %>"><%= editor.escape('email') %></a><br>
+          <%= editor.escape('description') %></div>
+          <button class="follow btn btn-primary btn-sm" id="<%= editor.id %>" value="User">Follow</button>
+      </li>
+    <% }) %>
+    </ul>
+    <br>
+  </div>
+  <div class="about-section">
+    <p>WRITERS</p>
+    <ul><% writers.forEach( function (writer) { %>
+      <li><div class="user-info"><a href="#/users/<%= writer.id %>"><%= writer.escape('email') %></a><br>
+          <%= writer.escape('description') %></div>
+          <button class="follow btn btn-primary btn-sm" id="<%= writer.id %>" value="User">Follow</button>
+      </li>
+    <% }) %>
+    </ul>
+  </div>
 </div>
