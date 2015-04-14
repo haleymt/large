@@ -1,16 +1,16 @@
 <nav class="navbar navbar-default" role="navigation">
-<div class="container container-fluid">
+<!-- <div class="container container-fluid"> -->
   <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+    <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
       <span class="sr-only">Toggle navigation</span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
-    </button>
+    </button> -->
     <a class="navbar-brand" href="#"><img style="height:40px;" src="<%= asset_path( 'large_logo.png' ) %>"></a>
   </div>
 
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+  <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> -->
     <ul class="nav navbar-nav navbar-right">
     <% if signed_in? %>
       <li><button class="navbar-btn btn btn-circle" onclick="window.location.href='#/search'"><i class="fa fa-search"></i></button></li>
@@ -31,8 +31,8 @@
       <li><%= button_to "Sign up", new_user_url, class: "btn btn-primary navbar-btn" %></li>
     <% end %>
     </ul>
-  </div>
-</div>
+  <!-- </div> -->
+<!-- </div> -->
 </nav>
 
 <% if flash[:errors] %>

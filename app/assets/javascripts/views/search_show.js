@@ -36,7 +36,6 @@ Large.Views.SearchShow = Backbone.View.extend({
       var follow = this.currentUserFollows.findWhere({
                         followable_id: $id,
                         followable_type: $type });
-      console.log(follow);
       if (!!follow) {
         $(obj).data('follow-state', 'followed');
       } else {

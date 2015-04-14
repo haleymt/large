@@ -1,0 +1,13 @@
+<li id='add-dropdown' class='dropdown new-story-header'>
+  <button
+    class='dropdown-toggle navbar-btn btn btn-primary'
+    data-toggle='dropdown'><span>Add \/ </span>
+  </button>
+  <ul style="padding:15px;" class="dropdown-menu" role="menu"><strong>Add your draft to a publication</strong>
+    <% publications.forEach( function(pub) { %>
+    <li><input type="checkbox" name="story[pub_id]" value="<%= pub.id %>" form="confirm-form">
+      <%= pub.escape('title') %><br>
+    </li>
+    <% }) %>
+  </ul>
+</li>

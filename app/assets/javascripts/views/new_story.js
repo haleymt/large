@@ -1,6 +1,8 @@
 Large.Views.NewStory = Backbone.View.extend({
   template: JST['stories/new_story'],
 
+  header: JST['stories/_new_story_header'],
+
   events: {
     "click #header-image": "addImage",
     "click #submit-confirm": "submitForm",
@@ -14,6 +16,13 @@ Large.Views.NewStory = Backbone.View.extend({
   },
 
   render: function () {
+    $('.navbar-nav').find('.new-story-header').remove();
+    var headerContent = this.header({
+      story: this.model,
+      publications: this.publications
+    });
+
+    $('.navbar-nav').prepend(headerContent);
     this.$el.html(this.template({ story: this.model, publications: this.publications }));
     var editor = new MediumEditor('.editable', {
       buttons: ['bold', 'italic', 'header1', 'header2', 'header3', 'justifyCenter', 'quote', 'anchor']

@@ -1,24 +1,26 @@
-<p>About:</p>
-<h2><%= pub.escape('title') %></h2>
-<button class="follow" id="<%= pub.id %>" value="Publication">Follow</button>
-<br>
-<p>A note from the editor:</p>
-<h4><%= pub.escape('description') %></h4>
-<br>
-<p>Editors:</p>
-<ul><% editors.forEach( function (editor) { %>
-  <li><%= editor.escape('email') %><br>
-      <%= editor.escape('description') %>
-      <button class="follow" id="<%= editor.id %>" value="User">Follow</button>
-  </li>
-<% }) %>
-</ul>
-<br>
-<p>Writers:</p>
-<ul><% writers.forEach( function (writer) { %>
-  <li><%= writer.escape('email') %><br>
-      <%= writer.escape('description') %>
-      <button class="follow" id="<%= writer.id %>" value="User">Follow</button>
-  </li>
-<% }) %>
-</ul>
+<div class="about">
+  <p>About:</p>
+  <h2><a href="#/publications/<%= pub.id %>"><%= pub.escape('title') %></a></h2>
+  <button class="follow btn btn-primary btn-sm" id="<%= pub.id %>" value="Publication">Follow</button>
+  <br>
+  <p>A note from the editor:</p>
+  <h4><%= pub.escape('description') %></h4>
+  <br>
+  <p>Editors:</p>
+  <ul><% editors.forEach( function (editor) { %>
+    <li><a href="#/users/<%= editor.id %>"><%= editor.escape('email') %><a><br>
+        <%= editor.escape('description') %>
+        <button class="follow btn btn-primary btn-sm" id="<%= editor.id %>" value="User">Follow</button>
+    </li>
+  <% }) %>
+  </ul>
+  <br>
+  <p>Writers:</p>
+  <ul><% writers.forEach( function (writer) { %>
+    <li><a href="#/users/<%= writer.id %>"><%= writer.escape('email') %></a><br>
+        <%= writer.escape('description') %>
+        <button class="follow btn btn-primary btn-sm" id="<%= writer.id %>" value="User">Follow</button>
+    </li>
+  <% }) %>
+  </ul>
+</div>

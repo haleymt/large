@@ -4,6 +4,10 @@ window.Large = {
   Views: {},
   Routers: {},
   initialize: function() {
+    // this.NAV_VIEW = new Large.Views.NavShow({
+    //   el: $('nav')
+    // });
+
     console.log("backbone running");
     Large.Collections.users = new Large.Collections.Users();
     Large.Collections.publications = new Large.Collections.Publications();
@@ -16,7 +20,3 @@ window.Large = {
     Backbone.history.start();
   }
 };
-
-$(document).ready(function(){
-  Large.initialize();
-});

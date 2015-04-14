@@ -22,7 +22,12 @@
  @import "font-awesome";
 
 a {
-  color: #57ad68;
+  color: rgba(87, 173, 104, 1);
+}
+
+a:hover {
+  color: rgba(57, 109, 77, 1);
+  text-decoration: none !important;
 }
 
 .navbar-default {
@@ -32,6 +37,10 @@ a {
   border-top: none;
   border-right: none;
   height: 70px;
+}
+
+.navbar-right {
+  margin-right: 40px;
 }
 
 .btn-circle {
@@ -63,6 +72,13 @@ a {
 }
 
 .btn-primary:hover {
+  background: white;
+  color: rgba(128, 128, 128, 1);
+  border: 1px solid rgba(128, 128, 128, 1);
+}
+
+.btn-primary:focus {
+  outline: none !important;
   background: white;
   color: rgba(128, 128, 128, 1);
   border: 1px solid rgba(128, 128, 128, 1);
@@ -143,6 +159,17 @@ a {
 .btn-default:hover {
   background: white;
   color: rgba(128, 128, 128, 1);
+}
+
+.btn-default:focus {
+  outline: none !important;
+}
+
+.header-setter button {
+  background: white;
+  border-radius: 24px;
+  border: 1px solid rgba(128, 128, 128, 0.5);
+  color: rgba(128, 128, 128, 0.5);
 }
 
 .new-story {
@@ -269,4 +296,17 @@ ul {
 
 .header-img img {
   height: 300px;
+}
+
+// publication about page
+
+.about {
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+}
+
+.about .follow {
+  position: relative;
+  float: right;
 }

@@ -20,13 +20,33 @@ Large.Views.PubAbout = Backbone.View.extend({
       writers: this.writers,
       editors: this.editors
     });
-
     this.$el.html(content);
+
+    $('.follow').each(function (i, obj) {
+      var $id = parseInt($(obj).attr('id'));
+      var $type = $(obj).val();
+      var follow = this.currentUserFollows.findWhere({
+                        followable_id: $id,
+                        followable_type: $type });
+      if (!!follow) {
+        $(obj).data('follow-state', 'followed');
+      } else {
+        $(obj).data('follow-state', 'unfollowed');
+      }
+    }.bind(this));
+
+    $('.follow').each(function (i, obj) {
+      if ($(obj).data('follow-state') == "followed") {
+        $(obj).html("Unfollow!");
+      } else {
+        $(obj).html("Follow!");
+      }
+    });
     return this;
   },
 
   toggleFollow: function (event) {
-    var $id = $(event.currentTarget).attr('id');
+    var $id = parseInt($(event.currentTarget).attr('id'));
     var $type = $(event.currentTarget).val();
     var follow = this.currentUserFollows.findWhere({
                       followable_id: $id,
@@ -36,13 +56,15 @@ Large.Views.PubAbout = Backbone.View.extend({
       follow = new Large.Models.Follow( { followable_id: $id, followable_type: $type });
       follow.save(follow.attributes, {
         success: function () {
-          console.log("success")
+          $(event.currentTarget).data('follow-state', 'followed');
+          $(event.currentTarget).html("Unfollow!");
         }
       });
     } else {
       follow.destroy({
         success: function (model, response) {
-          console.log("successful destroy")
+          $(event.currentTarget).data('follow-state', 'unfollowed');
+          $(event.currentTarget).html("Follow!");
         }
       });
     }
