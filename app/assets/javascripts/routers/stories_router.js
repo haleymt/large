@@ -31,16 +31,40 @@ Large.Routers.StoriesRouter = Backbone.Router.extend({
       data: { current_user: true }
     });
     this.collection.fetch({
-      data: { current_user: false}
+      data: { current_user: false }
     });
 
-    var storyNew = new Large.Views.NewStory({ collection: this.collection, model: story, publications: Large.Collections.publications });
+    var storyNew = new Large.Views.NewStory({
+      collection: this.collection,
+      model: story,
+      publications: Large.Collections.publications
+    });
     this._swapView(storyNew);
+  },
+
+  newStoryPreview: function () {
+    var story = new Large.Models.Story();
+    this.collection.fetch({
+      data: { current_user: false }
+    });
+    Large.Collections.publications.fetch({
+      data: { current_user: true }
+    });
+
+    var newPreview = new Large.Views.NewStoryPreview({
+      publications: Large.Collections.publications,
+      collection: this.collection,
+      model: story
+    });
+    this._swapView(newPreview);
   },
 
   storyShow: function (id) {
     var story = this.collection.getOrFetch(id);
-    showStory = new Large.Views.StoryShow({ story: story, stories: this.collection });
+    showStory = new Large.Views.StoryShow({
+      story: story,
+      stories: this.collection
+    });
     this._swapView(showStory);
   },
 

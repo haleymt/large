@@ -25,9 +25,12 @@ Large.Views.HomeShow = Backbone.View.extend({
     Large.Collections.publications.fetch({
       data: { current_user: true }
     });
-    var newStoryView = new Large.Views.NewStory({ collection: this.stories, model: newStory, publications: Large.Collections.publications });
+    var newStoryView = new Large.Views.NewStoryPreview({ collection: this.stories, model: newStory, publications: Large.Collections.publications });
     this.$('.post-click').prepend(newStoryView.render().$el);
-
+    var editor = new MediumEditor('.editable', {
+      placeholder: "",
+      buttons: ['bold', 'italic', 'quote', 'anchor']
+    });
     return this;
   },
 

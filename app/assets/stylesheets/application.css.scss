@@ -120,6 +120,31 @@ a {
   display: none;
 }
 
+.btn-default {
+  border: none;
+  margin-top: 10px;
+  color: rgba(128, 128, 128, 0.5);
+}
+
+.publish {
+  color: rgba(87, 173, 104, 0.7);
+  border: 1px solid rgba(87, 173, 104, 0.7);
+}
+
+.publish:hover {
+  color: rgba(87, 173, 104, 1);
+  border: 1px solid rgba(87, 173, 104, 1);
+}
+
+.expand {
+  border: 1px solid rgba(128, 128, 128, 0.5);
+}
+
+.btn-default:hover {
+  background: white;
+  color: rgba(128, 128, 128, 1);
+}
+
 .new-story {
   margin-left: auto;
   margin-right: auto;
