@@ -1,11 +1,63 @@
 <div class="user-show-header">
   <h1><%= user.escape('email') %></h1>
   <h3><%= user.escape('description') %></h3>
-  <button class="info">FOLLOWING<br><p class=num><%= followings %></p></button>
-  <button class="info">FOLLOWERS<br><p class=num><%= followers %></p></button>
+  <button class="info" id="following" data-toggle="modal" data-target="#followingModal">FOLLOWING<br><p class=num><%= followings.length %></p></button>
+  <button class="info" id="followers" data-toggle="modal" data-target="#followersModal">FOLLOWERS<br><p class=num><%= followers.length %></p></button>
   <br>
   <button class="follow btn btn-primary">Follow</button>
 </div>
 <br>
 <ul class="user-stories">
 </ul>
+
+<div id="followingModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="followingLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h2 class="modal-title" id="followingLabel"><%= user.escape('email') %> is following</h2>
+        <% if (followings.length > 0) { %>
+        <ul>
+          <% followings.forEach( function (user) { %>
+            <li><div class="user-info"><a href="#/users/<%= user.id %>">
+              <strong><%= user.escape('email') %></strong></a><br>
+                <%= user.escape('description') %></div>
+                <button class="follow btn btn-primary btn-sm" id="<%= user.id %>" value="User">Follow</button>
+            </li>
+          <% }) %>
+          </ul>
+        <% } else { %>
+        <ul>
+          <li>Nothing to show.</li>
+        </ul>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="followersModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="followersLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h2 class="modal-title" id="followersLabel"><%= user.escape('email') %> is followed by</h2>
+        <% if (followers.length > 0) { %>
+        <ul>
+          <% followers.forEach( function (user) { %>
+            <li><div class="user-info"><a href="#/users/<%= user.id %>">
+              <strong><%= user.escape('email') %></strong></a><br>
+                <%= user.escape('description') %></div>
+                <button class="follow btn btn-primary btn-sm" id="<%= user.id %>" value="User">Follow</button>
+            </li>
+          <% }) %>
+          </ul>
+        <% } else { %>
+        <ul>
+          <li>Nothing to show.</li>
+        </ul>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>

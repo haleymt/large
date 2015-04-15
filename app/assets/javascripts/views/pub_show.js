@@ -19,7 +19,7 @@ Large.Views.PubShow = Backbone.View.extend({
   },
 
   render: function () {
-    var content = this.template({ pub: this.pub, followers: this.numFollows.length });
+    var content = this.template({ pub: this.pub, followers: this.numFollows });
     this.$el.html(content);
 
     var follow = this.currentUserFollows.findWhere({

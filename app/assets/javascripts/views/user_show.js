@@ -21,7 +21,7 @@ Large.Views.UserShow = Backbone.View.extend({
   },
 
   render: function () {
-    var content = this.template({ user: this.user, followers: this.follows.length, followings: this.followings.length });
+    var content = this.template({ user: this.user, followers: this.follows, followings: this.followings });
     this.$el.html(content);
 
     var follow = this.currentUserFollows.findWhere({
