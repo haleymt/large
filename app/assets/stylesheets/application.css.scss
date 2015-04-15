@@ -150,6 +150,28 @@ a:hover {
   margin-top: 10px;
 }
 
+h1 > #title:empty:before {
+  content:"Title";
+  color: rgba(0, 0, 0, 0.3);
+}
+
+h3 > #subtitle:empty:before {
+  content:"Tell your story...";
+  color: rgba(0, 0, 0, 0.3);
+}
+
+// div[contenteditable="true"]:focus > div > p:hover {
+//    border: 2px solid red !important;
+// }
+//
+// div[contenteditable="true"]:focus > h1 > p:hover {
+//    border: 2px solid red !important;
+// }
+//
+// div[contenteditable="true"]:focus > h3 > p:hover {
+//    border: 2px solid red !important;
+// }
+
 .new {
   padding: 30px;
   margin-left: 10px;
@@ -202,9 +224,33 @@ a:hover {
 }
 
 .new-story {
+  padding-top: 50px;
   margin-left: auto;
   margin-right: auto;
   width: 70%;
+}
+
+.new-story > .editable {
+  margin: 0;
+}
+
+.header-setter {
+  float: left;
+  padding-top: 70px;
+  margin-left: 30px;
+}
+
+#header-image {
+  display: none;
+  margin-top: 5px;
+}
+
+#header-imager {
+  width: 100%;
+}
+
+.header-setter:hover #header-image {
+  display: block;
 }
 
 // new publication
@@ -250,11 +296,6 @@ a:hover {
 }
 //
 
-.header-setter {
-  float: left;
-  padding: 10px;
-}
-
 .style {
   background: white;
   border: none;
@@ -267,19 +308,6 @@ a:hover {
 
 .style:focus {
   color: rgba(87, 173, 104, 0.7);
-}
-
-#header-image {
-  display: none;
-  margin-top: 5px;
-}
-
-#header-imager {
-  width: 100%;
-}
-
-.header-setter:hover #header-image {
-  display: block;
 }
 
 .story-form input {
