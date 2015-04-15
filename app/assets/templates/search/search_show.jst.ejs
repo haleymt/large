@@ -20,42 +20,44 @@
       </ul>
     </div>
 
-    <div class="pubs-results">
-      <p class="section-label">PUBLICATIONS</p>
-      <% if (publications !== null) { %>
-      <ul>
-      <% publications.forEach( function (pub) { %>
-        <li><a href="#/publications/<%= pub.id %>">
-          <strong><%= pub.escape('title') %></strong></a><br>
-            <%= pub.escape('description') %>
-            <button class="follow btn btn-primary btn-sm" id="<%= pub.id %>" value="Publication">Follow</button>
-        </li>
-      <% }) %>
-      </ul>
-      <% } else { %>
+    <div class="up-pane">
+      <div class="pubs-results">
+        <p class="section-label">PUBLICATIONS</p>
+        <% if (publications !== null) { %>
         <ul>
-          <li>Nothing to show.</li>
-        </ul>
-      <% } %>
-    </div>
-
-    <div class="users-results">
-    <p class="section-label">USERS</p>
-      <% if (users !== null) { %>
-      <ul>
-        <% users.forEach( function (user) { %>
-          <li><div class="user-info"><a href="#/users/<%= user.id %>">
-            <strong><%= user.escape('email') %></strong></a><br>
-              <%= user.escape('description') %></div>
-              <button class="follow btn btn-primary btn-sm" id="<%= user.id %>" value="User">Follow</button>
+        <% publications.forEach( function (pub) { %>
+          <li><a href="#/publications/<%= pub.id %>">
+            <strong><%= pub.escape('title') %></strong></a><br>
+              <%= pub.escape('description') %>
+              <button class="follow btn btn-primary btn-sm" id="<%= pub.id %>" value="Publication">Follow</button>
           </li>
         <% }) %>
         </ul>
-      <% } else { %>
-      <ul>
-        <li>Nothing to show.</li>
-      </ul>
-      <% } %>
+        <% } else { %>
+          <ul>
+            <li>Nothing to show.</li>
+          </ul>
+        <% } %>
+      </div>
+
+      <div class="users-results">
+      <p class="section-label">USERS</p>
+        <% if (users !== null) { %>
+        <ul>
+          <% users.forEach( function (user) { %>
+            <li><div class="user-info"><a href="#/users/<%= user.id %>">
+              <strong><%= user.escape('email') %></strong></a><br>
+                <%= user.escape('description') %></div>
+                <button class="follow btn btn-primary btn-sm" id="<%= user.id %>" value="User">Follow</button>
+            </li>
+          <% }) %>
+          </ul>
+        <% } else { %>
+        <ul>
+          <li>Nothing to show.</li>
+        </ul>
+        <% } %>
+      </div>
     </div>
   </div>
   <!-- end section all -->

@@ -164,6 +164,10 @@ h3 > #subtitle:empty:before {
 //    border: 2px solid red !important;
 // }
 //
+// div[contenteditable="true"]:focus > p:hover {
+//    border: 2px solid red !important;
+// }
+//
 // div[contenteditable="true"]:focus > h1 > p:hover {
 //    border: 2px solid red !important;
 // }
@@ -452,6 +456,7 @@ ul {
 // search show
 
 .nav-tabs {
+  position: relative;
   border: none !important;
   width: 200px;
   margin-left: 20px;
@@ -491,15 +496,56 @@ ul {
 }
 
 .tab-content {
-  float: right;
-  width: 500px;
-  margin-left: 0;
-  margin-right: 400px;
+  float: left;
+  margin-left: 40px;
 }
 
-.tab-content .follow {
+.pubs-results li,
+.users-results li {
+  padding: 10px;
+}
+
+#sectionA {
   position: relative;
+}
+
+#sectionA .stories-results {
+  float: left;
+  width: 500px;
+  margin-right: 40px;
+}
+
+#sectionA .stories-results img {
+  float: right;
+}
+
+#sectionA .pubs-results {
+  margin-bottom: 40px;
+}
+
+#sectionA .up-pane {
+  float: right;
+}
+
+#sectionA .follow {
+  float: right;
   margin: 0;
+}
+
+#sectionB,
+#sectionC {
+  width: 400px;
+}
+
+#sectionB li,
+#sectionC li {
+  position: relative;
+}
+
+#sectionB .follow,
+#sectionC .follow {
+  float: right;
+  margin-top: -15px;
 }
 
 .search-preview {
