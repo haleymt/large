@@ -1,6 +1,13 @@
 Large.Models.Publication = Backbone.Model.extend({
   urlRoot: 'api/publications',
 
+  followers: function () {
+    if (this._followers === undefined) {
+      this._followers = new Large.Collections.Users([])
+    }
+    return this._followers;
+  },
+
   follows: function () {
     if (this._follows === undefined) {
       this._follows = new Large.Collections.Follows([],
@@ -80,6 +87,11 @@ Large.Models.Publication = Backbone.Model.extend({
     if (payload.editors) {
       this.editors().set(payload.editors, { parse: true });
       delete payload.editors
+    }
+
+    if (payload.followers) {
+      this.followers().set(payload.followers, { parse: true });
+      delete payload.followers;
     }
 
     return payload;

@@ -11,7 +11,7 @@ module Api
     end
 
     def show
-      @pub = Publication.includes(:stories).find(params[:id])
+      @pub = Publication.includes(:stories, :followers).find(params[:id])
       render :show, include: :toggle_follow
     end
 

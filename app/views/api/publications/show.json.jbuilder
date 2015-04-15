@@ -35,3 +35,9 @@ json.pub_writes do
     json.partial! 'api/pub_writes/pubwrite', pubwrite: pub_write
   end
 end
+
+json.followers do
+  json.array!(@pub.followers) do |follower|
+    json.partial! 'api/users/user', user: follower
+  end
+end

@@ -12,11 +12,17 @@ json.publications do
   end
 end
 
-# json.followers do
-#   json.array!(@user.followers) do |follower|
-#     json.partial! 'api/users/user', user: user
-#   end
-# end
+json.followers do
+  json.array!(@user.followers) do |follower|
+    json.partial! 'api/users/user', user: follower
+  end
+end
+
+json.followed_users do
+  json.array!(@user.followed_users) do |user|
+    json.partial! 'api/users/user', user: user
+  end
+end
 
 json.follows do
   json.array!(@user.follows) do |follow|

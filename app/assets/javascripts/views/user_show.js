@@ -11,8 +11,8 @@ Large.Views.UserShow = Backbone.View.extend({
     this.publications = options.publications;
     this.currentUserFollows = options.follows;
 
-    this.follows = this.user.follows();
-    this.followings = this.user.followings();
+    this.follows = this.user.followers();
+    this.followings = this.user.followedUsers();
 
     this.listenTo(this.currentUserFollows, 'sync add remove', this.render);
     this.listenTo(this.user, 'sync', this.render);

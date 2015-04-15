@@ -11,7 +11,7 @@ Large.Views.PubShow = Backbone.View.extend({
     this.publications = options.publications
     this.currentUserFollows = options.follows;
 
-    this.numFollows = this.pub.follows();
+    this.numFollows = this.pub.followers();
     this.listenTo(this.currentUserFollows, 'sync', this.render);
     this.listenTo(this.pub, 'sync', this.render);
     this.listenTo(this.stories, 'add', this.render);
