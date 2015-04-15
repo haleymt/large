@@ -2,7 +2,8 @@ Large.Views.NewStoryPreview = Backbone.View.extend({
   template: JST['stories/new_story_preview'],
 
   events: {
-    "click .expand": "expand"
+    "click .expand": "expand",
+    "click .publish": "createStory"
   },
 
   initialize: function (options) {
@@ -14,6 +15,21 @@ Large.Views.NewStoryPreview = Backbone.View.extend({
   render: function () {
     this.$el.html(this.template({ story: this.model, publications: this.publications }));
     return this;
+  },
+
+  createStory: function (event) {
+    event.preventDefault();
+
+    this.model.set("title", this.$('#title').text());
+    this.model.set("subtitle", this.$('#subtitle').text());
+    this.model.set("body", this.$('#story-body').text());
+
+    this.model.save(this.model.attributes, {
+      success: function () {
+        this.collection.add(this.model, { merge: true });
+        Backbone.history.navigate("stories/" + this.model.id, { trigger: true })
+      }.bind(this)
+    });
   },
 
   expand: function () {

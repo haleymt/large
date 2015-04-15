@@ -44,9 +44,6 @@ class Publication < ActiveRecord::Base
     primary_key: :id
   )
 
-  # has_and_belongs_to_many :writers, join_table: :publication_writes
-  # has_and_belong_to_many :editors, join_table: :publication_edits
-
   has_many :writers, through: :pub_writes, source: :writer
   has_many :editors, through: :pub_edits, source: :editor
 end

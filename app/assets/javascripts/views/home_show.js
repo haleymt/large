@@ -1,4 +1,4 @@
-Large.Views.HomeShow = Backbone.View.extend({
+Large.Views.HomeShow = Backbone.CompositeView.extend({
   template: JST['feeds/feed_show'],
 
   events: {
@@ -9,23 +9,45 @@ Large.Views.HomeShow = Backbone.View.extend({
   initialize: function (options) {
     this.stories = options.stories;
     this.publications = options.publications;
-    this.listenTo(this.stories, 'sync add', this.render);
+    this.listenTo(this.stories, 'sync', this.render);
+
+    this.stories.each(this.addStoryView.bind(this));
+    this.listenTo(this.stories, 'add', this.addStoryView);
+    this.listenTo(this.stories, 'remove', this.removeStoryView);
+  },
+
+  addStoryView: function (story) {
+    var storyPreview = new Large.Views.StoryPreview({
+      model: story, publications: this.publications
+    });
+    this.addSubview('ul', storyPreview);
+  },
+
+  removeStoryView: function (story) {
+    var subviews = this.subviews('ul');
+    var i = _(subviews).findIndex(function (el) {
+      return el.model === story;
+    });
+    if (i === -1) { return };
+
+    subviews[i].remove();
+    subviews.splice(i, 1);
   },
 
   render: function () {
     this.$el.html(this.template());
-
-    this.stories.models.forEach( function(story) {
-      var storyPreview = new Large.Views.StoryPreview({ model: story, publications: this.publications });
-      this.$('ul').prepend(storyPreview.render().$el);
-    }.bind(this));
+    this.attachSubviews();
     this.$("abbr.timeago").timeago();
 
     var newStory = new Large.Models.Story();
     Large.Collections.publications.fetch({
       data: { current_user: true }
     });
-    var newStoryView = new Large.Views.NewStoryPreview({ collection: this.stories, model: newStory, publications: Large.Collections.publications });
+    var newStoryView = new Large.Views.NewStoryPreview({
+      collection: this.stories,
+      model: newStory,
+      publications: Large.Collections.publications
+    });
     this.$('.post-click').prepend(newStoryView.render().$el);
     var editor = new MediumEditor('.editable', {
       placeholder: "",

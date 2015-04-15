@@ -5,7 +5,7 @@
 #  id           :integer          not null, primary key
 #  author_id    :integer          not null
 #  pub_id       :string
-#  title        :string           not null
+#  title        :string
 #  subtitle     :string
 #  body         :text
 #  story_id     :integer
@@ -16,7 +16,7 @@
 
 class Story < ActiveRecord::Base
   include Taggable
-  validates :author_id, :title, presence: true
+  validates :author_id, presence: true
 
   belongs_to(
     :author,
