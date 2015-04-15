@@ -6,7 +6,10 @@
 <% } %>
 <div class="story-show-header">
   <% if (story.get('header_image') !== null) { %>
-  <div class="image"><img src="<%= story.escape('header_image') %>"></div>
+  <div class="bg">
+    <div class="image bg-normal"><img src="<%= story.escape('header_image') %>"></div>
+    <!-- <div class="image bg-blur"><img src="<%= story.escape('header_image') %>"></div> -->
+  </div>
   <% } %>
   <h1><%= story.escape('title') %></h1>
   <h2><%= story.escape('subtitle') %></h2>

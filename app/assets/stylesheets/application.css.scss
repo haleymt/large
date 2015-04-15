@@ -305,6 +305,8 @@ ul {
   text-align: center;
 }
 
+// story show image formatting:
+
 .story-show-header {
   text-align: center;
 }
@@ -313,26 +315,28 @@ ul {
   text-align: center;
 }
 
-// .story-show-header img {
-//   height: 300px;
-// }
-
 .image {
-    height: auto;
-    width: 100%;
-    overflow: hidden;
+  height: auto;
+  width: 100%;
+  overflow: hidden;
 }
 
 .image img {
-    height: auto;
-    width: 100%;
-    margin-bottom: -11%;
-    margin-top: -8%;
+  height: auto;
+  width: 100%;
+  margin-bottom: -11%;
+  margin-top: -8%;
 }
 
 .header-img img {
   height: 300px;
 }
+
+.disable-pointer-events {
+	pointer-events:none!important;
+}
+
+//
 
 // publication about page
 

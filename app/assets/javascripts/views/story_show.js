@@ -3,7 +3,8 @@ Large.Views.StoryShow = Backbone.View.extend({
 
   events: {
     "click .pre-click": "showNewStory",
-    "click #close-new": "hideNewStory"
+    "click #close-new": "hideNewStory",
+    "scroll": "handleScroll"
   },
 
   initialize: function (options) {
@@ -31,6 +32,40 @@ Large.Views.StoryShow = Backbone.View.extend({
     });
     return this;
   },
+
+  // addPointerEvents: function (){
+  //   var scrollFlag = false;
+  //   this.$el.removeClass("disable-pointer-events");
+  // },
+  //
+  // debouncePointerEvents: function (){
+  //   TweenMax.killDelayedCallsTo(this.addPointerEvents);
+  //   TweenMax.delayedCall(scrollThreshold, this.addPointerEvents);
+  // },
+
+  // handleScroll: function () {
+  //   $bgBlur = $(".bg-blur");
+  //
+  //   var bgBlurHeight = $bgBlur.height();
+  //   var scrollFlag = false;
+  //   var scrollThreshold  = 0.25; //used to debounce pointer events
+  //   var blurWhenReach = 3;
+  //
+  //   var scrollTop = $(window).scrollTop();
+  //
+	//   if(!scrollFlag){
+	// 	  scrollFlag = true;
+	//     this.$el.addClass("disable-pointer-events");
+	//   }
+  //
+	//   // this.debouncePointerEvents();
+  //
+	//   if(scrollTop < bgBlurHeight){
+	//     var _alpha = (scrollTop / bgBlurHeight) * blurWhenReach;
+	//     if(_alpha > 1){ _alpha = 1 }
+	// 	  TweenMax.set($bgBlur, {alpha: _alpha });
+	//   }
+  // },
 
   showNewStory: function () {
     this.$('.post-click').css('display', 'block');

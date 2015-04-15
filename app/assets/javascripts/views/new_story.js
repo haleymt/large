@@ -42,6 +42,7 @@ Large.Views.NewStory = Backbone.View.extend({
         var image = Blob.url;
         console.log(image);
         this.model.set("header_image", image);
+        this.$('.image').html("<img src='" + image + "'>");
       }.bind(this)
     )
   },
