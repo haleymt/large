@@ -50,9 +50,9 @@ Large.Views.NewStory = Backbone.View.extend({
   autoSave: function (event) {
     event.preventDefault();
 
-    this.model.set("title", this.$('#title').text());
-    this.model.set("subtitle", this.$('#subtitle').text());
-    this.model.set("body", this.$('#story-body').text());
+    // this.model.set("title", this.$('#title').html());
+    // this.model.set("subtitle", this.$('#subtitle').html());
+    this.model.set("body", this.$('.editable').html());
 
     this.model.save(this.model.attributes, {
       success: function () {

@@ -21,6 +21,9 @@
  @import "font-awesome-sprockets";
  @import "font-awesome";
 
+
+// links, buttons, navbar
+
 a {
   color: rgba(87, 173, 104, 1);
 }
@@ -107,10 +110,27 @@ a:hover {
   height: 35px;
 }
 
+.btn-default {
+  border: none;
+  margin-top: 10px;
+  color: rgba(128, 128, 128, 0.5);
+}
+
+.btn-default:hover {
+  background: white;
+  color: rgba(128, 128, 128, 1);
+}
+
+.btn-default:focus {
+  outline: none !important;
+}
+
 // [data-follow-state="followed"] {
 //   color: white;
 //   background: rgba(87, 173, 104, 0.7);
 // }
+
+/// search
 
 #search input {
   font-size: 50px;
@@ -119,6 +139,15 @@ a:hover {
 
 #search {
   padding: 20px;
+}
+
+// new story on home feed
+
+.editable {
+  font-size: 24px;
+  font-family: serif;
+  margin-left: 30px;
+  margin-top: 10px;
 }
 
 .new {
@@ -146,12 +175,6 @@ a:hover {
   display: none;
 }
 
-.btn-default {
-  border: none;
-  margin-top: 10px;
-  color: rgba(128, 128, 128, 0.5);
-}
-
 .publish {
   color: rgba(87, 173, 104, 0.7);
   border: 1px solid rgba(87, 173, 104, 0.7);
@@ -169,15 +192,6 @@ a:hover {
   padding-right: 5px;
   padding-left: 5px;
   border: 1px solid rgba(128, 128, 128, 0.5);
-}
-
-.btn-default:hover {
-  background: white;
-  color: rgba(128, 128, 128, 1);
-}
-
-.btn-default:focus {
-  outline: none !important;
 }
 
 .header-setter button {
@@ -329,11 +343,13 @@ ul {
 // story show image formatting:
 
 .story-show-header {
-  text-align: center;
+  font-family: serif;
 }
 
 .story-body {
-  text-align: center;
+  padding: 100px;
+  font-family: serif;
+  font-size: 24px;
 }
 
 .image {

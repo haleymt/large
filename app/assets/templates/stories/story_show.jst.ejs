@@ -11,11 +11,11 @@
     <!-- <div class="image bg-blur"><img src="<%= story.escape('header_image') %>"></div> -->
   </div>
   <% } %>
-  <h1><%= story.escape('title') %></h1>
-  <h2><%= story.escape('subtitle') %></h2>
+  <!-- <%= story.get('title') %>
+  <%= story.get('subtitle') %> -->
 </div>
 
-<div class="story-body"><%= story.escape('body') %></div>
+<div class="story-body"><%= story.get('body') %></div>
 <br>
 <div class="new">
   <p>Responses</p>
