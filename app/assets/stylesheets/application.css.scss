@@ -494,3 +494,23 @@ li.pr {
 #followersModal .modal-title {
   padding-top: 30px;
 }
+
+#followingModal li,
+#followersModal li {
+  padding-top: 10px;
+  padding-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%
+}
+
+#followingModal .user-info,
+#followersModal .user-info {
+  float: left;
+}
+
+#followingModal .follow,
+#followersModal .follow {
+  float: right;
+  margin: 0;
+}
