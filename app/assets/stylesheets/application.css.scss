@@ -196,6 +196,7 @@ a:hover {
 // new publication
 
 .new-pub {
+  margin-top: 30px;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
@@ -217,6 +218,21 @@ a:hover {
 #pub-icon {
   margin: 0;
   padding-top: 10px;
+}
+
+.new-pub > .pub-header-setter {
+  height: auto;
+  width: 100%;
+  padding: 10px;
+}
+
+.pub-header-setter button,
+.pub-header-setter input {
+  background-color: transparent;
+}
+
+.movable {
+  padding-top: 100px;
 }
 //
 

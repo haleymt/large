@@ -5,11 +5,13 @@
   <button id="pub-header-image" class="style"><i class="fa fa-image"></i></button>
   <br>
   <div class="pub-header-setter">
-    <button id="pub-icon" class="style"><i class="fa fa-camera fa-3x"></i></button>
-    <h1><input type="text" name="publication[title]" placeholder="Optional heading"></h1>
-    <h3><input type="text" name="publication[description]" placeholder="Optional description"></h3>
+    <div class="movable">
+      <button id="pub-icon" class="style"><i class="fa fa-camera fa-3x"></i></button>
+      <h1><input type="text" name="publication[title]" placeholder="Optional heading"></h1>
+      <h3><input type="text" name="publication[description]" placeholder="Optional description"></h3>
+    </div>
   </div>
-
+  <br>
   <select id="editors">
       <option value="">Add an Editor</option>
       <% users.forEach( function(user) { %>

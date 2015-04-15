@@ -30,6 +30,20 @@ Large.Views.NewPub = Backbone.View.extend({
   },
 
   addHeaderImage: function () {
+    $('[placeholder]').focus(function() {
+        var input = $(this);
+        if (input.val() == input.attr('placeholder')) {
+            input.val('');
+            input.removeClass('placeholder');
+        }
+    }).blur(function() {
+        var input = $(this);
+        if (input.val() == '' || input.val() == input.attr('placeholder')) {
+            input.addClass('placeholder');
+            input.val(input.attr('placeholder'));
+        }
+    }).blur();
+
     filepicker.setKey("AFA8IlPkxSNC1BPrgoHtsz");
 
     filepicker.pick(
@@ -41,6 +55,9 @@ Large.Views.NewPub = Backbone.View.extend({
         var image = Blob.url;
         console.log(image);
         this.model.set("header_image", image);
+        $('.placeholder').css('color', 'rgba(255, 255, 255, 0.8)');
+        $('.fa-camera').css('color', 'rgba(255, 255, 255, 0.8)');
+        this.$('.pub-header-setter').css('background-image', "url('" + image + "')");
       }.bind(this)
     )
   },
