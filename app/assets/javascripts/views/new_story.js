@@ -1,12 +1,15 @@
 Large.Views.NewStory = Backbone.View.extend({
   template: JST['stories/new_story'],
-
   header: JST['stories/_new_story_header'],
+  insertToolbar: JST['stories/_insert_toolbar'],
 
   events: {
     "click #header-image": "addImage",
     "click #submit-confirm": "submitForm",
-    "click #confirm": "autoSave"
+    "click #confirm": "autoSave",
+    "keyup .editable": "addButton",
+    "click .insert-pic": "insertPic",
+    "click .insert-line": "insertLine"
   },
 
   initialize: function (options) {
@@ -29,7 +32,23 @@ Large.Views.NewStory = Backbone.View.extend({
       buttons: ['bold', 'italic', 'header1', 'header2', 'header3', 'justifyCenter', 'quote', 'anchor']
     });
 
+    $('.editable p').before(this.insertToolbar())
+
     return this;
+  },
+
+  addButton: function (event) {
+    var tb = this.insertToolbar();
+    event.preventDefault();
+    if (event.keyCode === 13) {
+      $(event.target).children().each( function () {
+        $(this).children().each( function () {
+          if ($(this).is('p') && !$(this).prev().is('.insert-toolbar')) {
+            $(this).before(tb);
+          }
+        })
+      })
+    }
   },
 
   addImage: function () {
@@ -42,18 +61,39 @@ Large.Views.NewStory = Backbone.View.extend({
       },
       function (Blob) {
         var image = Blob.url;
-        console.log(image);
+        // console.log(image);
         this.model.set("header_image", image);
         this.$('.image').html("<img src='" + image + "'>");
       }.bind(this)
     )
   },
 
+  insertPic: function (event) {
+    var $para = $(event.currentTarget).parent().parent().next();
+    // $para.text("hi");
+    filepicker.setKey("AFA8IlPkxSNC1BPrgoHtsz");
+
+    filepicker.pick(
+      {
+        mimetypes:'image/*',
+        services:'COMPUTER'
+      },
+      function (Blob) {
+        var image = Blob.url;
+        console.log(image);
+        $para.html("<img style='max-width:400px' src='" + image + "'>");
+      }.bind(this)
+    )
+  },
+
+  insertLine: function (event) {
+
+  },
+
   autoSave: function (event) {
     event.preventDefault();
 
-    // this.model.set("title", this.$('#title').html());
-    // this.model.set("subtitle", this.$('#subtitle').html());
+    $('.insert-toolbar').remove();
     this.model.set("body", this.$('.editable').html());
 
     this.model.save(this.model.attributes, {

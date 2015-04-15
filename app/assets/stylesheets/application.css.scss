@@ -150,22 +150,40 @@ a:hover {
   margin-top: 10px;
 }
 
-h1 > #title:empty:before {
+.editable p {
+  padding-left: 50px;
+}
+
+.title > #title:empty:before {
   content:"Title";
   color: rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+  font-size: 40px;
 }
 
-h3 > #subtitle:empty:before {
+.subtitle > #subtitle:empty:before {
   content:"Tell your story...";
   color: rgba(0, 0, 0, 0.3);
+  font-style: italic;
 }
 
-// div[contenteditable="true"]:focus > div > p:hover {
-//    border: 2px solid red !important;
+.new-insert {
+  margin: 0;
+  float: left;
+  // display: none;
+}
+
+div[contenteditable="true"] > p {
+  margin: 0;
+  float: right;
+}
+
+// div[contenteditable="true"]:focus > div > p {
+//    background: red !important;
 // }
 //
 // div[contenteditable="true"]:focus > p:hover {
-//    border: 2px solid red !important;
+//    display: block;
 // }
 //
 // div[contenteditable="true"]:focus > h1 > p:hover {
@@ -235,6 +253,7 @@ h3 > #subtitle:empty:before {
 }
 
 .new-story > .editable {
+  position: relative;
   margin: 0;
 }
 
@@ -397,8 +416,17 @@ ul {
   margin-top: -8%;
 }
 
+.header-img {
+  height: auto;
+  width: 100%;
+  overflow: hidden;
+}
+
 .header-img img {
-  height: 300px;
+  height: auto;
+  width: 100%;
+  margin-bottom: -40%;
+  margin-top: -40%;
 }
 
 .disable-pointer-events {
@@ -410,6 +438,7 @@ ul {
 // publication about page
 
 .about {
+  padding-top: 50px;
   margin-left: auto;
   margin-right: auto;
   width: 60%;
@@ -435,6 +464,7 @@ ul {
   position: relative;
   float: right;
   margin: 0;
+
 }
 
 .about .pub-title {

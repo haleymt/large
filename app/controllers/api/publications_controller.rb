@@ -65,7 +65,7 @@ module Api
 
     private
       def pub_params
-        params.require(:publication).permit(:title, :owner_id, :description, :header_image)
+        params.require(:publication).permit(:title, :owner_id, :description, :header_image, :icon_image)
       end
     end
 

@@ -1,6 +1,8 @@
 Large.Views.PubShow = Backbone.View.extend({
   template: JST['publications/pub_show'],
 
+  about: JST['publications/pub_about_link'],
+
   events: {
     "click .follow": "toggleFollow"
   },
@@ -19,6 +21,12 @@ Large.Views.PubShow = Backbone.View.extend({
   },
 
   render: function () {
+    $('.navbar-header').find('.about-link').remove();
+    var headerContent = this.about({
+      pub: this.pub
+    });
+
+    $('.navbar-header').append(headerContent);
     var content = this.template({ pub: this.pub, followers: this.numFollows });
     this.$el.html(content);
 

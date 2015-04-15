@@ -9,6 +9,8 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  description     :string
+#  header_image    :text
+#  icon_image      :text
 #
 
 require 'test_helper'
