@@ -37,6 +37,7 @@ a:hover {
   border-top: none;
   border-right: none;
   height: 70px;
+  margin-bottom: 0;
 }
 
 .navbar-right {
@@ -312,8 +313,21 @@ ul {
   text-align: center;
 }
 
-.story-show-header img {
-  height: 300px;
+// .story-show-header img {
+//   height: 300px;
+// }
+
+.image {
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+}
+
+.image img {
+    height: auto;
+    width: 100%;
+    margin-bottom: -11%;
+    margin-top: -8%;
 }
 
 .header-img img {
