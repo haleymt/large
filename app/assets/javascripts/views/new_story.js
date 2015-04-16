@@ -9,7 +9,8 @@ Large.Views.NewStory = Backbone.View.extend({
     "click #confirm": "autoSave",
     "keyup .editable": "addButton",
     "click .insert-pic": "insertPic",
-    "click .insert-line": "insertLine"
+    "click .insert-line": "insertLine",
+    "click .editable": "showToolbar"
   },
 
   initialize: function (options) {
@@ -61,18 +62,32 @@ Large.Views.NewStory = Backbone.View.extend({
       },
       function (Blob) {
         var image = Blob.url;
-        // console.log(image);
         this.model.set("header_image", image);
         this.$('.image').html("<img src='" + image + "'>");
       }.bind(this)
     )
   },
 
+  showToolbar: function (event) {
+    p = window.getSelection().focusNode
+
+    $('p').each( function () {
+      if (this !== p) {
+        $(this).prev().css('opacity', 0);
+        $(this).prev().css('z-index', -1000);
+        $(this).css('opacity', 1);
+      } else {
+        $(this).prev().css('opacity', 1);
+        $(this).prev().css('z-index', 1000);
+        $(this).css('opacity', 0);
+      }
+    })
+  },
+
   insertPic: function (event) {
     var $para = $(event.currentTarget).parent().parent().next();
-    // $para.text("hi");
-    filepicker.setKey("AFA8IlPkxSNC1BPrgoHtsz");
 
+    filepicker.setKey("AFA8IlPkxSNC1BPrgoHtsz");
     filepicker.pick(
       {
         mimetypes:'image/*',

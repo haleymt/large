@@ -144,6 +144,7 @@ a:hover {
 // new story on home feed
 
 .editable {
+  position: relative;
   font-size: 24px;
   font-family: serif;
   margin-left: 30px;
@@ -151,7 +152,18 @@ a:hover {
 }
 
 .editable p {
+  position: absolute;
   padding-left: 50px;
+}
+
+#title {
+  top: -8px;
+  width: 100%;
+}
+
+#subtitle {
+  margin-top: -40px;
+  width: 100%;
 }
 
 .title > #title:empty:before {
@@ -174,13 +186,36 @@ a:hover {
 }
 
 div[contenteditable="true"] > p {
-  margin: 0;
+  // margin: 0;
+  top: 0;
+  left: 0;
   float: right;
 }
 
-// div[contenteditable="true"]:focus > div > p {
+div[contenteditable="true"] > p {
+  // margin: 0;
+  top: 0;
+  left: 0;
+  float: right;
+}
+
+#story-body > p {
+  width: 100%;
+  margin-top: -40px;
+}
+
+.insert-toolbar {
+  opacity: 0;
+}
+
+// div[contenteditable="true"]:focus > div > p:hover + .insert-toolbar {
+//    opacity: 1;
+// }
+//
+// div[contenteditable="true"]:focus > div > p:hover {
 //    background: red !important;
 // }
+
 //
 // div[contenteditable="true"]:focus > p:hover {
 //    display: block;
