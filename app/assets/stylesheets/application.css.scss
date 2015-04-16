@@ -151,9 +151,11 @@ a:hover {
   margin-top: 10px;
 }
 
-.editable p {
+.editable p,
+.editable h1,
+.editable h3 {
   position: absolute;
-  padding-left: 50px;
+  // padding-left: 50px;
 }
 
 #title {
@@ -166,17 +168,33 @@ a:hover {
   width: 100%;
 }
 
+.title,
+.subtitle {
+  padding-bottom: 10px;
+}
+
 .title > #title:empty:before {
   content:"Title";
   color: rgba(0, 0, 0, 0.3);
   font-weight: bold;
-  font-size: 40px;
+  font-size: 50px;
+}
+
+#title {
+  font-weight: bold;
+  font-size: 50px;
 }
 
 .subtitle > #subtitle:empty:before {
   content:"Tell your story...";
   color: rgba(0, 0, 0, 0.3);
   font-style: italic;
+  font-size: 35px;
+}
+
+#subtitle {
+  font-style: italic;
+  font-size: 35px;
 }
 
 .new-insert {
@@ -206,6 +224,7 @@ div[contenteditable="true"] > p {
 
 .insert-toolbar {
   opacity: 0;
+  margin-left: -50px;
 }
 
 .new {

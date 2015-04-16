@@ -1295,7 +1295,7 @@ var DefaultButton,
                 value: 'left'
             },
             useQueryState: true,
-            contentDefault: '<b>L</b>',
+            contentDefault: '<i class="fa fa-align-left"></i>',
             contentFA: '<i class="fa fa-align-left"></i>'
         },
         'justifyRight': {
@@ -3293,10 +3293,10 @@ function MediumEditor(elements, options) {
             standardizeSelectionStart: false,
             contentWindow: window,
             ownerDocument: document,
-            firstHeader: 'h3',
+            firstHeader: 'h1',
             forcePlainText: true,
             placeholder: 'Type your text',
-            secondHeader: 'h4',
+            secondHeader: 'h3',
             targetBlank: false,
             anchorTarget: false,
             anchorButton: false,
