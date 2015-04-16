@@ -18,9 +18,12 @@ Large.Views.NewPub = Backbone.View.extend({
   render: function () {
     // debugger
     this.$el.html(this.template({ publication: this.model, users: this.users }));
-
-    // $('#editors').selectivity({multiple: true});
-    // $('#writers').selectivity({multiple: true});
+    $('#editors').selectivity({
+      multiple: true
+    });
+    $('#writers').selectivity({
+      multiple: true
+    });
     return this;
   },
 
@@ -77,16 +80,38 @@ Large.Views.NewPub = Backbone.View.extend({
     this.model.save(formData.publication, {
       success: function () {
         this.collection.add(this.model, { merge: true });
-        if ( $('#editors').val() > 0 ) {
-          var editorId = $('#editors').val();
-          var pubEdit = new Large.Models.PubEdit({ pub_id: this.model.id, editor_id: editorId });
-          pubEdit.save(pubEdit.attributes);
+        //iterate through writers and editors and create new pubedits/writes
+        var editors = $('#editors').find('.selectivity-multiple-selected-item');
+        
+        if (editors.first().text() !== "" ) {
+          users = this.users;
+          pub = this.model
+          var ids = [];
+          editors.each(function () {
+            user = users.findWhere({ email: $(this).text() })
+            ids.push(user.id);
+          })
+          ids.forEach( function (i) {
+            var pubEdit = new Large.Models.PubEdit({ pub_id: pub.id, editor_id: i });
+            pubEdit.save(pubEdit.attributes);
+          })
         }
-        if ( $('#writers').val() > 0 ) {
-          var writerId = $('#writers').val();
-          var pubWrite = new Large.Models.PubWrite({ pub_id: this.model.id, writer_id: writerId });
-          pubWrite.save(pubWrite.attributes);
+
+        var writers = $('#writers').find('.selectivity-multiple-selected-item');
+        if (writers.first().text() !== "" ) {
+          users = this.users;
+          pub = this.model
+          var ids = [];
+          writers.each(function () {
+            user = users.findWhere({ email: $(this).text() })
+            ids.push(user.id);
+          })
+          ids.forEach( function (i) {
+            var pubWrite = new Large.Models.PubWrite({ pub_id: pub.id, writer_id: i });
+            pubWrite.save(pubWrite.attributes);
+          })
         }
+
         Backbone.history.navigate("publications/" + this.model.id, { trigger: true })
       }.bind(this)
     })

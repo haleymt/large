@@ -63,7 +63,7 @@
 
 .selectivity-load-more.highlight,
 .selectivity-result-item.highlight {
-  background: #4484c7;
+  background: rgba(87, 173, 104, 0.8);
   color: #fff; }
 
 .selectivity-result-item:first-child {
@@ -134,8 +134,8 @@ input[type='text'].selectivity-multiple-input {
   white-space: pre; }
 
 .selectivity-multiple-selected-item {
-  background: #4484c7;
-  border-radius: 3px;
+  background: rgba(87, 87, 87, 0.7);
+  border-radius: 25px;
   color: #fff;
   cursor: default;
   float: left;
