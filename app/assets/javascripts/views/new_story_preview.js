@@ -1,9 +1,15 @@
 Large.Views.NewStoryPreview = Backbone.View.extend({
   template: JST['stories/new_story_preview'],
+  insertToolbar: JST['stories/_insert_toolbar'],
 
   events: {
     "click .expand": "expand",
-    "click .publish": "createStory"
+    "click .publish": "createStory",
+    "keyup .editable": "addButton",
+    "click .insert-pic": "insertPic",
+    "click .insert-line": "insertLine",
+    "click .editable": "showToolbar",
+    "click .new-insert": "showHiddenButtons"
   },
 
   initialize: function (options) {
@@ -14,7 +20,88 @@ Large.Views.NewStoryPreview = Backbone.View.extend({
 
   render: function () {
     this.$el.html(this.template({ story: this.model, publications: this.publications }));
+    $('.editable p').before(this.insertToolbar())
+
     return this;
+  },
+
+  addButton: function (event) {
+    var tb = this.insertToolbar();
+    event.preventDefault();
+    if (event.keyCode === 13) {
+      $(event.target).children().each( function () {
+        $(this).children().each( function () {
+          if (($(this).is('p') || $(this).is('h1') || $(this).is('h3')) && !$(this).prev().is('.insert-toolbar')) {
+            $(this).before(tb);
+          }
+        })
+      })
+    }
+  },
+
+  showToolbar: function (event) {
+    p = window.getSelection().focusNode
+    $('p').each( function () {
+      if (this !== p) {
+        $(this).prev().css('opacity', 0);
+        $(this).prev().css('z-index', -1000);
+        $(this).css('opacity', 1);
+      } else {
+        $(this).prev().first().css('opacity', 1);
+        $(this).prev().first().css('z-index', 1000);
+      }
+    })
+    $('h1').each( function () {
+      if (this !== p) {
+        $(this).prev().css('opacity', 0);
+        $(this).prev().css('z-index', -1000);
+        $(this).css('opacity', 1);
+      } else {
+        $(this).prev().first().css('opacity', 1);
+        $(this).prev().first().css('z-index', 1000);
+      }
+    })
+    $('h3').each( function () {
+      if (this !== p) {
+        $(this).prev().css('opacity', 0);
+        $(this).prev().css('z-index', -1000);
+        $(this).css('opacity', 1);
+      } else {
+        $(this).prev().first().css('opacity', 1);
+        $(this).prev().first().css('z-index', 1000);
+      }
+    })
+  },
+
+  showHiddenButtons: function (event) {
+    var buttons = $(event.currentTarget).parent().find('.hidden-buttons');
+    if ($(buttons).css('visibility') == 'visible') {
+      $(buttons).css('visibility', 'hidden')
+    } else {
+      $(buttons).css('visibility', 'visible')
+    }
+  },
+
+  insertPic: function (event) {
+    var $para = $(event.currentTarget).parent().parent().next();
+
+    filepicker.setKey("AFA8IlPkxSNC1BPrgoHtsz");
+    filepicker.pick(
+      {
+        mimetypes:'image/*',
+        services:'COMPUTER'
+      },
+      function (Blob) {
+        var image = Blob.url;
+        console.log(image);
+        $para.html("<img style='max-width:400px' src='" + image + "'>");
+      }.bind(this)
+    )
+  },
+
+  insertLine: function (event) {
+    var $para = $(event.currentTarget).parent().parent().next();
+    $para.html("<div style='width:100%'><hr noshade size=1 width='33%'><br></div>");
   },
 
   createStory: function (event) {
