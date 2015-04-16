@@ -10,7 +10,8 @@ Large.Views.NewStory = Backbone.View.extend({
     "keyup .editable": "addButton",
     "click .insert-pic": "insertPic",
     "click .insert-line": "insertLine",
-    "click .editable": "showToolbar"
+    "click .editable": "showToolbar",
+    "click .new-insert": "showHiddenButtons"
   },
 
   initialize: function (options) {
@@ -69,19 +70,27 @@ Large.Views.NewStory = Backbone.View.extend({
   },
 
   showToolbar: function (event) {
+    // debugger
     p = window.getSelection().focusNode
-
     $('p').each( function () {
       if (this !== p) {
         $(this).prev().css('opacity', 0);
         $(this).prev().css('z-index', -1000);
         $(this).css('opacity', 1);
       } else {
-        $(this).prev().css('opacity', 1);
-        $(this).prev().css('z-index', 1000);
-        $(this).css('opacity', 0);
+        $(this).prev().first().css('opacity', 1);
+        $(this).prev().first().css('z-index', 1000);
       }
     })
+  },
+
+  showHiddenButtons: function (event) {
+    var buttons = $(event.currentTarget).parent().find('.hidden-buttons');
+    if ($(buttons).css('visibility') == 'visible') {
+      $(buttons).css('visibility', 'hidden')
+    } else {
+      $(buttons).css('visibility', 'visible')
+    }
   },
 
   insertPic: function (event) {

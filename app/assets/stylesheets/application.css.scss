@@ -208,27 +208,6 @@ div[contenteditable="true"] > p {
   opacity: 0;
 }
 
-// div[contenteditable="true"]:focus > div > p:hover + .insert-toolbar {
-//    opacity: 1;
-// }
-//
-// div[contenteditable="true"]:focus > div > p:hover {
-//    background: red !important;
-// }
-
-//
-// div[contenteditable="true"]:focus > p:hover {
-//    display: block;
-// }
-//
-// div[contenteditable="true"]:focus > h1 > p:hover {
-//    border: 2px solid red !important;
-// }
-//
-// div[contenteditable="true"]:focus > h3 > p:hover {
-//    border: 2px solid red !important;
-// }
-
 .new {
   padding: 30px;
   margin-left: 10px;
