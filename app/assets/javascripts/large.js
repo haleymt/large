@@ -10,6 +10,7 @@ window.Large = {
 
     console.log("backbone running");
     Large.Collections.users = new Large.Collections.Users();
+    Large.Collections.users.fetch();
     Large.Collections.publications = new Large.Collections.Publications();
     Large.Collections.follows = new Large.Collections.Follows();
 

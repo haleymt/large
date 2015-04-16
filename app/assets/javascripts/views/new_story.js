@@ -29,6 +29,7 @@ Large.Views.NewStory = Backbone.View.extend({
 
     $('.navbar-nav').prepend(headerContent);
     this.$el.html(this.template({ story: this.model, publications: this.publications }));
+    
     var editor = new MediumEditor('.editable', {
       placeholder: "",
       buttons: ['bold', 'italic', 'justifyCenter', 'justifyLeft', 'quote', 'anchor']

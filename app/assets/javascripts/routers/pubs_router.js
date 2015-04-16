@@ -8,11 +8,11 @@ Large.Routers.PubsRouter = Backbone.Router.extend({
 
   initialize: function (options) {
     this.collection = new Large.Collections.Publications();
-    Large.Collections.users.fetch();
     this.$rootEl = options.content;
   },
 
   newPub: function () {
+    Large.Collections.users.fetch();
     var publication = new Large.Models.Publication();
     var pubNew = new Large.Views.NewPub({ collection: this.collection, model: publication, users: Large.Collections.users });
     this._swapView(pubNew);

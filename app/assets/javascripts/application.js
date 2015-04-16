@@ -12,12 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require selectivity-full
 //= require underscore
 //= require backbone
 //= require serializeJSON
 //= require jquery.timeago
 //= require medium-editor
-//= require TweenMax
 //= require bootstrap
 //= require large
 //= require_tree ../templates

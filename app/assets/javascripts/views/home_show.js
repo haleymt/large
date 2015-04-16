@@ -59,6 +59,9 @@ Large.Views.HomeShow = Backbone.CompositeView.extend({
   showNewStory: function () {
     this.$('.post-click').css('display', 'block');
     this.$('.pre-click').css('display', 'none');
+    // var e = jQuery.Event("keydown");
+    // e.which = 13; // # Some key code value
+    // $(".editable").trigger(e);
   },
 
   hideNewStory: function () {

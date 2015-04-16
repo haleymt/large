@@ -11,11 +11,16 @@ Large.Views.NewPub = Backbone.View.extend({
 
   initialize: function (options) {
     this.collection = options.collection;
-    this.users = options.users;
+    this.users = options.users
+    this.listenTo(this.users, 'sync', this.render)
   },
 
   render: function () {
+    // debugger
     this.$el.html(this.template({ publication: this.model, users: this.users }));
+
+    // $('#editors').selectivity({multiple: true});
+    // $('#writers').selectivity({multiple: true});
     return this;
   },
 

@@ -12,6 +12,7 @@
  *
  *= require_self
  *= require jquery.ui.all
+ *= require selectivity-full
  *= require medium-editor
  *= require themes/default
  *= require_tree .
@@ -141,177 +142,180 @@ a:hover {
   padding: 20px;
 }
 
-// new story on home feed
+// new story MAIN
 
-.editable {
-  position: relative;
-  font-size: 24px;
-  font-family: serif;
-  margin-left: 30px;
-  margin-top: 10px;
-}
+          .header-setter button {
+            background: white;
+            border-radius: 24px;
+            border: 1px solid rgba(128, 128, 128, 0.5);
+            color: rgba(128, 128, 128, 0.5);
+          }
 
-.editable p,
-.editable h1,
-.editable h3 {
-  position: absolute;
-  // padding-left: 50px;
-}
+          .new-story {
+            padding-top: 50px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 70%;
+          }
 
-#title {
-  top: -8px;
-  width: 100%;
-}
+          .new-story > .editable {
+            position: relative;
+            margin: 0;
+          }
 
-#subtitle {
-  margin-top: -40px;
-  width: 100%;
-}
+          .header-setter {
+            float: left;
+            padding-top: 70px;
+            margin-left: 30px;
+          }
 
-.title,
-.subtitle {
-  padding-bottom: 10px;
-}
+          #header-image {
+            display: none;
+            margin-top: 5px;
+          }
 
-.title > #title:empty:before {
-  content:"Title";
-  color: rgba(0, 0, 0, 0.3);
-  font-weight: bold;
-  font-size: 50px;
-}
+          #header-imager {
+            width: 100%;
+          }
 
-#title {
-  font-weight: bold;
-  font-size: 50px;
-}
+          .header-setter:hover #header-image {
+            display: block;
+          }
 
-.subtitle > #subtitle:empty:before {
-  content:"Tell your story...";
-  color: rgba(0, 0, 0, 0.3);
-  font-style: italic;
-  font-size: 35px;
-}
+            .editable {
+              position: relative;
+              font-size: 24px;
+              font-family: serif;
+              margin-left: 30px;
+              margin-top: 10px;
+            }
 
-#subtitle {
-  font-style: italic;
-  font-size: 35px;
-}
+            .editable p,
+            .editable h1,
+            .editable h3 {
+              position: absolute;
+              // padding-left: 50px;
+            }
 
-.new-insert {
-  margin: 0;
-  float: left;
-  // display: none;
-}
+            #title {
+              top: -8px;
+              width: 100%;
+            }
 
-div[contenteditable="true"] > p {
-  // margin: 0;
-  top: 0;
-  left: 0;
-  float: right;
-}
+            #subtitle {
+              margin-top: -40px;
+              width: 100%;
+            }
 
-div[contenteditable="true"] > p {
-  // margin: 0;
-  top: 0;
-  left: 0;
-  float: right;
-}
+            .title,
+            .subtitle {
+              padding-bottom: 10px;
+            }
 
-#story-body > p {
-  width: 100%;
-  margin-top: -40px;
-}
+            .title > #title:empty:before {
+              content:"Title";
+              color: rgba(0, 0, 0, 0.3);
+              font-weight: bold;
+              font-size: 50px;
+            }
 
-.insert-toolbar {
-  opacity: 0;
-  margin-left: -50px;
-}
+            #title {
+              font-weight: bold;
+              font-size: 50px;
+            }
 
-.fragment p {
-  margin-left: 50px;
-}
+            .subtitle > #subtitle:empty:before {
+              content:"Tell your story...";
+              color: rgba(0, 0, 0, 0.3);
+              font-style: italic;
+              font-size: 35px;
+            }
 
-.new {
-  padding: 30px;
-  margin-left: 10px;
-}
+            #subtitle {
+              font-style: italic;
+              font-size: 35px;
+            }
 
-.new .pre-click {
-  font-family: "Times New Roman", Times, serif;
-  font-size: 20px;
-  display: block;
-  color: rgba(128, 128, 128, 0.5);
-}
+            .new-insert {
+              margin: 0;
+              float: left;
+              // display: none;
+            }
 
-.pre-click i {
-  margin-right: 10px;
-  color: black;
-}
+            div[contenteditable="true"] > p {
+              // margin: 0;
+              top: 0;
+              left: 0;
+              float: right;
+            }
 
-.pre-click:hover {
-  cursor: text;
-}
+            div[contenteditable="true"] > p {
+              // margin: 0;
+              top: 0;
+              left: 0;
+              float: right;
+            }
 
-.new .post-click {
-  display: none;
-}
+            #story-body > p {
+              width: 100%;
+              margin-top: -40px;
+            }
 
-.publish {
-  color: rgba(87, 173, 104, 0.7);
-  border: 1px solid rgba(87, 173, 104, 0.7);
-}
+            .insert-toolbar {
+              opacity: 0;
+              margin-left: -50px;
+            }
 
-.publish:hover {
-  color: rgba(87, 173, 104, 1);
-  border: 1px solid rgba(87, 173, 104, 1);
-}
+// new story on home page
 
-.expand {
-  margin-left: 300px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  padding-right: 5px;
-  padding-left: 5px;
-  border: 1px solid rgba(128, 128, 128, 0.5);
-}
+    .fragment p {
+      margin-left: 50px;
+    }
 
-.header-setter button {
-  background: white;
-  border-radius: 24px;
-  border: 1px solid rgba(128, 128, 128, 0.5);
-  color: rgba(128, 128, 128, 0.5);
-}
+    .new {
+      padding: 30px;
+      margin-left: 10px;
+    }
 
-.new-story {
-  padding-top: 50px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 70%;
-}
+    .new .pre-click {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 20px;
+      display: block;
+      color: rgba(128, 128, 128, 0.5);
+    }
 
-.new-story > .editable {
-  position: relative;
-  margin: 0;
-}
+    .pre-click i {
+      margin-right: 10px;
+      color: black;
+    }
 
-.header-setter {
-  float: left;
-  padding-top: 70px;
-  margin-left: 30px;
-}
+    .pre-click:hover {
+      cursor: text;
+    }
 
-#header-image {
-  display: none;
-  margin-top: 5px;
-}
+    .new .post-click {
+      display: none;
+    }
 
-#header-imager {
-  width: 100%;
-}
+    .publish {
+      color: rgba(87, 173, 104, 0.7);
+      border: 1px solid rgba(87, 173, 104, 0.7);
+    }
 
-.header-setter:hover #header-image {
-  display: block;
-}
+    .publish:hover {
+      color: rgba(87, 173, 104, 1);
+      border: 1px solid rgba(87, 173, 104, 1);
+    }
+
+    .expand {
+      margin-left: 300px;
+      padding-top: 2px;
+      padding-bottom: 2px;
+      padding-right: 5px;
+      padding-left: 5px;
+      border: 1px solid rgba(128, 128, 128, 0.5);
+    }
+
 
 // new publication
 
@@ -388,16 +392,33 @@ ul {
   outline: none;
 }
 
+// story preview stuff
+
 .preview {
   border-top: 2px solid rgba(128, 128, 128, 0.2);
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
+.preview .img-container {
+  width: 100%;
+  height: 300px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.preview .img-container img {
+  width: 100%;
+  top: -50%;
+  overflow: hidden;
+}
+
 .sub-preview {
   position: relative;
   z-index: 1000;
 }
+
+////
 
 .pub-sections {
   margin-left: auto;

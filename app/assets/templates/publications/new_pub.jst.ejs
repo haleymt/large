@@ -12,13 +12,13 @@
     </div>
   </div>
   <br>
-  <select id="editors">
+  <select id="editors" class="selectivity-input">
       <option value="">Add an Editor</option>
       <% users.forEach( function(user) { %>
       <option value="<%= user.id %>"><%= user.escape('email') %></option>
       <% }) %>
   </select>
-  <select id="writers">
+  <select id="writers" class="selectivity-input">
       <option value="">Add a Writer</option>
       <% users.forEach( function(user) { %>
       <option value="<%= user.id %>"><%= user.escape('email') %></option>

@@ -20,10 +20,6 @@ Large.Views.StoryPreview = Backbone.View.extend({
 
     var content = this.template({ story: this.model, author: author, pub: pub });
     this.$el.html(content);
-    if (this.model.get('header_image') !== null) {
-      this.$el.css('height', '450px');
-      this.$('.sub-preview').css('margin-top', '250px');
-    }
     this.$("abbr.timeago").timeago();
 
     return this;
