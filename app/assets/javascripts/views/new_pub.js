@@ -11,19 +11,41 @@ Large.Views.NewPub = Backbone.View.extend({
 
   initialize: function (options) {
     this.collection = options.collection;
-    this.users = options.users
+    this.users = options.users;
     this.listenTo(this.users, 'sync', this.render)
   },
 
   render: function () {
     // debugger
     this.$el.html(this.template({ publication: this.model, users: this.users }));
-    $('#editors').selectivity({
-      multiple: true
-    });
-    $('#writers').selectivity({
-      multiple: true
-    });
+    setTimeout(function () {
+      var users = this.users
+      this.$('#editors').selectivity({
+        items: function () {
+          var names = [];
+          users.forEach ( function (user) {
+            names.push(user.get('email'))
+          })
+          return names;
+        }(),
+        allowClear: true,
+        multiple: true,
+        placeholder: "ADD EDITOR"
+      });
+
+      this.$('#writers').selectivity({
+        items: function () {
+          var names = [];
+          users.forEach ( function (user) {
+            names.push(user.get('email'))
+          })
+          return names;
+        }(),
+        allowClear: true,
+        multiple: true,
+        placeholder: 'ADD WRITER'
+      });
+    }.bind(this), 100);
     return this;
   },
 
@@ -82,8 +104,7 @@ Large.Views.NewPub = Backbone.View.extend({
         this.collection.add(this.model, { merge: true });
         //iterate through writers and editors and create new pubedits/writes
         var editors = $('#editors').find('.selectivity-multiple-selected-item');
-        
-        if (editors.first().text() !== "" ) {
+        if (editors.first().text() !== "") {
           users = this.users;
           pub = this.model
           var ids = [];
@@ -98,7 +119,7 @@ Large.Views.NewPub = Backbone.View.extend({
         }
 
         var writers = $('#writers').find('.selectivity-multiple-selected-item');
-        if (writers.first().text() !== "" ) {
+        if (writers.first().text() !== "") {
           users = this.users;
           pub = this.model
           var ids = [];
