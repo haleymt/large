@@ -47,6 +47,7 @@ Large.Views.HomeShow = Backbone.CompositeView.extend({
       data: { current_user: true }
     });
     var newStoryView = new Large.Views.NewStoryPreview({
+      parent: this,
       collection: this.stories,
       model: newStory,
       publications: Large.Collections.publications
@@ -62,9 +63,6 @@ Large.Views.HomeShow = Backbone.CompositeView.extend({
   showNewStory: function () {
     this.$('.post-click').css('display', 'block');
     this.$('.pre-click').css('display', 'none');
-    // var e = jQuery.Event("keydown");
-    // e.which = 13; // # Some key code value
-    // $(".editable").trigger(e);
   },
 
   hideNewStory: function () {

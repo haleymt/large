@@ -1,6 +1,13 @@
 Large.Models.User = Backbone.Model.extend({
   urlRoot: 'api/users',
 
+  currentUser: function () {
+    if (this._currentUser === undefined) {
+      this._currentUser = new Large.Models.User();
+    }
+    return this._currentUser;
+  },
+
   followers: function () {
     if (this._followers === undefined) {
       this._followers = new Large.Collections.Users([])
@@ -102,6 +109,11 @@ Large.Models.User = Backbone.Model.extend({
     if (payload.followed_users) {
       this.followedUsers().set(payload.followed_users, { parse: true });
       delete payload.followed_users;
+    }
+
+    if (payload.current_user) {
+      this.currentUser().set(payload.current_user, { parse: true });
+      delete payload.current_user;
     }
 
     return payload;

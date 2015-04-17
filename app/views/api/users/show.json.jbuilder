@@ -24,6 +24,9 @@ json.followed_users do
   end
 end
 
+# json.partial! 'api/users/user', user: current_user
+
+
 json.follows do
   json.array!(@user.follows) do |follow|
     json.partial! 'api/follows/follow', follow: follow

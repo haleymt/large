@@ -13,6 +13,7 @@ Large.Views.NewStoryPreview = Backbone.View.extend({
   },
 
   initialize: function (options) {
+    this.parent = options.parent;
     this.publications = options.publications;
     this.collection = options.collection;
     this.listenTo(this.model, 'sync', this.render);
@@ -98,6 +99,7 @@ Large.Views.NewStoryPreview = Backbone.View.extend({
   },
 
   expand: function () {
+    // debugger
     this.model.set("body", this.$('.editable').html());
 
     var storyNew = new Large.Views.NewStory({
@@ -105,8 +107,8 @@ Large.Views.NewStoryPreview = Backbone.View.extend({
       model: this.model,
       publications: Large.Collections.publications
     });
-    this._currentView && this._currentView.remove();
-    this._currentView = storyNew;
-    $('#content').html(storyNew.render().$el);
+    this.parent.remove();
+    $('#content').html(storyNew.$el);
+    storyNew.render();
   }
 });

@@ -27,7 +27,6 @@ Large.Views.NewStory = Backbone.View.extend({
       story: this.model,
       publications: this.publications
     });
-
     $('.navbar-nav').prepend(headerContent);
     this.$el.html(this.template({ story: this.model, publications: this.publications }));
 
@@ -36,7 +35,12 @@ Large.Views.NewStory = Backbone.View.extend({
       buttons: ['bold', 'italic', 'justifyCenter', 'justifyLeft', 'quote', 'anchor']
     });
     $('.editable p').before(this.insertToolbar())
-
+    // setTimeout(function () {
+      this.$('#tags-select').selectivity({
+        inputType: 'Email'
+        // placeholder: 'Add up to 3 tags'
+      });
+    // }.bind(this), 1000);
     return this;
   },
 

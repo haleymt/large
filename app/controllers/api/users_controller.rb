@@ -2,8 +2,7 @@ module Api
   class UsersController < ApplicationController
     def show
       @user = User.includes(:stories, :publications, :followers).find(params[:id])
-      # render json: @user
-      render :show, include: :followed_users
+      render :show, include: [:followed_users, :current_user]
     end
 
     def index
@@ -14,6 +13,10 @@ module Api
         @users = User.all
       end
       render json: @users
+    end
+
+    def current_user
+      return current_user
     end
 
     def toggle_follow
