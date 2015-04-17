@@ -478,14 +478,19 @@ ul {
   margin-bottom: 20px;
 }
 
-.about .user-info {
-  float: left;
-}
-
-.about .follow {
+.about li {
   position: relative;
+  min-height: 70px;
+  // padding: 10px;
+}
+// .about .user-info {
+//   float: left;
+// }
+
+.about .about-section .follow {
   float: right;
-  margin: 0;
+  margin-top: -10px;
+  margin-right: 40px;
 
 }
 
@@ -500,6 +505,7 @@ ul {
 }
 
 .about-section {
+  // position: relative;
   min-height: 100px;
   padding-top: 15px;
   border-top: 1px solid rgba(128, 128, 128, 0.4);

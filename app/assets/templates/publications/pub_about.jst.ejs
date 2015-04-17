@@ -24,8 +24,12 @@
   <div class="about-section">
     <p>WRITERS</p>
     <ul><% writers.forEach( function (writer) { %>
-      <li><div class="user-info"><a href="#/users/<%= writer.id %>"><%= writer.escape('email') %></a><br>
-          <%= writer.escape('description') %></div>
+      <li><div class="user-info">
+            <a href="#/users/<%= writer.id %>"><%= writer.escape('email') %>
+            </a>
+            <br>
+            <%= writer.escape('description') %>
+          </div>
           <button class="follow btn btn-primary btn-sm" id="<%= writer.id %>" value="User">Follow</button>
       </li>
     <% }) %>
