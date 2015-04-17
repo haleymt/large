@@ -1,26 +1,28 @@
 <div class="image"></div>
-
+<br>
 <div class="header-setter">
   <button id="header-imager"><i class="fa fa-ellipsis-h"></i></button><br>
   <button id="header-image"><i class="fa fa-image"></i></button>
 </div>
-
 <div class="new-story">
-  <div id="editor" class="editable">
-    <div class="title"><p id="title"></p></div>
-    <div class="subtitle"><p id="subtitle"></p></div>
-    <div id="story-body">
+  <% if (story.get('body') === undefined) {%>
+    <div class="editable">
+      <p style="font-size:50px; font-weight:bold" id="title"><br></p>
+      <p style="font-size:35px; font-style:italic;" id="subtitle"><br></p>
       <p><br></p>
     </div>
+  <% } else { %>
+    <div class="editable">
+      <%= story.get('body') %>
+    </div>
+  <% } %>
   </div>
-
-<button id="confirm" type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmPublish">Publish</button>
-
+<br>
 
 <div class="modal fade" id="confirmPublish" tabindex="-1" role="dialog" aria-labelledby="confirmPublishLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
+      <div style="text-align:center;" class="modal-header">
         <h3 class="modal-title" id="confirmPublishLabel">Ready to publish?</h3>
         <p>Change your story's title and subtitle as needed</p>
       </div>
@@ -35,7 +37,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <input type="text" form="confirm-form" placeholder="Add up to 3 tags">
+        <!-- <input type="text" form="confirm-form" placeholder="Add up to 3 tags"> -->
         <button id="submit-confirm" type="submit" class="btn btn-primary">Publish</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>

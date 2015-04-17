@@ -16,7 +16,6 @@ Large.Views.NewPub = Backbone.View.extend({
   },
 
   render: function () {
-    // debugger
     this.$el.html(this.template({ publication: this.model, users: this.users }));
     setTimeout(function () {
       var users = this.users
@@ -51,12 +50,12 @@ Large.Views.NewPub = Backbone.View.extend({
 
   alignLeft: function () {
     $('.pub-header-setter').css('text-align', 'left');
-    $('input').css('text-align', 'left');
+    $('.head-text').css('text-align', 'left');
   },
 
   alignCenter: function () {
     $('.pub-header-setter').css('text-align', 'center');
-    $('input').css('text-align', 'center');
+    $('.head-text').css('text-align', 'center');
   },
 
   addHeaderImage: function () {

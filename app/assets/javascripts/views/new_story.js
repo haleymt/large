@@ -29,12 +29,11 @@ Large.Views.NewStory = Backbone.View.extend({
 
     $('.navbar-nav').prepend(headerContent);
     this.$el.html(this.template({ story: this.model, publications: this.publications }));
-    
+
     var editor = new MediumEditor('.editable', {
       placeholder: "",
       buttons: ['bold', 'italic', 'justifyCenter', 'justifyLeft', 'quote', 'anchor']
     });
-
     $('.editable p').before(this.insertToolbar())
 
     return this;
@@ -45,12 +44,10 @@ Large.Views.NewStory = Backbone.View.extend({
     event.preventDefault();
     if (event.keyCode === 13) {
       $(event.target).children().each( function () {
-        $(this).children().each( function () {
-          if (($(this).is('p') || $(this).is('h1') || $(this).is('h3')) && !$(this).prev().is('.insert-toolbar')) {
-            $(this).before(tb);
-          }
-        })
-      })
+        if ($(this).is('p') && !$(this).prev().is('.insert-toolbar')) {
+          $(this).before(tb);
+        }
+      });
     }
   },
 
@@ -73,26 +70,6 @@ Large.Views.NewStory = Backbone.View.extend({
   showToolbar: function (event) {
     p = window.getSelection().focusNode
     $('p').each( function () {
-      if (this !== p) {
-        $(this).prev().css('opacity', 0);
-        $(this).prev().css('z-index', -1000);
-        $(this).css('opacity', 1);
-      } else {
-        $(this).prev().first().css('opacity', 1);
-        $(this).prev().first().css('z-index', 1000);
-      }
-    })
-    $('h1').each( function () {
-      if (this !== p) {
-        $(this).prev().css('opacity', 0);
-        $(this).prev().css('z-index', -1000);
-        $(this).css('opacity', 1);
-      } else {
-        $(this).prev().first().css('opacity', 1);
-        $(this).prev().first().css('z-index', 1000);
-      }
-    })
-    $('h3').each( function () {
       if (this !== p) {
         $(this).prev().css('opacity', 0);
         $(this).prev().css('z-index', -1000);

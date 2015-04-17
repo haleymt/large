@@ -20,7 +20,7 @@ Large.Views.NewStoryPreview = Backbone.View.extend({
 
   render: function () {
     this.$el.html(this.template({ story: this.model, publications: this.publications }));
-    $('.editable p').before(this.insertToolbar())
+    this.$('.editable p').before(this.insertToolbar())
 
     return this;
   },
@@ -30,38 +30,16 @@ Large.Views.NewStoryPreview = Backbone.View.extend({
     event.preventDefault();
     if (event.keyCode === 13) {
       $(event.target).children().each( function () {
-        $(this).children().each( function () {
-          if (($(this).is('p') || $(this).is('h1') || $(this).is('h3')) && !$(this).prev().is('.insert-toolbar')) {
-            $(this).before(tb);
-          }
-        })
-      })
+        if ($(this).is('p') && !$(this).prev().is('.insert-toolbar')) {
+          $(this).before(tb);
+        }
+      });
     }
   },
 
   showToolbar: function (event) {
     p = window.getSelection().focusNode
     $('p').each( function () {
-      if (this !== p) {
-        $(this).prev().css('opacity', 0);
-        $(this).prev().css('z-index', -1000);
-        $(this).css('opacity', 1);
-      } else {
-        $(this).prev().first().css('opacity', 1);
-        $(this).prev().first().css('z-index', 1000);
-      }
-    })
-    $('h1').each( function () {
-      if (this !== p) {
-        $(this).prev().css('opacity', 0);
-        $(this).prev().css('z-index', -1000);
-        $(this).css('opacity', 1);
-      } else {
-        $(this).prev().first().css('opacity', 1);
-        $(this).prev().first().css('z-index', 1000);
-      }
-    })
-    $('h3').each( function () {
       if (this !== p) {
         $(this).prev().css('opacity', 0);
         $(this).prev().css('z-index', -1000);
@@ -106,10 +84,8 @@ Large.Views.NewStoryPreview = Backbone.View.extend({
 
   createStory: function (event) {
     event.preventDefault();
-
-    this.model.set("title", this.$('#title').text());
-    this.model.set("subtitle", this.$('#subtitle').text());
-    this.model.set("body", this.$('#story-body').text());
+    $('.insert-toolbar').remove();
+    this.model.set("body", this.$('.editable').html())
 
     this.model.save(this.model.attributes, {
       success: function () {
@@ -120,9 +96,7 @@ Large.Views.NewStoryPreview = Backbone.View.extend({
   },
 
   expand: function () {
-    this.model.set("title", this.$('#title').text());
-    this.model.set("subtitle", this.$('#subtitle').text());
-    this.model.set("body", this.$('#story-body').text());
+    this.model.set("body", this.$('.editable').html());
 
     var storyNew = new Large.Views.NewStory({
       collection: this.collection,

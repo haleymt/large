@@ -90,6 +90,7 @@ a:hover {
 }
 
 .follow {
+  background: transparent;
   color: rgba(87, 173, 104, 0.7);
   border: 1px solid rgba(87, 173, 104, 0.7);
 }
@@ -152,7 +153,6 @@ a:hover {
           }
 
           .new-story {
-            padding-top: 50px;
             margin-left: auto;
             margin-right: auto;
             width: 70%;
@@ -187,53 +187,16 @@ a:hover {
               font-size: 24px;
               font-family: serif;
               margin-left: 30px;
-              margin-top: 10px;
+              padding: 50px;
             }
 
-            .editable p,
-            .editable h1,
-            .editable h3 {
-              position: absolute;
-              // padding-left: 50px;
-            }
-
-            #title {
-              top: -8px;
-              width: 100%;
-            }
-
-            #subtitle {
+            .editable p {
+              // position: absolute;
+              padding-left: 50px;
               margin-top: -40px;
               width: 100%;
-            }
-
-            .title,
-            .subtitle {
-              padding-bottom: 10px;
-            }
-
-            .title > #title:empty:before {
-              content:"Title";
-              color: rgba(0, 0, 0, 0.3);
-              font-weight: bold;
-              font-size: 50px;
-            }
-
-            #title {
-              font-weight: bold;
-              font-size: 50px;
-            }
-
-            .subtitle > #subtitle:empty:before {
-              content:"Tell your story...";
-              color: rgba(0, 0, 0, 0.3);
-              font-style: italic;
-              font-size: 35px;
-            }
-
-            #subtitle {
-              font-style: italic;
-              font-size: 35px;
+              height: auto;
+              min-height: 40px;
             }
 
             .new-insert {
@@ -242,35 +205,16 @@ a:hover {
               // display: none;
             }
 
-            div[contenteditable="true"] > p {
-              // margin: 0;
-              top: 0;
-              left: 0;
-              float: right;
-            }
-
-            div[contenteditable="true"] > p {
-              // margin: 0;
-              top: 0;
-              left: 0;
-              float: right;
-            }
-
-            #story-body > p {
-              width: 100%;
-              margin-top: -40px;
-            }
-
             .insert-toolbar {
               opacity: 0;
               margin-left: -50px;
             }
 
-// new story on home page
+            #confirm {
+              margin-left: 200px;
+            }
 
-    .fragment p {
-      margin-left: 50px;
-    }
+
 
     .new {
       padding: 30px;
@@ -384,6 +328,15 @@ a:hover {
   border: none;
 }
 
+.form-group input {
+  border: none;
+  background: rgba(128, 128, 128, 0.1);
+  width: 500px;
+  font-size: 24px;
+  font-family: serif;
+  margin-left: 30px;
+}
+
 ul {
   list-style-type: none;
 }
@@ -478,24 +431,24 @@ ul {
   margin-top: -8%;
 }
 
+//pub header image
+
 .header-img {
-  height: auto;
   width: 100%;
-  overflow: hidden;
+  height: 600px;
+  z-index: -1;
+  top: 0;
+  left: 0;
 }
 
-.header-img img {
-  height: auto;
+.pub-bg-normal {
+  height: 600px;
   width: 100%;
-  margin-bottom: -40%;
-  margin-top: -40%;
-}
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 
-.disable-pointer-events {
-	pointer-events:none!important;
 }
-
-//
 
 // publication about page
 
