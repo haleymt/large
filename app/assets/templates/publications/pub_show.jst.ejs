@@ -1,15 +1,25 @@
 <div class="pub-show">
     <% if (pub.get('header_image') !== null) { %>
     <div class="header-img">
-      <div class="pub-bg-normal" style="background-image:url(<%= pub.escape('header_image') %>)"></div>
+      <div class="pub-bg-normal" style="background-image:url(<%= pub.escape('header_image') %>)">
+        <div style="color:white; margin:0; padding:50px; padding-top:350px; text-align: <%= pub.get('header_align') %>;"
+             class="pub-show-header">
+          <h1 style="font-size: 60px;"><%= pub.escape('title') %></h1>
+          <h3><%= pub.escape('description') %></h3>
+        </div>
+      </div>
       <!-- <div class="pub-bg-blur" style="background-image:url(<%= pub.escape('header_image') %>)"></div> -->
         <!-- <img src="<%= pub.escape('header_image') %>"> -->
       </div>
     </div>
+    <% } else { %>
+    <div style="text-align: <%= pub.get('header_align') %>;" class="pub-show-header">
+      <h1 style="font-size: 60px;"><%= pub.escape('title') %></h1>
+      <h3><%= pub.escape('description') %></h3>
+    </div>
     <% } %>
-  <div class="pub-show-header">
-    <h1><%= pub.escape('title') %></h1>
-    <h3><%= pub.escape('description') %></h3><br>
+  <br>
+  <div class="pub-show-info">
     <button class="info" id="followers" data-toggle="modal" data-target="#followersModal">FOLLOWERS<br><p class=num><%= followers.length %></p></button>
     <br>
     <button class="follow btn btn-primary">Follow</button>
