@@ -14,6 +14,7 @@
 
 class Publication < ActiveRecord::Base
   include Followable
+  include Taggable
 
   validates :owner_id, :title, presence: true
 

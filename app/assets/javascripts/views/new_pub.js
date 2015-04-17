@@ -12,7 +12,9 @@ Large.Views.NewPub = Backbone.View.extend({
   initialize: function (options) {
     this.collection = options.collection;
     this.users = options.users;
-    this.listenTo(this.users, 'sync', this.render)
+    this.ttags = options.ttags;
+    this.listenTo(this.ttags, 'sync', this.render);
+    this.listenTo(this.users, 'sync', this.render);
   },
 
   render: function () {
@@ -134,6 +136,39 @@ Large.Views.NewPub = Backbone.View.extend({
           ids.forEach( function (i) {
             var pubWrite = new Large.Models.PubWrite({ pub_id: pub.id, writer_id: i });
             pubWrite.save(pubWrite.attributes);
+          })
+        }
+
+        var tags = $('#pub-tags').find('.selectivity-multiple-selected-item');
+        if (tags.first().text() !== "") {
+          ttags = this.ttags;
+          pub = this.model
+          var ids = [];
+          tags.each(function () {
+            tag = ttags.findWhere({ label: $(this).text() })
+            if (tag === undefined) {
+              tag = new Large.Models.Tag({ label: $(this).text()});
+              tag.save(tag.attributes, {
+                success: function () {
+                  var tagging = new Large.Models.Tagging({
+                    taggable_id: pub.id,
+                    taggable_type: "Publication",
+                    tag_id: tag.id
+                  });
+                  tagging.save();
+                }
+              })
+            } else {
+              ids.push(tag.id);
+            }
+          })
+          ids.forEach( function (i) {
+            var tagging = new Large.Models.Tagging({
+              taggable_id: pub.id,
+              taggable_type: "Publication",
+              tag_id: i
+            });
+            tagging.save(tagging.attributes);
           })
         }
 

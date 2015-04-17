@@ -41,3 +41,15 @@ json.followers do
     json.partial! 'api/users/user', user: follower
   end
 end
+
+json.taggings do
+  json.array!(@pub.taggings) do |tagging|
+    json.partial! 'api/taggings/tagging' tagging: tagging
+  end
+end
+
+json.tags do
+  json.array!(@pub.tags) do |tag|
+    json.partial! 'api/tags/tag', tag: tag
+  end
+end

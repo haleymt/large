@@ -1,6 +1,21 @@
 Large.Models.Publication = Backbone.Model.extend({
   urlRoot: 'api/publications',
 
+  ttags: function () {
+    if (this._tags === undefined) {
+      this._tags = new Large.Collections.Tags([]);
+    }
+    return this._tags
+  },
+
+  taggings: function () {
+    if (this._taggings === undefined) {
+      this._taggings = new Large.Collections.Taggings([],
+      { taggable_id: this.id, taggable_type: "Publication"});
+    }
+    return this._taggings;
+  },
+
   followers: function () {
     if (this._followers === undefined) {
       this._followers = new Large.Collections.Users([])
@@ -92,6 +107,16 @@ Large.Models.Publication = Backbone.Model.extend({
     if (payload.followers) {
       this.followers().set(payload.followers, { parse: true });
       delete payload.followers;
+    }
+
+    if (payload.taggings) {
+      this.taggings().set(payload.taggings, { parse: true });
+      delete payload.taggings
+    }
+
+    if (payload.tags) {
+      this.ttags().set(payload.tags, { parse: true });
+      delete payload.tags
     }
 
     return payload;
