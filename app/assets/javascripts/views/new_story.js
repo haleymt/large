@@ -22,6 +22,7 @@ Large.Views.NewStory = Backbone.View.extend({
 
   render: function () {
     $('.navbar-nav').find('.new-story-header').remove();
+    $('.navbar-nav').find('#confirm').remove();
     var headerContent = this.header({
       story: this.model,
       publications: this.publications
