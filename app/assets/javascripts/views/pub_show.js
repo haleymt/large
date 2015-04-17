@@ -4,8 +4,8 @@ Large.Views.PubShow = Backbone.View.extend({
   about: JST['publications/pub_about_link'],
 
   events: {
-    "click .follow": "toggleFollow",
-    "scroll": "blurImage"
+    "click .follow": "toggleFollow"
+    // "scroll": "blurImage"
   },
 
   initialize: function (options) {
@@ -54,10 +54,10 @@ Large.Views.PubShow = Backbone.View.extend({
     return this;
   },
 
-  blurImage: function () {
-    oVal = ($(window).scrollTop() / 240);
-    $(".pub-bg-blur").css("opacity", oVal);
-  },
+  // blurImage: function () {
+  //   oVal = ($(window).scrollTop() / 240);
+  //   $(".pub-bg-blur").css("opacity", oVal);
+  // },
 
   toggleFollow: function (event) {
     var follow = this.currentUserFollows.findWhere({

@@ -15,6 +15,7 @@ Large.Views.StoryShow = Backbone.View.extend({
   render: function () {
     var responseId = this.story.get('story_id')
     var response = this.stories.get(responseId);
+
     var content = this.template({ story: this.story, response: response });
     this.$el.html(content);
 

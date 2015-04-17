@@ -18,7 +18,18 @@ Large.Views.StoryPreview = Backbone.View.extend({
     var pubId = this.model.get('pub_id');
     var pub = this.publications.get(pubId);
 
-    var content = this.template({ story: this.model, author: author, pub: pub });
+    if ((this.model.get('body') === null) || (this.model.get("body").split('</p>').length < 3)) {
+      var firstSentence = ""
+    } else {
+      var b = this.model.get('body');
+      var firstSentence = b.split('</p>')[2].split(">")[b.split('</p>')[2].split(">").length - 1]
+    }
+    var content = this.template({
+      story: this.model,
+      author: author,
+      pub: pub,
+      sentence: firstSentence.slice(0, 250)
+    });
     this.$el.html(content);
     this.$("abbr.timeago").timeago();
 

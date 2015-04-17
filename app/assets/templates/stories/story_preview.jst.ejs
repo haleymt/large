@@ -19,7 +19,10 @@
   <% } %>
   <div class="sub-preview">
     <h2><%= story.escape('title') %><h2>
-    <h3><%= story.escape('subtitle') %></h3><br>
+    <h3><%= story.escape('subtitle') %></h3>
+    <div style="font-family:serif;"><%= sentence %>...
+    </div>
+    <br>
     <a href="#/stories/<%= story.id %>">Continue reading</a>
   <div>
 </li>
