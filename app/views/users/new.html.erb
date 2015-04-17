@@ -1,12 +1,52 @@
-<h1>Sign Up</h1>
+<style>
+	.login-form {
+    margin-top: 100px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+  }
 
-<form action="/users" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <label>Email<br>
-    <input name="user[email]" type="text"><br>
-  </label><br>
-  <label>Password<br>
-    <input name="user[password]" type="password"><br>
-  </label><br>
-  <input type="submit" value="Submit" class="btn btn-primary"><br>
-</form>
+  .login-form input {
+    margin-bottom: 5px;
+  }
+
+  .login {
+    background: rgba(87, 173, 104, 0.8);
+    color: white;
+    border: rgba(87, 173, 104, 0.8);
+  }
+
+  .login:hover {
+    background: rgba(87, 173, 104, 1);
+    border: rgba(87, 173, 104, 1);
+    color: white;
+  }
+</style>
+
+<div class="login-page">
+	<div class="login-form input-group">
+		<h1>Sign Up</h1>
+		<form action="/users" method="POST">
+
+			<input type="hidden"
+						 name="authenticity_token"
+						 value="<%= form_authenticity_token %>">
+
+			<input type="text"
+						 name="user[email]"
+						 placeholder="Email"
+						 class="email form-control login-input">
+			<br>
+      <br>
+			<input type="password"
+						 name="user[password]"
+						 placeholder="Password"
+						 class="password form-control login-input">
+			<br>
+
+			<input type="submit" value="sign up!" class="login btn btn-large btn-primary">
+
+		</form>
+	</div>
+</div>

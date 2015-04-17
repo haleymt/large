@@ -20,8 +20,8 @@
       </ul>
     </li>
   <% else %>
-    <li><%= button_to "Log in", new_session_url, class: "btn btn-primary navbar-btn" %></li>
-    <li><%= button_to "Sign up", new_user_url, class: "btn btn-primary navbar-btn" %></li>
+    <li><%= button_to "Log in", new_session_url, method: :get, class: "btn btn-primary navbar-btn" %></li>
+    <li><%= button_to "Sign up", new_user_url, method: :get, class: "btn btn-primary navbar-btn" %></li>
   <% end %>
   </ul>
 </nav>
