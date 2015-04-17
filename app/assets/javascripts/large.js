@@ -8,7 +8,6 @@ window.Large = {
     //   el: $('nav')
     // });
 
-    console.log("backbone running");
     Large.Collections.users = new Large.Collections.Users();
     Large.Collections.users.fetch();
     Large.Collections.publications = new Large.Collections.Publications();

@@ -41,7 +41,7 @@ Large.Views.NewStoryPreview = Backbone.View.extend({
   showToolbar: function (event) {
     p = window.getSelection().focusNode
     $('p').each( function () {
-      if (this !== p) {
+      if ((this !== p) && $(this).prev().is('.insert-toolbar')) {
         $(this).prev().css('opacity', 0);
         $(this).prev().css('z-index', -1000);
         $(this).css('opacity', 1);
