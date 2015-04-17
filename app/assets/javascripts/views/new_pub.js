@@ -55,17 +55,20 @@ Large.Views.NewPub = Backbone.View.extend({
     return this;
   },
 
-  alignLeft: function () {
+  alignLeft: function (event) {
+    event.preventDefault();
     $('.pub-header-setter').css('text-align', 'left');
     $('.head-text').css('text-align', 'left');
   },
 
-  alignCenter: function () {
+  alignCenter: function (event) {
+    event.preventDefault();
     $('.pub-header-setter').css('text-align', 'center');
     $('.head-text').css('text-align', 'center');
   },
 
-  addHeaderImage: function () {
+  addHeaderImage: function (event) {
+    event.preventDefault();
     $('[placeholder]').focus(function() {
         var input = $(this);
         if (input.val() == input.attr('placeholder')) {
@@ -79,7 +82,7 @@ Large.Views.NewPub = Backbone.View.extend({
             input.val(input.attr('placeholder'));
         }
     }).blur();
-
+    $('.placeholder').css('color', 'rgba(128, 128, 128, 0.5)');
     filepicker.setKey("AFA8IlPkxSNC1BPrgoHtsz");
 
     filepicker.pick(
