@@ -71,7 +71,7 @@ Large.Views.NewStory = Backbone.View.extend({
   showToolbar: function (event) {
     p = window.getSelection().focusNode
     $('p').each( function () {
-      if (this !== p) {
+      if ((this !== p) && $(this).prev().is('.insert-toolbar')) {
         $(this).prev().css('opacity', 0);
         $(this).prev().css('z-index', -1000);
         $(this).css('opacity', 1);
@@ -114,15 +114,17 @@ Large.Views.NewStory = Backbone.View.extend({
   },
 
   autoSave: function (event) {
-    event.preventDefault();
+    // debugger
+    // event.preventDefault();
     $('.insert-toolbar').remove();
     this.model.set("body", this.$('.editable').html());
-
+    this.model.set("title", $($('p')[0]).text());
+    this.model.set("subtitle", $($('p')[1]).text());
     this.model.save(this.model.attributes, {
       success: function () {
         this.collection.add(this.model, { merge: true });
-        this.$('#modal-title').val(this.$('#title').text());
-        this.$('#modal-subtitle').val(this.$('#subtitle').text());
+        this.$('#modal-title').val($($('p')[0]).text());
+        this.$('#modal-subtitle').val($($('p')[1]).text());
       }.bind(this)
     });
 

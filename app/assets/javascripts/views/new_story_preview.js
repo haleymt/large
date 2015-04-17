@@ -85,7 +85,9 @@ Large.Views.NewStoryPreview = Backbone.View.extend({
   createStory: function (event) {
     event.preventDefault();
     $('.insert-toolbar').remove();
-    this.model.set("body", this.$('.editable').html())
+    this.model.set("title", $($('p')[0]).text());
+    this.model.set("subtitle", $($('p')[1]).text());
+    this.model.set("body", this.$('.editable').html());
 
     this.model.save(this.model.attributes, {
       success: function () {
