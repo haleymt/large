@@ -82,7 +82,7 @@ Large.Views.NewPub = Backbone.View.extend({
             input.val(input.attr('placeholder'));
         }
     }).blur();
-    $('.placeholder').css('color', 'rgba(128, 128, 128, 0.5)');
+    $('.placeholder').css('color', 'rgba(128, 128, 128, 0.7)');
     filepicker.setKey("AFA8IlPkxSNC1BPrgoHtsz");
 
     filepicker.pick(
