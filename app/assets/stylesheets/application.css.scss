@@ -211,10 +211,16 @@ a:hover {
             }
 
             #confirm {
-              margin-left: 200px;
+              margin:0;
+              height:40px;
+              width:200px;
+              padding:5px;
+              font-style:normal;
+              font-family:sans-serif;
+              font-size:20px;
+              border:1px solid rgba(87, 173, 104, 1);
+              color:rgba(87, 173, 104, 1);
             }
-
-
 
     .new {
       padding: 30px;

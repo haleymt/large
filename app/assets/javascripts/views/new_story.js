@@ -22,7 +22,7 @@ Large.Views.NewStory = Backbone.View.extend({
 
   render: function () {
     $('.navbar-nav').find('.new-story-header').remove();
-    $('.navbar-nav').find('#confirm').remove();
+    // $('.navbar-nav').find('#confirm').remove();
     var headerContent = this.header({
       story: this.model,
       publications: this.publications
@@ -115,7 +115,6 @@ Large.Views.NewStory = Backbone.View.extend({
 
   autoSave: function (event) {
     event.preventDefault();
-
     $('.insert-toolbar').remove();
     this.model.set("body", this.$('.editable').html());
 

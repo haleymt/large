@@ -35,6 +35,9 @@ Large.Views.HomeShow = Backbone.CompositeView.extend({
   },
 
   render: function () {
+    $('.navbar-nav').find('.new-story-header').remove();
+    $('.navbar-nav').find('.about-link').remove();
+
     this.$el.html(this.template());
     this.attachSubviews();
     this.$("abbr.timeago").timeago();

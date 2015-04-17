@@ -1,7 +1,13 @@
 <div class="image"></div>
 <br>
 <div style="margin-left:150px;font-size:30px;font-family:serif;font-style:italic;color:rgba(128, 128, 128, 0.5);">
-  Click on the editor to tell your story...
+  Click on the editor to tell your story, then
+  <button id="confirm"
+              type="button"
+              class="btn btn-primary"
+              data-toggle="modal"
+              data-target="#confirmPublish">
+        Publish</button>
 </div>
 <div class="header-setter">
   <button id="header-imager"><i class="fa fa-ellipsis-h"></i></button><br>
@@ -27,7 +33,7 @@
     <div class="modal-content">
       <div style="text-align:center;" class="modal-header">
         <h3 class="modal-title" id="confirmPublishLabel">Ready to publish?</h3>
-        <p>Change your story's title and subtitle as needed</p>
+        <div>Change your story's title and subtitle as needed</div>
       </div>
       <div class="modal-body">
         <form id="confirm-form" class="confirm-form">
