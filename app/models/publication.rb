@@ -10,6 +10,7 @@
 #  updated_at   :datetime         not null
 #  header_image :text
 #  icon_image   :text
+#  header_align :string
 #
 
 class Publication < ActiveRecord::Base

@@ -104,11 +104,16 @@ Large.Views.NewPub = Backbone.View.extend({
 
   submitForm: function (event) {
     event.preventDefault();
+    // debugger
+    var align = $('.head-text').css('text-align');
+    this.model.set("header_align", align);
+    // this.model.save(this.model.attributes);
+
     var formData = this.$('form').serializeJSON();
     this.model.save(formData.publication, {
       success: function () {
         this.collection.add(this.model, { merge: true });
-        //iterate through writers and editors and create new pubedits/writes
+
         var editors = $('#editors').find('.selectivity-multiple-selected-item');
         if (editors.first().text() !== "") {
           users = this.users;

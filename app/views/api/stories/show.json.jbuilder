@@ -2,7 +2,7 @@ json.partial!("story", story: @story)
 
 json.taggings do
   json.array!(@story.taggings) do |tagging|
-    json.partial! 'api/taggings/tagging' tagging: tagging
+    json.partial! 'api/taggings/tagging', tagging: tagging
   end
 end
 

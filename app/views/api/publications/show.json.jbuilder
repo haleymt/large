@@ -44,7 +44,7 @@ end
 
 json.taggings do
   json.array!(@pub.taggings) do |tagging|
-    json.partial! 'api/taggings/tagging' tagging: tagging
+    json.partial! 'api/taggings/tagging', tagging: tagging
   end
 end
 
