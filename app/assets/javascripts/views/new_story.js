@@ -17,12 +17,13 @@ Large.Views.NewStory = Backbone.View.extend({
   initialize: function (options) {
     this.collection = options.collection;
     this.publications = options.publications;
+    this.ttags = options.ttags;
+    this.listenTo(this.ttags, 'sync', this.render);
     this.listenTo(this.publications, 'sync', this.render);
   },
 
   render: function () {
     $('.navbar-nav').find('.new-story-header').remove();
-    // $('.navbar-nav').find('#confirm').remove();
     var headerContent = this.header({
       story: this.model,
       publications: this.publications
@@ -139,6 +140,39 @@ Large.Views.NewStory = Backbone.View.extend({
     var formData = this.$('.confirm-form').serializeJSON();
     this.model.save(formData.story, {
       success: function () {
+        var tags = $('#tags-select').find('.selectivity-multiple-selected-item');
+        if (tags.first().text() !== "") {
+          ttags = this.ttags;
+          story = this.model
+          var ids = [];
+          tags.each(function () {
+            tag = ttags.findWhere({ label: $(this).text() })
+            if (tag === undefined) {
+              tag = new Large.Models.Tag({ label: $(this).text()});
+              tag.save(tag.attributes, {
+                success: function () {
+                  // ids.push(tag.id);
+                  var tagging = new Large.Models.Tagging({
+                    taggable_id: story.id,
+                    taggable_type: "Story",
+                    tag_id: tag.id
+                  });
+                  tagging.save();
+                }
+              })
+            } else {
+              ids.push(tag.id);
+            }
+          })
+          ids.forEach( function (i) {
+            var tagging = new Large.Models.Tagging({
+              taggable_id: story.id,
+              taggable_type: "Story",
+              tag_id: i
+            });
+            tagging.save(tagging.attributes);
+          })
+        }
         Backbone.history.navigate("stories/" + this.model.id, { trigger: true })
       }.bind(this)
     })

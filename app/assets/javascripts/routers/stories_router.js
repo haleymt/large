@@ -33,11 +33,12 @@ Large.Routers.StoriesRouter = Backbone.Router.extend({
     this.collection.fetch({
       data: { current_user: false }
     });
-
+    Large.Collections.ttags.fetch();
     var storyNew = new Large.Views.NewStory({
       collection: this.collection,
       model: story,
-      publications: Large.Collections.publications
+      publications: Large.Collections.publications,
+      ttags: Large.Collections.ttags
     });
     this._swapView(storyNew);
   },

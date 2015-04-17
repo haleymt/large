@@ -44,6 +44,11 @@ Large.Views.NewPub = Backbone.View.extend({
         multiple: true,
         placeholder: 'ADD WRITER'
       });
+
+      this.$('#pub-tags').selectivity({
+        inputType: 'Email',
+        placeholder: 'Tag your publication'
+      });
     }.bind(this), 100);
     return this;
   },

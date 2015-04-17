@@ -13,6 +13,7 @@ window.Large = {
     Large.Collections.users.fetch();
     Large.Collections.publications = new Large.Collections.Publications();
     Large.Collections.follows = new Large.Collections.Follows();
+    Large.Collections.ttags = new Large.Collections.Tags
 
     new Large.Routers.UsersRouter({content: $('#content')});
     new Large.Routers.StoriesRouter({content: $('#content')});
