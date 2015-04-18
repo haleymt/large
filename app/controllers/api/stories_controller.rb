@@ -34,12 +34,12 @@ module Api
         end
       elsif params[:query]
         search_params = "%#{params[:query]}%"
-        @stories = Story.all.where("title ILIKE :search OR subtitle ILIKE :search OR body ILIKE :search", search: search_params)
+        @stories = Story.where("title ILIKE :search OR subtitle ILIKE :search OR body ILIKE :search", search: search_params).includes(:tags, :taggings)
       else
         @stories = Story.all
       end
 
-      render json: @stories
+      render :index
     end
 
     def destroy
