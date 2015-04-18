@@ -9,6 +9,8 @@ Large.Views.StoryShow = Backbone.View.extend({
   initialize: function (options) {
     this.story = options.story;
     this.stories = options.stories;
+    this.ttags = options.ttags;
+    this.listenTo(this.ttags, 'sync', this.render);
     this.listenTo(this.story, 'sync', this.render);
   },
 
@@ -23,7 +25,12 @@ Large.Views.StoryShow = Backbone.View.extend({
       data: { current_user: true }
     });
     var newStory = new Large.Models.Story({ story_id: this.story.id });
-    var newStoryView = new Large.Views.NewStoryPreview({ collection: this.stories, model: newStory, publications: Large.Collections.publications });
+    var newStoryView = new Large.Views.NewStoryPreview({
+      collection: this.stories,
+      model: newStory,
+      publications: Large.Collections.publications,
+      ttags: this.ttags
+    });
 
     this.$('.post-click').prepend(newStoryView.render().$el);
     var editor = new MediumEditor('.editable', {
