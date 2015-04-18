@@ -36,6 +36,7 @@ Large.Views.NewStory = Backbone.View.extend({
       buttons: ['bold', 'italic', 'justifyCenter', 'justifyLeft', 'quote', 'anchor']
     });
     $('.editable p').before(this.insertToolbar())
+    $('.editable').focus();
     // setTimeout(function () {
       this.$('#tags-select').selectivity({
         inputType: 'Email'

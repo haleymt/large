@@ -45,6 +45,7 @@ Large.Views.StoryShow = Backbone.View.extend({
   showNewStory: function () {
     this.$('.post-click').css('display', 'block');
     this.$('.pre-click').css('display', 'none');
+    $('.editable').focus();
   },
 
   hideNewStory: function () {

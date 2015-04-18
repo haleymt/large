@@ -1,7 +1,7 @@
 <% if (response !== undefined) { %>
-  <div class="response-header">
+  <div style="padding-top:30px;" class="response-header">
     <p>Written in reponse to:</p>
-    <h4><%= response.escape('title') %></h4>
+    <h4><a style="color:black;" href="#/stories/<%= response.id %>"><%= response.escape('title') %></a></h4>
   </div>
 <% } %>
 <div class="story-show-header">

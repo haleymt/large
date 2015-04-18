@@ -9,7 +9,8 @@ Large.Views.NewStoryPreview = Backbone.View.extend({
     "click .insert-pic": "insertPic",
     "click .insert-line": "insertLine",
     "click .editable": "showToolbar",
-    "click .new-insert": "showHiddenButtons"
+    "click .new-insert": "showHiddenButtons",
+    "click .closer": "refocus"
   },
 
   initialize: function (options) {
@@ -101,7 +102,6 @@ Large.Views.NewStoryPreview = Backbone.View.extend({
   },
 
   expand: function () {
-    // debugger
     this.model.set("body", this.$('.editable').html());
 
     var storyNew = new Large.Views.NewStory({
@@ -113,5 +113,9 @@ Large.Views.NewStoryPreview = Backbone.View.extend({
     this.parent.remove();
     $('#content').html(storyNew.$el);
     storyNew.render();
+  },
+
+  refocus: function () {
+    $('.editable').focus();
   }
 });

@@ -20,13 +20,33 @@
   </div>
   <% } %>
   <div class="sub-preview">
-    <a style="color:black;" href="#/stories/<%= story.id %>">
-    <h2><%= story.escape('title') %><h2>
-    <h3><%= story.escape('subtitle') %></h3>
-    </a>
-    <div style="font-family:serif;"><%= sentence %>...
-    </div>
-    <br>
-    <a href="#/stories/<%= story.id %>">Continue reading</a>
+    <% if (story.get('story_id') === null) { %>
+      <a style="color:black;" href="#/stories/<%= story.id %>">
+        <h2><%= story.escape('title') %><h2>
+        <h3><%= story.escape('subtitle') %></h3>
+      </a>
+      <a style="color:black;" href="#/stories/<%= story.id %>">
+        <div style="font-family:serif;"><%= sentence %>...
+        </div>
+      </a>
+      <br>
+      <a href="#/stories/<%= story.id %>">Continue reading</a>
+    <% } else { %>
+      <div style="color:rgba(128, 128, 128, 0.7)">
+        in response to
+        <a style="color:rgba(128, 128, 128, 0.7); text-decoration:underline;"
+           href="#/stories/<%= story.get('story_id') %>">
+          <%= story.escape('title') %>
+        </a>
+      </div>
+      <br>
+      <div style="font-family:serif;">
+        <a style="color:black;" href="#/stories/<%= story.id %>">
+        <%= sentence %>...
+        </a>
+      </div>
+      <br>
+      <a href="#/stories/<%= story.id %>">Continue reading</a>
+      <% } %>
   <div>
 </li>
