@@ -19,9 +19,13 @@ Large.Routers.StoriesRouter = Backbone.Router.extend({
     });
     this.collection.fetch({
       data: { current_user: true }
-    })
-    var home = new Large.Views.HomeShow({stories: this.collection,
-      publications: Large.Collections.publications })
+    });
+    Large.Collections.ttags.fetch();
+    var home = new Large.Views.HomeShow({
+      stories: this.collection,
+      publications: Large.Collections.publications,
+      ttags: Large.Collections.ttags
+    });
     this._swapView(home);
   },
 
@@ -51,11 +55,12 @@ Large.Routers.StoriesRouter = Backbone.Router.extend({
     Large.Collections.publications.fetch({
       data: { current_user: true }
     });
-
+    Large.Collections.ttags.fetch();
     var newPreview = new Large.Views.NewStoryPreview({
       publications: Large.Collections.publications,
       collection: this.collection,
-      model: story
+      model: story,
+      ttags: Large.Collections.ttags
     });
     this._swapView(newPreview);
   },

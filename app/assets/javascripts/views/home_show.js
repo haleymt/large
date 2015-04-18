@@ -9,6 +9,8 @@ Large.Views.HomeShow = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.stories = options.stories;
     this.publications = options.publications;
+    this.ttags = options.ttags
+    this.listenTo(this.ttags, 'sync', this.render)
     this.listenTo(this.stories, 'sync', this.render);
 
     this.stories.each(this.addStoryView.bind(this));
@@ -50,7 +52,8 @@ Large.Views.HomeShow = Backbone.CompositeView.extend({
       parent: this,
       collection: this.stories,
       model: newStory,
-      publications: Large.Collections.publications
+      publications: Large.Collections.publications,
+      ttags: this.ttags
     });
     this.$('.post-click').prepend(newStoryView.render().$el);
     var editor = new MediumEditor('.editable', {

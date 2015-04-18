@@ -16,6 +16,8 @@ Large.Views.NewStoryPreview = Backbone.View.extend({
     this.parent = options.parent;
     this.publications = options.publications;
     this.collection = options.collection;
+    this.ttags = options.ttags;
+    this.listenTo(this.ttags, 'sync', this.render);
     this.listenTo(this.model, 'sync', this.render);
   },
 
@@ -105,7 +107,8 @@ Large.Views.NewStoryPreview = Backbone.View.extend({
     var storyNew = new Large.Views.NewStory({
       collection: this.collection,
       model: this.model,
-      publications: Large.Collections.publications
+      publications: Large.Collections.publications,
+      ttags: this.ttags
     });
     this.parent.remove();
     $('#content').html(storyNew.$el);
