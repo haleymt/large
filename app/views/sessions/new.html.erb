@@ -1,45 +1,109 @@
 <style>
+	.navbar {
+		background: transparent;
+	}
+
+	.navbar .btn {
+		background: transparent;
+		border: 1px solid white;
+		color: white;
+	}
+
+	.navbar .btn:active,
+	.navbar .btn:target {
+		background: transparent !important;
+		border: 1px solid white;
+		color: white;
+	}
+
+	::-webkit-input-placeholder {
+    color: white !important;
+	}
+
+	:-moz-placeholder {
+   color: white !important;
+	}
+
+	::-moz-placeholder {
+   color: white !important;
+	}
+
+	:-ms-input-placeholder {
+   color: white !important
+	}
+
+	.navbar .navbar-header:after {
+		content: "Large" !important;
+		font-family: 'Ultra', serif;
+		color: white;
+		font-size: 30px;
+		padding: 20px;
+		margin-top: -10px;
+	}
+
+	.navbar-brand {
+		display: none;
+	}
+
+	body {
+		background-image: url(http://i.imgur.com/63ZMxHo.jpg);
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+
+	.slogan {
+		font-family: 'Josefin Sans', sans-serif;
+		font-size: 80px;
+		color: white;
+		width: 100%;
+		padding-top: 50px;
+		text-align: center;
+	}
+
 	.login-form {
-    margin-top: 100px;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
     width: 20%;
+		padding-top: 50px;
   }
 
   .login-form input {
+		background: transparent;
     margin-bottom: 5px;
+		border: 1px solid white;
+		color: white;
   }
 
   .login {
-    background: rgba(128, 128, 128, 0.8);
+    background: rgba(128, 128, 128, 0.1) !important;
     color: white;
-    border: rgba(128, 128, 128, 0.8);
+    border: 1px solid white;
   }
 
   .demo {
     margin-top: 0;
-    background: rgba(87, 173, 104, 0.8);
+    background: rgba(87, 173, 104, 0.3);
     color: white;
-    border: rgba(87, 173, 104, 0.8);
+    border: 1px solid white;
   }
 
   .login:hover {
-    background: rgba(128, 128, 128, 1);
-    border: rgba(128, 128, 128, 1);
+    background: rgba(128, 128, 128, 0.4) !important;
+    border: 1px solid white;
     color: white;
   }
 
   .demo:hover {
-    background: rgba(87, 173, 104, 1);
-    border: rgba(87, 173, 104, 1);
+    background: rgba(87, 173, 104, 0.5);
+    border: 1px solid white !important;
     color: white;
   }
 </style>
 
 <div class="login-page">
+	<div class="slogan">Curl up with a <strong>BIG</strong> idea</div>
 	<div class="login-form input-group">
-		<h1>Sign In</h1>
 		<form action="/session" method="POST">
 
 			<input type="hidden"
