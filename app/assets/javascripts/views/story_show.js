@@ -10,9 +10,10 @@ Large.Views.StoryShow = Backbone.View.extend({
     this.story = options.story;
     this.stories = options.stories;
     this.ttags = options.ttags;
+    this.tagShow = this.story.ttags();
     this.listenTo(this.ttags, 'sync', this.render);
     this.listenTo(this.story, 'sync', this.render);
-    // this.listenTo(this.story.ttags(), 'sync', this.render);
+    this.listenTo(this.tagShow, 'sync', this.render);
   },
 
   render: function () {
@@ -20,7 +21,7 @@ Large.Views.StoryShow = Backbone.View.extend({
     var responseId = this.story.get('story_id')
     var response = this.stories.get(responseId);
 
-    var content = this.template({ story: this.story, response: response });
+    var content = this.template({ story: this.story, response: response, tags: this.tagShow });
     this.$el.html(content);
 
     Large.Collections.publications.fetch({

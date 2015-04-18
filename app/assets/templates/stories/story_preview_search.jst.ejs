@@ -4,14 +4,27 @@
     <img style="height:122px; width:122px;" src="<%= story.get('header_image') %>">
   <% } %>
   <div class="sub-preview">
-    <h2><%= story.escape('title') %><h2>
-    <h3><%= story.escape('subtitle') %></h3><br>
+    <% if (story.get('story_id') === null) { %>
+      <a style="color:black;" href="#/stories/<%= story.id %>">
+        <h2><%= story.escape('title') %><h2>
+        <h3><%= story.escape('subtitle') %></h3><br>
+      </a>
+    <% } else { %>
+    <div style="color:rgba(128, 128, 128, 0.7);">
+      <i class="fa fa-comment-o"></i>
+      <a style="color:rgba(128, 128, 128, 0.7);" href="#/stories/<%= story.id %>"> in response to </a>
+      <a style="color:rgba(128, 128, 128, 0.7);"
+         href="#/stories/<%= story.get('story_id') %>">
+        <h4><%= story.escape('title') %></h4>
+      </a>
+    </div>
+    <% } %>
   </div>
   <% if (pub !== undefined) { %>
     <p>In <a href="#/publications/<%= pub.id %>"><%= pub.escape('title') %></a>, by
     <a style="color:rgba(128, 128, 128, 0.5)" href="#/users/<%= author.id %>"><%= author.escape('email') %></a>
     <br>
-    <abbr class="timeago" title="<%= story.get('created_at') %>"><%= story.get('created_at') %></abbr>
+    <abbr style="color:rgba(128, 128, 128, 0.5);" class="timeago" title="<%= story.get('created_at') %>"><%= story.get('created_at') %></abbr>
   <% } else { %>
   <a href="#/users/<%= author.id %>"><%= author.escape('email') %></a><br>
   <a style="color:rgba(128, 128, 128, 0.5)" href="#/stories/<%= story.id %>">

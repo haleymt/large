@@ -2,10 +2,10 @@ Large.Models.Story = Backbone.Model.extend({
   urlRoot: 'api/stories',
 
   ttags: function () {
-    if (this._tags === undefined) {
-      this._tags = new Large.Collections.Tags([]);
+    if (this._ttags === undefined) {
+      this._ttags = new Large.Collections.Tags([]);
     }
-    return this._tags
+    return this._ttags
   },
 
   taggings: function () {

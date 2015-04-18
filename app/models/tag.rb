@@ -9,7 +9,8 @@
 #
 
 class Tag < ActiveRecord::Base
-  validates :label, presence: true, uniqueness: true
+  validates :label, presence: true
+  validates :label, uniqueness: true
 
   has_many(
     :taggings,

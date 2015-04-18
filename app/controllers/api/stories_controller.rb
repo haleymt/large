@@ -12,7 +12,7 @@ module Api
 
     def show
       @story = Story.includes(:tags, :taggings).find(params[:id])
-      render json: @story
+      render :show
     end
 
     def index

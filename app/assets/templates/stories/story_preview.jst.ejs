@@ -26,13 +26,14 @@
         <h3><%= story.escape('subtitle') %></h3>
       </a>
       <a style="color:black;" href="#/stories/<%= story.id %>">
-        <div style="font-family:serif;"><%= sentence %>...
+        <div style="font-family:serif;font-size:20px;"><%= sentence %>...
         </div>
       </a>
       <br>
       <a href="#/stories/<%= story.id %>">Continue reading</a>
     <% } else { %>
       <div style="color:rgba(128, 128, 128, 0.7)">
+        <i class="fa fa-comment-o"></i>
         in response to
         <a style="color:rgba(128, 128, 128, 0.7); text-decoration:underline;"
            href="#/stories/<%= story.get('story_id') %>">
@@ -40,7 +41,7 @@
         </a>
       </div>
       <br>
-      <div style="font-family:serif;">
+      <div style="font-family:serif;font-size:20px;">
         <a style="color:black;" href="#/stories/<%= story.id %>">
         <%= sentence %>...
         </a>

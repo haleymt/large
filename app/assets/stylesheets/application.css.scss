@@ -127,6 +127,15 @@ a:hover {
   outline: none !important;
 }
 
+.tag-button {
+  background:rgba(128,128,128, 0.05);
+  outline:1px solid rgba(128,128,128, 0.3);
+  border:none;
+  color:rgba(128,128,128,0.8);
+  margin-top:10px;
+  margin-right:10px;
+}
+
 // [data-follow-state="followed"] {
 //   color: white;
 //   background: rgba(87, 173, 104, 0.7);

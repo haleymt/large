@@ -11,11 +11,17 @@
     <!-- <div class="image bg-blur"><img src="<%= story.escape('header_image') %>"></div> -->
   </div>
   <% } %>
-  <!-- <%= story.get('title') %>
-  <%= story.get('subtitle') %> -->
 </div>
 
 <div class="story-body"><%= story.get('body') %></div>
+<div style="color:rgba(128,128,128, 0.5);padding-left:100px;padding-bottom:30px;">
+  TAGGED IN<br>
+  <% tags.forEach( function (tag) { %>
+    <button class="tag-button">
+      <%= tag.escape('label') %>
+    </button>
+  <% }) %>
+</div>
 <div style="width:100%; border-top:1px solid rgba(128, 128, 128, 0.2);"></div>
 <div style="margin-left:250px; margin-bottom:250px; padding-top:50px;" class="new">
   <div class="pre-click">
