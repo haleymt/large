@@ -16,14 +16,20 @@
   <div id="sectionA" class="tab-pane fade in active">
     <div class="stories-results">
       <p class="section-label">STORIES</p>
-      <ul class="results-previews">
-      </ul>
+      <% if (stories.length > 0) { %>
+        <ul class="results-previews">
+        </ul>
+      <% } else { %>
+        <ul>
+          <li style="padding:10px;">Nothing to show.</li>
+        </ul>
+      <% } %>
     </div>
 
     <div class="up-pane">
       <div class="tags-results">
       <p class="section-label">TAGS</p>
-      <% if (tags !== null) { %>
+      <% if (tags.length > 0) { %>
         <% tags.forEach( function (tag) { %>
           <button style="margin-left:10px; margin-bottom:20px; margin-right:0;"
                   class="tag-button">
@@ -32,14 +38,14 @@
         <% }) %>
       <% } else { %>
         <ul>
-          <li>Nothing to show.</li>
+          <li style="padding:10px;">Nothing to show.</li>
         </ul>
       <% } %>
     </div>
 
       <div class="pubs-results">
         <p class="section-label">PUBLICATIONS</p>
-        <% if (publications !== null) { %>
+        <% if (publications.length > 0) { %>
         <ul>
         <% publications.forEach( function (pub) { %>
           <li><a href="#/publications/<%= pub.id %>">
@@ -58,7 +64,7 @@
 
       <div class="users-results">
       <p class="section-label">USERS</p>
-        <% if (users !== null) { %>
+        <% if (users.length > 0) { %>
         <ul>
           <% users.forEach( function (user) { %>
             <li><div class="user-info"><a href="#/users/<%= user.id %>">
@@ -80,7 +86,7 @@
   <!-- begin section people -->
   <div id="sectionB" class="tab-pane fade">
     <div class="users-results">
-      <% if (users !== null) { %>
+      <% if (users.length > 0) { %>
       <ul>
         <% users.forEach( function (user) { %>
           <li class="ur"><div class="user-info"><a href="#/users/<%= user.id %>">
@@ -101,7 +107,7 @@
   <!-- begin section pubs -->
   <div id="sectionC" class="tab-pane fade">
     <div class="pubs-results">
-      <% if (publications !== null) { %>
+      <% if (publications.length > 0) { %>
       <ul>
       <% publications.forEach( function (pub) { %>
         <li class="pr"><a href="#/publications/<%= pub.id %>">
