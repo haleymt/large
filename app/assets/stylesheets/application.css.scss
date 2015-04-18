@@ -563,6 +563,12 @@ ul {
   padding: 10px;
 }
 
+#sectionC .pubs-results li,
+#sectionB .users-results li {
+  border-top: 1px solid rgba(128, 128, 128, 0.2) !important;
+  padding: 20px;
+}
+
 #sectionA {
   position: relative;
 }
@@ -607,7 +613,7 @@ ul {
 }
 
 .search-preview {
-  border-bottom: 2px solid rgba(128, 128, 128, 0.2);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -623,7 +629,7 @@ ul {
 }
 
 p.section-label {
-  border-top: 2px solid rgba(128, 128, 128, 0.2);
+  border-top: 1px solid rgba(128, 128, 128, 0.2);
   margin-bottom: 0;
   padding-top: 10px;
 }
