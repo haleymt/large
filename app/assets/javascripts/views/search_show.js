@@ -22,6 +22,19 @@ Large.Views.SearchShow = Backbone.CompositeView.extend({
       this.stories.each(this.addStoryView.bind(this));
       this.listenTo(this.stories, 'add', this.addStoryView);
       this.listenTo(this.stories, 'remove', this.removeStoryView);
+      // var tags = []
+      // this.stories.forEach( function (story) {
+      //   story.ttags().forEach( function (tag) {
+      //     tags.push($(tag));
+      //   })
+      // }.bind(this))
+      //
+      // this.publications.forEach( function (pub) {
+      //   pub.ttags().forEach( function (tag) {
+      //     tags.push($(tag));
+      //   })
+      // }.bind(this))
+      // this.ttags = tags;
     }
   },
 
@@ -44,11 +57,13 @@ Large.Views.SearchShow = Backbone.CompositeView.extend({
   },
 
   render: function () {
+    // debugger
     var content = this.template({
       params: this.params,
       publications: this.publications,
       stories: this.stories,
-      users: this.users
+      users: this.users,
+      tags: this.ttags
     });
     this.$el.html(content);
 

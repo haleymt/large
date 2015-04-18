@@ -21,6 +21,25 @@
     </div>
 
     <div class="up-pane">
+      <!-- <div class="tags-results">
+        <p class="section-label">TAGS</p>
+        <% if (tags !== null) { %>
+        <ul>
+        <% tags.forEach( function (tag) { %>
+          <li>
+          <button class="btn btn-primary btn-sm">
+            <%= tag.escape('label') %>
+          </button>
+          </li>
+        <% }) %>
+        </ul>
+        <% } else { %>
+          <ul>
+            <li>Nothing to show.</li>
+          </ul>
+        <% } %>
+      </div> -->
+
       <div class="pubs-results">
         <p class="section-label">PUBLICATIONS</p>
         <% if (publications !== null) { %>

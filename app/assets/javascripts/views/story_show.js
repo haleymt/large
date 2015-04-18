@@ -12,9 +12,11 @@ Large.Views.StoryShow = Backbone.View.extend({
     this.ttags = options.ttags;
     this.listenTo(this.ttags, 'sync', this.render);
     this.listenTo(this.story, 'sync', this.render);
+    // this.listenTo(this.story.ttags(), 'sync', this.render);
   },
 
   render: function () {
+    // debugger
     var responseId = this.story.get('story_id')
     var response = this.stories.get(responseId);
 

@@ -10,6 +10,9 @@ module Api
     end
 
     def index
+      # if params[:query] 
+      #   search_params = "%#{params[:query]}%"
+      #   @tags = Tag.all.where("label ILIKE :search", search: search_params)
       @tags = Tag.all
       render json: @tags
     end

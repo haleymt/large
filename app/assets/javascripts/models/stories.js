@@ -15,8 +15,9 @@ Large.Models.Story = Backbone.Model.extend({
     }
     return this._taggings;
   },
-  
+
   parse: function (payload) {
+    // debugger
     if (payload.taggings) {
       this.taggings().set(payload.taggings, { parse: true });
       delete payload.taggings

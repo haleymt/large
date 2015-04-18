@@ -14,12 +14,16 @@
   <% if (story.get('header_image') !== null) { %>
     <br>
   <div class="img-container">
-    <img src="<%= story.get('header_image') %>">
+    <a href="#/stories/<%= story.id %>">
+      <img src="<%= story.get('header_image') %>">
+    </a>
   </div>
   <% } %>
   <div class="sub-preview">
+    <a style="color:black;" href="#/stories/<%= story.id %>">
     <h2><%= story.escape('title') %><h2>
     <h3><%= story.escape('subtitle') %></h3>
+    </a>
     <div style="font-family:serif;"><%= sentence %>...
     </div>
     <br>
