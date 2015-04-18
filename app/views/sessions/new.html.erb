@@ -4,16 +4,13 @@
 	}
 
 	.navbar .btn {
-		background: transparent;
-		border: 1px solid white;
-		color: white;
+		background: transparent !important;
+		border: 1px solid white !important;
+		color: white !important;
 	}
 
-	.navbar .btn:active,
-	.navbar .btn:target {
-		background: transparent !important;
-		border: 1px solid white;
-		color: white;
+	.navbar .btn:active {
+		background: rgba(0,0,0,0.5) !important;
 	}
 
 	::-webkit-input-placeholder {
@@ -131,6 +128,7 @@
 </div>
 
 <script>
+
 $('.demo').click(function(event){
    event.preventDefault();
    $("input[name='user[email]']").val('guest');
