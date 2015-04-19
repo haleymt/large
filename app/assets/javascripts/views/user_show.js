@@ -8,7 +8,7 @@ Large.Views.UserShow = Backbone.View.extend({
 
   initialize: function (options) {
     this.user = options.user;
-    this.currentUser = this.user.currentUser();
+    // this.currentUser = this.user.currentUser();
     this.stories = this.user.stories();
     this.publications = options.publications;
     this.currentUserFollows = options.follows;
@@ -28,9 +28,9 @@ Large.Views.UserShow = Backbone.View.extend({
     var content = this.template({ user: this.user, followers: this.follows, followings: this.followings });
     this.$el.html(content);
 
-    if (this.user === this.currentUser) {
-      $('.navbar-nav').prepend(this.editToggle());
-    }
+    // if (this.user === this.currentUser) {
+    //   $('.navbar-nav').prepend(this.editToggle());
+    // }
 
     var follow = this.currentUserFollows.findWhere({
                       followable_id: this.user.id,

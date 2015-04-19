@@ -17,6 +17,7 @@ window.Large = {
     new Large.Routers.UsersRouter({content: $('#content')});
     new Large.Routers.StoriesRouter({content: $('#content')});
     new Large.Routers.PubsRouter({content: $('#content')});
+    new Large.Routers.TagsRouter({content: $('#content')});
 
     Backbone.history.start();
   }

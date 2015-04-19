@@ -6,7 +6,7 @@
   </button>
   <ul style="padding:15px;" class="dropdown-menu" role="menu"><strong>Add your draft to a publication</strong>
     <% publications.forEach( function(pub) { %>
-    <li><input type="checkbox" name="story[pub_id]" value="<%= pub.id %>" form="confirm-form">
+    <li><input type="radio" name="story[pub_id]" value="<%= pub.id %>" form="confirm-form">
       <%= pub.escape('title') %><br>
     </li>
     <% }) %>

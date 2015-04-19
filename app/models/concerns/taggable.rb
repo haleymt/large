@@ -4,7 +4,8 @@ module Taggable
   included do
     has_many :taggings,
       as: :taggable,
-      class_name: :Tagging
+      class_name: :Tagging,
+      dependent: :destroy
 
     has_many :tags,
       through: :taggings,

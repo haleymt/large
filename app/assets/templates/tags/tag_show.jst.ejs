@@ -1,0 +1,20 @@
+<div class="tag-show">
+  <div style="padding:30px;margin-left:10px;">
+    <p style="color:rgba(128,128,128,0.7)">TAGGED IN</p>
+    <h2><%= tag.escape('label') %></h2>
+  </div>
+  <% if (tags.length > 0) { %>
+  <div style="border-top:1px solid rgba(128,128,128,0.2); margin-left:40px;" class="related-tags">
+    <strong style="color:rgba(128,128,128,0.7)">RELATED TAGS</strong><br>
+    <% tags.forEach( function (tag) { %>
+      <a href="#/tags/<% tag.id %>">
+        <button class="tag-button">
+          <%= tag.escape('label') %>
+        </button>
+      </a>
+    <% }) %>
+  </div>
+  <% } %>
+  <ul>
+  </ul>
+</div>

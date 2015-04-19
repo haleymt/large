@@ -129,11 +129,16 @@ a:hover {
 
 .tag-button {
   background:rgba(128,128,128, 0.05);
-  outline:1px solid rgba(128,128,128, 0.3);
+  outline:1px solid rgba(128,128,128, 0.3) !important;
   border:none;
   color:rgba(128,128,128,0.8);
   margin-top:10px;
   margin-right:10px;
+}
+
+.tag-button:active {
+  outline:1px solid rgba(128,128,128, 0.3) !important;
+  background:rgba(128,128,128, 0.2);
 }
 
 // [data-follow-state="followed"] {
@@ -229,6 +234,16 @@ a:hover {
               font-size:20px;
               border:1px solid rgba(87, 173, 104, 1);
               color:rgba(87, 173, 104, 1);
+            }
+
+            .new-story-header button {
+              background: white !important;
+              border: 1px solid rgba(128,128,128,0.6) !important;
+              color: rgba(128,128,128,0.6) !important;
+            }
+
+            .new-story-header button:active {
+              background: white !important;
             }
 
     .new {
@@ -715,4 +730,12 @@ li.pr {
 #followersModal .follow {
   float: right;
   margin: 0;
+}
+
+// tag show page
+
+.tag-show {
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
 }

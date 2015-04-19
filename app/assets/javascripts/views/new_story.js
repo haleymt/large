@@ -153,12 +153,13 @@ Large.Views.NewStory = Backbone.View.extend({
               tag.save(tag.attributes, {
                 success: function () {
                   // ids.push(tag.id);
+                  // ttags.add(tag, { merge: true })
                   var tagging = new Large.Models.Tagging({
                     taggable_id: story.id,
                     taggable_type: "Story",
                     tag_id: tag.id
                   });
-                  tagging.save();
+                  tagging.save(tagging.attributes);
                 }
               })
             } else {

@@ -17,4 +17,25 @@ class Tag < ActiveRecord::Base
     class_name: :Tagging,
     foreign_key: :tag_id
   )
+
+  def tagged_pubs
+    pubs = []
+    self.taggings.each do |tagging|
+      if tagging.taggable_type == "Publication"
+        pubs << Publication.find(tagging.taggable_id)
+      end
+    end
+    return pubs
+  end
+
+  def tagged_stories
+    stories = []
+    self.taggings.each do |tagging|
+      if tagging.taggable_type == "Story"
+        stories << Story.find(tagging.taggable_id)
+      end
+    end
+    return stories
+  end
+
 end

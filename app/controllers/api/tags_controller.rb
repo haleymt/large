@@ -10,7 +10,7 @@ module Api
     end
 
     def index
-      # if params[:query] 
+      # if params[:query]
       #   search_params = "%#{params[:query]}%"
       #   @tags = Tag.all.where("label ILIKE :search", search: search_params)
       @tags = Tag.all
@@ -18,8 +18,8 @@ module Api
     end
 
     def show
-      @tag = Tag.find(params[:id])
-      render :show
+      @tag = Tag.includes(:taggings).find(params[:id])
+      render :show, include: [:tagged_pubs, :tagged_stories]
     end
 
     def destroy
