@@ -46,16 +46,23 @@ Large.Views.SearchShow = Backbone.CompositeView.extend({
   render: function () {
     // debugger
     var tags = []
+    var ids = []
     if (this.params !== null) {
       this.stories.forEach( function (story) {
         story.ttags().forEach( function (tag) {
-          tags.push(tag);
+          if (ids.indexOf(tag.id) === -1) {
+            tags.push(tag);
+            ids.push(tag.id)
+          }
         })
       });
 
       this.publications.forEach( function (pub) {
         pub.ttags().forEach( function (tag) {
-          tags.push(tag);
+          if (ids.indexOf(tag.id) === -1) {
+            tags.push(tag);
+            ids.push(tag.id);
+          }
         })
       });
     }
