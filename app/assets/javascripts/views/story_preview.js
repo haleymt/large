@@ -24,11 +24,17 @@ Large.Views.StoryPreview = Backbone.View.extend({
       var b = this.model.get('body');
       var firstSentence = b.split('</p>')[2].split(">")[b.split('</p>')[2].split(">").length - 1]
     }
+
+    var readingTime = Math.floor(this.model.get('body').length / 2800);
+    if (readingTime === 0) {
+      readingTime = "Less than a";
+    }
     var content = this.template({
       story: this.model,
       author: author,
       pub: pub,
-      sentence: firstSentence.slice(0, 250)
+      sentence: firstSentence.slice(0, 250),
+      readingTime: readingTime
     });
     this.$el.html(content);
     this.$("abbr.timeago").timeago();

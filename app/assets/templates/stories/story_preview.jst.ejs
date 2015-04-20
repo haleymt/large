@@ -1,13 +1,15 @@
 <li class="preview">
   <% if (pub !== undefined) { %>
     <a href="#/publications/<%= pub.id %>"><strong><%= pub.escape('title') %></strong></a><br>
-    <a style="color:rgba(128, 128, 128, 0.5)" href="#/users/<%= author.id %>"><%= author.escape('email') %></a> -
-    <a style="color:rgba(128, 128, 128, 0.5)" href="#/stories/<%= story.id %>">
+    <a style="color:rgba(128, 128, 128, 0.5); font-size:12px;" href="#/users/<%= author.id %>">
+      <%= author.escape('email') %>
+      &#8231; </a>
+    <a style="color:rgba(128, 128, 128, 0.5); font-size:12px;" href="#/stories/<%= story.id %>">
       <abbr class="timeago" title="<%= story.get('created_at') %>"><%= story.get('created_at') %></abbr>
     </a>
   <% } else { %>
   <a href="#/users/<%= author.id %>"><%= author.escape('email') %></a><br>
-  <a style="color:rgba(128, 128, 128, 0.5)" href="#/stories/<%= story.id %>">
+  <a style="color:rgba(128, 128, 128, 0.5); font-size:12px;" href="#/stories/<%= story.id %>">
     <abbr class="timeago" title="<%= story.get('created_at') %>">
       <%= story.get('created_at') %>
     </abbr>
@@ -36,6 +38,8 @@
       <% } %>
       <br>
       <a href="#/stories/<%= story.id %>">Continue reading</a>
+      <a style="color:rgba(128,128,128,1);"
+         href="#/stories/<%= story.id %>"> &#8231; <%= readingTime %> min read</a>
     <% } else { %>
       <div style="color:rgba(128, 128, 128, 0.7)">
         <i class="fa fa-comment-o"></i>
@@ -53,6 +57,8 @@
       </div>
       <br>
       <a href="#/stories/<%= story.id %>">Continue reading</a>
+      <a style="color:rgba(128,128,128,1);"
+         href="#/stories/<%= story.id %>"> &#8231; <%= readingTime %> min read</a>
       <% } %>
   <div>
 </li>

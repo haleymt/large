@@ -47,6 +47,7 @@ Large.Views.NewStory = Backbone.View.extend({
       placement: 'bottom',
       trigger: 'hover'
     })
+    $('.selectivity-multiple-input-container').css('background', 'transparent');
     return this;
   },
 
