@@ -43,8 +43,7 @@ Large.Views.SearchShow = Backbone.CompositeView.extend({
     subviews.splice(i, 1);
   },
 
-  render: function () {
-    // debugger
+  relatedTags: function () {
     var tags = []
     var ids = []
     if (this.params !== null) {
@@ -66,19 +65,23 @@ Large.Views.SearchShow = Backbone.CompositeView.extend({
         })
       });
     }
+    return tags;
+  },
 
+  render: function () {
+    // debugger
     var content = this.template({
       params: this.params,
       publications: this.publications,
       stories: this.stories,
       users: this.users,
-      tags: tags
+      tags: this.relatedTags()
     });
+
     this.$el.html(content);
-
     this.attachSubviews();
-
     this.$('input[type=submit]').hide();
+
     $('.follow').each(function (i, obj) {
       var $id = parseInt($(obj).attr('id'));
       var $type = $(obj).val();
@@ -103,9 +106,9 @@ Large.Views.SearchShow = Backbone.CompositeView.extend({
   },
 
   handleInput: function () {
-
     var params = this.$('#box').val();
-    Backbone.history.navigate("/search?" + params, { trigger: true });
+    Backbone.history.navigate();
+    Backbone.history.navigate("search?" + params, { trigger: true });
   },
 
   toggleFollow: function (event) {

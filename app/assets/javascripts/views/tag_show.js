@@ -3,17 +3,55 @@ Large.Views.TagShow = Backbone.CompositeView.extend({
 
   initialize: function (options) {
     this.ttag = options.ttag;
+    this.taggedStories = options.ttag.taggedStories();
+    this.taggedPubs = options.ttag.taggedPubs();
     this.publications = options.pubs;
-    this.taggedStories = this.ttag.taggedStories();
-    this.taggedPubs = this.ttag.taggedPubs();
     this.listenTo(this.ttag, 'sync', this.render);
+    this.listenTo(this.publications, 'sync', this.render);
     this.listenTo(this.taggedStories, 'sync', this.render);
     this.listenTo(this.taggedPubs, 'sync', this.render);
-    this.listenTo(this.publications, 'sync', this.render);
 
     this.taggedStories.each(this.addStoryView.bind(this));
     this.listenTo(this.taggedStories, 'add', this.addStoryView);
     this.listenTo(this.taggedStories, 'remove', this.removeStoryView);
+  },
+
+  relatedTags: function () {
+    debugger
+    var tags = [];
+    var ids = [];
+    this.taggedStories.forEach( function (story) {
+      story.ttags().forEach( function (tag) {
+        if (ids.indexOf(tag.id) === -1) {
+          tags.push(tag);
+          ids.push(tag.id);
+        }
+      })
+    });
+    // return tags;
+    this.taggedPubs.forEach( function (pub) {
+      pub.ttags().forEach( function (tag) {
+        if (ids.indexOf(tag.id) === -1) {
+          tags.push(tag);
+          ids.push(tag.id);
+        }
+      })
+    });
+    return tags;
+  },
+
+  render: function () {
+    // debugger
+    var tags = this.relatedTags();
+    var content = this.template({
+      tag: this.ttag,
+      tags: tags
+    });
+
+    this.$el.html(content);
+
+    this.attachSubviews();
+    return this;
   },
 
   addStoryView: function (story) {
@@ -32,30 +70,5 @@ Large.Views.TagShow = Backbone.CompositeView.extend({
 
     subviews[i].remove();
     subviews.splice(i, 1);
-  },
-
-  render: function () {
-    // debugger
-    var tags = []
-    this.taggedStories.forEach( function (story) {
-      story.ttags().forEach( function (tag) {
-        tags.push(tag);
-      })
-    });
-
-    this.taggedPubs.forEach( function (pub) {
-      pub.ttags().forEach( function (tag) {
-        tags.push(tag);
-      })
-    });
-
-    var content = this.template({
-      tag: this.ttag,
-      tags: tags
-    });
-
-    this.$el.html(content);
-    this.attachSubviews();
-    return this;
   }
 })
