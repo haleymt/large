@@ -27,12 +27,12 @@
     </div>
 
     <div class="up-pane">
-      <div class="tags-results">
+      <div style="padding-bottom:10px;" class="tags-results">
       <p class="section-label">TAGS</p>
       <% if (tags.length > 0) { %>
         <% tags.forEach( function (tag) { %>
-          <a href="#/tags/<%= tag.id %>">
-            <button style="margin-left:10px; margin-bottom:20px; margin-right:0;"
+          <a href="#tags/<%= tag.id %>">
+            <button style="margin-left:10px; margin-bottom:10px; margin-right:0;"
                   class="tag-button">
             <%= tag.escape('label') %>
             </button>

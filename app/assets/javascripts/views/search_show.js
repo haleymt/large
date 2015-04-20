@@ -70,6 +70,7 @@ Large.Views.SearchShow = Backbone.CompositeView.extend({
 
   render: function () {
     // debugger
+    $('.navbar-nav').find('.about-link').remove();
     var content = this.template({
       params: this.params,
       publications: this.publications,
