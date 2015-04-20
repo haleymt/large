@@ -17,7 +17,7 @@ Large.Views.TagShow = Backbone.CompositeView.extend({
   },
 
   relatedTags: function () {
-    debugger
+    // debugger
     var tags = [];
     var ids = [];
     this.taggedStories.forEach( function (story) {

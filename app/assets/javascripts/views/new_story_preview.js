@@ -25,7 +25,10 @@ Large.Views.NewStoryPreview = Backbone.View.extend({
   render: function () {
     this.$el.html(this.template({ story: this.model, publications: this.publications }));
     this.$('.editable p').before(this.insertToolbar())
-
+    $('.expand').tooltip({
+      placement: 'top',
+      trigger: 'hover'
+    });
     return this;
   },
 

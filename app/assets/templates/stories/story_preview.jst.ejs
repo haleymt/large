@@ -8,7 +8,9 @@
   <% } else { %>
   <a href="#/users/<%= author.id %>"><%= author.escape('email') %></a><br>
   <a style="color:rgba(128, 128, 128, 0.5)" href="#/stories/<%= story.id %>">
-    <abbr class="timeago" title="<%= story.get('created_at') %>"><%= story.get('created_at') %></abbr>
+    <abbr class="timeago" title="<%= story.get('created_at') %>">
+      <%= story.get('created_at') %>
+    </abbr>
   </a>
   <% } %>
   <% if (story.get('header_image') !== null) { %>

@@ -42,7 +42,6 @@ Large.Views.HomeShow = Backbone.CompositeView.extend({
 
     this.$el.html(this.template());
     this.attachSubviews();
-    this.$("abbr.timeago").timeago();
 
     var newStory = new Large.Models.Story();
     Large.Collections.publications.fetch({
@@ -60,6 +59,7 @@ Large.Views.HomeShow = Backbone.CompositeView.extend({
       placeholder: "",
       buttons: ['bold', 'italic', 'quote', 'anchor']
     });
+    this.$("abbr.timeago").timeago();
     return this;
   },
 

@@ -34,6 +34,15 @@ a:hover {
   text-decoration: none !important;
 }
 
+.dropdown .dropdown-menu li.below a {
+  color: rgba(128,128,128,0.5) !important;
+}
+
+.dropdown .dropdown-menu li.above a {
+  color: rgba(128,128,128,1);
+  font-size: 16px;
+}
+
 .navbar-default {
   background: white;
   border-radius: 0px;
@@ -139,6 +148,10 @@ a:hover {
 .tag-button:active {
   outline:1px solid rgba(128,128,128, 0.3) !important;
   background:rgba(128,128,128, 0.2);
+}
+
+abbr {
+  border-width: 0px !important;
 }
 
 // [data-follow-state="followed"] {

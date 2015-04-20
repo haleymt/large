@@ -43,6 +43,10 @@ Large.Views.NewStory = Backbone.View.extend({
         // placeholder: 'Add up to 3 tags'
       });
     // }.bind(this), 1000);
+    $('.tt').tooltip({
+      placement: 'bottom',
+      trigger: 'hover'
+    })
     return this;
   },
 
