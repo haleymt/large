@@ -21,6 +21,7 @@ Large.Views.TagShow = Backbone.CompositeView.extend({
     var tags = [];
     var ids = [];
     this.taggedStories.forEach( function (story) {
+      story.fetch();
       story.ttags().forEach( function (tag) {
         if (ids.indexOf(tag.id) === -1) {
           tags.push(tag);
@@ -30,6 +31,7 @@ Large.Views.TagShow = Backbone.CompositeView.extend({
     });
     // return tags;
     this.taggedPubs.forEach( function (pub) {
+      pub.fetch();
       pub.ttags().forEach( function (tag) {
         if (ids.indexOf(tag.id) === -1) {
           tags.push(tag);
