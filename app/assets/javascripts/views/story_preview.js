@@ -18,7 +18,7 @@ Large.Views.StoryPreview = Backbone.View.extend({
     var pubId = this.model.get('pub_id');
     var pub = this.publications.get(pubId);
 
-    if ((this.model.get('body') === null) || (this.model.get("body").split('</p>').length < 3)) {
+    if ((this.model.get('body') === null) || (this.model.get("body").split('</p>') === null) || (this.model.get("body").split('</p>').length < 3)) {
       var firstSentence = ""
     } else {
       var b = this.model.get('body');
