@@ -13,7 +13,22 @@ module Api
       # if params[:query]
       #   search_params = "%#{params[:query]}%"
       #   @tags = Tag.all.where("label ILIKE :search", search: search_params)
-      @tags = Tag.all
+      if params[:tag_id]
+        tag = Tag.find(params[:tag_id])
+        @tags = []
+        tag.tagged_pubs.each do |pub|
+          pub.tags.each do |tag|
+            @tags << tag unless @tags.include?(tag)
+          end
+        end
+        tag.tagged_stories.each do |story|
+          story.tags.each do |tag|
+            @tags << tag unless @tags.include?(tag)
+          end
+        end
+      else
+        @tags = Tag.all
+      end
       render json: @tags
     end
 

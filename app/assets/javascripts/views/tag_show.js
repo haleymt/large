@@ -3,51 +3,23 @@ Large.Views.TagShow = Backbone.CompositeView.extend({
 
   initialize: function (options) {
     this.ttag = options.ttag;
+    this.ttags = options.ttags;
     this.taggedStories = options.ttag.taggedStories();
-    this.taggedPubs = options.ttag.taggedPubs();
     this.publications = options.pubs;
-    this.listenTo(this.ttag, 'sync', this.render);
+    
     this.listenTo(this.publications, 'sync', this.render);
     this.listenTo(this.taggedStories, 'sync', this.render);
-    this.listenTo(this.taggedPubs, 'sync', this.render);
+    this.listenTo(this.ttags, 'sync', this.render);
 
     this.taggedStories.each(this.addStoryView.bind(this));
     this.listenTo(this.taggedStories, 'add', this.addStoryView);
     this.listenTo(this.taggedStories, 'remove', this.removeStoryView);
   },
 
-  relatedTags: function () {
-    // debugger
-    var tags = [];
-    var ids = [];
-    this.taggedStories.forEach( function (story) {
-      story.fetch();
-      story.ttags().forEach( function (tag) {
-        if (ids.indexOf(tag.id) === -1) {
-          tags.push(tag);
-          ids.push(tag.id);
-        }
-      })
-    });
-    // return tags;
-    this.taggedPubs.forEach( function (pub) {
-      pub.fetch();
-      pub.ttags().forEach( function (tag) {
-        if (ids.indexOf(tag.id) === -1) {
-          tags.push(tag);
-          ids.push(tag.id);
-        }
-      })
-    });
-    return tags;
-  },
-
   render: function () {
-    // debugger
-    var tags = this.relatedTags();
     var content = this.template({
       tag: this.ttag,
-      tags: tags
+      tags: this.ttags
     });
 
     this.$el.html(content);

@@ -22,7 +22,7 @@ class Tag < ActiveRecord::Base
     pubs = []
     self.taggings.each do |tagging|
       if tagging.taggable_type == "Publication"
-        pubs << Publication.find(tagging.taggable_id)
+        pubs << Publication.includes(:tags, :taggings).find(tagging.taggable_id)
       end
     end
     return pubs
@@ -32,7 +32,7 @@ class Tag < ActiveRecord::Base
     stories = []
     self.taggings.each do |tagging|
       if tagging.taggable_type == "Story"
-        stories << Story.find(tagging.taggable_id)
+        stories << Story.includes(:tags, :taggings).find(tagging.taggable_id)
       end
     end
     return stories
