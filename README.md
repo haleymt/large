@@ -4,11 +4,10 @@
 
 [heroku]: http://medium-large.herokuapp.com
 
-## Minimum Viable Product
-Large is a clone of Medium built on Rails and Backbone. Users can:
+## Large is a clone of Medium.com built on Rails and Backbone. Users can:
 
-- [X] Create accounts (via Twitter or Facebook)
-- [X] Create sessions (via Twitter or Facebook)
+- [X] Create accounts 
+- [X] Create sessions 
 - [X] Create stories
 - [X] Create publications
 - [X] View people and publications
@@ -66,10 +65,10 @@ These views will fetch from the collections that already exist for each of the m
 
 [Details][phase-five]
 
-### Bonus Features (TBD)
+### Bonus Features (in progress)
 - [ ] Leave notes on stories
 - [ ] Receive notifications
-- [ ] Images and icons
+- [ ] User icons
 - [ ] Import stories
 - [ ] Share stories for editing
 - [ ] View a feed of Top Stories
