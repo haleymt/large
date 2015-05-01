@@ -2,12 +2,12 @@
   <div class="feed">
     <div class="new">
       <div class="pre-click">
-        <p><i class="fa fa-user"></i>    Write Here...</p>
+        <t><i class="fa fa-user"></i>    Write Here...</t>
       </div>
       <div class="post-click">
       </div>
     </div>
-    <ul style="width:650px">
+    <ul class="main-stories" style="width:650px">
     </ul>
   </div>
 
@@ -25,7 +25,20 @@
         <% }) %>
       </div>
     </div>
-    <div class="top-stories"><t class="featured">TOP STORIES ON LARGE</t>
+    <div class="top-stories">
+      <t class="featured">TOP STORIES ON LARGE</t>
+      <br>
+      <ul>
+        <% topStories.forEach( function (story) { %>
+        <li>
+          <button class="btn btn-circle"><%= story.id %></button>
+          <a href="#/stories/<%= story.id %>">
+            <strong><%= story.escape('title') %></strong>
+            <br><%= story.escape('subtitle') %>
+          </a>
+        </li>
+        <% }) %>
+      </ul>
     </div>
   </div>
 </div>

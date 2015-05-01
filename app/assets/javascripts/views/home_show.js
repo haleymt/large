@@ -22,7 +22,7 @@ Large.Views.HomeShow = Backbone.CompositeView.extend({
     var storyPreview = new Large.Views.StoryPreview({
       model: story, publications: this.publications
     });
-    this.addSubview('ul', storyPreview);
+    this.addSubview('.main-stories', storyPreview);
   },
 
   removeStoryView: function (story) {
@@ -39,8 +39,11 @@ Large.Views.HomeShow = Backbone.CompositeView.extend({
   render: function () {
     $('.navbar-nav').find('.new-story-header').remove();
     $('.navbar-nav').find('.about-link').remove();
-
-    this.$el.html(this.template({ tags: this.ttags }));
+    var content = this.template({
+      tags: this.ttags,
+      topStories: this.stories.last(5)
+    })
+    this.$el.html(content);
     this.attachSubviews();
 
     var newStory = new Large.Models.Story();

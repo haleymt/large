@@ -194,11 +194,12 @@ abbr {
   height: 1000px;
   border-left: 1px solid rgba(128, 128, 128, 0.1);
   border-bottom: 1px solid rgba(128, 128, 128, 0.1);
-  padding: 40px;
-  padding-top: 60px;
+  padding: 30px;
+  padding-top: 40px;
 }
 
-.tags div {
+.tags div,
+.top-stories ul {
  padding-top: 15px;
 }
 
@@ -216,9 +217,33 @@ abbr {
   margin-bottom:0;
   margin-right:10px;
   background: white;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: normal;
   outline: 1px solid rgba(128, 128, 128, 0.1) !important;
+}
+
+.top-stories li {
+  margin-left: -40px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+  padding-bottom: 20px;
+  padding-top: 20px;
+  min-height: 80px;
+}
+
+.top-stories .btn {
+  float: left;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 0;
+  margin-right: 20px;
+  color: rgba(128, 128, 128, 1) !important;
+  border: 1px solid rgba(128, 128, 128, 0.1) !important;
+}
+
+.top-stories li a {
+  font-weight: normal;
+  color: black;
+  font-size: 14px;
 }
 
 // new story MAIN
