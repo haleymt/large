@@ -29,11 +29,17 @@
       <t class="featured">TOP STORIES ON LARGE</t>
       <br>
       <ul>
+        <% var counter = 0 %>
         <% topStories.forEach( function (story) { %>
+          <% counter++ %>
         <li>
-          <button class="btn btn-circle"><%= story.id %></button>
+          <button class="btn btn-circle"><%= counter %></button>
           <a href="#/stories/<%= story.id %>">
+            <% if (story.get('title').length < 18) { %>
             <strong><%= story.escape('title') %></strong>
+            <% } else { %>
+            <strong><%= story.escape('title').slice(18) %>...</strong>
+            <% } %>
           </a>
             <br>
           <a href="#/users/<%= story.get('author_id') %>"><%= authors[story.id - 1] %>
