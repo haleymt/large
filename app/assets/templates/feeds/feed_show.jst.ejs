@@ -38,7 +38,7 @@
             <% if (story.get('title').length < 18) { %>
             <strong><%= story.escape('title') %></strong>
             <% } else { %>
-            <strong><%= story.escape('title').slice(18) %>...</strong>
+            <strong><%= story.escape('title').slice(0, 18) %>...</strong>
             <% } %>
           </a>
             <br>
