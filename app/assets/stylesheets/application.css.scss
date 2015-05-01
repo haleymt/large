@@ -170,6 +170,57 @@ abbr {
   padding: 20px;
 }
 
+// HOME SHOW
+
+.landing-page {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.landing-page .feed {
+  padding-right: 0;
+  padding-left: 80px;
+  margin-right: 0;
+  float: left;
+  width: 70%;
+}
+
+.landing-page .sidebar {
+  float: right;
+  background: rgba(128, 128, 128, 0.05);
+  top: 0;
+  width: 30%;
+  height: 1000px;
+  border-left: 1px solid rgba(128, 128, 128, 0.1);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+  padding: 40px;
+  padding-top: 60px;
+}
+
+.tags div {
+ padding-top: 15px;
+}
+
+.sidebar .tags,
+.sidebar .top-stories {
+  border-top: 1px solid rgba(128, 128, 128, 0.1);
+  font-weight: bold;
+  padding-top: 15px;
+  font-size: 12px;
+  width: 250px;
+  padding-bottom: 40px;
+}
+
+.tags .tag-button {
+  margin-bottom:0;
+  margin-right:10px;
+  background: white;
+  font-size: 12px;
+  font-weight: normal;
+  outline: 1px solid rgba(128, 128, 128, 0.1) !important;
+}
+
 // new story MAIN
 
           .header-setter button {

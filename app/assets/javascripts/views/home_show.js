@@ -40,7 +40,7 @@ Large.Views.HomeShow = Backbone.CompositeView.extend({
     $('.navbar-nav').find('.new-story-header').remove();
     $('.navbar-nav').find('.about-link').remove();
 
-    this.$el.html(this.template());
+    this.$el.html(this.template({ tags: this.ttags }));
     this.attachSubviews();
 
     var newStory = new Large.Models.Story();
