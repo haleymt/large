@@ -39,9 +39,16 @@ Large.Views.HomeShow = Backbone.CompositeView.extend({
   render: function () {
     $('.navbar-nav').find('.new-story-header').remove();
     $('.navbar-nav').find('.about-link').remove();
+    var topStories = this.stories.first(5);
+    authors = [];
+    topStories.forEach(function (story) {
+      author = Large.Collections.users.get(story.get('author_id'))
+      authors.push(author.get('email'));
+    })
     var content = this.template({
       tags: this.ttags,
-      topStories: this.stories.last(5)
+      topStories: this.stories.first(5),
+      authors: authors
     })
     this.$el.html(content);
     this.attachSubviews();

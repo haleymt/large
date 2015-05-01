@@ -34,11 +34,16 @@
           <button class="btn btn-circle"><%= story.id %></button>
           <a href="#/stories/<%= story.id %>">
             <strong><%= story.escape('title') %></strong>
-            <br><%= story.escape('subtitle') %>
+          </a>
+            <br>
+          <a href="#/users/<%= story.get('author_id') %>"><%= authors[story.id - 1] %>
           </a>
         </li>
         <% }) %>
       </ul>
+    </div>
+    <div class="sidebar-footer">
+      <t style="color: rgba(128, 128, 128, 0.5);">&#169; Haley Thurston 2015</t>
     </div>
   </div>
 </div>

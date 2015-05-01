@@ -191,7 +191,7 @@ abbr {
   background: rgba(128, 128, 128, 0.05);
   top: 0;
   width: 30%;
-  height: 1000px;
+  height: 800px;
   border-left: 1px solid rgba(128, 128, 128, 0.1);
   border-bottom: 1px solid rgba(128, 128, 128, 0.1);
   padding: 30px;
@@ -203,8 +203,13 @@ abbr {
  padding-top: 15px;
 }
 
+.top-stories ul li:last-child {
+  border: none;
+}
+
 .sidebar .tags,
-.sidebar .top-stories {
+.sidebar .top-stories,
+.sidebar .sidebar-footer {
   border-top: 1px solid rgba(128, 128, 128, 0.1);
   font-weight: bold;
   padding-top: 15px;
