@@ -7,7 +7,7 @@
       <div class="post-click">
       </div>
     </div>
-    <ul class="main-stories" style="width:650px">
+    <ul class="main-stories" style="width:575px">
     </ul>
   </div>
 
@@ -35,10 +35,10 @@
         <li>
           <button class="btn btn-circle"><%= counter %></button>
           <a href="#/stories/<%= story.id %>">
-            <% if (story.get('title').length < 18) { %>
+            <% if (story.get('title').length < 20) { %>
             <strong><%= story.escape('title') %></strong>
             <% } else { %>
-            <strong><%= story.escape('title').slice(0, 18) %>...</strong>
+            <strong><%= story.escape('title').slice(0, 20) %>...</strong>
             <% } %>
           </a>
             <br>
