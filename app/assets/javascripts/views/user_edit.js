@@ -2,7 +2,9 @@ Large.Views.UserEdit = Backbone.View.extend({
   template: JST['users/user_edit'],
 
   events: {
-    "click .follow": "toggleFollow"
+    "click .follow": "toggleFollow",
+    "click .user-header-image": "addHeaderImage",
+    "click .save-edits": "saveEdits"
   },
 
   initialize: function (options) {
@@ -47,6 +49,7 @@ Large.Views.UserEdit = Backbone.View.extend({
     }.bind(this));
     this.$("abbr.timeago").timeago();
 
+    $('.edit-email').focus();
     return this;
   },
 
@@ -71,5 +74,34 @@ Large.Views.UserEdit = Backbone.View.extend({
         }
       });
     }
+  },
+
+  addHeaderImage: function (event) {
+    event.preventDefault();
+
+    filepicker.setKey("AFA8IlPkxSNC1BPrgoHtsz");
+    filepicker.pick(
+      {
+        mimetypes:'image/*',
+        services:'COMPUTER'
+      },
+      function (Blob) {
+        var image = Blob.url;
+        this.user.set("header_image", image);
+        this.$('.user-header-image').css('background-image', "url('" + image + "')");
+      }.bind(this)
+    )
+  },
+
+  saveEdits: function (event) {
+    event.preventDefault();
+    var formData = this.$('form').serializeJSON();
+
+    this.user.save(formData.user, {
+      success: function () {
+        Backbone.history.navigate("users/" + this.user.id, { trigger: true });
+      }.bind(this)
+    });
   }
+
 });

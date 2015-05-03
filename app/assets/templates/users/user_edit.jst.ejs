@@ -3,11 +3,33 @@
 </div>
 
 <div class="user-show-header">
-  <div class="user-header-image">
-    <i class="fa fa-picture-o"></i>
-  </div>
-  <h1><%= user.escape('email') %></h1>
-  <h3><%= user.escape('description') %></h3>
+  <form>
+    <% if (user.get('header_image') !== null) { %>
+      <div style="background-image:url('<%= user.get('header_image') %>')" class="user-header-image">
+        <i class="fa fa-picture-o"></i>
+      </div>
+    <% } else { %>
+      <div class="user-header-image">
+        <i class="fa fa-picture-o"></i>
+      </div>
+    <% } %>
+    <button class="user-icon-button"><i class="fa fa-user"></i></button>
+    <br>
+    <button class="btn btn-primary" onclick="window.location.href='#/users/<%= user.id %>'">Cancel</button><button class="save-edits btn btn-primary">Save</button>
+    <h1><input style="width:100%"
+               type="text"
+               class="edit-email"
+               name="user[description]"
+               value="<%= user.escape('email') %>"
+               placeholder="Optional description">
+    </h1>
+    <h4><input style="width:100%"
+               type="text"
+               name="user[description]"
+               value="<%= user.escape('description') %>"
+               placeholder="Optional description">
+    </h4>
+  </form>
   <button class="info" id="following" data-toggle="modal" data-target="#followingModal">FOLLOWING<br><p class=num><%= followings.length %></p></button>
   <button class="info" id="followers" data-toggle="modal" data-target="#followersModal">FOLLOWERS<br><p class=num><%= followers.length %></p></button>
   <br>

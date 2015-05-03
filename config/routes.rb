@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     end
     resource :search, only: [:show]
     resources :stories
-    resources :users, only: [:show, :index]
+    resources :users, except: [:destroy]
     # do
     #   member do
     #     get :your_stories

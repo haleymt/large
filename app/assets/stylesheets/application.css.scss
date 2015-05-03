@@ -919,13 +919,31 @@ button.delete-story:hover {
   width: 100%;
   background: rgba(0,0,0,0.9);
   color: white;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .user-header-image i {
-  font-size: 60px;
+  font-size: 50px;
   margin-top: 100px;
 }
 
 .user-header-image i:hover {
   cursor: pointer;
+}
+
+.user-show-header input {
+  border: none;
+  outline: none;
+  text-align: center;
+}
+
+.user-icon-button {
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  background: white;
+  font-size: 50px;
+  border: 5px solid (128, 128, 128, 0.1);
+  margin-top: -75px;
 }

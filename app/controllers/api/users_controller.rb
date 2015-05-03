@@ -17,6 +17,16 @@ module Api
       render json: @users
     end
 
+    def update
+      @user = User.find(params[:id])
+
+      if @user.update_attributes(user_params)
+        render json: @user
+      else
+        render json: @user.errors.full_messages, status: :unprocessable_entity
+      end
+    end
+
     def your_stories
       @user = User.includes(:stories, :publications).find(current_user.id)
       render :your_stories
@@ -37,5 +47,10 @@ module Api
       end
     end
 
+    private
+
+      def user_params
+        params.require(:user).permit(:email, :password, :header_image, :icon_image, :description)
+      end
   end
 end
