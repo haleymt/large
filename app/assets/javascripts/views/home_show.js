@@ -12,6 +12,7 @@ Large.Views.HomeShow = Backbone.CompositeView.extend({
     this.ttags = options.ttags
     this.listenTo(this.ttags, 'sync', this.render)
     this.listenTo(this.stories, 'sync', this.render);
+    $(window).scroll(this.scrollSidebar);
 
     this.stories.each(this.addStoryView.bind(this));
     this.listenTo(this.stories, 'add', this.addStoryView);
@@ -71,6 +72,15 @@ Large.Views.HomeShow = Backbone.CompositeView.extend({
     });
     this.$("abbr.timeago").timeago();
     return this;
+  },
+
+  scrollSidebar: function () {
+    $('.sidebar').prop("scrollTop", $(window).scrollTop())
+    .prop("scrollLeft", $(window).scrollLeft());
+  },
+
+  scrollWindow: function () {
+    console.log("hi");
   },
 
   showNewStory: function () {
