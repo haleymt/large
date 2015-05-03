@@ -1,4 +1,5 @@
 <div class="landing-page">
+
   <div class="feed">
     <div class="new">
       <div class="pre-click">
@@ -11,45 +12,52 @@
     </ul>
   </div>
 
-  <div class="sidebar">
-    <div class="tags">
-      <t class="featured">FEATURED TAGS</t>
-      <br>
-      <div>
-        <% tags.forEach( function (tag) { %>
-          <a href="#tags/<%= tag.id %>">
-            <button class="tag-button">
-            <%= tag.escape('label') %>
-            </button>
-          </a>
-        <% }) %>
+</div>
+
+<div id="overlay">
+  <div class="landing-page">
+
+    <div class="sidebar">
+      <div class="tags">
+        <t class="featured">FEATURED TAGS</t>
+        <br>
+        <div>
+          <% tags.forEach( function (tag) { %>
+            <a href="#tags/<%= tag.id %>">
+              <button class="tag-button">
+              <%= tag.escape('label') %>
+              </button>
+            </a>
+          <% }) %>
+        </div>
+      </div>
+      <div class="top-stories">
+        <t class="featured">TOP STORIES ON LARGE</t>
+        <br>
+        <ul>
+          <% var counter = 0 %>
+          <% topStories.forEach( function (story) { %>
+            <% counter++ %>
+          <li>
+            <button class="btn btn-circle"><%= counter %></button>
+            <a href="#/stories/<%= story.id %>">
+              <% if (story.get('title').length < 20) { %>
+              <strong><%= story.escape('title') %></strong>
+              <% } else { %>
+              <strong><%= story.escape('title').slice(0, 20) %>...</strong>
+              <% } %>
+            </a>
+              <br>
+            <a href="#/users/<%= story.get('author_id') %>"><%= authors[story.id - 1] %>
+            </a>
+          </li>
+          <% }) %>
+        </ul>
+      </div>
+      <div class="sidebar-footer">
+        <t style="color: rgba(128, 128, 128, 0.5);">&#169; Haley Thurston 2015</t>
       </div>
     </div>
-    <div class="top-stories">
-      <t class="featured">TOP STORIES ON LARGE</t>
-      <br>
-      <ul>
-        <% var counter = 0 %>
-        <% topStories.forEach( function (story) { %>
-          <% counter++ %>
-        <li>
-          <button class="btn btn-circle"><%= counter %></button>
-          <a href="#/stories/<%= story.id %>">
-            <% if (story.get('title').length < 20) { %>
-            <strong><%= story.escape('title') %></strong>
-            <% } else { %>
-            <strong><%= story.escape('title').slice(0, 20) %>...</strong>
-            <% } %>
-          </a>
-            <br>
-          <a href="#/users/<%= story.get('author_id') %>"><%= authors[story.id - 1] %>
-          </a>
-        </li>
-        <% }) %>
-      </ul>
-    </div>
-    <div class="sidebar-footer">
-      <t style="color: rgba(128, 128, 128, 0.5);">&#169; Haley Thurston 2015</t>
-    </div>
+
   </div>
 </div>

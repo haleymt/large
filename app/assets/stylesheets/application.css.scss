@@ -25,6 +25,11 @@
 
 // links, buttons, navbar
 
+nav {
+  background: white;
+  z-index: 1;
+}
+
 a {
   color: rgba(87, 173, 104, 1);
 }
@@ -172,30 +177,56 @@ abbr {
 
 // HOME SHOW
 
+@media screen and (max-width: 1030px) {
+  .sidebar {
+    display: none;
+  }
+}
+
 .landing-page {
-  position: relative;
-  width: 100%;
-  height: 100%;
+  min-width: 575px;
+  margin: 0 auto;
+  z-index: -1;
 }
 
 .landing-page .feed {
-  padding-right: 0;
   padding-left: 80px;
-  margin-right: 0;
+  margin-right: 300px;
   float: left;
-  width: 65%;
 }
 
-.landing-page .sidebar {
-  float: right;
-  background: rgba(128, 128, 128, 0.05);
+#overlay {
+  position: fixed;
   top: 0;
-  width: 35%;
-  height: 800px;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+}
+
+#overlay .landing-page {
+  height: 100%;
+}
+
+.sidebar {
+  position: fixed;
+  float: right;
+  left: calc(100% - 350px);
+  background: rgba(128, 128, 128, 0.05);
+  max-height: 100%;
+  width: 350px;
   border-left: 1px solid rgba(128, 128, 128, 0.1);
   border-bottom: 1px solid rgba(128, 128, 128, 0.1);
   padding: 30px;
-  padding-top: 40px;
+  padding-top: 100px;
+  overflow-y: auto;
+}
+
+#overlay ::-webkit-scrollbar {
+    display: none;
+}
+
+.sidebar>* {
+  max-width: 330px;
 }
 
 .tags div,
@@ -533,6 +564,15 @@ ul {
 
 // story show image formatting:
 
+.options a {
+  color: rgba(128, 128, 128, 0.5) !important;
+}
+
+.options a:hover {
+  color: rgba(128, 128, 128, 1) !important;
+  background: transparent !important;
+}
+
 .story-show-header {
   font-family: serif;
 }
@@ -783,14 +823,16 @@ li.pr {
 }
 
 #followingModal .modal-dialog,
-#followersModal .modal-dialog{
+#followersModal .modal-dialog,
+#deleteModel .modal-dialog {
   width: 100%;
   height: 100%;
   background: none;
 }
 
 #followingModal .modal-content,
-#followersModal .modal-content{
+#followersModal .modal-content,
+#deleteModal .modal-content {
   margin-left: auto;
   margin-right: auto;
   width: 70%;
@@ -802,8 +844,23 @@ li.pr {
   box-shadow: none;
 }
 
+#deleteModal .modal-body {
+  padding-top: 100px;
+}
+
+button.delete-story {
+  color: rgba(255, 0, 0, 0.4);
+  border: 1px solid rgba(255, 0, 0, 0.4);
+}
+
+button.delete-story:hover {
+  color: rgba(255, 0, 0, 0.6);
+  border: 1px solid rgba(255, 0, 0, 0.6);
+}
+
 #followingModal .modal-title,
-#followersModal .modal-title {
+#followersModal .modal-title,
+#deleteModal .modal-title {
   padding-top: 30px;
 }
 
@@ -833,4 +890,42 @@ li.pr {
   margin-left: auto;
   margin-right: auto;
   width: 60%;
+}
+
+// user edit page
+
+.edit-buttons {
+  margin-top:-70px;
+  z-index:1000;
+  padding-left:40px;
+  margin-left:auto;
+  margin-right:auto;
+  width:30%;
+  margin-bottom: 20px;
+}
+
+.save-edits {
+  color: rgba(87, 173, 104, 0.7);
+  border: 1px solid rgba(87, 173, 104, 0.7);
+}
+
+.save-edits:hover {
+  color: rgba(87, 173, 104, 1);
+  border: 1px solid rgba(87, 173, 104, 1);
+}
+
+.user-header-image {
+  height: 300px;
+  width: 100%;
+  background: rgba(0,0,0,0.9);
+  color: white;
+}
+
+.user-header-image i {
+  font-size: 60px;
+  margin-top: 100px;
+}
+
+.user-header-image i:hover {
+  cursor: pointer;
 }

@@ -13,6 +13,11 @@ Rails.application.routes.draw do
     resource :search, only: [:show]
     resources :stories
     resources :users, only: [:show, :index]
+    # do
+    #   member do
+    #     get :your_stories
+    #   end
+    # end
     resources :follows, only: [:create, :destroy, :index]
     resources :taggings
     resources :tags

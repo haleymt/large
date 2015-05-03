@@ -1,6 +1,5 @@
-Large.Views.UserShow = Backbone.View.extend({
-  template: JST['users/user_show'],
-  editToggle: JST['users/user_edit_toggle'],
+Large.Views.UserEdit = Backbone.View.extend({
+  template: JST['users/user_edit'],
 
   events: {
     "click .follow": "toggleFollow"
@@ -8,7 +7,6 @@ Large.Views.UserShow = Backbone.View.extend({
 
   initialize: function (options) {
     this.user = options.user;
-    this.currentUser = options.currentUser;
     this.stories = this.user.stories();
     this.publications = options.publications;
     this.currentUserFollows = options.follows;
@@ -17,7 +15,6 @@ Large.Views.UserShow = Backbone.View.extend({
     this.followings = this.user.followedUsers();
 
     this.listenTo(this.currentUserFollows, 'sync add remove', this.render);
-    this.listenTo(this.currentUser, 'sync', this.render)
     this.listenTo(this.user, 'sync', this.render);
     this.listenTo(this.stories, 'sync', this.render);
     this.listenTo(this.publications, 'sync', this.render);
@@ -28,11 +25,6 @@ Large.Views.UserShow = Backbone.View.extend({
     // debugger
     var content = this.template({ user: this.user, followers: this.follows, followings: this.followings });
     this.$el.html(content);
-
-    var currentUser = this.currentUser.first()
-    if ((currentUser !== undefined) && (currentUser.id === this.user.id)) {
-      $('.navbar-nav').prepend(this.editToggle({ currentUser: currentUser }));
-    }
 
     var follow = this.currentUserFollows.findWhere({
                       followable_id: this.user.id,

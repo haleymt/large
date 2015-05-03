@@ -1,0 +1,30 @@
+<li id='add-dropdown' class='options dropdown new-story-header'>
+  <div>
+  <button
+    style="border:1px solid rgba(87, 173, 104, 1) !important; color:rgba(87, 173, 104, 1) !important;"
+    class='dropdown-toggle navbar-btn btn btn-primary'
+    data-toggle='dropdown'><span>Options</span>
+  </button>
+  <ul style="padding-left:10px; padding-right:10px;" class="dropdown-menu" role="menu">
+    <li style="padding-top:5px;">
+      <a href="">Edit</a>
+    </li>
+    <li style="padding-top:5px;">
+      <a href="" class="info" id="delete" data-toggle="modal" data-target="#deleteModal">Delete</a>
+    </li>
+  </ul>
+  </div>
+</li>
+
+<div id="deleteModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="followingLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h2 class="modal-title" id="deleteLabel">Are you sure you want to delete <strong><%= story.escape('title') %></strong> ?</h2>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        <button class="delete-story btn btn-primary">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

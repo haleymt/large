@@ -68,10 +68,14 @@ Large.Routers.StoriesRouter = Backbone.Router.extend({
   storyShow: function (id) {
     var story = this.collection.getOrFetch(id);
     Large.Collections.ttags.fetch();
+    Large.Collections.users.fetch({
+      data: { current_user: true }
+    })
     showStory = new Large.Views.StoryShow({
       story: story,
       stories: this.collection,
-      ttags: Large.Collections.ttags
+      ttags: Large.Collections.ttags,
+      currentUser: Large.Collections.users
     });
     this._swapView(showStory);
   },

@@ -15,6 +15,7 @@
       <ul class="dropdown-menu" role="menu">
         <li class="above"><a href="#/stories/new"><i class="fa fa-pencil-square-o"></i> &nbsp; New Story </a></li>
         <li class="above"><a href="#/publications/new"><i class="fa fa-newspaper-o"></i> &nbsp; New Publication </a></li>
+        <li class="above"><%= link_to "Your Stories and Publications", "#/users/#{current_user.id}/your_stories", method: :get %></li>
         <li class="divider"></li>
         <li class="below"><%= link_to "Your Profile", "#/users/#{current_user.id}", method: :get %></li>
         <li class="below"><%= link_to "Sign out", session_url, method: :delete %></li>

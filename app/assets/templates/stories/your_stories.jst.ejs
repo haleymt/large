@@ -1,6 +1,44 @@
 <h1>Your Stories</h1>
 
-<button>Drafts</button>
-<button>Public</button>
-<button>Unlisted</button>
-<button>Publications</button>
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#sectionA">Stories</a></li>
+  <li><a data-toggle="tab" href="#sectionB">Publications</a></li>
+</ul>
+
+<div class="tab-content">
+  <!-- section stories -->
+  <div id="sectionA" class="tab-pane fade in active">
+    <div class="your-stories">
+      <% if (stories !== undefined) { %>
+        <ul>
+          <% stories.forEach(function (story) { %>
+          <li><strong><%= story.escape('title') %></strong><br><%= story.escape('subtitle') %></li>
+          <% }) %>
+        </ul>
+      <% } else { %>
+        <ul>
+          <li>Nothing to show.</li>
+        </ul>
+      <% } %>
+    </div>
+  </div>
+  <!-- end section stories -->
+  <!-- begin section pubs -->
+  <div id="sectionB" class="tab-pane fade">
+    <div class="your-pubs">
+      <% if (pubs.length > 0) { %>
+      <ul>
+        <% pubs.forEach( function (pub) { %>
+          <li><%= pub.escape('title') %></li>
+        <% }) %>
+        </ul>
+      <% } else { %>
+      <ul>
+        <li>Nothing to show.</li>
+      </ul>
+      <% } %>
+    </div>
+  </div>
+  <!-- end section pubs -->
+
+</div>
