@@ -1,5 +1,6 @@
 Large.Views.HomeShow = Backbone.CompositeView.extend({
   template: JST['feeds/feed_show'],
+  currentUsername: JST['feeds/_current_username'],
 
   events: {
     "click .pre-click": "showNewStory",
@@ -9,7 +10,8 @@ Large.Views.HomeShow = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.stories = options.stories;
     this.publications = options.publications;
-    this.ttags = options.ttags
+    this.ttags = options.ttags;
+    this.currentUser = options.currentUser;
     this.listenTo(this.ttags, 'sync', this.render)
     this.listenTo(this.stories, 'sync', this.render);
     $(window).scroll(this.scrollSidebar);
@@ -54,6 +56,11 @@ Large.Views.HomeShow = Backbone.CompositeView.extend({
     this.$el.html(content);
     this.attachSubviews();
 
+    var currentUser = this.currentUser.first()
+    if (currentUser !== undefined) {
+      $('.feed-username').append(this.currentUsername({ currentUser: currentUser }));
+    }
+
     var newStory = new Large.Models.Story();
     Large.Collections.publications.fetch({
       data: { current_user: true }
@@ -65,7 +72,7 @@ Large.Views.HomeShow = Backbone.CompositeView.extend({
       publications: Large.Collections.publications,
       ttags: this.ttags
     });
-    this.$('.post-click').prepend(newStoryView.render().$el);
+    this.$('.post-click').append(newStoryView.render().$el);
     var editor = new MediumEditor('.editable', {
       placeholder: "",
       buttons: ['bold', 'italic', 'quote', 'anchor']
