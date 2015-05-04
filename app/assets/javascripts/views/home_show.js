@@ -11,8 +11,8 @@ Large.Views.HomeShow = Backbone.CompositeView.extend({
     this.stories = options.stories;
     this.publications = options.publications;
     this.ttags = options.ttags;
-    this.currentUser = options.currentUser;
-    this.listenTo(this.ttags, 'sync', this.render)
+    // this.currentUser = options.currentUser;
+    this.listenTo(this.ttags, 'sync', this.render);
     this.listenTo(this.stories, 'sync', this.render);
     $(window).scroll(this.scrollSidebar);
 
@@ -44,6 +44,7 @@ Large.Views.HomeShow = Backbone.CompositeView.extend({
     $('.navbar-nav').find('.about-link').remove();
     var topStories = this.stories.first(5);
     authors = [];
+    Large.Collections.users.fetch();
     topStories.forEach(function (story) {
       author = Large.Collections.users.get(story.get('author_id'))
       authors.push(author.get('email'));
@@ -56,8 +57,8 @@ Large.Views.HomeShow = Backbone.CompositeView.extend({
     this.$el.html(content);
     this.attachSubviews();
 
-    var currentUser = this.currentUser.first()
-    if (this.currentUser.length > 0) {
+    var currentUser = Large.Collections.users.get(1)
+    if (currentUser !== undefined) {
       $('.feed-username').append(this.currentUsername({ currentUser: currentUser }));
     }
 
@@ -84,10 +85,6 @@ Large.Views.HomeShow = Backbone.CompositeView.extend({
   scrollSidebar: function () {
     $('.sidebar').prop("scrollTop", $(window).scrollTop())
     .prop("scrollLeft", $(window).scrollLeft());
-  },
-
-  scrollWindow: function () {
-    console.log("hi");
   },
 
   showNewStory: function () {

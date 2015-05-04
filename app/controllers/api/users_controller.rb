@@ -10,7 +10,7 @@ module Api
         search_params = "%#{params[:query]}%"
         @users = User.all.where("email ILIKE :search OR description ILIKE :search", search: search_params)
       elsif params[:current_user]
-        @users = User.find(current_user.id)
+        @users = current_user
       else
         @users = User.all
       end

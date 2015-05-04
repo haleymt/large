@@ -20,12 +20,12 @@ Large.Routers.StoriesRouter = Backbone.Router.extend({
       data: { current_user: true }
     });
     Large.Collections.ttags.fetch();
-    Large.Collections.users.fetch({
-      data: { current_user: true }
-    })
+    // Large.Collections.users.fetch({
+    //   data: { current_user: true }
+    // })
     var home = new Large.Views.HomeShow({
       stories: this.collection,
-      currentUser: Large.Collections.users,
+      // currentUser: Large.Collections.users,
       publications: Large.Collections.publications,
       ttags: Large.Collections.ttags
     });
