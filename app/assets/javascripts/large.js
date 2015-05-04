@@ -11,6 +11,7 @@ window.Large = {
     Large.Collections.users = new Large.Collections.Users();
     Large.Collections.users.fetch();
     Large.Collections.publications = new Large.Collections.Publications();
+    Large.Collections.stories = new Large.Collections.Stories();
     Large.Collections.follows = new Large.Collections.Follows();
     Large.Collections.ttags = new Large.Collections.Tags();
 

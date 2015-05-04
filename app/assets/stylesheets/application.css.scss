@@ -642,7 +642,7 @@ ul {
   // padding: 10px;
 }
 // .about .user-info {
-//   float: left;
+//   text-align: left;
 // }
 
 .about .about-section .follow {
@@ -866,16 +866,17 @@ button.delete-story:hover {
 
 #followingModal li,
 #followersModal li {
-  padding-top: 10px;
+  padding-top: 15px;
   padding-bottom: 40px;
   margin-left: auto;
   margin-right: auto;
-  width: 50%
+  width: 80%
 }
 
 #followingModal .user-info,
 #followersModal .user-info {
   float: left;
+  text-align: left;
 }
 
 #followingModal .follow,

@@ -26,10 +26,12 @@
         <% if (followings.length > 0) { %>
         <ul>
           <% followings.forEach( function (user) { %>
-            <li><div class="user-info"><a href="#/users/<%= user.id %>">
-              <strong><%= user.escape('email') %></strong></a><br>
-                <%= user.escape('description') %></div>
-                <button class="follow btn btn-primary btn-sm" id="<%= user.id %>" value="User">Follow</button>
+            <li>
+              <div class="user-info"><a href="#/users/<%= user.id %>">
+                <strong><%= user.escape('email') %></strong></a><br>
+                <%= user.escape('description') %>
+              </div>
+              <button class="follow btn btn-primary btn-sm" id="<%= user.id %>" value="User">Follow</button>
             </li>
           <% }) %>
           </ul>

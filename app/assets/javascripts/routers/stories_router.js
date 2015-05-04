@@ -8,8 +8,7 @@ Large.Routers.StoriesRouter = Backbone.Router.extend({
   },
 
   initialize: function (options) {
-    this.collection = new Large.Collections.Stories();
-    this.collection.fetch();
+    this.collection = Large.Collections.stories;
     this.$rootEl = options.content;
   },
 

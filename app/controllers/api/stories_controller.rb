@@ -35,10 +35,12 @@ module Api
       elsif params[:query]
         search_params = "%#{params[:query]}%"
         @stories = Story.where("title ILIKE :search OR subtitle ILIKE :search OR body ILIKE :search", search: search_params).includes(:tags, :taggings)
+      elsif params[:top_stories]
+        @stories = Story.all[0..4]
       else
         @stories = Story.all
       end
-
+      # fail
       render :index
     end
 
