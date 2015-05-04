@@ -57,7 +57,7 @@ Large.Views.HomeShow = Backbone.CompositeView.extend({
     this.attachSubviews();
 
     var currentUser = this.currentUser.first()
-    if (currentUser !== undefined) {
+    if (this.currentUser.length > 0) {
       $('.feed-username').append(this.currentUsername({ currentUser: currentUser }));
     }
 

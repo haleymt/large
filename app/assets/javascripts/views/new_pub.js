@@ -70,19 +70,22 @@ Large.Views.NewPub = Backbone.View.extend({
   addHeaderImage: function (event) {
     event.preventDefault();
     $('[placeholder]').focus(function() {
-        var input = $(this);
-        if (input.val() == input.attr('placeholder')) {
-            input.val('');
-            input.removeClass('placeholder');
-        }
+      var input = $(this);
+      if (input.val() == input.attr('placeholder')) {
+          input.val('');
+          input.removeClass('placeholder');
+      }
     }).blur(function() {
-        var input = $(this);
-        if (input.val() == '' || input.val() == input.attr('placeholder')) {
-            input.addClass('placeholder');
-            input.val(input.attr('placeholder'));
+      var input = $(this);
+      if (input.val() == '' || input.val() == input.attr('placeholder')) {
+        if (!input.hasClass('selectivity-multiple-input')) {
+          input.addClass('placeholder');
+          input.val(input.attr('placeholder'));
         }
+      }
     }).blur();
     $('.placeholder').css('color', 'rgba(128, 128, 128, 0.7)');
+
     filepicker.setKey("AFA8IlPkxSNC1BPrgoHtsz");
 
     filepicker.pick(
@@ -95,6 +98,8 @@ Large.Views.NewPub = Backbone.View.extend({
         console.log(image);
         this.model.set("header_image", image);
         $('.placeholder').css('color', 'rgba(255, 255, 255, 0.8)');
+        $('h1').css('color', 'rgba(255, 255, 255, 0.8)');
+        $('h3').css('color', 'rgba(255, 255, 255, 0.8)');
         $('.fa-camera').css('color', 'rgba(255, 255, 255, 0.8)');
         this.$('.pub-header-setter').css('background-image', "url('" + image + "')");
       }.bind(this)

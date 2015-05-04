@@ -29,7 +29,7 @@ Large.Views.UserShow = Backbone.View.extend({
     var content = this.template({ user: this.user, followers: this.follows, followings: this.followings });
     this.$el.html(content);
 
-    var currentUser = this.currentUser.first()
+    var currentUser = this.currentUser.last()
     if ((currentUser !== undefined) && (currentUser.id === this.user.id)) {
       $('.navbar-nav').prepend(this.editToggle({ currentUser: currentUser }));
     }
