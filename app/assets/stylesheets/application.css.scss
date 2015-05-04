@@ -159,10 +159,9 @@ abbr {
   border-width: 0px !important;
 }
 
-// [data-follow-state="followed"] {
-//   color: white;
-//   background: rgba(87, 173, 104, 0.7);
-// }
+abbr:hover {
+  cursor: pointer;
+}
 
 /// search
 
