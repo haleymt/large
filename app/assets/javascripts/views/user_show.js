@@ -52,6 +52,7 @@ Large.Views.UserShow = Backbone.View.extend({
     this.stories.models.forEach( function(story) {
       var storyPreview = new Large.Views.StoryPreview({ model: story, publications: this.publications });
       this.$('ul.user-stories').prepend(storyPreview.render().$el);
+      this.$("abbr.timeago").timeago();
     }.bind(this));
     this.$("abbr.timeago").timeago();
 

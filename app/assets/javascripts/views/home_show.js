@@ -63,9 +63,7 @@ Large.Views.HomeShow = Backbone.CompositeView.extend({
     }
 
     var newStory = new Large.Models.Story();
-    Large.Collections.publications.fetch({
-      data: { current_user: true }
-    });
+    Large.Collections.publications.fetch();
     var newStoryView = new Large.Views.NewStoryPreview({
       parent: this,
       collection: this.stories,
