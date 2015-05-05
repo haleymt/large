@@ -69,6 +69,7 @@ Large.Routers.StoriesRouter = Backbone.Router.extend({
   },
 
   storyShow: function (id) {
+    this.collection.fetch();
     var story = this.collection.getOrFetch(id);
     Large.Collections.ttags.fetch();
     Large.Collections.users.fetch({

@@ -41,13 +41,9 @@
       <a style="color:rgba(128,128,128,1);"
          href="#/stories/<%= story.id %>"> &#8231; <%= readingTime %> min read</a>
     <% } else { %>
-      <div style="color:rgba(128, 128, 128, 0.7)">
+      <div style="color:rgba(128, 128, 128, 0.7)" class="in-response">
         <i class="fa fa-comment-o"></i>
         in response to
-        <a style="color:rgba(128, 128, 128, 0.7); text-decoration:underline;"
-           href="#/stories/<%= story.get('story_id') %>">
-          <%= story.escape('title') %>
-        </a>
       </div>
       <br>
       <div style="font-family:serif;font-size:20px;">

@@ -12,16 +12,14 @@ Large.Views.StoryShow = Backbone.View.extend({
     this.story = options.story;
     this.stories = options.stories;
     this.ttags = options.ttags;
-    // this.currentUser = options.currentUser;
     this.tagShow = this.story.ttags();
+
     this.listenTo(this.ttags, 'sync', this.render);
     this.listenTo(this.story, 'sync', this.render);
     this.listenTo(this.tagShow, 'sync', this.render);
-    // this.listenTo(this.currentUser, 'sync', this.render);
   },
 
   render: function () {
-    // $('.navbar-nav').find('.options').remove();
     var responseId = this.story.get('story_id')
     var response = this.stories.get(responseId);
 

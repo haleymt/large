@@ -1,11 +1,13 @@
 Large.Views.StoryPreview = Backbone.View.extend({
   template: JST['stories/story_preview'],
-  // tagName: 'li .preview',
+  inResponse: JST['stories/_in_response_link'],
 
   initialize: function (options) {
-    this.listenTo(this.model, 'sync add', this.render);
     this.publications = options.publications;
-    this.listenTo(Large.Collections.users, 'sync', this.render)
+    this.stories = options.stories;
+
+    this.listenTo(this.model, 'sync add', this.render);
+    this.listenTo(Large.Collections.users, 'sync', this.render);
     this.listenTo(this.publications, 'sync', this.render);
   },
 
@@ -28,7 +30,7 @@ Large.Views.StoryPreview = Backbone.View.extend({
       if (readingTime === 0) {
         readingTime = "Less than a";
       }
-    }  
+    }
 
     var content = this.template({
       story: this.model,
@@ -37,8 +39,16 @@ Large.Views.StoryPreview = Backbone.View.extend({
       sentence: firstSentence.slice(0, 250),
       readingTime: readingTime
     });
+
     this.$el.html(content);
     this.$("abbr.timeago").timeago();
+
+    var responseId = this.model.get('story_id')
+    var response = this.stories.get(responseId);
+
+    if (response !== undefined) {
+      $('.in-response').append(this.inResponse({response: response}));
+    }
 
     return this;
   }

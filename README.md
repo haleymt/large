@@ -1,18 +1,19 @@
 # Large
 
-[Heroku link][heroku]
+[Go to the live site!][heroku]
 
 [heroku]: http://medium-large.herokuapp.com
 
 ## Large is a clone of Medium.com built on Rails and Backbone. Users can:
 
-- [X] Create accounts 
-- [X] Create sessions 
+- [X] Create accounts
+- [X] Create sessions
 - [X] Create stories
 - [X] Create publications
 - [X] View people and publications
 - [X] Subscribe to people and publications
 - [X] View a home feed of stories by subscribed people and publications
+- [X] Show sidebar of featured tags and top stories on home page
 - [X] People can edit and write for publications
 - [X] Leave responses on stories (new Story object)
 - [X] Tag stories
@@ -72,7 +73,6 @@ These views will fetch from the collections that already exist for each of the m
 - [ ] Import stories
 - [ ] Share stories for editing
 - [ ] View a feed of Top Stories
-- [ ] Show sidebar of featured tags and top stories on home page
 - [ ] Recommend stories
 - [ ] Bookmark stories
 

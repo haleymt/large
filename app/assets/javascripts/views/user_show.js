@@ -17,7 +17,6 @@ Large.Views.UserShow = Backbone.View.extend({
     this.followings = this.user.followedUsers();
 
     this.listenTo(this.currentUserFollows, 'sync add remove', this.render);
-    this.listenTo(this.currentUser, 'sync', this.render)
     this.listenTo(this.user, 'sync', this.render);
     this.listenTo(this.stories, 'sync', this.render);
     this.listenTo(this.publications, 'sync', this.render);
@@ -48,9 +47,13 @@ Large.Views.UserShow = Backbone.View.extend({
     } else {
       $('.follow').html("Follow!");
     }
-
+    Large.Collections.stories.fetch();
     this.stories.models.forEach( function(story) {
-      var storyPreview = new Large.Views.StoryPreview({ model: story, publications: this.publications });
+      var storyPreview = new Large.Views.StoryPreview({
+        model: story,
+        stories: Large.Collections.stories,
+        publications: this.publications
+      });
       this.$('ul.user-stories').prepend(storyPreview.render().$el);
       this.$("abbr.timeago").timeago();
     }.bind(this));

@@ -80,9 +80,9 @@ Large.Views.SearchShow = Backbone.CompositeView.extend({
     });
 
     this.$el.html(content);
+    this.attachSubviews();
     this.$("abbr.timeago").timeago();
 
-    this.attachSubviews();
     this.$('input[type=submit]').hide();
 
     $('.follow').each(function (i, obj) {

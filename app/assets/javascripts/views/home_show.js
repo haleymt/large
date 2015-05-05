@@ -23,7 +23,9 @@ Large.Views.HomeShow = Backbone.CompositeView.extend({
 
   addStoryView: function (story) {
     var storyPreview = new Large.Views.StoryPreview({
-      model: story, publications: this.publications
+      model: story,
+      publications: this.publications,
+      stories: this.stories
     });
     this.addSubview('.main-stories', storyPreview);
   },

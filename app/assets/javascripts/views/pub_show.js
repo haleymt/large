@@ -47,17 +47,15 @@ Large.Views.PubShow = Backbone.View.extend({
     }
 
     this.stories.models.forEach( function(story) {
-      var storyPreview = new Large.Views.StoryPreview({ model: story, publications: this.publications });
+      var storyPreview = new Large.Views.StoryPreview({
+        model: story,
+        publications: this.publications,
+        stories: this.stories });
       this.$('ul.pub-stories').prepend(storyPreview.render().$el);
     }.bind(this));
 
     return this;
   },
-
-  // blurImage: function () {
-  //   oVal = ($(window).scrollTop() / 240);
-  //   $(".pub-bg-blur").css("opacity", oVal);
-  // },
 
   toggleFollow: function (event) {
     var follow = this.currentUserFollows.findWhere({
