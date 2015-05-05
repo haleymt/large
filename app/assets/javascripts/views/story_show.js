@@ -1,6 +1,7 @@
 Large.Views.StoryShow = Backbone.View.extend({
   template: JST['stories/story_show'],
   editAndDelete: JST['stories/_edit_and_delete_buttons'],
+  currentUsername: JST['feeds/_current_username'],
 
   events: {
     "click .pre-click": "showNewStory",
@@ -24,14 +25,19 @@ Large.Views.StoryShow = Backbone.View.extend({
     var responseId = this.story.get('story_id')
     var response = this.stories.get(responseId);
 
-    var content = this.template({ story: this.story, response: response, tags: this.tagShow });
+    var content = this.template({
+      story: this.story,
+      response: response,
+      tags: this.tagShow,
+      currentUser: currentUser
+    });
     this.$el.html(content);
 
-    // author = this.currentUser.first();
-    // if ((author !== undefined) && (author.id === this.story.get('author_id'))) {
-    //   var headerContent = this.editAndDelete({ story: this.story });
-    //   $('.navbar-nav').prepend(headerContent);
-    // }
+    Large.Collections.users.fetch();
+    var currentUser = Large.Collections.users.get(1);
+    if (currentUser !== undefined) {
+      $('.story-username').append(this.currentUsername({ currentUser: currentUser }));
+    }
 
     Large.Collections.publications.fetch({
       data: { current_user: true }
@@ -43,7 +49,7 @@ Large.Views.StoryShow = Backbone.View.extend({
       publications: Large.Collections.publications,
       ttags: this.ttags
     });
-    this.$('.post-click').prepend(newStoryView.render().$el);
+    this.$('.post-click').append(newStoryView.render().$el);
     var editor = new MediumEditor('.editable', {
       placeholder: "",
       buttons: ['bold', 'italic', 'quote', 'anchor']
