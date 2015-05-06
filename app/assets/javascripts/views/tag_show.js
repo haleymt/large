@@ -6,7 +6,7 @@ Large.Views.TagShow = Backbone.CompositeView.extend({
     this.ttags = options.ttags;
     this.taggedStories = options.ttag.taggedStories();
     this.publications = options.pubs;
-    
+
     this.listenTo(this.publications, 'sync', this.render);
     this.listenTo(this.taggedStories, 'sync', this.render);
     this.listenTo(this.ttags, 'sync', this.render);
@@ -30,7 +30,9 @@ Large.Views.TagShow = Backbone.CompositeView.extend({
 
   addStoryView: function (story) {
     var storyPreview = new Large.Views.StoryPreview({
-      model: story, publications: this.publications
+      model: story,
+      publications: this.publications,
+      stories: this.taggedStories
     });
     this.addSubview('ul', storyPreview);
   },
