@@ -71,6 +71,8 @@ Large.Views.SearchShow = Backbone.CompositeView.extend({
   render: function () {
     // debugger
     $('.navbar-nav').find('.about-link').remove();
+    $('.navbar-nav').find('.user-edit-toggle').remove();
+
     var content = this.template({
       params: this.params,
       publications: this.publications,

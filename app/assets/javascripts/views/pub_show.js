@@ -53,6 +53,7 @@ Large.Views.PubShow = Backbone.View.extend({
         stories: this.stories });
       this.$('ul.pub-stories').prepend(storyPreview.render().$el);
     }.bind(this));
+    this.$("abbr.timeago").timeago();
 
     return this;
   },

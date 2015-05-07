@@ -11,9 +11,7 @@ Large.Routers.UsersRouter = Backbone.Router.extend({
   },
 
   userShow: function (id) {
-    Large.Collections.publications.fetch({
-      data: { current_user: false }
-    });
+    Large.Collections.publications.fetch();
     Large.Collections.follows.fetch({
       data: { current_user: true }
     });

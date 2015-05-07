@@ -13,8 +13,8 @@
 - [X] View people and publications
 - [X] Subscribe to people and publications
 - [X] View a home feed of stories by subscribed people and publications
-- [X] Show sidebar of featured tags and top stories on home page
-- [X] People can edit and write for publications
+- [X] View a sidebar of featured tags and top stories on home page
+- [X] Edit and write for publications
 - [X] Leave responses on stories (new Story object)
 - [X] Tag stories
 - [X] Search by keyword
