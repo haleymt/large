@@ -49,7 +49,9 @@ Large.Views.HomeShow = Backbone.CompositeView.extend({
     Large.Collections.users.fetch();
     topStories.forEach(function (story) {
       author = Large.Collections.users.get(story.get('author_id'))
-      authors.push(author.get('email'));
+      if (author !== undefined) {
+        authors.push(author.get('email'));
+      }
     })
     var content = this.template({
       tags: this.ttags,

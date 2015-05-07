@@ -6,7 +6,8 @@ Large.Views.StoryPreview = Backbone.View.extend({
     this.publications = options.publications;
     this.stories = options.stories;
 
-    this.listenTo(this.model, 'sync add', this.render);
+    this.listenTo(this.model, 'sync', this.render);
+    this.listenTo(this.stories, 'sync', this.render);
     this.listenTo(Large.Collections.users, 'sync', this.render);
     this.listenTo(this.publications, 'sync', this.render);
   },

@@ -12,6 +12,7 @@ Large.Views.UserShow = Backbone.View.extend({
     this.stories = this.user.stories();
     this.publications = options.publications;
     this.currentUserFollows = options.follows;
+    this.allStories = options.allStories;
 
     this.follows = this.user.followers();
     this.followings = this.user.followedUsers();
@@ -20,11 +21,12 @@ Large.Views.UserShow = Backbone.View.extend({
     this.listenTo(this.user, 'sync', this.render);
     this.listenTo(this.stories, 'sync', this.render);
     this.listenTo(this.publications, 'sync', this.render);
+    this.listenTo(this.allStories, 'sync', this.render);
   },
 
   render: function () {
     $('.navbar-nav').find('.user-edit-toggle').remove();
-    // debugger
+
     var content = this.template({ user: this.user, followers: this.follows, followings: this.followings });
     this.$el.html(content);
 
@@ -47,11 +49,11 @@ Large.Views.UserShow = Backbone.View.extend({
     } else {
       $('.follow').html("Follow!");
     }
-    Large.Collections.stories.fetch();
+
     this.stories.models.forEach( function(story) {
       var storyPreview = new Large.Views.StoryPreview({
         model: story,
-        stories: Large.Collections.stories,
+        stories: this.allStories,
         publications: this.publications
       });
       this.$('ul.user-stories').prepend(storyPreview.render().$el);
