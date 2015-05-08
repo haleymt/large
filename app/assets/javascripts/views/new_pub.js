@@ -18,6 +18,10 @@ Large.Views.NewPub = Backbone.View.extend({
   },
 
   render: function () {
+    $('.navbar-header').find('.about-link').remove();
+    $('.navbar-nav').find('.user-edit-toggle').remove();
+    $('.navbar-nav').find('.new-story-header').remove();
+
     this.$el.html(this.template({ publication: this.model, users: this.users }));
     setTimeout(function () {
       var users = this.users

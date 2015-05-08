@@ -23,6 +23,8 @@ Large.Views.PubShow = Backbone.View.extend({
 
   render: function () {
     $('.navbar-header').find('.about-link').remove();
+    $('.navbar-nav').find('.user-edit-toggle').remove();
+
     var headerContent = this.about({
       pub: this.pub
     });

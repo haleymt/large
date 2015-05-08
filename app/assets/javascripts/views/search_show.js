@@ -7,7 +7,7 @@ Large.Views.SearchShow = Backbone.CompositeView.extend({
   },
 
   initialize: function (options) {
-    this.currentUserFollows = options.follows
+    this.currentUserFollows = options.follows;
     this.params = options.params;
     this.publications = options.publications;
     this.users = options.users;
@@ -17,7 +17,7 @@ Large.Views.SearchShow = Backbone.CompositeView.extend({
       this.listenTo(this.currentUserFollows, 'sync', this.render);
       this.listenTo(this.publications, 'sync', this.render);
       this.listenTo(this.users, 'sync', this.render);
-      this.listenTo(this.stories, 'sync', this.render);
+      this.listenTo(this.stories, 'sync add', this.render);
 
       this.stories.each(this.addStoryView.bind(this));
       this.listenTo(this.stories, 'add', this.addStoryView);
@@ -70,6 +70,7 @@ Large.Views.SearchShow = Backbone.CompositeView.extend({
 
   render: function () {
     // debugger
+    $('.navbar-nav').find('.new-story-header').remove();
     $('.navbar-nav').find('.about-link').remove();
     $('.navbar-nav').find('.user-edit-toggle').remove();
 
@@ -82,6 +83,7 @@ Large.Views.SearchShow = Backbone.CompositeView.extend({
     });
 
     this.$el.html(content);
+    this.attachSubviews();
 
     this.$('input[type=submit]').hide();
 
@@ -106,7 +108,6 @@ Large.Views.SearchShow = Backbone.CompositeView.extend({
       }
     });
 
-    this.attachSubviews();
     this.$("abbr.timeago").timeago();
     return this;
   },
