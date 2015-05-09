@@ -6,7 +6,7 @@
   <div class="pub-header-setter">
     <div class="movable">
       <button id="pub-icon" class="style"><i class="fa fa-camera fa-3x"></i></button>
-      <h1><input style="width:100%" type="text" class="head-text" name="publication[title]" placeholder="Optional heading"></h1>
+      <h1><input style="width:100%" type="text" class="head-text pub-title-input" name="publication[title]" placeholder="Optional heading"></h1>
       <h3><input style="width:100%" type="text" class="head-text" name="publication[description]" placeholder="Optional description"></h3>
     </div>
   </div>
@@ -21,6 +21,16 @@
   <button type="submit" id="submit-new-pub" class="btn btn-primary">Create</button>
 </form>
 <br>
+
+<div class="modal fade" id="blankStoryError" tabindex="-1" role="dialog" aria-labelledby="blankErrorLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="text-align:center; border:none;" class="modal-header">
+        <div class="modal-title" id="blankErrorLabel">Your publication must have a title.</div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- <div class="pub-sections">
   <button id="add-section" class="btn btn-primary btn-sm">+</button>

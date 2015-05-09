@@ -21,7 +21,7 @@
                class="edit-email"
                name="user[description]"
                value="<%= user.escape('email') %>"
-               placeholder="Optional description">
+               placeholder="Username">
     </h1>
     <h4><input style="width:100%"
                type="text"
@@ -86,6 +86,16 @@
           <li>Nothing to show.</li>
         </ul>
         <% } %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="blankStoryError" tabindex="-1" role="dialog" aria-labelledby="blankErrorLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="text-align:center; border:none;" class="modal-header">
+        <div class="modal-title" id="blankErrorLabel">Username cannot be blank.</div>
       </div>
     </div>
   </div>

@@ -95,13 +95,20 @@ Large.Views.UserEdit = Backbone.View.extend({
 
   saveEdits: function (event) {
     event.preventDefault();
-    var formData = this.$('form').serializeJSON();
+    if ($('.edit-email').val() === "") {
+      $('#blankStoryError').modal('show');
+      setTimeout( function () {
+        $('#blankStoryError').modal('hide');
+      }, 2500)
+    } else {
+      var formData = this.$('form').serializeJSON();
 
-    this.user.save(formData.user, {
-      success: function () {
-        Backbone.history.navigate("users/" + this.user.id, { trigger: true });
-      }.bind(this)
-    });
+      this.user.save(formData.user, {
+        success: function () {
+          Backbone.history.navigate("users/" + this.user.id, { trigger: true });
+        }.bind(this)
+      });
+    }
   }
 
 });

@@ -116,81 +116,88 @@ Large.Views.NewPub = Backbone.View.extend({
 
   submitForm: function (event) {
     event.preventDefault();
-    // debugger
-    var align = $('.head-text').css('text-align');
-    this.model.set("header_align", align);
-    // this.model.save(this.model.attributes);
 
-    var formData = this.$('form').serializeJSON();
-    this.model.save(formData.publication, {
-      success: function () {
-        this.collection.add(this.model, { merge: true });
+    if ($('.pub-title-input').val() === "") {
+      $('#blankStoryError').modal('show');
+      setTimeout( function () {
+        $('#blankStoryError').modal('hide');
+      }, 2500)
+    } else {
+      var align = $('.head-text').css('text-align');
+      this.model.set("header_align", align);
+      // this.model.save(this.model.attributes);
 
-        var editors = $('#editors').find('.selectivity-multiple-selected-item');
-        if (editors.first().text() !== "") {
-          users = this.users;
-          pub = this.model
-          var ids = [];
-          editors.each(function () {
-            user = users.findWhere({ email: $(this).text() })
-            ids.push(user.id);
-          })
-          ids.forEach( function (i) {
-            var pubEdit = new Large.Models.PubEdit({ pub_id: pub.id, editor_id: i });
-            pubEdit.save(pubEdit.attributes);
-          })
-        }
+      var formData = this.$('form').serializeJSON();
+      this.model.save(formData.publication, {
+        success: function () {
+          this.collection.add(this.model, { merge: true });
 
-        var writers = $('#writers').find('.selectivity-multiple-selected-item');
-        if (writers.first().text() !== "") {
-          users = this.users;
-          pub = this.model
-          var ids = [];
-          writers.each(function () {
-            user = users.findWhere({ email: $(this).text() })
-            ids.push(user.id);
-          })
-          ids.forEach( function (i) {
-            var pubWrite = new Large.Models.PubWrite({ pub_id: pub.id, writer_id: i });
-            pubWrite.save(pubWrite.attributes);
-          })
-        }
+          var editors = $('#editors').find('.selectivity-multiple-selected-item');
+          if (editors.first().text() !== "") {
+            users = this.users;
+            pub = this.model
+            var ids = [];
+            editors.each(function () {
+              user = users.findWhere({ email: $(this).text() })
+              ids.push(user.id);
+            })
+            ids.forEach( function (i) {
+              var pubEdit = new Large.Models.PubEdit({ pub_id: pub.id, editor_id: i });
+              pubEdit.save(pubEdit.attributes);
+            })
+          }
 
-        var tags = $('#pub-tags').find('.selectivity-multiple-selected-item');
-        if (tags.first().text() !== "") {
-          ttags = this.ttags;
-          pub = this.model
-          var ids = [];
-          tags.each(function () {
-            tag = ttags.findWhere({ label: $(this).text() })
-            if (tag === undefined) {
-              tag = new Large.Models.Tag({ label: $(this).text()});
-              tag.save(tag.attributes, {
-                success: function () {
-                  var tagging = new Large.Models.Tagging({
-                    taggable_id: pub.id,
-                    taggable_type: "Publication",
-                    tag_id: tag.id
-                  });
-                  tagging.save();
-                }
-              })
-            } else {
-              ids.push(tag.id);
-            }
-          })
-          ids.forEach( function (i) {
-            var tagging = new Large.Models.Tagging({
-              taggable_id: pub.id,
-              taggable_type: "Publication",
-              tag_id: i
-            });
-            tagging.save(tagging.attributes);
-          })
-        }
+          var writers = $('#writers').find('.selectivity-multiple-selected-item');
+          if (writers.first().text() !== "") {
+            users = this.users;
+            pub = this.model
+            var ids = [];
+            writers.each(function () {
+              user = users.findWhere({ email: $(this).text() })
+              ids.push(user.id);
+            })
+            ids.forEach( function (i) {
+              var pubWrite = new Large.Models.PubWrite({ pub_id: pub.id, writer_id: i });
+              pubWrite.save(pubWrite.attributes);
+            })
+          }
 
-        Backbone.history.navigate("publications/" + this.model.id, { trigger: true })
-      }.bind(this)
-    })
+          var tags = $('#pub-tags').find('.selectivity-multiple-selected-item');
+          if (tags.first().text() !== "") {
+            ttags = this.ttags;
+            pub = this.model
+            var ids = [];
+            tags.each(function () {
+              tag = ttags.findWhere({ label: $(this).text() })
+              if (tag === undefined) {
+                tag = new Large.Models.Tag({ label: $(this).text()});
+                tag.save(tag.attributes, {
+                  success: function () {
+                    var tagging = new Large.Models.Tagging({
+                      taggable_id: pub.id,
+                      taggable_type: "Publication",
+                      tag_id: tag.id
+                    });
+                    tagging.save();
+                  }
+                })
+              } else {
+                ids.push(tag.id);
+              }
+            })
+            ids.forEach( function (i) {
+              var tagging = new Large.Models.Tagging({
+                taggable_id: pub.id,
+                taggable_type: "Publication",
+                tag_id: i
+              });
+              tagging.save(tagging.attributes);
+            })
+          }
+
+          Backbone.history.navigate("publications/" + this.model.id, { trigger: true })
+        }.bind(this)
+      })
+    }
   }
 });
