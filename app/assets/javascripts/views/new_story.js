@@ -165,6 +165,7 @@ Large.Views.NewStory = Backbone.View.extend({
   reseedToolbars: function () {
     $('.editable p').before(this.insertToolbar())
     $('.editable').focus();
+    this.model.destroy();
   },
 
   submitForm: function (event) {
