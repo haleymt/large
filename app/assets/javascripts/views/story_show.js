@@ -33,6 +33,8 @@ Large.Views.StoryShow = Backbone.View.extend({
       currentUser: currentUser
     });
     this.$el.html(content);
+    $('p').first().text(this.story.get('title'));
+    $($('p')[1]).text(this.story.get('subtitle'));
 
     Large.Collections.users.fetch();
     var currentUser = Large.Collections.users.get(1);
