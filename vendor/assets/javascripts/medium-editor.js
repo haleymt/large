@@ -1313,28 +1313,28 @@ var DefaultButton,
         },
         'header1': {
             name: 'header1',
-            action: function (options) {
-                return 'append-' + options.firstHeader;
-            },
-            aria: function (options) {
-                return options.firstHeader;
-            },
-            tagNames: function (options) {
-                return [options.firstHeader];
-            },
+            // action: function (options) {
+            //     return 'append-' + options.firstHeader;
+            // },
+            // aria: function (options) {
+            //     return options.firstHeader;
+            // },
+            // tagNames: function (options) {
+            //     return [options.firstHeader];
+            // },
             contentDefault: '<b>H1</b>'
         },
         'header2': {
             name: 'header2',
-            action: function (options) {
-                return 'append-' + options.secondHeader;
-            },
-            aria: function (options) {
-                return options.secondHeader;
-            },
-            tagNames: function (options) {
-                return [options.secondHeader];
-            },
+            // action: function (options) {
+            //     return 'append-' + options.secondHeader;
+            // },
+            // aria: function (options) {
+            //     return options.secondHeader;
+            // },
+            // tagNames: function (options) {
+            //     return [options.secondHeader];
+            // },
             contentDefault: '<b>H2</b>'
         },
         // Known inline elements that are not removed, or not removed consistantly across browsers:

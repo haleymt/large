@@ -3,13 +3,14 @@ Large.Views.StoryPreviewSearch = Backbone.View.extend({
 
   initialize: function (options) {
     this.publications = options.publications;
-    
+
     this.listenTo(Large.Collections.users, 'sync', this.render);
     this.listenTo(this.model, 'sync', this.render);
     this.listenTo(this.publications, 'sync', this.render);
   },
 
   render: function () {
+    // debugger
     var pubId = this.model.get('pub_id');
     var pub = this.publications.get(pubId);
 
