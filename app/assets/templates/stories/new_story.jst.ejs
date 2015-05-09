@@ -10,13 +10,13 @@
         Publish</button>
 </div>
 <div class="header-setter">
-  <button id="header-imager"><i class="fa fa-ellipsis-h"></i></button><br>
+  <button id="header-imager" data-toggle="tooltip" title="Add a header image"><i class="fa fa-ellipsis-h"></i></button><br>
   <button id="header-image"><i class="fa fa-image"></i></button>
 </div>
 <div class="new-story">
   <% if (story.get('body') === undefined) {%>
     <div class="editable">
-      <p style="font-size:50px; font-weight:bold"><br></p>
+      <p style="font-size:50px; font-weight:bold" data-toggle="tooltip" title="Highlight the text to style it"><br></p>
       <p style="font-size:35px; font-style:italic;"><br></p>
       <p><br></p>
     </div>

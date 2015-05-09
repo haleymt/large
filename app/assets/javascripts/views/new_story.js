@@ -11,13 +11,15 @@ Large.Views.NewStory = Backbone.View.extend({
     "click .insert-pic": "insertPic",
     "click .insert-line": "insertLine",
     "click .editable": "showToolbar",
-    "click .new-insert": "showHiddenButtons"
+    "click .new-insert": "showHiddenButtons",
+    "keyup .editable": "toolbarTooltip"
   },
 
   initialize: function (options) {
     this.collection = options.collection;
     this.publications = options.publications;
     this.ttags = options.ttags;
+
     this.listenTo(this.ttags, 'sync', this.render);
     this.listenTo(this.publications, 'sync', this.render);
   },
@@ -37,16 +39,21 @@ Large.Views.NewStory = Backbone.View.extend({
     });
     $('.editable p').before(this.insertToolbar())
     $('.editable').focus();
-    // setTimeout(function () {
-      this.$('#tags-select').selectivity({
-        inputType: 'Email'
-        // placeholder: 'Add up to 3 tags'
-      });
-    // }.bind(this), 1000);
+    this.$('#tags-select').selectivity({
+      inputType: 'Email'
+    });
     $('.tt').tooltip({
       placement: 'bottom',
       trigger: 'hover'
     })
+    $('p').tooltip({
+      placement: 'top',
+      trigger: 'manual'
+    });
+    $('#header-imager').tooltip({
+      placement: 'top',
+      trigger: 'hover'
+    });
     $('.selectivity-multiple-input-container').css('background', 'transparent');
     return this;
   },
@@ -122,6 +129,14 @@ Large.Views.NewStory = Backbone.View.extend({
   insertLine: function (event) {
     var $para = $(event.currentTarget).parent().parent().next();
     $para.html("<div style='width:100%'><hr noshade size=1 width='33%'><br></div>");
+  },
+
+  toolbarTooltip: function (event) {
+    $('p').tooltip('show');
+    setTimeout(function () {
+      $('p').tooltip('destroy');
+    }, 2500);
+    $('.editable').off(event);
   },
 
   autoSave: function (event) {
