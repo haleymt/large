@@ -756,7 +756,11 @@ ul {
 
 #sectionB,
 #sectionC {
-  width: 400px;
+  width: 450px;
+}
+
+#sectionC .pr-desc {
+  width:300px;
 }
 
 #sectionB li,
@@ -767,7 +771,7 @@ ul {
 #sectionB .follow,
 #sectionC .follow {
   float: right;
-  margin-top: -15px;
+  margin-top: -40px;
 }
 
 .search-preview {

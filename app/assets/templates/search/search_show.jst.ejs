@@ -112,9 +112,9 @@
       <% if (publications.length > 0) { %>
       <ul>
       <% publications.forEach( function (pub) { %>
-        <li class="pr"><a href="#/publications/<%= pub.id %>">
+        <li class="pr"><div class="pr-desc"><a href="#/publications/<%= pub.id %>">
           <strong><%= pub.escape('title') %></strong></a><br>
-            <%= pub.escape('description') %>
+            <%= pub.escape('description') %></div>
             <button class="follow btn btn-primary btn-sm" id="<%= pub.id %>" value="Publication">Follow</button>
         </li>
       <% }) %>
