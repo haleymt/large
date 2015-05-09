@@ -20,6 +20,9 @@ Large.Views.StoryShow = Backbone.View.extend({
   },
 
   render: function () {
+    $('.navbar-nav').find('.user-edit-toggle').remove();
+    $('.navbar-header').find('.about-link').remove();
+
     var responseId = this.story.get('story_id')
     var response = this.stories.get(responseId);
 
