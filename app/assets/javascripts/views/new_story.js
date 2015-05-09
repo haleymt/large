@@ -12,6 +12,7 @@ Large.Views.NewStory = Backbone.View.extend({
     "click .insert-line": "insertLine",
     "click .editable": "showToolbar",
     "click .new-insert": "showHiddenButtons",
+    "click .closer": "reseedToolbars",
     "keyup .editable": "toolbarTooltip"
   },
 
@@ -42,10 +43,6 @@ Large.Views.NewStory = Backbone.View.extend({
     this.$('#tags-select').selectivity({
       inputType: 'Email'
     });
-    $('.tt').tooltip({
-      placement: 'bottom',
-      trigger: 'hover'
-    })
     $('p').tooltip({
       placement: 'top',
       trigger: 'manual'
@@ -161,6 +158,11 @@ Large.Views.NewStory = Backbone.View.extend({
         }.bind(this)
       });
     }
+  },
+
+  reseedToolbars: function () {
+    $('.editable p').before(this.insertToolbar())
+    $('.editable').focus();
   },
 
   submitForm: function (event) {

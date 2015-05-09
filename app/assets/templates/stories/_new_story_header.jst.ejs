@@ -1,10 +1,10 @@
 <li id='add-dropdown' class='dropdown new-story-header'>
-  <div style="margin-right:250px;" class="tt" data-toggle="tooltip" title="Add your story to a publication">
+  <div style="margin-right:250px;" class="tt">
   <button
     class='dropdown-toggle navbar-btn btn btn-primary'
-    data-toggle='dropdown'><span>Add &nbsp;\/ </span>
+    data-toggle='dropdown'><span>Add to a publiation &nbsp;\/ </span>
   </button>
-  <ul style="padding:15px; margin-right:100px;" class="dropdown-menu" role="menu"><strong>Add your draft to a publication</strong>
+  <ul style="padding:15px; margin-right:150px;" class="dropdown-menu" role="menu"><strong>Add your draft to a publication</strong>
     <% publications.forEach( function(pub) { %>
     <li style="padding-top:5px;"><input type="radio" name="story[pub_id]" value="<%= pub.id %>" form="confirm-form">
       <%= pub.escape('title') %><br>
