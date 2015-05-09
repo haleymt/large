@@ -98,17 +98,25 @@ Large.Views.NewStoryPreview = Backbone.View.extend({
 
   createStory: function (event) {
     event.preventDefault();
-    $('.insert-toolbar').remove();
-    this.model.set("title", $($('p')[0]).text());
-    this.model.set("subtitle", $($('p')[1]).text());
-    this.model.set("body", this.$('.editable').html());
 
-    this.model.save(this.model.attributes, {
-      success: function () {
-        this.collection.add(this.model, { merge: true });
-        Backbone.history.navigate("stories/" + this.model.id, { trigger: true })
-      }.bind(this)
-    });
+    if ($('p').text() === "") {
+      $('#blankStoryError').modal('show');
+      setTimeout( function () {
+        $('#blankStoryError').modal('hide');
+      }, 2000)
+    } else {
+      $('.insert-toolbar').remove();
+      this.model.set("title", $($('p')[0]).text());
+      this.model.set("subtitle", $($('p')[1]).text());
+      this.model.set("body", this.$('.editable').html());
+
+      this.model.save(this.model.attributes, {
+        success: function () {
+          this.collection.add(this.model, { merge: true });
+          Backbone.history.navigate("stories/" + this.model.id, { trigger: true })
+        }.bind(this)
+      });
+    }
   },
 
   expand: function () {

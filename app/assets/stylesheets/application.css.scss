@@ -847,6 +847,15 @@ li.pr {
   padding-top: 100px;
 }
 
+#blankStoryError .modal-backdrop {
+  opacity: 0 !important;
+}
+
+#blankStoryError .modal-content {
+  margin-top: -35px !important;
+  color: rgba(128,128,128, 0.9)
+}
+
 button.delete-story {
   color: rgba(255, 0, 0, 0.4);
   border: 1px solid rgba(255, 0, 0, 0.4);

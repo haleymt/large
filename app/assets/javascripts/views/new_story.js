@@ -142,18 +142,25 @@ Large.Views.NewStory = Backbone.View.extend({
   autoSave: function (event) {
     // debugger
     // event.preventDefault();
-    $('.insert-toolbar').remove();
-    this.model.set("body", this.$('.editable').html());
-    this.model.set("title", $($('p')[0]).text());
-    this.model.set("subtitle", $($('p')[1]).text());
-    this.model.save(this.model.attributes, {
-      success: function () {
-        this.collection.add(this.model, { merge: true });
-        this.$('#modal-title').val($($('p')[0]).text());
-        this.$('#modal-subtitle').val($($('p')[1]).text());
-      }.bind(this)
-    });
-
+    if ($('p').text() === "") {
+      $('#blankStoryError').modal('show');
+      setTimeout( function () {
+        $('#blankStoryError').modal('hide');
+      }, 2500)
+    } else {
+      $('#confirmPublish').modal('show');
+      $('.insert-toolbar').remove();
+      this.model.set("body", this.$('.editable').html());
+      this.model.set("title", $($('p')[0]).text());
+      this.model.set("subtitle", $($('p')[1]).text());
+      this.model.save(this.model.attributes, {
+        success: function () {
+          this.collection.add(this.model, { merge: true });
+          this.$('#modal-title').val($($('p')[0]).text());
+          this.$('#modal-subtitle').val($($('p')[1]).text());
+        }.bind(this)
+      });
+    }
   },
 
   submitForm: function (event) {

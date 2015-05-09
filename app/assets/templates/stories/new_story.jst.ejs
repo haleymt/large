@@ -4,9 +4,7 @@
   Click on the editor to tell your story, then
   <button id="confirm"
               type="button"
-              class="btn btn-primary"
-              data-toggle="modal"
-              data-target="#confirmPublish">
+              class="btn btn-primary">
         Publish</button>
 </div>
 <div class="header-setter">
@@ -55,6 +53,16 @@
         </select>
         <button style="margin:0;" id="submit-confirm" type="submit" class="btn btn-primary">Publish</button>
         <button style="margin:0;" type="button" class="btn btn-default closer" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="blankStoryError" tabindex="-1" role="dialog" aria-labelledby="blankErrorLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="text-align:center; border:none;" class="modal-header">
+        <div class="modal-title" id="blankErrorLabel">Publication will become available after you start writing.</div>
       </div>
     </div>
   </div>
