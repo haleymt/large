@@ -28,6 +28,7 @@ Large.Views.NewStory = Backbone.View.extend({
   render: function () {
     $('.navbar-nav').find('.new-story-header').remove();
     $('.navbar-header').find('.about-link').remove();
+    $('.navbar-nav').find('.user-edit-toggle').remove();
 
     var headerContent = this.header({
       story: this.model,
