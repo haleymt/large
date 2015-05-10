@@ -13,7 +13,6 @@ Large.Views.NewStory = Backbone.View.extend({
     "click .editable": "showToolbar",
     "click .new-insert": "showHiddenButtons",
     "click .closer": "reseedToolbars"
-    // "keyup .editable": "toolbarTooltip"
   },
 
   initialize: function (options) {
@@ -67,6 +66,13 @@ Large.Views.NewStory = Backbone.View.extend({
           $(this).before(tb);
         }
       });
+    }
+
+    if ($('p').text().length < 3) {
+      $('p').tooltip('show');
+      setTimeout(function () {
+        $('p').tooltip('destroy');
+      }, 2500);
     }
   },
 
@@ -129,14 +135,6 @@ Large.Views.NewStory = Backbone.View.extend({
   insertLine: function (event) {
     var $para = $(event.currentTarget).parent().parent().next();
     $para.html("<div style='width:100%'><hr noshade size=1 width='33%'><br></div>");
-  },
-
-  toolbarTooltip: function (event) {
-    $('p').tooltip('show');
-    setTimeout(function () {
-      $('p').tooltip('destroy');
-    }, 2500);
-    $('.editable').off(event);
   },
 
   autoSave: function (event) {

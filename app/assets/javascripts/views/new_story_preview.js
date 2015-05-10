@@ -11,7 +11,6 @@ Large.Views.NewStoryPreview = Backbone.View.extend({
     "click .editable": "showToolbar",
     "click .new-insert": "showHiddenButtons",
     "click .closer": "refocus"
-    // "keyup .editable": "toolbarTooltip"
   },
 
   initialize: function (options) {
@@ -48,6 +47,13 @@ Large.Views.NewStoryPreview = Backbone.View.extend({
           $(this).before(tb);
         }
       });
+    }
+
+    if ($('p').text().length < 3) {
+      $('p').tooltip('show');
+      setTimeout(function () {
+        $('p').tooltip('destroy');
+      }, 2500);
     }
   },
 
@@ -135,13 +141,6 @@ Large.Views.NewStoryPreview = Backbone.View.extend({
 
   refocus: function () {
     $('.editable').focus();
-  },
-
-  toolbarTooltip: function (event) {
-    $('p').tooltip('show');
-    setTimeout(function () {
-      $('p').tooltip('destroy');
-    }, 2500);
-    $('.editable').off(event);
   }
+
 });
