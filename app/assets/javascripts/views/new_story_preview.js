@@ -10,8 +10,8 @@ Large.Views.NewStoryPreview = Backbone.View.extend({
     "click .insert-line": "insertLine",
     "click .editable": "showToolbar",
     "click .new-insert": "showHiddenButtons",
-    "click .closer": "refocus",
-    "keyup .editable": "toolbarTooltip"
+    "click .closer": "refocus"
+    // "keyup .editable": "toolbarTooltip"
   },
 
   initialize: function (options) {
