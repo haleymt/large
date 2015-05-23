@@ -658,6 +658,9 @@ var Util;
                     selectionData.el.parentNode.tagName.toLowerCase() === 'blockquote') {
                 return doc.execCommand('outdent', false, null);
             }
+            // if (tagName === 'header1' && selectionData.el) {
+            //   return selectionData.el.parentNode.css('font-size', '50px');
+            // }
             if (selectionData.tagName === tagName) {
                 tagName = 'p';
             }
@@ -1313,27 +1316,49 @@ var DefaultButton,
         },
         'header1': {
             name: 'header1',
+            action: function (options) {
+                return 'append-' + options.firstHeader;
+            },
+            aria: function (options) {
+                return options.firstHeader;
+            },
+            tagNames: function (options) {
+                return [options.firstHeader];
+            },
             // action: function (options) {
             //     return 'append-' + options.firstHeader;
             // },
             // aria: function (options) {
             //     return options.firstHeader;
             // },
-            // tagNames: function (options) {
-            //     return [options.firstHeader];
+            // tagNames: [],
+            // style: {
+            //  prop: 'font-size',
+            //  value: '50px'
             // },
             contentDefault: '<b>H1</b>'
         },
         'header2': {
             name: 'header2',
+            action: function (options) {
+                return 'append-' + options.secondHeader;
+            },
+            aria: function (options) {
+                return options.secondHeader;
+            },
+            tagNames: function (options) {
+                return [options.secondHeader];
+            },
             // action: function (options) {
             //     return 'append-' + options.secondHeader;
             // },
             // aria: function (options) {
             //     return options.secondHeader;
             // },
-            // tagNames: function (options) {
-            //     return [options.secondHeader];
+            // tagNames: [],
+            // style: {
+            //  prop: 'font-size',
+            //  value: '35px'
             // },
             contentDefault: '<b>H2</b>'
         },
