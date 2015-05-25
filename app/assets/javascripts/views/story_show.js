@@ -98,7 +98,7 @@ Large.Views.StoryShow = Backbone.View.extend({
     now = new Date();
 
     var month = date.getMonth();
-    var day = date.getDay();
+    var day = date.getDay() + 1;
     var year = date.getYear();
 
     if (now.getYear() > year) {
