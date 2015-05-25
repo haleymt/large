@@ -110,8 +110,10 @@ Large.Views.NewPub = Backbone.View.extend({
     )
   },
 
-  addIcon: function () {
+  addIcon: function (event) {
+    event.preventDefault();
     alert("can't add icons yet!");
+    $('#pub-icon').blur();
   },
 
   submitForm: function (event) {
