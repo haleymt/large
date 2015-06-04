@@ -112,8 +112,8 @@ Large.Views.NewStoryPreview = Backbone.View.extend({
       }, 2000)
     } else {
       $('.insert-toolbar').remove();
-      this.model.set("title", $($('p')[0]).text());
-      this.model.set("subtitle", $($('p')[1]).text());
+      this.model.set("title", $($('.editable p')[0]).text());
+      this.model.set("subtitle", $($('.editable p')[1]).text());
       this.model.set("body", this.$('.editable').html());
 
       this.model.save(this.model.attributes, {

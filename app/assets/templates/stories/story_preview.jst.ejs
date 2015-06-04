@@ -32,7 +32,11 @@
       <% if (sentence !== "") { %>
         <a style="color:black;" href="#/stories/<%= story.id %>">
           <div style="font-family:serif;font-size:20px; padding-top:15px;">
-            <%= sentence %>...
+            <% if (sentence.length < 249) { %>
+              <%= sentence %>
+            <% } else { %>
+              <%= sentence %>...
+            <% } %>
           </div>
         </a>
       <% } %>
@@ -41,14 +45,18 @@
       <a style="color:rgba(128,128,128,1);"
          href="#/stories/<%= story.id %>"> &#8231; <%= readingTime %> min read</a>
     <% } else { %>
-      <div style="color:rgba(128, 128, 128, 0.7)" class="in-response">
+      <div style="color:rgba(128, 128, 128, 0.7)">
         <i class="fa fa-comment-o"></i>
-        in response to
+        in response to <t class="in-response"></t>
       </div>
       <br>
       <div style="font-family:serif;font-size:20px;">
         <a style="color:black;" href="#/stories/<%= story.id %>">
-        <%= sentence %>...
+          <% if (sentence.length < 249) { %>
+            <%= sentence %>
+          <% } else { %>
+            <%= sentence %>...
+          <% } %>
         </a>
       </div>
       <br>
