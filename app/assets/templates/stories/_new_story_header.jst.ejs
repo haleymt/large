@@ -1,23 +1,22 @@
-<li id='add-dropdown' class='dropdown new-story-header'>
-  <div style="margin-right:250px;" class="tt">
+<div id='add-dropdown' class='dropdown new-story-header'>
   <button
     class='dropdown-toggle navbar-btn btn btn-primary'
-    data-toggle='dropdown'><span>Add to a publiation &nbsp;\/ </span>
+    data-toggle='dropdown'>
+    <span>Add to a publiation <i class="fa fa-angle-down" aria-hidden="true" style="font-size: 20px;float: right;margin-left: 10px;"></i> </span>
   </button>
-  <ul style="padding:15px; margin-right:150px;" class="dropdown-menu" role="menu"><strong>Add your draft to a publication</strong>
+  <ul style="padding:15px;width:235px;margin-left:-30px" class="dropdown-menu" role="menu"><strong>Add your draft to a publication</strong>
     <% publications.forEach( function(pub) { %>
     <li style="padding-top:5px;"><input type="radio" name="story[pub_id]" value="<%= pub.id %>" form="confirm-form">
       <%= pub.escape('title') %><br>
     </li>
     <% }) %>
   </ul>
-  </div>
-</li>
-<!-- <li><button style="margin-left:0; border:1px solid rgba(87, 173, 104, 1); color:rgba(87, 173, 104, 1);"
-            id="confirm"
-            type="button"
-            class="btn btn-primary"
-            data-toggle="modal"
-            data-target="#confirmPublish">
-      Publish</button>
-</li> -->
+</div>
+<!-- <div>
+  <button style="margin-left:0; border:1px solid rgba(87, 173, 104, 1); color:rgba(87, 173, 104, 1);"
+          id="confirm"
+          type="button"
+          class="btn btn-primary">
+        Publish
+  </button>
+</div> -->

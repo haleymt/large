@@ -3,7 +3,8 @@ Large.Views.UserShow = Backbone.View.extend({
   editToggle: JST['users/user_edit_toggle'],
 
   events: {
-    "click .follow": "toggleFollow"
+    "click .follow": "toggleFollow",
+    "click .preview": "removeEditButton"
   },
 
   initialize: function (options) {
@@ -62,6 +63,15 @@ Large.Views.UserShow = Backbone.View.extend({
     this.$("abbr.timeago").timeago();
 
     return this;
+  },
+
+  removeEditButton: function (event) {
+    event.preventDefault();
+    // debugger
+    if ($(event.target)[0].nodeName === 'A') {
+      $('.navbar-nav').find('.user-edit-toggle').remove();
+      window.location.href = $(event.target)[0].href;
+    }
   },
 
   toggleFollow: function () {

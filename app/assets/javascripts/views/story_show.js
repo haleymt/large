@@ -25,7 +25,11 @@ Large.Views.StoryShow = Backbone.View.extend({
   render: function () {
     // debugger
     $('.navbar-nav').find('.new-story-header').remove();
-    $('.navbar-nav').find('.user-edit-toggle').remove();
+
+    // while ($('.user-edit-toggle').length > 0) {
+      $('.navbar-nav').find('.user-edit-toggle').remove();
+    // }
+
     $('.navbar-header').find('.about-link').remove();
 
     var responseId = this.story.get('story_id');
@@ -76,6 +80,7 @@ Large.Views.StoryShow = Backbone.View.extend({
       placeholder: "",
       buttons: ['bold', 'italic', 'quote', 'anchor']
     });
+
     return this;
   },
 

@@ -33,7 +33,9 @@ Large.Views.NewStory = Backbone.View.extend({
       story: this.model,
       publications: this.publications
     });
-    $('.navbar-nav').prepend(headerContent);
+    if ($('.new-story-header').length < 1 && this.publications.length) {
+      $('.navbar-header').after(headerContent);
+    }
     this.$el.html(this.template({ story: this.model, publications: this.publications }));
 
     var editor = new MediumEditor('.editable', {
@@ -54,6 +56,8 @@ Large.Views.NewStory = Backbone.View.extend({
       trigger: 'hover'
     });
     $('.selectivity-multiple-input-container').css('background', 'transparent');
+    $('.navbar-nav').find('.user-edit-toggle').remove();
+
     return this;
   },
 

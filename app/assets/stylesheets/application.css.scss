@@ -48,6 +48,10 @@ a:hover {
   font-size: 16px;
 }
 
+.navbar:after, .navbar:before {
+  display: none;
+}
+
 .navbar-default {
   background: white;
   border-radius: 0px;
@@ -56,10 +60,22 @@ a:hover {
   border-right: none;
   height: 70px;
   margin-bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-header {
+  height: 100%;
 }
 
 .navbar-right {
-  margin-right: 40px;
+  margin-right: 30px;
+  display: inherit;
+}
+
+.navbar-btn {
+  margin: 10px !important;
 }
 
 .btn-circle {
@@ -349,7 +365,7 @@ abbr:hover {
             }
 
             #confirm {
-              margin:0;
+              margin:0px;
               height:40px;
               width:200px;
               padding:5px;
@@ -524,6 +540,7 @@ ul {
 .sub-preview {
   position: relative;
   z-index: 1000;
+  word-wrap: break-word;
 }
 
 ////

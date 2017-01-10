@@ -1,4 +1,12 @@
 <style>
+	body {
+		background-image: url(http://i.imgur.com/63ZMxHo.jpg);
+		background-repeat: no-repeat;
+		background-size: cover;
+		height: 100vh;
+		width: 100vw;
+	}
+
 	.navbar {
 		background: transparent;
 	}
@@ -11,22 +19,6 @@
 
 	.navbar .btn:active {
 		background: rgba(0,0,0,0.5) !important;
-	}
-
-	::-webkit-input-placeholder {
-    color: white !important;
-	}
-
-	:-moz-placeholder {
-   color: white !important;
-	}
-
-	::-moz-placeholder {
-   color: white !important;
-	}
-
-	:-ms-input-placeholder {
-   color: white !important
 	}
 
 	.navbar .navbar-header:after {
@@ -42,12 +34,6 @@
 		display: none;
 	}
 
-	body {
-		background-image: url(http://i.imgur.com/63ZMxHo.jpg);
-		background-repeat: no-repeat;
-		background-size: cover;
-	}
-
 	.slogan {
 		font-family: 'Josefin Sans', sans-serif;
 		font-size: 80px;
@@ -57,36 +43,59 @@
 		text-align: center;
 	}
 
+	::-webkit-input-placeholder {
+		color: white !important;
+	}
+
+	:-moz-placeholder {
+	 color: white !important;
+	}
+
+	::-moz-placeholder {
+	 color: white !important;
+	}
+
+	:-ms-input-placeholder {
+	 color: white !important
+	}
+
 	.login-form {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-    width: 20%;
+    width: 280px;
 		padding-top: 50px;
   }
 
   .login-form input {
 		background: transparent;
-    margin-bottom: 5px;
+    margin-bottom: 10px !important;
+		min-height: 40px;
 		border: 1px solid white;
 		color: white;
   }
 
+	.login-page .btn {
+		width: 120px;
+		margin-bottom: 0px;
+	}
+
   .login {
-    background: rgba(128, 128, 128, 0.1) !important;
+    background: rgba(255, 255, 255, 0.1) !important;
     color: white;
     border: 1px solid white;
+		margin-top: 10px;
   }
 
   .demo {
-    margin-top: 0;
+    margin-top: 0px;
     background: rgba(87, 173, 104, 0.5);
     color: white;
     border: 1px solid white;
   }
 
   .login:hover {
-    background: rgba(128, 128, 128, 0.4) !important;
+    background: rgba(255, 255, 255, 0.3) !important;
     border: 1px solid white;
     color: white;
   }
@@ -119,11 +128,11 @@
 						 class="password form-control login-input">
 			<br>
 
-			<input type="submit" value="get writing" class="login btn btn-large btn-primary">
+			<input type="submit" value="Log in" class="login btn btn-large btn-primary">
 
 		</form>
 
-	<button class="demo btn btn-large btn-primary">take a tour</button>
+	<button class="demo btn btn-large btn-primary">Take a tour</button>
 	</div>
 </div>
 
