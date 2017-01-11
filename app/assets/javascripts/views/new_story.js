@@ -157,7 +157,6 @@ Large.Views.NewStory = Backbone.View.extend({
       },
       function (Blob) {
         var image = Blob.url;
-        console.log(image);
         $para.html("<img style='max-width:400px' src='" + image + "'>");
       }.bind(this)
     )
@@ -186,11 +185,11 @@ Large.Views.NewStory = Backbone.View.extend({
       this.model.set("subtitle", subtitle);
       this.$('#modal-title').val(title);
       this.$('#modal-subtitle').val(subtitle);
-      this.model.save(this.model.attributes, {
-        success: function () {
-          this.collection.add(this.model, { merge: true });
-        }.bind(this)
-      });
+      // this.model.save(this.model.attributes, {
+      //   success: function () {
+      //     this.collection.add(this.model, { merge: true });
+      //   }.bind(this)
+      // });
     }
   },
 
@@ -203,10 +202,10 @@ Large.Views.NewStory = Backbone.View.extend({
   submitForm: function (event) {
     event.preventDefault();
     var formData = this.$('.confirm-form').serializeJSON();
-    console.log("hi");
-    this.model.save(formData.story, {
+    this.model.set("title", formData.story.title);
+    this.model.set("subtitle", formData.story.subtitle);
+    this.model.save(this.model.attributes, {
       success: function () {
-        console.log("success");
         var tags = $('#tags-select').find('.selectivity-multiple-selected-item');
         if (tags.first().text() !== "") {
           ttags = this.ttags;
@@ -241,6 +240,9 @@ Large.Views.NewStory = Backbone.View.extend({
             tagging.save(tagging.attributes);
           })
         }
+        this.collection.add(this.model, { merge: true });
+        $('.navbar').find('.new-story-header').remove();
+        $('body').removeClass('modal-open');
         Backbone.history.navigate("stories/" + this.model.id, { trigger: true })
       }.bind(this)
     })

@@ -24,7 +24,7 @@ Large.Views.StoryShow = Backbone.View.extend({
 
   render: function () {
     // debugger
-    $('.navbar-nav').find('.new-story-header').remove();
+    $('.navbar').find('.new-story-header').remove();
 
     // while ($('.user-edit-toggle').length > 0) {
       $('.navbar-nav').find('.user-edit-toggle').remove();
@@ -80,6 +80,8 @@ Large.Views.StoryShow = Backbone.View.extend({
       placeholder: "",
       buttons: ['bold', 'italic', 'quote', 'anchor']
     });
+    $('.navbar').find('.new-story-header').remove();
+    $('body').removeClass('modal-open');
 
     return this;
   },
