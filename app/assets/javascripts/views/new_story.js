@@ -63,9 +63,14 @@ Large.Views.NewStory = Backbone.View.extend({
 
   addButton: function (event) {
     var tb = this.insertToolbar();
+    var $target = $(event.target);
+
     event.preventDefault();
+
+    this.handlePlaceholders($target);
+
     if (event.keyCode === 13) {
-      $(event.target).children().each( function () {
+      $target.children().each( function () {
         if ($(this).is('p') && !$(this).prev().is('.insert-toolbar')) {
           $(this).before(tb);
         }
@@ -77,6 +82,27 @@ Large.Views.NewStory = Backbone.View.extend({
       setTimeout(function () {
         $('p').tooltip('destroy');
       }, 2500);
+    }
+  },
+
+  handlePlaceholders: function($el) {
+    var $titleEl = $el.find('.title');
+    var $subtitleEl = $el.find('.subtitle');
+
+    if ($titleEl) {
+      if ($titleEl.text() !== "") {
+        $titleEl.removeClass('show-placeholder');
+      } else {
+        $titleEl.addClass('show-placeholder');
+      }
+    }
+
+    if ($subtitleEl) {
+      if ($subtitleEl.text() !== "") {
+        $subtitleEl.removeClass('show-placeholder');
+      } else {
+        $subtitleEl.addClass('show-placeholder');
+      }
     }
   },
 

@@ -1,12 +1,4 @@
 <div class="image"></div>
-<!-- <br> -->
-<!-- <div style="margin:0;width:100%;text-align:center;font-size:30px;font-family:serif;font-style:italic;color:rgba(128, 128, 128, 0.5);">
-  Click on the editor to tell your story, then
-  <button id="confirm"
-              type="button"
-              class="btn btn-primary">
-        Publish</button>
-</div> -->
 <button id="confirm"
             type="button"
             class="btn btn-primary">
@@ -18,8 +10,8 @@
 <div class="new-story">
   <% if (story.get('body') === undefined) {%>
     <div class="editable">
-      <p style="font-size:50px; font-weight:bold" data-toggle="tooltip" title="Highlight the text to style it"><br></p>
-      <p style="font-size:35px; font-style:italic;"><br></p>
+      <p style="font-size:50px; font-weight:bold" class="title show-placeholder" data-toggle="tooltip" title="Highlight the text to style it"><br></p>
+      <p style="font-size:35px; font-style:italic;" class="subtitle show-placeholder"><br></p>
       <p><br></p>
     </div>
   <% } else { %>
