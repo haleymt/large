@@ -347,7 +347,7 @@ abbr:hover {
             .editable p {
               // position: absolute;
               padding-left: 50px;
-              margin-top: -40px;
+              // margin-top: -40px;
               width: 100%;
               height: auto;
               min-height: 40px;
@@ -371,12 +371,44 @@ abbr:hover {
             .new-insert {
               margin: 0;
               float: left;
-              // display: none;
+              margin-right: 5px;
+              color: rgba(128, 128, 128, 0.5);
+              transition: all 0.2s ease;
+              padding-top: 7px;
+              font-size: 22px;
+            }
+
+            .hidden-buttons {
+              visibility: hidden;
+              opacity: 0;
+
+              button {
+                margin:0;
+                margin-left: 10px;
+                color:rgba(128, 128, 128, 0.5);
+              }
             }
 
             .insert-toolbar {
               opacity: 0;
               margin-left: -50px;
+              position:absolute;
+              z-index:-1000;
+              width: 300px;
+            }
+
+            .insert-toolbar.visible {
+              .new-insert {
+                -ms-transform: rotate(45deg); /* IE 9 */
+                -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+                transform: rotate(45deg);
+              }
+
+              .hidden-buttons {
+                visibility: visible;
+                transition: all 0.3s ease;
+                opacity: 1;
+              }
             }
 
             #confirm {

@@ -123,7 +123,7 @@ Large.Views.NewStory = Backbone.View.extend({
   },
 
   showToolbar: function (event) {
-    p = window.getSelection().focusNode
+    p = window.getSelection().focusNode;
     $('p').each( function () {
       if ((this !== p) && $(this).prev().is('.insert-toolbar')) {
         $(this).prev().css('opacity', 0);
@@ -137,11 +137,12 @@ Large.Views.NewStory = Backbone.View.extend({
   },
 
   showHiddenButtons: function (event) {
-    var buttons = $(event.currentTarget).parent().find('.hidden-buttons');
-    if ($(buttons).css('visibility') == 'visible') {
-      $(buttons).css('visibility', 'hidden')
+    var $toolbar = $(event.currentTarget).parent();
+
+    if ($toolbar.hasClass('visible')) {
+      $toolbar.removeClass('visible');
     } else {
-      $(buttons).css('visibility', 'visible')
+      $toolbar.addClass('visible');
     }
   },
 
@@ -178,14 +179,16 @@ Large.Views.NewStory = Backbone.View.extend({
     } else {
       $('#confirmPublish').modal('show');
       $('.insert-toolbar').remove();
+      var title = $($('p')[0]).text();
+      var subtitle = $($('p')[1]).text();
       this.model.set("body", this.$('.editable').html());
-      this.model.set("title", $($('p')[0]).text());
-      this.model.set("subtitle", $($('p')[1]).text());
+      this.model.set("title", title);
+      this.model.set("subtitle", subtitle);
+      this.$('#modal-title').val(title);
+      this.$('#modal-subtitle').val(subtitle);
       this.model.save(this.model.attributes, {
         success: function () {
           this.collection.add(this.model, { merge: true });
-          this.$('#modal-title').val($($('p')[0]).text());
-          this.$('#modal-subtitle').val($($('p')[1]).text());
         }.bind(this)
       });
     }
@@ -200,8 +203,10 @@ Large.Views.NewStory = Backbone.View.extend({
   submitForm: function (event) {
     event.preventDefault();
     var formData = this.$('.confirm-form').serializeJSON();
+    console.log("hi");
     this.model.save(formData.story, {
       success: function () {
+        console.log("success");
         var tags = $('#tags-select').find('.selectivity-multiple-selected-item');
         if (tags.first().text() !== "") {
           ttags = this.ttags;
