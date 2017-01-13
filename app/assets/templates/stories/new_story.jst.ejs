@@ -9,13 +9,17 @@
 </div>
 <div class="new-story">
   <% if (story.get('body') === undefined) {%>
-    <div class="editable">
+    <div class="editable" id="title">
       <p style="font-size:50px; font-weight:bold" class="title show-placeholder" data-toggle="tooltip" title="Highlight the text to style it"><br></p>
-      <p style="font-size:35px; font-style:italic;" class="subtitle show-placeholder"><br></p>
+    </div>
+    <div class="editable" id="subtitle">
+      <p style="font-size:35px; font-style:italic" class="subtitle show-placeholder" data-toggle="tooltip" title="Highlight the text to style it"><br></p>
+    </div>
+    <div class="editable" id="body">
       <p><br></p>
     </div>
   <% } else { %>
-    <div class="editable">
+    <div class="editable" id="body">
       <%= story.get('body') %>
     </div>
   <% } %>

@@ -58,25 +58,25 @@ Large.Views.NewStoryPreview = Backbone.View.extend({
   },
 
   showToolbar: function (event) {
-    p = window.getSelection().focusNode
+    p = window.getSelection().focusNode;
     $('p').each( function () {
       if ((this !== p) && $(this).prev().is('.insert-toolbar')) {
-        $(this).prev().css('opacity', 0);
-        $(this).prev().css('z-index', -1000);
+        $(this).prev().removeClass('visible');
+        $(this).prev().removeClass('open');
         $(this).css('opacity', 1);
       } else {
-        $(this).prev().first().css('opacity', 1);
-        $(this).prev().first().css('z-index', 1000);
+        $(this).prev().first().addClass('visible');
       }
     })
   },
 
   showHiddenButtons: function (event) {
-    var buttons = $(event.currentTarget).parent().find('.hidden-buttons');
-    if ($(buttons).css('visibility') == 'visible') {
-      $(buttons).css('visibility', 'hidden')
+    var $toolbar = $(event.currentTarget).parent();
+
+    if ($toolbar.hasClass('open')) {
+      $toolbar.removeClass('open');
     } else {
-      $(buttons).css('visibility', 'visible')
+      $toolbar.addClass('open');
     }
   },
 
@@ -134,7 +134,10 @@ Large.Views.NewStoryPreview = Backbone.View.extend({
       publications: Large.Collections.publications,
       ttags: this.ttags
     });
-    this.parent.remove();
+
+    if (this.parent) {
+      this.parent.remove();
+    }
     $('#content').html(storyNew.$el);
     storyNew.render();
   },

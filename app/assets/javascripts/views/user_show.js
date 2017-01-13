@@ -4,7 +4,7 @@ Large.Views.UserShow = Backbone.View.extend({
 
   events: {
     "click .follow": "toggleFollow",
-    "click .preview": "removeEditButton"
+    "click .preview": "setTransitionState"
   },
 
   initialize: function (options) {
@@ -17,6 +17,7 @@ Large.Views.UserShow = Backbone.View.extend({
 
     this.follows = this.user.followers();
     this.followings = this.user.followedUsers();
+    this.transitioning = false;
 
     this.listenTo(this.currentUserFollows, 'sync add remove', this.render);
     this.listenTo(this.user, 'sync', this.render);
@@ -26,52 +27,49 @@ Large.Views.UserShow = Backbone.View.extend({
   },
 
   render: function () {
-    $('.navbar-nav').find('.user-edit-toggle').remove();
+    if (!this.transitioning) {
+      $('.navbar-nav').find('.user-edit-toggle').remove();
 
-    var content = this.template({ user: this.user, followers: this.follows, followings: this.followings });
-    this.$el.html(content);
+      var content = this.template({ user: this.user, followers: this.follows, followings: this.followings });
+      this.$el.html(content);
 
-    var currentUser = this.currentUser.last()
-    if ((currentUser !== undefined) && (currentUser.id === this.user.id)) {
-      $('.navbar-nav').prepend(this.editToggle({ currentUser: currentUser }));
-    }
+      var currentUser = this.currentUser.last();
+      if ((currentUser !== undefined) && (currentUser.id === this.user.id)) {
+        $('.navbar-nav').prepend(this.editToggle({ currentUser: currentUser }));
+      }
 
-    var follow = this.currentUserFollows.findWhere({
-                      followable_id: this.user.id,
-                      followable_type: "User" });
-    if (!!follow) {
-      $('.follow').data('follow-state', 'followed');
-    } else {
-      $('.follow').data('follow-state', 'unfollowed');
-    }
+      var follow = this.currentUserFollows.findWhere({
+                        followable_id: this.user.id,
+                        followable_type: "User" });
+      if (!!follow) {
+        $('.follow').data('follow-state', 'followed');
+      } else {
+        $('.follow').data('follow-state', 'unfollowed');
+      }
 
-    if ($('.follow').data('follow-state') == "followed") {
-      $('.follow').html("Unfollow!");
-    } else {
-      $('.follow').html("Follow!");
-    }
+      if ($('.follow').data('follow-state') == "followed") {
+        $('.follow').html("Unfollow!");
+      } else {
+        $('.follow').html("Follow!");
+      }
 
-    this.stories.models.forEach( function(story) {
-      var storyPreview = new Large.Views.StoryPreview({
-        model: story,
-        stories: this.allStories,
-        publications: this.publications
-      });
-      this.$('ul.user-stories').prepend(storyPreview.render().$el);
+      this.stories.models.forEach( function(story) {
+        var storyPreview = new Large.Views.StoryPreview({
+          model: story,
+          stories: this.allStories,
+          publications: this.publications
+        });
+        this.$('ul.user-stories').prepend(storyPreview.render().$el);
+        this.$("abbr.timeago").timeago();
+      }.bind(this));
       this.$("abbr.timeago").timeago();
-    }.bind(this));
-    this.$("abbr.timeago").timeago();
 
-    return this;
+      return this;
+    }
   },
 
-  removeEditButton: function (event) {
-    event.preventDefault();
-    // debugger
-    if ($(event.target)[0].nodeName === 'A') {
-      $('.navbar-nav').find('.user-edit-toggle').remove();
-      window.location.href = $(event.target)[0].href;
-    }
+  setTransitionState: function (event) {
+    this.transitioning = true;
   },
 
   toggleFollow: function () {

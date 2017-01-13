@@ -13,7 +13,9 @@
   <% } %>
 </div>
 
-<div class="story-body"><%= story.get('body') %></div>
+<div class="story-body">
+  <%= story.get('body') %>
+</div>
 <% if (tags.length > 0) { %>
   <div style="color:rgba(128,128,128, 0.5);padding-left:100px;padding-bottom:30px;">
     TAGGED IN<br>
@@ -27,7 +29,7 @@
 <% } %>
 </div>
 <div style="width:100%; border-top:1px solid rgba(128, 128, 128, 0.2);"></div>
-<div style="margin-left:250px; margin-bottom:250px; padding-top:50px;" class="new">
+<div styl="margin-bottom: 150px; padding-top:50px;" class="new">
   <div class="pre-click">
     <t><button style="margin-top:-5px;" class='btn btn-circle'><span><i style="padding-left:2px;" class="fa fa-user"></i></span></button>
         &nbsp; Write a response...

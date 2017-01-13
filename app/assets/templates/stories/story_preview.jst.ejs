@@ -23,22 +23,18 @@
     </a>
   </div>
   <% } %>
-  <div class="sub-preview">
+  <a style="color:black;" class="sub-preview" href="#/stories/<%= story.id %>">
     <% if (story.get('story_id') === null) { %>
-      <a style="color:black;" href="#/stories/<%= story.id %>">
-        <h2><%= story.escape('title') %><h2>
-        <h3 style="margin-top:-10px;"><%= story.escape('subtitle') %></h3>
-      </a>
+      <h2><%= story.escape('title') %><h2>
+      <h3 style="margin-top:-10px;"><%= story.escape('subtitle') %></h3>
       <% if (sentence !== "") { %>
-        <a style="color:black;" href="#/stories/<%= story.id %>">
-          <div style="font-family:serif;font-size:20px; padding-top:15px;">
-            <% if (sentence.length < 249) { %>
-              <%= sentence %>
-            <% } else { %>
-              <%= sentence %>...
-            <% } %>
-          </div>
-        </a>
+        <div style="font-family:serif;font-size:20px; padding-top:15px;">
+          <% if (sentence.length < 249) { %>
+            <%= sentence %>
+          <% } else { %>
+            <%= sentence %>...
+          <% } %>
+        </div>
       <% } %>
       <br>
       <a href="#/stories/<%= story.id %>">Continue reading</a>
@@ -51,18 +47,16 @@
       </div>
       <br>
       <div style="font-family:serif;font-size:20px;">
-        <a style="color:black;" href="#/stories/<%= story.id %>">
-          <% if (sentence.length < 249) { %>
-            <%= sentence %>
-          <% } else { %>
-            <%= sentence %>...
-          <% } %>
-        </a>
+        <% if (sentence.length < 249) { %>
+          <%= sentence %>
+        <% } else { %>
+          <%= sentence %>...
+        <% } %>
       </div>
       <br>
       <a href="#/stories/<%= story.id %>">Continue reading</a>
       <a style="color:rgba(128,128,128,1);"
          href="#/stories/<%= story.id %>"> &#8231; <%= readingTime %> min read</a>
-      <% } %>
-  <div>
+    <% } %>
+  </a>
 </li>

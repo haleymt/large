@@ -81,6 +81,7 @@ Large.Views.StoryShow = Backbone.View.extend({
       buttons: ['bold', 'italic', 'quote', 'anchor']
     });
     $('.navbar').find('.new-story-header').remove();
+    $('.navbar-nav').find('.user-edit-toggle').remove();
     $('body').removeClass('modal-open');
 
     return this;

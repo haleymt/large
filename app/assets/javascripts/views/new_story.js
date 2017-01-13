@@ -7,7 +7,12 @@ Large.Views.NewStory = Backbone.View.extend({
     "click #header-image": "addImage",
     "click #submit-confirm": "submitForm",
     "click #confirm": "autoSave",
-    "keyup .editable": "addButton",
+    "keyup #body": "handleKeyup",
+    "keydown #body": "handleBodyKeydown",
+    "keydown #title": "handleTitleKeydown",
+    "keydown #subtitle": "handleSubtitleKeydown",
+    "keyup #title": "handlePlaceholders",
+    "keyup #subtitle": "handlePlaceholders",
     "click .insert-pic": "insertPic",
     "click .insert-line": "insertLine",
     "click .editable": "showToolbar",
@@ -43,7 +48,7 @@ Large.Views.NewStory = Backbone.View.extend({
       buttons: ['bold', 'italic', 'justifyCenter', 'justifyLeft', 'quote', 'anchor']
     });
     $('.editable p').before(this.insertToolbar())
-    $('.editable').focus();
+    $('#title').focus();
     this.$('#tags-select').selectivity({
       inputType: 'Email'
     });
@@ -61,13 +66,31 @@ Large.Views.NewStory = Backbone.View.extend({
     return this;
   },
 
-  addButton: function (event) {
+  handleTitleKeydown: function (event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      var $subtitle = $('#subtitle');
+      if ($subtitle) {
+        $subtitle.focus();
+      } else {
+        $('#body').focus();
+      }
+    }
+  },
+
+  handleSubtitleKeydown: function (event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      $('#body').get(0).focus();
+    } else if (event.keyCode === 8) {
+
+    }
+  },
+
+  handleKeyup: function (event) {
+    event.preventDefault();
     var tb = this.insertToolbar();
     var $target = $(event.target);
-
-    event.preventDefault();
-
-    this.handlePlaceholders($target);
 
     if (event.keyCode === 13) {
       $target.children().each( function () {
@@ -85,7 +108,12 @@ Large.Views.NewStory = Backbone.View.extend({
     }
   },
 
-  handlePlaceholders: function($el) {
+  handleBodyKeydown: function (event) {
+
+  },
+
+  handlePlaceholders: function(event) {
+    var $el = $(event.target);
     var $titleEl = $el.find('.title');
     var $subtitleEl = $el.find('.subtitle');
 
@@ -126,12 +154,11 @@ Large.Views.NewStory = Backbone.View.extend({
     p = window.getSelection().focusNode;
     $('p').each( function () {
       if ((this !== p) && $(this).prev().is('.insert-toolbar')) {
-        $(this).prev().css('opacity', 0);
-        $(this).prev().css('z-index', -1000);
+        $(this).prev().removeClass('visible');
+        $(this).prev().removeClass('open');
         $(this).css('opacity', 1);
       } else {
-        $(this).prev().first().css('opacity', 1);
-        $(this).prev().first().css('z-index', 1000);
+        $(this).prev().first().addClass('visible');
       }
     })
   },
@@ -139,10 +166,10 @@ Large.Views.NewStory = Backbone.View.extend({
   showHiddenButtons: function (event) {
     var $toolbar = $(event.currentTarget).parent();
 
-    if ($toolbar.hasClass('visible')) {
-      $toolbar.removeClass('visible');
+    if ($toolbar.hasClass('open')) {
+      $toolbar.removeClass('open');
     } else {
-      $toolbar.addClass('visible');
+      $toolbar.addClass('open');
     }
   },
 
@@ -168,8 +195,6 @@ Large.Views.NewStory = Backbone.View.extend({
   },
 
   autoSave: function (event) {
-    // debugger
-    // event.preventDefault();
     if ($('p').text() === "") {
       $('#blankStoryError').modal('show');
       setTimeout( function () {
@@ -178,18 +203,15 @@ Large.Views.NewStory = Backbone.View.extend({
     } else {
       $('#confirmPublish').modal('show');
       $('.insert-toolbar').remove();
-      var title = $($('p')[0]).text();
-      var subtitle = $($('p')[1]).text();
-      this.model.set("body", this.$('.editable').html());
+      var title = $($('.title')[0]).text();
+      var subtitle = $($('.subtitle')[0]).text();
+      var titleHTML = this.$('#title').html() || "";
+      var subtitleHTML = this.$('#subtitle').html() || "";
+      this.model.set("body", titleHTML + subtitleHTML + this.$('#body').html());
       this.model.set("title", title);
       this.model.set("subtitle", subtitle);
       this.$('#modal-title').val(title);
       this.$('#modal-subtitle').val(subtitle);
-      // this.model.save(this.model.attributes, {
-      //   success: function () {
-      //     this.collection.add(this.model, { merge: true });
-      //   }.bind(this)
-      // });
     }
   },
 

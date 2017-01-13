@@ -310,11 +310,17 @@ abbr:hover {
             margin-left: auto;
             margin-right: auto;
             width: 70%;
+            padding: 50px;
           }
 
           .new-story > .editable {
             position: relative;
             margin: 0;
+          }
+
+          .fragment > .editable {
+            padding: 30px;
+            width: auto;
           }
 
           .header-setter {
@@ -336,111 +342,139 @@ abbr:hover {
             display: block;
           }
 
-            .editable {
-              position: relative;
-              font-size: 24px;
-              font-family: serif;
-              margin-left: 30px;
-              padding: 50px;
+          .editable {
+            position: relative;
+            font-size: 24px;
+            font-family: serif;
+            margin-left: 30px;
+          }
+
+          .editable p {
+            padding-left: 50px;
+            width: 100%;
+            height: auto;
+            min-height: 40px;
+            margin-bottom: 0px;
+          }
+
+          .editable p.title.show-placeholder:before {
+            content: "Title";
+            position: absolute;
+            opacity: 0.6;
+            z-index: -1;
+          }
+
+          .editable p.subtitle {
+            margin-bottom: 15px;
+          }
+
+          .editable p.subtitle.show-placeholder:before {
+            content: "Subtitle";
+            position: absolute;
+            opacity: 0.6;
+            z-index: -1;
+          }
+
+          .new-insert {
+            margin: 0;
+            float: left;
+            margin-right: 5px;
+            color: rgba(128, 128, 128, 0.5);
+            transition: all 0.2s ease;
+            padding-top: 7px;
+            font-size: 22px;
+          }
+
+          .hidden-buttons {
+            visibility: hidden;
+            opacity: 0;
+
+            button {
+              margin:0;
+              margin-left: 10px;
+            }
+          }
+
+          .insert-toolbar {
+            opacity: 0;
+            margin-left: -50px;
+            position:absolute;
+            z-index:-1000;
+            width: 300px;
+            margin-top: -5px;
+
+            button {
+              color:rgba(128, 128, 128, 0.5);
             }
 
-            .editable p {
-              // position: absolute;
-              padding-left: 50px;
-              // margin-top: -40px;
-              width: 100%;
-              height: auto;
-              min-height: 40px;
-              margin-bottom: 0px;
+            button:active {
+              color:rgba(128, 128, 128, 0.5) !important;
             }
 
-            .editable p.title.show-placeholder:before {
-              content: "Title";
-              position: absolute;
-              opacity: 0.6;
-              z-index: -1;
+            button:focus {
+              color:rgba(128, 128, 128, 0.5) !important;
             }
 
-            .editable p.subtitle.show-placeholder:before {
-              content: "Subtitle";
-              position: absolute;
-              opacity: 0.6;
-              z-index: -1;
+            button:hover {
+              color:rgba(128, 128, 128, 0.8) !important;
             }
+          }
 
+          .insert-toolbar.visible {
+            opacity: 1;
+            z-index: 1000;
+          }
+
+          .insert-toolbar.open {
             .new-insert {
-              margin: 0;
-              float: left;
-              margin-right: 5px;
-              color: rgba(128, 128, 128, 0.5);
-              transition: all 0.2s ease;
-              padding-top: 7px;
-              font-size: 22px;
+              -ms-transform: rotate(45deg); /* IE 9 */
+              -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+              transform: rotate(45deg);
             }
 
             .hidden-buttons {
-              visibility: hidden;
-              opacity: 0;
-
-              button {
-                margin:0;
-                margin-left: 10px;
-                color:rgba(128, 128, 128, 0.5);
-              }
+              visibility: visible;
+              transition: all 0.3s ease;
+              opacity: 1;
             }
+          }
 
-            .insert-toolbar {
-              opacity: 0;
-              margin-left: -50px;
-              position:absolute;
-              z-index:-1000;
-              width: 300px;
-            }
+          #confirm {
+            // margin:0px;
+            // height:40px;
+            // width:200px;
+            // padding:5px;
+            font-style:normal;
+            font-family:sans-serif;
+            // font-size:20px;
+            border:1px solid rgba(87, 173, 104, 1);
+            color:rgba(87, 173, 104, 1);
+            position: absolute;
+            z-index: 100;
+            right: 280px;
+            top: 5px;
+          }
 
-            .insert-toolbar.visible {
-              .new-insert {
-                -ms-transform: rotate(45deg); /* IE 9 */
-                -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
-                transform: rotate(45deg);
-              }
+          .new-story-header button {
+            background: white !important;
+            border: 1px solid rgba(128,128,128,0.6) !important;
+            color: rgba(128,128,128,0.6) !important;
+            margin-right: 90px !important;
+          }
 
-              .hidden-buttons {
-                visibility: visible;
-                transition: all 0.3s ease;
-                opacity: 1;
-              }
-            }
-
-            #confirm {
-              // margin:0px;
-              // height:40px;
-              // width:200px;
-              // padding:5px;
-              font-style:normal;
-              font-family:sans-serif;
-              // font-size:20px;
-              border:1px solid rgba(87, 173, 104, 1);
-              color:rgba(87, 173, 104, 1);
-              position: absolute;
-              z-index: 100;
-              right: 280px;
-              top: 5px;
-            }
-
-            .new-story-header button {
-              background: white !important;
-              border: 1px solid rgba(128,128,128,0.6) !important;
-              color: rgba(128,128,128,0.6) !important;
-              margin-right: 90px !important;
-            }
-
-            .new-story-header button:active {
-              background: white !important;
-            }
+          .new-story-header button:active {
+            background: white !important;
+          }
 
     .new {
-      padding: 30px;
-      margin-left: 10px;
+      margin: 0 auto;
+      margin-bottom: 30px;
+      width: 500px;
+      padding-top: 50px;
+    }
+
+    .new .insert-toolbar {
+      margin-left: -10px !important;
     }
 
     .new .pre-click {
@@ -466,6 +500,7 @@ abbr:hover {
     .publish {
       color: rgba(87, 173, 104, 0.7);
       border: 1px solid rgba(87, 173, 104, 0.7);
+      margin-left: 0px;
     }
 
     .publish:hover {
@@ -474,7 +509,7 @@ abbr:hover {
     }
 
     .expand {
-      margin-left: 350px;
+      margin-left: 320px;
       padding-top: 2px;
       padding-bottom: 2px;
       padding-right: 5px;
@@ -593,7 +628,13 @@ ul {
   position: relative;
   z-index: 1000;
   word-wrap: break-word;
+  text-decoration: none !important;
 }
+
+// .preview a {
+//   text-decoration: none !important;
+// }
+
 
 ////
 
