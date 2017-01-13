@@ -401,7 +401,7 @@ abbr:hover {
             position:absolute;
             z-index:-1000;
             width: 300px;
-            margin-top: -5px;
+            margin-top: -6px;
 
             button {
               color:rgba(128, 128, 128, 0.5);
@@ -418,6 +418,14 @@ abbr:hover {
             button:hover {
               color:rgba(128, 128, 128, 0.8) !important;
             }
+          }
+
+          .insert-toolbar.type-title {
+            margin-top: 13px !important;
+          }
+
+          .insert-toolbar.type-subtitle {
+            margin-top: 3px !important;
           }
 
           .insert-toolbar.visible {
@@ -468,9 +476,13 @@ abbr:hover {
 
     .new {
       margin: 0 auto;
-      margin-bottom: 30px;
+      margin-bottom: 150px;
       width: 500px;
       padding-top: 50px;
+    }
+
+    .feed .new {
+      margin-bottom: 35px !important;
     }
 
     .new .insert-toolbar {

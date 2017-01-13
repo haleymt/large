@@ -25,7 +25,7 @@ Large.Views.NewStoryPreview = Backbone.View.extend({
 
   render: function () {
     this.$el.html(this.template({ story: this.model, publications: this.publications }));
-    this.$('.editable p').before(this.insertToolbar())
+    this.$('.editable p').before(this.insertToolbar({ type: "" }))
     $('.expand').tooltip({
       placement: 'top',
       trigger: 'hover'
@@ -39,7 +39,7 @@ Large.Views.NewStoryPreview = Backbone.View.extend({
   },
 
   addButton: function (event) {
-    var tb = this.insertToolbar();
+    var tb = this.insertToolbar({ type: "" });
     event.preventDefault();
     if (event.keyCode === 13) {
       $(event.target).children().each( function () {
@@ -47,6 +47,7 @@ Large.Views.NewStoryPreview = Backbone.View.extend({
           $(this).before(tb);
         }
       });
+      this.showToolbar(event);
     }
 
     if ($('p').text().length < 3) {

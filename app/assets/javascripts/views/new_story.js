@@ -47,8 +47,9 @@ Large.Views.NewStory = Backbone.View.extend({
       placeholder: "",
       buttons: ['bold', 'italic', 'justifyCenter', 'justifyLeft', 'quote', 'anchor']
     });
-    $('.editable p').before(this.insertToolbar())
-    $('#title').focus();
+    $('#title p').before(this.insertToolbar({ type: "title" }));
+    $('#subtitle p').before(this.insertToolbar({ type: "subtitle" }));
+    $('#body p').before(this.insertToolbar({ type: "" }));
     this.$('#tags-select').selectivity({
       inputType: 'Email'
     });
@@ -63,6 +64,8 @@ Large.Views.NewStory = Backbone.View.extend({
     $('.selectivity-multiple-input-container').css('background', 'transparent');
     $('.navbar-nav').find('.user-edit-toggle').remove();
 
+    $('#title').focus();
+    this.showToolbar();
     return this;
   },
 
@@ -75,6 +78,7 @@ Large.Views.NewStory = Backbone.View.extend({
       } else {
         $('#body').focus();
       }
+      this.showToolbar(event);
     }
   },
 
@@ -82,6 +86,7 @@ Large.Views.NewStory = Backbone.View.extend({
     if (event.keyCode === 13) {
       event.preventDefault();
       $('#body').get(0).focus();
+      this.showToolbar(event);
     } else if (event.keyCode === 8) {
 
     }
@@ -89,7 +94,7 @@ Large.Views.NewStory = Backbone.View.extend({
 
   handleKeyup: function (event) {
     event.preventDefault();
-    var tb = this.insertToolbar();
+    var tb = this.insertToolbar({ type: "" });
     var $target = $(event.target);
 
     if (event.keyCode === 13) {
@@ -98,6 +103,7 @@ Large.Views.NewStory = Backbone.View.extend({
           $(this).before(tb);
         }
       });
+      this.showToolbar(event);
     }
 
     if ($('p').text().length < 3) {
@@ -216,8 +222,10 @@ Large.Views.NewStory = Backbone.View.extend({
   },
 
   reseedToolbars: function () {
-    $('.editable p').before(this.insertToolbar())
-    $('.editable').focus();
+    $('#title p').before(this.insertToolbar({ type: "title" }));
+    $('#subtitle p').before(this.insertToolbar({ type: "subtitle" }));
+    $('#body p').before(this.insertToolbar({ type: "" }));
+    $('#title').focus();
     this.model.destroy();
   },
 
