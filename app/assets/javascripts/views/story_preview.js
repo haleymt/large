@@ -5,6 +5,7 @@ Large.Views.StoryPreview = Backbone.View.extend({
   initialize: function (options) {
     this.publications = options.publications;
     this.stories = options.stories;
+    this.allUsers = options.allUsers;
 
     this.listenTo(this.model, 'sync', this.render);
     this.listenTo(this.stories, 'sync', this.render);
@@ -14,10 +15,10 @@ Large.Views.StoryPreview = Backbone.View.extend({
 
   render: function () {
     var authorId = this.model.get('author_id');
-    var author = Large.Collections.users.get(authorId);
-    if (!author) {
-      return this;
-    }
+    var author = this.allUsers ? this.allUsers.get(authorId) || Large.Collections.users.get(authorId) : Large.Collections.users.get(authorId);
+    // if (!author) {
+    //   return this;
+    // }
     var pubId = this.model.get('pub_id');
     var pub = this.publications.get(pubId);
 
@@ -43,6 +44,7 @@ Large.Views.StoryPreview = Backbone.View.extend({
     var content = this.template({
       story: this.model,
       author: author,
+      authorId: authorId,
       pub: pub,
       sentence: firstSentence.slice(0, 250),
       readingTime: readingTime

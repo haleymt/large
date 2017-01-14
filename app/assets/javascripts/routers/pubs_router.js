@@ -26,13 +26,15 @@ Large.Routers.PubsRouter = Backbone.Router.extend({
 
   showPub: function (id) {
     var pub = this.collection.getOrFetch(id);
+    Large.Collections.users.fetch();
     Large.Collections.follows.fetch({
       data: { current_user: true }
     });
     var showPub = new Large.Views.PubShow({
       pub: pub,
       publications: this.collection,
-      follows: Large.Collections.follows
+      follows: Large.Collections.follows,
+      allUsers: Large.Collections.users
     });
     this._swapView(showPub);
   },

@@ -9,7 +9,8 @@ Large.Routers.TagsRouter = Backbone.Router.extend({
   },
 
   tagShow: function (id) {
-    var tag = this.collection.getOrFetch(id)
+    var tag = this.collection.getOrFetch(id);
+    Large.Collections.users.fetch();
     Large.Collections.publications.fetch();
     Large.Collections.ttags.fetch({
       data: { tag_id: id }
@@ -17,7 +18,8 @@ Large.Routers.TagsRouter = Backbone.Router.extend({
     showTag = new Large.Views.TagShow({
       ttag: tag,
       pubs: Large.Collections.publications,
-      ttags: Large.Collections.ttags
+      ttags: Large.Collections.ttags,
+      users: Large.Collections.users,
     });
     this._swapView(showTag);
   },

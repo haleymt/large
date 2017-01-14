@@ -1,14 +1,14 @@
 <li class="preview">
   <% if (pub !== undefined) { %>
     <a href="#/publications/<%= pub.id %>"><strong><%= pub.escape('title') %></strong></a><br>
-    <a style="color:rgba(128, 128, 128, 0.5); font-size:12px;" href="#/users/<%= author.id %>">
-      <%= author.escape('email') %>
+    <a style="color:rgba(128, 128, 128, 0.5); font-size:12px;" href="#/users/<%= authorId %>">
+      <%= author? author.escape('email') : '' %>
       &#8231; </a>
     <a style="color:rgba(128, 128, 128, 0.5); font-size:12px;" href="#/stories/<%= story.id %>">
       <abbr class="timeago" title="<%= story.get('created_at') %>"><%= story.get('created_at') %></abbr>
     </a>
   <% } else { %>
-  <a href="#/users/<%= author.id %>"><%= author.escape('email') %></a><br>
+  <a href="#/users/<%= authorId %>"><%= author? author.escape('email') : '' %></a><br>
   <a style="color:rgba(128, 128, 128, 0.5); font-size:12px;" href="#/stories/<%= story.id %>">
     <abbr class="timeago" title="<%= story.get('created_at') %>">
       <%= story.get('created_at') %>

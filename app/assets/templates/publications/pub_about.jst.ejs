@@ -1,8 +1,10 @@
 <div class="about">
   <div class="about-pub">
-    <p class="pub-title">ABOUT</p>
-    <h3><a href="#/publications/<%= pub.id %>"><%= pub.escape('title') %></a></h3>
-    <button style="float:right;margin-right:40px;" class="follow btn btn-primary btn-sm" id="<%= pub.id %>" value="Publication">Follow</button>
+    <p class="pub-title"><strong>ABOUT</strong></p>
+    <div class="pub-title-section">
+      <h3><a href="#/publications/<%= pub.id %>"><%= pub.escape('title') %></a></h3>
+      <button style="margin-left:40px;" class="follow btn btn-primary btn-sm" id="<%= pub.id %>" value="Publication">Follow</button>
+    </div>
     <br>
   </div>
   <div class="about-section">

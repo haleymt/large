@@ -806,19 +806,10 @@ ul {
 }
 
 .about li {
-  position: relative;
-  min-height: 70px;
-  // padding: 10px;
-}
-// .about .user-info {
-//   text-align: left;
-// }
-
-.about .about-section .follow {
-  float: right;
-  margin-top: -10px;
-  margin-right: 40px;
-
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 .about .pub-title {
@@ -836,6 +827,12 @@ ul {
   min-height: 100px;
   padding-top: 15px;
   border-top: 1px solid rgba(128, 128, 128, 0.4);
+}
+
+.pub-title-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 // search show
@@ -1099,27 +1096,24 @@ button.delete-story:hover {
 #followersModal .modal-title,
 #deleteModal .modal-title {
   padding-top: 30px;
+  padding-bottom: 15px;
 }
 
 #followingModal li,
 #followersModal li {
   padding-top: 15px;
-  padding-bottom: 40px;
+  padding-bottom: 15px;
   margin-left: auto;
   margin-right: auto;
-  width: 80%
-}
-
-#followingModal .user-info,
-#followersModal .user-info {
-  float: left;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   text-align: left;
-}
 
-#followingModal .follow,
-#followersModal .follow {
-  float: right;
-  margin: 0;
+  button {
+    margin-left: 20px;
+  }
 }
 
 // tag show page
