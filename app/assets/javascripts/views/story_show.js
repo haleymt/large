@@ -43,6 +43,9 @@ Large.Views.StoryShow = Backbone.View.extend({
 
     this.$el.html(content);
 
+    // var title = this.story.get('title');
+    // var subtitle = this.story.get('subtitle');
+
     $('p').first().text(this.story.get('title'));
     $($('p')[1]).text(this.story.get('subtitle'));
 
