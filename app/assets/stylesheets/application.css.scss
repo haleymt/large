@@ -184,6 +184,7 @@ abbr:hover {
 #search input {
   font-size: 50px;
   border: none;
+  margin-left: 20px;
 }
 
 #search {
@@ -843,8 +844,38 @@ ul {
   position: relative;
   border: none !important;
   width: 200px;
-  margin-left: 20px;
+  margin-left: 40px;
   float: left;
+}
+
+@media screen and (max-width: 1000px) {
+  .tab-content {
+    width: 80%;
+    margin: 0 auto !important;
+    float: none !important;
+  }
+
+  .stories-results {
+    width: calc(100% - 250px) !important;
+  }
+
+  .nav-tabs {
+    width: 80%;
+    margin: 0 auto;
+    border-top: 1px solid rgba(128, 128, 128, 0.4) !important;
+    margin-bottom: 40px;
+    float: none;
+
+    li {
+      display: inline-block !important;
+      border-top: none !important;
+    }
+
+    .active {
+      border-top: 2px solid black !important;
+      margin-top: -3px !important;
+    }
+  }
 }
 
 .nav-tabs li {
@@ -858,8 +889,8 @@ ul {
 
 .nav-tabs > li > a:hover {
   background: white;
-  border: 0;
-  margin-right: 0;
+  // border: 0;
+  // margin-right: 0;
 }
 
 .nav-tabs .active {
@@ -887,6 +918,14 @@ ul {
 .pubs-results li,
 .users-results li {
   padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  button {
+    margin: 10px !important;
+  }
 }
 
 #sectionC .pubs-results li,
@@ -905,12 +944,20 @@ ul {
   margin-right: 40px;
 }
 
-#sectionA .stories-results img {
-  float: right;
+#sectionA .pubs-results {
+  margin-bottom: 10px;
 }
 
-#sectionA .pubs-results {
-  margin-bottom: 40px;
+#sectionA .tags-results {
+  margin-bottom: 30px;
+
+  button {
+    margin: 5px !important;
+  }
+
+  .section-label {
+    padding-bottom: 10px !important;
+  }
 }
 
 #sectionA .up-pane {
@@ -918,10 +965,10 @@ ul {
   width: 175px;
 }
 
-#sectionA .follow {
-  float: right;
-  margin: 0;
-}
+// #sectionA .follow {
+//   float: right;
+//   margin: 0;
+// }
 
 #sectionB,
 #sectionC {
@@ -937,11 +984,11 @@ ul {
   position: relative;
 }
 
-#sectionB .follow,
-#sectionC .follow {
-  float: right;
-  margin-top: -40px;
-}
+// #sectionB .follow,
+// #sectionC .follow {
+//   float: right;
+//   margin-top: -40px;
+// }
 
 .search-preview {
   border-bottom: 1px solid rgba(128, 128, 128, 0.2);

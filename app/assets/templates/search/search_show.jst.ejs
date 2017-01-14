@@ -27,7 +27,7 @@
     </div>
 
     <div class="up-pane">
-      <div style="padding-bottom:10px;" class="tags-results">
+      <div class="tags-results">
       <p class="section-label">TAGS</p>
       <% if (tags.length > 0) { %>
         <% tags.forEach( function (tag) { %>
@@ -50,10 +50,14 @@
         <% if (publications.length > 0) { %>
         <ul>
         <% publications.forEach( function (pub) { %>
-          <li><a href="#/publications/<%= pub.id %>">
-            <strong><%= pub.escape('title') %></strong></a><br>
+          <li>
+            <div class="pub-search-right">
+            <a href="#/publications/<%= pub.id %>">
+              <strong><%= pub.escape('title') %></strong>
+            </a><br>
               <%= pub.escape('description') %>
-              <button class="follow btn btn-primary btn-sm" id="<%= pub.id %>" value="Publication">Follow</button>
+            </div>
+            <button class="follow btn btn-primary btn-sm" id="<%= pub.id %>" value="Publication">Follow</button>
           </li>
         <% }) %>
         </ul>
@@ -69,9 +73,13 @@
         <% if (users.length > 0) { %>
         <ul>
           <% users.forEach( function (user) { %>
-            <li><div class="user-info"><a href="#/users/<%= user.id %>">
-              <strong><%= user.escape('email') %></strong></a><br>
-                <%= user.escape('description') %></div>
+            <li>
+              <div class="user-info">
+                <a href="#/users/<%= user.id %>">
+                  <strong><%= user.escape('email') %></strong>
+                </a><br>
+                <%= user.escape('description') %>
+              </div>
                 <button class="follow btn btn-primary btn-sm" id="<%= user.id %>" value="User">Follow</button>
             </li>
           <% }) %>
