@@ -540,11 +540,15 @@ abbr:hover {
   width: 70%;
 }
 
-.new-pub input {
+.pub-header-setter input {
   border: none;
   margin-top: 5px;
   width: 400px;
   text-align: center;
+}
+
+.new-pub input {
+  padding: 5px !important;
 }
 
 .new-pub h1,
@@ -555,6 +559,22 @@ abbr:hover {
 #pub-icon {
   margin: 0;
   padding-top: 10px;
+}
+
+.pub-tags-bottom {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.selectivity-input {
+  background: #eee !important;
+  border-radius: 2px !important;
+}
+
+#writers {
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .new-pub > .pub-header-setter {
