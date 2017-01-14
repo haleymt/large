@@ -4,17 +4,20 @@ Large.Views.HomeShow = Backbone.CompositeView.extend({
 
   events: {
     "click .pre-click": "showNewStory",
-    "click #close-new": "hideNewStory"
+    "click #close-new": "hideNewStory",
+    "mouseenter .sidebar": "handleEnter",
+    "mouseleave .sidebar": "handleLeave"
   },
 
   initialize: function (options) {
     this.stories = options.stories;
     this.publications = options.publications;
     this.ttags = options.ttags;
+    this.hovering = false;
     // this.currentUser = options.currentUser;
     this.listenTo(this.ttags, 'sync', this.render);
     this.listenTo(this.stories, 'sync', this.render);
-    $(window).scroll(this.scrollSidebar);
+    $(window).scroll(this.scrollSidebar.bind(this));
 
     this.stories.each(this.addStoryView.bind(this));
     this.listenTo(this.stories, 'add', this.addStoryView);
@@ -84,9 +87,26 @@ Large.Views.HomeShow = Backbone.CompositeView.extend({
     return this;
   },
 
-  scrollSidebar: function () {
-    $('.sidebar').prop("scrollTop", $(window).scrollTop())
-    .prop("scrollLeft", $(window).scrollLeft());
+  scrollSidebar: function (e) {
+    var windowTop = $(window).scrollTop();
+    var sidebarTop = $('.sidebar').scrollTop();
+
+    if (!this.hovering) {
+      $('.sidebar').css("padding-top", 100);
+      $('.sidebar').prop("scrollTop", windowTop);
+    } else if (windowTop > 71 && sidebarTop < 70) {
+      $('.sidebar').css("padding-top", 32);
+    } else {
+      $('.sidebar').css("padding-top", 100);
+    }
+  },
+
+  handleEnter: function (e) {
+    this.hovering = true;
+  },
+
+  handleLeave: function (e) {
+    this.hovering = false;
   },
 
   showNewStory: function () {
