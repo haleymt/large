@@ -3,8 +3,9 @@ Large.Views.StoryPreviewSearch = Backbone.View.extend({
 
   initialize: function (options) {
     this.publications = options.publications;
+    this.users = options.allUsers;
 
-    this.listenTo(Large.Collections.users, 'sync', this.render);
+    // this.listenTo(Large.Collections.users, 'sync', this.render);
     this.listenTo(this.model, 'sync', this.render);
     this.listenTo(this.publications, 'sync', this.render);
   },
@@ -15,11 +16,11 @@ Large.Views.StoryPreviewSearch = Backbone.View.extend({
     var pub = this.publications.get(pubId);
 
     var authorId = this.model.get('author_id');
-    var author = Large.Collections.users.get(authorId);
-    if (!author) {
-      return this;
-    }
-    var content = this.template({ story: this.model, author: author, pub: pub });
+    var author = this.users.get(authorId);
+    // if (!author) {
+    //   return this;
+    // }
+    var content = this.template({ story: this.model, author: author, pub: pub, authorId: authorId });
     this.$el.html(content);
     this.$("abbr.timeago").timeago();
 

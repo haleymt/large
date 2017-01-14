@@ -1,7 +1,7 @@
 <li class="search-preview">
   <% if (story.get('header_image') !== null) { %>
     <br>
-    <img style="height:122px; width:122px;" src="<%= story.get('header_image') %>">
+    <div class="search-preview-thumb" style="background:url(<%= story.get('header_image') %>)"></div>
   <% } %>
   <div class="sub-preview">
     <% if (story.get('story_id') === null) { %>
@@ -22,11 +22,11 @@
   </div>
   <% if (pub !== undefined) { %>
     <p>In <a href="#/publications/<%= pub.id %>"><%= pub.escape('title') %></a>, by
-    <a style="color:rgba(128, 128, 128, 0.5)" href="#/users/<%= author.id %>"><%= author.escape('email') %></a>
+    <a style="color:rgba(128, 128, 128, 0.5)" href="#/users/<%= authorId %>"><%= author ? author.escape('email') : '' %></a>
     <br>
     <abbr style="color:rgba(128, 128, 128, 0.5);" class="timeago" title="<%= story.get('created_at') %>"><%= story.get('created_at') %></abbr>
   <% } else { %>
-  <a href="#/users/<%= author.id %>"><%= author.escape('email') %></a><br>
+  <a href="#/users/<%= authorId %>"><%= author ? author.escape('email') : '' %></a><br>
   <a style="color:rgba(128, 128, 128, 0.5)" href="#/stories/<%= story.id %>">
     <abbr class="timeago" title="<%= story.get('created_at') %>"><%= story.get('created_at') %></abbr>
   </a>

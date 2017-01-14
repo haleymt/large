@@ -12,24 +12,33 @@ Large.Views.SearchShow = Backbone.CompositeView.extend({
     this.publications = options.publications;
     this.users = options.users;
     this.stories = options.stories;
+    this.allUsers = options.allUsers;
 
     if (this.params !== null) {
       this.listenTo(this.currentUserFollows, 'sync', this.render);
       this.listenTo(this.publications, 'sync', this.render);
       this.listenTo(this.users, 'sync', this.render);
       this.listenTo(this.stories, 'sync add', this.render);
+      this.listenTo(Large.Collections.users, 'sync', this.render);
 
-      this.stories.each(this.addStoryView.bind(this));
-      this.listenTo(this.stories, 'add', this.addStoryView);
-      this.listenTo(this.stories, 'remove', this.removeStoryView);
+      this.stories.models.forEach(this.addStoryView.bind(this));
+      this.listenTo(this.stories, 'sync add', this.addStoryViews);
+      this.listenTo(this.stories, 'remove', this.removeStoryViews);
     }
   },
 
   addStoryView: function (story) {
-    var storyPreview = new Large.Views.StoryPreviewSearch({
-      model: story, publications: this.publications
+    var subviews = this.subviews('.results-previews');
+    var i = _(subviews).findIndex(function (el) {
+      return el.model === story;
     });
-    this.addSubview('.results-previews', storyPreview);
+
+    if (i === -1) {
+      var storyPreview = new Large.Views.StoryPreviewSearch({
+        model: story, publications: this.publications, allUsers: this.allUsers
+      });
+      this.addSubview('.results-previews', storyPreview);
+    }
   },
 
   removeStoryView: function (story) {
@@ -41,6 +50,14 @@ Large.Views.SearchShow = Backbone.CompositeView.extend({
 
     subviews[i].remove();
     subviews.splice(i, 1);
+  },
+
+  addStoryViews: function () {
+    this.stories.models.forEach(this.addStoryView.bind(this));
+  },
+
+  removeStoryViews: function () {
+    this.stories.models.forEach(this.removeStoryView.bind(this));
   },
 
   relatedTags: function () {

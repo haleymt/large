@@ -72,7 +72,7 @@ Large.Routers.StoriesRouter = Backbone.Router.extend({
     this.collection.fetch();
     var story = this.collection.getOrFetch(id);
     Large.Collections.ttags.fetch();
-    Large.Collections.users.fetch()
+    Large.Collections.users.fetch();
     showStory = new Large.Views.StoryShow({
       story: story,
       stories: this.collection,
@@ -89,6 +89,7 @@ Large.Routers.StoriesRouter = Backbone.Router.extend({
   },
 
   searchShow: function (params) {
+    Large.Collections.users.fetch();
     Large.Collections.follows.fetch({
       data: { current_user: true }
     }).done( function () {
@@ -98,6 +99,7 @@ Large.Routers.StoriesRouter = Backbone.Router.extend({
           follows: Large.Collections.follows
         });
       } else {
+        var allUsers = Large.Collections.users;
         Large.Collections.publications.fetch({
           data: { query: params }
         });
@@ -111,6 +113,7 @@ Large.Routers.StoriesRouter = Backbone.Router.extend({
           params: params,
           publications: Large.Collections.publications,
           users: Large.Collections.users,
+          allUsers: allUsers,
           stories: this.collection,
           follows: Large.Collections.follows
         });
