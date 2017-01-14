@@ -1,6 +1,6 @@
 <div class="user-show-header">
-  <% if (user.get('header_image') !== null) { %>
-    <div style="background-image:url('<%= user.get('header_image') %>')" class="user-header-image">
+  <% if (headerImg) { %>
+    <div style="background-image:url('<%= headerImg %>')" class="user-header-image">
     </div>
     <button class="user-icon-button"><i class="fa fa-user"></i></button>
   <% } else { %>

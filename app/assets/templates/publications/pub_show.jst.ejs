@@ -2,11 +2,11 @@
     <% if (pub.get('header_image') !== null) { %>
     <div class="header-img">
       <div class="pub-bg-normal" style="background-image:url(<%= pub.escape('header_image') %>)">
-        <div style="color:white; margin:0; padding:50px; padding-top:350px; text-align: <%= pub.get('header_align') %>;"
-             class="pub-show-header">
-          <h1 style="font-size: 60px;"><%= pub.escape('title') %></h1>
-          <h3><%= pub.escape('description') %></h3>
-        </div>
+      </div>
+      <div style="color:white; margin:0; padding:50px; padding-top:350px; text-align: <%= pub.get('header_align') %>;"
+           class="pub-show-header">
+        <h1 style="font-size: 60px;"><%= pub.escape('title') %></h1>
+        <h3><%= pub.escape('description') %></h3>
       </div>
       </div>
     </div>

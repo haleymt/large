@@ -746,6 +746,12 @@ ul {
   z-index: -1;
   top: 0;
   left: 0;
+  background: rgba(0,0,0,0.7);
+
+  .pub-show-header {
+    position: absolute;
+    top: 50px;
+  }
 }
 
 .pub-bg-normal {
@@ -754,7 +760,7 @@ ul {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-
+  opacity: 0.6;
 }
 
 // publication about page
@@ -1073,10 +1079,11 @@ button.delete-story:hover {
 .user-header-image {
   height: 300px;
   width: 100%;
-  background: rgba(0,0,0,0.9);
+  background: rgba(0,0,0,0.7);
   color: white;
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
 }
 
 .user-header-image i {

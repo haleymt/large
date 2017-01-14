@@ -30,7 +30,7 @@ Large.Views.UserShow = Backbone.View.extend({
     if (!this.transitioning) {
       $('.navbar-nav').find('.user-edit-toggle').remove();
 
-      var content = this.template({ user: this.user, followers: this.follows, followings: this.followings });
+      var content = this.template({ user: this.user, followers: this.follows, followings: this.followings, headerImg: this.user.get('header_image') });
       this.$el.html(content);
 
       var currentUser = this.currentUser.last();
