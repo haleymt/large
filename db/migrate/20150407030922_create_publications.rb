@@ -1,4 +1,4 @@
-class CreatePublications < ActiveRecord::Migration
+class CreatePublications < ActiveRecord::Migration[7.0]
   def change
     create_table :publications do |t|
       t.integer :owner_id, null: false, index: true

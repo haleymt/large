@@ -1,4 +1,4 @@
-class CreatePublicationEdits < ActiveRecord::Migration
+class CreatePublicationEdits < ActiveRecord::Migration[7.0]
   def change
     create_table :publication_edits do |t|
       t.integer :editor_id, null: false, index: true

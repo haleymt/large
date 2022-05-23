@@ -1,4 +1,4 @@
-class CreatePublicationWrites < ActiveRecord::Migration
+class CreatePublicationWrites < ActiveRecord::Migration[7.0]
   def change
     create_table :publication_writes do |t|
       t.integer :writer_id, null: false, index: true
